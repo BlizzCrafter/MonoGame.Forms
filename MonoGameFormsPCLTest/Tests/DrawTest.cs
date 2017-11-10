@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MonoGame.Forms.Services;
 
-namespace MonoGameFormsPCLTest
+namespace MonoGameFormsPCLTest.Tests
 {
     public class DrawTest : DrawService
     {

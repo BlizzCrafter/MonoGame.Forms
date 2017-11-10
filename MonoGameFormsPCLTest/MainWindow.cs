@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Windows.Forms;
 using MonoGame.Forms;
 using MonoGame.Forms.Controls;
-using System.Windows.Forms;
+using MonoGameFormsPCLTest.Tests;
 
 namespace MonoGameFormsPCLTest
 {
@@ -61,13 +62,6 @@ namespace MonoGameFormsPCLTest
             }
         }
 
-        #endregion
-
-        public MainWindow()
-        {
-            InitializeComponent();            
-        }
-
         private void buttonResetCam_Click(object sender, System.EventArgs e)
         {
             updateTest.ResetCam();
@@ -92,6 +86,13 @@ namespace MonoGameFormsPCLTest
         private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
         {
             updateTest.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
+        }
+
+        #endregion
+
+        public MainWindow()
+        {
+            InitializeComponent();            
         }
     }
 }

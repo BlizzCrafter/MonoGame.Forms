@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
 
-namespace MonoGameFormsPCLTest
+namespace MonoGameFormsPCLTest.Tests
 {
     public class UpdateTest : UpdateService
     {

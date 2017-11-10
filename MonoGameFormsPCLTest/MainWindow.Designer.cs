@@ -31,6 +31,7 @@
             this.tabControlEditorSwitch = new System.Windows.Forms.TabControl();
             this.tabPageDrawForm = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
+            this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
             this.tabPageUpdateForm = new System.Windows.Forms.TabPage();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
             this.checkBoxCam = new System.Windows.Forms.CheckBox();
@@ -38,7 +39,6 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
-            this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
             this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageDrawForm.SuspendLayout();
@@ -81,6 +81,17 @@
             this.textBoxTestText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTestText.TextChanged += new System.EventHandler(this.textBoxTestText_TextChanged);
             // 
+            // drawWindow
+            // 
+            this.drawWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawWindow.Editor = null;
+            this.drawWindow.Location = new System.Drawing.Point(3, 3);
+            this.drawWindow.Name = "drawWindow";
+            this.drawWindow.Size = new System.Drawing.Size(722, 393);
+            this.drawWindow.TabIndex = 0;
+            this.drawWindow.Text = "This is a simple draw test. It uses the following control:";
+            this.drawWindow.VisibleChanged += new System.EventHandler(this.drawWindow_VisibleChanged);
+            // 
             // tabPageUpdateForm
             // 
             this.tabPageUpdateForm.Controls.Add(this.trackBarCamZoom);
@@ -102,6 +113,7 @@
             // 
             this.trackBarCamZoom.LargeChange = 1;
             this.trackBarCamZoom.Location = new System.Drawing.Point(664, 6);
+            this.trackBarCamZoom.Maximum = 8;
             this.trackBarCamZoom.Name = "trackBarCamZoom";
             this.trackBarCamZoom.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBarCamZoom.Size = new System.Drawing.Size(56, 296);
@@ -160,6 +172,7 @@
             // 
             // buttonMoveCam
             // 
+            this.buttonMoveCam.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.buttonMoveCam.Location = new System.Drawing.Point(611, 344);
             this.buttonMoveCam.Name = "buttonMoveCam";
             this.buttonMoveCam.Size = new System.Drawing.Size(109, 49);
@@ -169,17 +182,6 @@
             this.buttonMoveCam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseDown);
             this.buttonMoveCam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseMove);
             this.buttonMoveCam.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseUp);
-            // 
-            // drawWindow
-            // 
-            this.drawWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawWindow.Editor = null;
-            this.drawWindow.Location = new System.Drawing.Point(3, 3);
-            this.drawWindow.Name = "drawWindow";
-            this.drawWindow.Size = new System.Drawing.Size(722, 393);
-            this.drawWindow.TabIndex = 0;
-            this.drawWindow.Text = "This is a simple draw test. It uses the following control:";
-            this.drawWindow.VisibleChanged += new System.EventHandler(this.drawWindow_VisibleChanged);
             // 
             // updateWindow
             // 

@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawTest.cs" />
-    <Compile Include="UpdateTest.cs" />
+    <Compile Include="Tests\DrawTest.cs" />
+    <Compile Include="Tests\UpdateTest.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
