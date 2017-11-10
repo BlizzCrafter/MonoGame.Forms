@@ -12,7 +12,7 @@ namespace MonoGame.Forms.Controls
                 if (value != null)
                 {
                     _Editor = value;
-                    _Editor.InitializeGFX(_graphicsDeviceService);
+                    _Editor.InitializeGFX(_graphicsDeviceService, SwapChainRenderTarget);
                     _Editor.Initialize();
                 }
             }
@@ -21,7 +21,7 @@ namespace MonoGame.Forms.Controls
 
         protected override void Initialize()
         {
-            _Editor = new DrawService(_graphicsDeviceService);
+            _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
             _Editor.Initialize();
         }
 

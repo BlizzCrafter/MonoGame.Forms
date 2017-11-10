@@ -28,7 +28,7 @@ namespace MonoGame.Forms.Services
         void MoveCam(Vector2 amount);
         void ResetCam();
 
-        void InitializeGFX(IGraphicsDeviceService graphics);
+        void InitializeGFX(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget);
 
         void UpdateFrameCounter();
         void UpdateDisplay(GameTime gameTime, Vector2 mousePosition);

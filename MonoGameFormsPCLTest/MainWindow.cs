@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MonoGame.Forms;
 using MonoGame.Forms.Controls;
 using System.Windows.Forms;
 
@@ -31,6 +32,8 @@ namespace MonoGameFormsPCLTest
         private void updateWindow_VisibleChanged(object sender, System.EventArgs e)
         {
             if (((UpdateWindow)sender).Editor != updateTest) ((UpdateWindow)sender).Editor = updateTest;
+
+            trackBarCamZoom.Value = (int)updateTest.Cam.GetZoom;
         }
 
         private void buttonMoveCam_MouseUp(object sender, MouseEventArgs e)
@@ -68,6 +71,27 @@ namespace MonoGameFormsPCLTest
         private void buttonResetCam_Click(object sender, System.EventArgs e)
         {
             updateTest.ResetCam();
+            trackBarCamZoom.Value = (int)updateTest.Cam.GetZoom;
+        }
+
+        private void checkBoxFPS_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Settings.ShowFPS = checkBoxFPS.Checked;
+        }
+
+        private void checkBoxCursor_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Settings.ShowCursorPosition = checkBoxCursor.Checked;
+        }
+
+        private void checkBoxCam_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Settings.ShowCamPosition = checkBoxCam.Checked;
+        }
+
+        private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
+        {
+            updateTest.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
         }
     }
 }

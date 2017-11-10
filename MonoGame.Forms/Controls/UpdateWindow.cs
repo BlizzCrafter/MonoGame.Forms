@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MonoGame.Forms.Services;
 
 namespace MonoGame.Forms.Controls
@@ -14,7 +13,7 @@ namespace MonoGame.Forms.Controls
                 if (value != null)
                 {
                     _Editor = value;
-                    _Editor.InitializeGFX(_graphicsDeviceService);
+                    _Editor.InitializeGFX(_graphicsDeviceService, SwapChainRenderTarget);
                     _Editor.Initialize();
                 }
             }
@@ -25,18 +24,27 @@ namespace MonoGame.Forms.Controls
         {
             base.Initialize();
 
-            _Editor = new UpdateService(_graphicsDeviceService);
+            _Editor = new UpdateService(_graphicsDeviceService, SwapChainRenderTarget);
             _Editor.Initialize();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (_Editor != null) _Editor.Update(gameTime, _MousePosition);
+            if (_Editor != null)
+            {
+                _Editor.Update(
+                gameTime,
+                GetRelativeMousePosition,
+                GetAbsoluteMousePosition,
+                ref LeftMouseButtonPressed,
+                ref RightMouseButtonPressed,
+                ref MiddleMouseButtonPressed);
+            }
         }
 
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw()
         {
-            if (_Editor != null) _Editor.Draw(gameTime);
+            if (_Editor != null) _Editor.Draw();
         }
     }
 }

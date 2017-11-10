@@ -1,34 +1,44 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
 
 namespace MonoGameFormsPCLTest
 {
     public class UpdateTest : UpdateService
     {
-        public string WelcomeMessage = "Hello MonoGames.Forms (Updatable)!";
-
+        Texture2D SmileyMap;
+        
         public override void Initialize()
         {
             base.Initialize();
+
+            SmileyMap = Content.Load<Texture2D>("SmileyMap");
         }
 
-        public override void Update(GameTime gameTime, Vector2 mousePosition)
+        public override void Update(GameTime gameTime, Vector2 relativeMousePosition, Vector2 absoluteMousePosition, ref bool leftMouseButtonPressed, ref bool rightMouseButtonPressed, ref bool middleMouseButtonPressed)
         {
-            base.Update(gameTime, mousePosition);
+            base.Update(gameTime, relativeMousePosition, absoluteMousePosition, ref leftMouseButtonPressed, ref rightMouseButtonPressed, ref middleMouseButtonPressed);
+
+            if (leftMouseButtonPressed)
+            {
+                leftMouseButtonPressed = false;
+            }
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw()
         {
-            base.Draw(gameTime);
+            base.Draw();
 
             BeginCamera2D();
 
-            spriteBatch.DrawString(Font, WelcomeMessage, new Vector2(
-                (graphics.Viewport.Width / 2) - (Font.MeasureString(WelcomeMessage).X / 2),
-                (graphics.Viewport.Height / 2) - (Font.MeasureString(WelcomeMessage).Y / 2)),
+            spriteBatch.Draw(SmileyMap, new Vector2(
+                (graphics.Viewport.Width / 2) - (SmileyMap.Width / 2), 
+                (graphics.Viewport.Height / 2) - (SmileyMap.Height / 2)),
                 Color.White);
 
             EndCamera2D();
+
+            DrawDisplay();
         }
     }
 }

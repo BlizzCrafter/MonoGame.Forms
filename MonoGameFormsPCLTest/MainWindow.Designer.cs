@@ -31,14 +31,19 @@
             this.tabControlEditorSwitch = new System.Windows.Forms.TabControl();
             this.tabPageDrawForm = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
-            this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
             this.tabPageUpdateForm = new System.Windows.Forms.TabPage();
-            this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
-            this.buttonMoveCam = new System.Windows.Forms.Button();
+            this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
+            this.checkBoxCam = new System.Windows.Forms.CheckBox();
+            this.checkBoxCursor = new System.Windows.Forms.CheckBox();
+            this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.buttonResetCam = new System.Windows.Forms.Button();
+            this.buttonMoveCam = new System.Windows.Forms.Button();
+            this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
+            this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageDrawForm.SuspendLayout();
             this.tabPageUpdateForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlEditorSwitch
@@ -76,19 +81,12 @@
             this.textBoxTestText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTestText.TextChanged += new System.EventHandler(this.textBoxTestText_TextChanged);
             // 
-            // drawWindow
-            // 
-            this.drawWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawWindow.Editor = null;
-            this.drawWindow.Location = new System.Drawing.Point(3, 3);
-            this.drawWindow.Name = "drawWindow";
-            this.drawWindow.Size = new System.Drawing.Size(722, 393);
-            this.drawWindow.TabIndex = 0;
-            this.drawWindow.Text = "This is a simple draw test. It uses the following control:";
-            this.drawWindow.VisibleChanged += new System.EventHandler(this.drawWindow_VisibleChanged);
-            // 
             // tabPageUpdateForm
             // 
+            this.tabPageUpdateForm.Controls.Add(this.trackBarCamZoom);
+            this.tabPageUpdateForm.Controls.Add(this.checkBoxCam);
+            this.tabPageUpdateForm.Controls.Add(this.checkBoxCursor);
+            this.tabPageUpdateForm.Controls.Add(this.checkBoxFPS);
             this.tabPageUpdateForm.Controls.Add(this.buttonResetCam);
             this.tabPageUpdateForm.Controls.Add(this.buttonMoveCam);
             this.tabPageUpdateForm.Controls.Add(this.updateWindow);
@@ -99,6 +97,89 @@
             this.tabPageUpdateForm.TabIndex = 1;
             this.tabPageUpdateForm.Text = "Update Form";
             this.tabPageUpdateForm.UseVisualStyleBackColor = true;
+            // 
+            // trackBarCamZoom
+            // 
+            this.trackBarCamZoom.LargeChange = 1;
+            this.trackBarCamZoom.Location = new System.Drawing.Point(664, 6);
+            this.trackBarCamZoom.Name = "trackBarCamZoom";
+            this.trackBarCamZoom.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarCamZoom.Size = new System.Drawing.Size(56, 296);
+            this.trackBarCamZoom.TabIndex = 6;
+            this.trackBarCamZoom.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBarCamZoom.Scroll += new System.EventHandler(this.trackBarCamZoom_Scroll);
+            // 
+            // checkBoxCam
+            // 
+            this.checkBoxCam.AutoSize = true;
+            this.checkBoxCam.Checked = true;
+            this.checkBoxCam.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCam.Location = new System.Drawing.Point(149, 369);
+            this.checkBoxCam.Name = "checkBoxCam";
+            this.checkBoxCam.Size = new System.Drawing.Size(58, 21);
+            this.checkBoxCam.TabIndex = 5;
+            this.checkBoxCam.Text = "Cam";
+            this.checkBoxCam.UseVisualStyleBackColor = true;
+            this.checkBoxCam.CheckedChanged += new System.EventHandler(this.checkBoxCam_CheckedChanged);
+            // 
+            // checkBoxCursor
+            // 
+            this.checkBoxCursor.AutoSize = true;
+            this.checkBoxCursor.Checked = true;
+            this.checkBoxCursor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCursor.Location = new System.Drawing.Point(71, 369);
+            this.checkBoxCursor.Name = "checkBoxCursor";
+            this.checkBoxCursor.Size = new System.Drawing.Size(72, 21);
+            this.checkBoxCursor.TabIndex = 4;
+            this.checkBoxCursor.Text = "Cursor";
+            this.checkBoxCursor.UseVisualStyleBackColor = true;
+            this.checkBoxCursor.CheckedChanged += new System.EventHandler(this.checkBoxCursor_CheckedChanged);
+            // 
+            // checkBoxFPS
+            // 
+            this.checkBoxFPS.AutoSize = true;
+            this.checkBoxFPS.Checked = true;
+            this.checkBoxFPS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxFPS.Location = new System.Drawing.Point(9, 369);
+            this.checkBoxFPS.Name = "checkBoxFPS";
+            this.checkBoxFPS.Size = new System.Drawing.Size(56, 21);
+            this.checkBoxFPS.TabIndex = 3;
+            this.checkBoxFPS.Text = "FPS";
+            this.checkBoxFPS.UseVisualStyleBackColor = true;
+            this.checkBoxFPS.CheckedChanged += new System.EventHandler(this.checkBoxFPS_CheckedChanged);
+            // 
+            // buttonResetCam
+            // 
+            this.buttonResetCam.Location = new System.Drawing.Point(611, 308);
+            this.buttonResetCam.Name = "buttonResetCam";
+            this.buttonResetCam.Size = new System.Drawing.Size(109, 30);
+            this.buttonResetCam.TabIndex = 2;
+            this.buttonResetCam.Text = "Reset Cam";
+            this.buttonResetCam.UseVisualStyleBackColor = true;
+            this.buttonResetCam.Click += new System.EventHandler(this.buttonResetCam_Click);
+            // 
+            // buttonMoveCam
+            // 
+            this.buttonMoveCam.Location = new System.Drawing.Point(611, 344);
+            this.buttonMoveCam.Name = "buttonMoveCam";
+            this.buttonMoveCam.Size = new System.Drawing.Size(109, 49);
+            this.buttonMoveCam.TabIndex = 1;
+            this.buttonMoveCam.Text = "Move Cam";
+            this.buttonMoveCam.UseVisualStyleBackColor = true;
+            this.buttonMoveCam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseDown);
+            this.buttonMoveCam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseMove);
+            this.buttonMoveCam.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseUp);
+            // 
+            // drawWindow
+            // 
+            this.drawWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawWindow.Editor = null;
+            this.drawWindow.Location = new System.Drawing.Point(3, 3);
+            this.drawWindow.Name = "drawWindow";
+            this.drawWindow.Size = new System.Drawing.Size(722, 393);
+            this.drawWindow.TabIndex = 0;
+            this.drawWindow.Text = "This is a simple draw test. It uses the following control:";
+            this.drawWindow.VisibleChanged += new System.EventHandler(this.drawWindow_VisibleChanged);
             // 
             // updateWindow
             // 
@@ -111,32 +192,9 @@
             this.updateWindow.Text = "This is a simple update test. It uses the following control:";
             this.updateWindow.VisibleChanged += new System.EventHandler(this.updateWindow_VisibleChanged);
             // 
-            // buttonMoveCam
-            // 
-            this.buttonMoveCam.Location = new System.Drawing.Point(611, 342);
-            this.buttonMoveCam.Name = "buttonMoveCam";
-            this.buttonMoveCam.Size = new System.Drawing.Size(109, 49);
-            this.buttonMoveCam.TabIndex = 1;
-            this.buttonMoveCam.Text = "Move Cam";
-            this.buttonMoveCam.UseVisualStyleBackColor = true;
-            this.buttonMoveCam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseDown);
-            this.buttonMoveCam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseMove);
-            this.buttonMoveCam.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseUp);
-            // 
-            // buttonResetCam
-            // 
-            this.buttonResetCam.Location = new System.Drawing.Point(8, 342);
-            this.buttonResetCam.Name = "buttonResetCam";
-            this.buttonResetCam.Size = new System.Drawing.Size(109, 49);
-            this.buttonResetCam.TabIndex = 2;
-            this.buttonResetCam.Text = "Reset Cam";
-            this.buttonResetCam.UseVisualStyleBackColor = true;
-            this.buttonResetCam.Click += new System.EventHandler(this.buttonResetCam_Click);
-            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(736, 428);
             this.Controls.Add(this.tabControlEditorSwitch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -149,6 +207,8 @@
             this.tabPageDrawForm.ResumeLayout(false);
             this.tabPageDrawForm.PerformLayout();
             this.tabPageUpdateForm.ResumeLayout(false);
+            this.tabPageUpdateForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,6 +223,10 @@
         private MonoGame.Forms.Controls.UpdateWindow updateWindow;
         private System.Windows.Forms.Button buttonMoveCam;
         private System.Windows.Forms.Button buttonResetCam;
+        private System.Windows.Forms.CheckBox checkBoxCam;
+        private System.Windows.Forms.CheckBox checkBoxCursor;
+        private System.Windows.Forms.CheckBox checkBoxFPS;
+        private System.Windows.Forms.TrackBar trackBarCamZoom;
     }
 }
 

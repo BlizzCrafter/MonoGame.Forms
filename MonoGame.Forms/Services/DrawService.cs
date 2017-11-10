@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame.Forms.Services
 {
@@ -6,15 +8,20 @@ namespace MonoGame.Forms.Services
     {
         public DrawService() { }
 
-        internal DrawService(IGraphicsDeviceService graphics)
+        internal DrawService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System
-            InitializeGFX(graphics);
+            InitializeGFX(graphics, swapChainRenderTarget);
         }
 
-        public virtual void Initialize() { }
+        public override void Initialize() { }
 
-        public virtual void Draw()
+        public override void Update(GameTime gameTime, Vector2 relativeMousePosition, Vector2 absoluteMousePosition, ref bool leftMouseButtonPressed, ref bool rightMouseButtonPressed, ref bool middleMouseButtonPressed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Draw()
         {
             graphics.Clear(BackgroundColor);
         }

@@ -12,8 +12,11 @@ namespace MonoGame.Forms.Controls
         TimeSpan elapsed;
 
         protected bool LeftMouseButtonPressed = false;
+        protected bool RightMouseButtonPressed = false;
+        protected bool MiddleMouseButtonPressed = false;
 
-        protected Vector2 _MousePosition { get; set; }
+        protected Vector2 GetRelativeMousePosition { get; set; }
+        protected Vector2 GetAbsoluteMousePosition { get; set; }
 
         protected override void Initialize()
         {
@@ -28,16 +31,20 @@ namespace MonoGame.Forms.Controls
         private void GameControl_MouseUp(object sender, MouseEventArgs e)
         {
             LeftMouseButtonPressed = false;
+            RightMouseButtonPressed = false;
+            MiddleMouseButtonPressed = false;
         }
 
         private void GameControl_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) LeftMouseButtonPressed = true;
+            else if (e.Button == MouseButtons.Right) RightMouseButtonPressed = true;
+            else if (e.Button == MouseButtons.Middle) MiddleMouseButtonPressed = true;
         }
 
         protected override void Draw()
         {
-            Draw(gameTime);
+            Draw();
         }
 
         private void GameLoop()
@@ -50,9 +57,11 @@ namespace MonoGame.Forms.Controls
                 System.Drawing.Point p = this.PointToClient(
                     new System.Drawing.Point(Cursor.Position.X, Cursor.Position.Y));
 
+                GetAbsoluteMousePosition = new Vector2(Cursor.Position.X, Cursor.Position.Y);
+
                 if (ClientRectangle.Contains(p))
                 {
-                    _MousePosition = new Vector2(
+                    GetRelativeMousePosition = new Vector2(
                         MathHelper.Clamp(p.X, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Width),
                         MathHelper.Clamp(p.Y, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Height));
                 }
@@ -63,6 +72,5 @@ namespace MonoGame.Forms.Controls
         }
         
         protected abstract void Update(GameTime gameTime);
-        protected abstract void Draw(GameTime gameTime);
     }
 }

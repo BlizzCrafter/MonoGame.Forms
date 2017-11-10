@@ -11,14 +11,17 @@ namespace MonoGame.Forms.Services
     {
         public ContentManager Content { get; set; }
         private ContentManager InternContent { get; set; }
-        public Vector2 GetMousePosition { get; set; }
+
         public GraphicsDevice graphics { get; set; }
         public GameServiceContainer services { get; set; }
         public SpriteBatch spriteBatch { get; set; }
+        public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
+
+        public Vector2 GetMousePosition { get; set; }
 
         public Camera2D Cam { get; set; }
-        public float CurrentWorldShiftX { get; set; }
-        public float CurrentWorldShiftY { get; set; }
+        private float CurrentWorldShiftX { get; set; }
+        private float CurrentWorldShiftY { get; set; }
 
         public Color BackgroundColor { get; set; } = Color.CornflowerBlue;
 
@@ -29,12 +32,13 @@ namespace MonoGame.Forms.Services
         public int FrameCounter { get; set; }
         public int FrameRate { get; set; }
         
-        public void InitializeGFX(IGraphicsDeviceService graphics)
+        public void InitializeGFX(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             services = new GameServiceContainer();
             services.AddService<IGraphicsDeviceService>(graphics);
 
             this.graphics = graphics.GraphicsDevice;
+            SwapChainRenderTarget = swapChainRenderTarget;
 
             Content = new ContentManager(services, "Content");
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
@@ -64,7 +68,7 @@ namespace MonoGame.Forms.Services
 
         public void DrawDisplay()
         {
-            if (Settings.ShowFPS || Settings.ShowCursorPosition)
+            if (Settings.ShowFPS || Settings.ShowCursorPosition || Settings.ShowCamPosition)
             {
                 spriteBatch.Begin();
 
@@ -130,6 +134,17 @@ namespace MonoGame.Forms.Services
             Cam.Move(new Vector2(-CurrentWorldShiftX, -CurrentWorldShiftY));
             CurrentWorldShiftX = 0;
             CurrentWorldShiftY = 0;
+            Cam.GetZoom = 1f;
         }
+
+        public abstract void Initialize();
+        public abstract void Update(
+            GameTime gameTime,
+            Vector2 relativeMousePosition,
+            Vector2 absoluteMousePosition,
+            ref bool leftMouseButtonPressed,
+            ref bool rightMouseButtonPressed,
+            ref bool middleMouseButtonPressed);
+        public abstract void Draw();
     }
 }

@@ -7,26 +7,30 @@ namespace MonoGame.Forms.Services
     {
         public UpdateService() { }
 
-        internal UpdateService(IGraphicsDeviceService graphics)
+        internal UpdateService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System
-            InitializeGFX(graphics);
+            InitializeGFX(graphics, swapChainRenderTarget);
         }
 
-        public virtual void Initialize() { }
+        public override void Initialize() { }
 
-        public virtual void Update(GameTime gameTime, Vector2 mousePosition)
+        public override void Update(
+            GameTime gameTime,
+            Vector2 relativeMousePosition,
+            Vector2 absoluteMousePosition,
+            ref bool leftMouseButtonPressed,
+            ref bool rightMouseButtonPressed,
+            ref bool middleMouseButtonPressed)
         {
-            UpdateDisplay(gameTime, mousePosition);
+            UpdateDisplay(gameTime, relativeMousePosition);
         }
 
-        public virtual void Draw(GameTime gameTime)
+        public override void Draw()
         {
             UpdateFrameCounter();
 
             graphics.Clear(BackgroundColor);
-
-            DrawDisplay();
         }
     }
 }
