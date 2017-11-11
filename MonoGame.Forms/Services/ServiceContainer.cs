@@ -14,6 +14,8 @@ using System.Collections.Generic;
 
 namespace MonoGame.Forms.Services
 {
+    #pragma warning disable 1591
+
     public class ServiceContainer : IServiceProvider
     {
         private readonly Dictionary<Type, object> _services = new Dictionary<Type, object>();

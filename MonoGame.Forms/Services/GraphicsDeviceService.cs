@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame.Forms.Services
 {
+    #pragma warning disable 1591
     public class GraphicsDeviceService : IGraphicsDeviceService
     {
         private static GraphicsDeviceService _singletonInstance;

@@ -7,8 +7,13 @@ using MonoGame.Forms.Components;
 
 namespace MonoGame.Forms.Services
 {
+    /// <summary>
+    /// The <see cref="GFXService"/> class provides basic functionality of MonoGame
+    /// </summary>
     public abstract class GFXService : IGFXInterface
     {
+        #pragma warning disable 1591
+
         public ContentManager Content { get; set; }
         private ContentManager InternContent { get; set; }
 

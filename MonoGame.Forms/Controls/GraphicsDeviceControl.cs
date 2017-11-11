@@ -17,6 +17,11 @@ using MonoGame.Forms.Services;
 
 namespace MonoGame.Forms.Controls
 {
+    /// <summary>
+    /// This class mainly creates the <see cref="GraphicsDevice"/> and the <see cref="SwapChainRenderTarget"/>.
+    /// It inherits from <see cref="System.Windows.Forms.Control"/>, which makes it available as a tool box control.
+    /// You can drag and drop the control directly from the tool box in the designer.
+    /// </summary>
     public abstract class GraphicsDeviceControl : System.Windows.Forms.Control
     {
         private bool designMode
@@ -29,12 +34,30 @@ namespace MonoGame.Forms.Controls
                 return res;
             }
         }
-        private SwapChainRenderTarget _chain;
+
+        /// <summary>
+        /// A swap chain used for rendering to a secondary GameWindow.
+        /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
+        /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get { return _chain; } }
-        protected GraphicsDeviceService _graphicsDeviceService;
+        private SwapChainRenderTarget _chain;
+
+        /// <summary>
+        /// Get the GraphicsDevice.
+        /// </summary>
         public GraphicsDevice GraphicsDevice => _graphicsDeviceService.GraphicsDevice;
+
+        /// <summary>
+        /// Get the GraphicsDeviceService.
+        /// </summary>
+        protected GraphicsDeviceService _graphicsDeviceService;
+
+        /// <summary>
+        /// Get the ServiceContainer.
+        /// </summary>
         protected ServiceContainer Services { get; } = new ServiceContainer();
 
+        #pragma warning disable 1591
         protected override void OnCreateControl()
         {
             if (!designMode)

@@ -3,8 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame.Forms.Components
 {
+    /// <summary>
+    /// A basic Camera2D component to move the view of an editor.
+    /// </summary>
     public class Camera2D
     {
+        #pragma warning disable 1591
+
         private float Zoom { get; set; }
         public Matrix Transform { get; set; }
         private Vector2 Position { get; set; }

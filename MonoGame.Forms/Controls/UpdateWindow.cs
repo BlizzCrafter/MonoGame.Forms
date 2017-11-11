@@ -3,8 +3,17 @@ using MonoGame.Forms.Services;
 
 namespace MonoGame.Forms.Controls
 {
+    /// <summary>
+    /// This control is selectable in the tool box of the designer.
+    /// It provides a game loop and a place to draw.
+    /// You need to place this control onto a <see cref="System.Windows.Forms.Form"/>.
+    /// </summary>
     public class UpdateWindow : GameControl
     {
+        /// <summary>
+        /// The <see cref="UpdateService"/> of the <see cref="UpdateWindow"/> draws and updates the actual content of the update control.
+        /// Attach here your custom 'Editor', which should inherit from <see cref="UpdateService"/> to be attachable.
+        /// </summary>
         public UpdateService Editor
         {
             get { return _Editor; }
@@ -20,6 +29,9 @@ namespace MonoGame.Forms.Controls
         }
         private UpdateService _Editor;
 
+        /// <summary>
+        /// Basic initializing.
+        /// </summary>
         protected override void Initialize()
         {
             base.Initialize();
@@ -28,6 +40,10 @@ namespace MonoGame.Forms.Controls
             _Editor.Initialize();
         }
 
+        /// <summary>
+        /// Basic updating.
+        /// It uses a real game loop, represented by <see cref="GameTime"/>.
+        /// </summary>
         protected override void Update(GameTime gameTime)
         {
             if (_Editor != null)
@@ -42,6 +58,9 @@ namespace MonoGame.Forms.Controls
             }
         }
 
+        /// <summary>
+        /// Basic drawing.
+        /// </summary>
         protected override void Draw()
         {
             if (_Editor != null) _Editor.Draw();
