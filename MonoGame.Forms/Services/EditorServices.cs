@@ -135,6 +135,7 @@ namespace MonoGame.Forms.Services
             CurrentWorldShiftX = 0;
             CurrentWorldShiftY = 0;
             Cam.GetZoom = 1f;
+            Cam.GetRotation = 0f;
         }
 
         public abstract void Initialize();
