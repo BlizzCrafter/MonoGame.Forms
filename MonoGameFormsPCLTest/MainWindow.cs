@@ -4,6 +4,7 @@ using MonoGame.Forms;
 using MonoGame.Forms.Controls;
 using MonoGameFormsPCLTest.Tests;
 using System;
+using System.Diagnostics;
 
 namespace MonoGameFormsPCLTest
 {
@@ -123,6 +124,11 @@ namespace MonoGameFormsPCLTest
         public MainWindow()
         {
             InitializeComponent();            
+        }
+
+        private void toolStripDropDownButtonGitHub_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/sqrMin1/MonoGame.Forms");
         }
     }
 }

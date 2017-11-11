@@ -45,12 +45,18 @@
             this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
+            this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
+            this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             this.tabPageDrawForm.SuspendLayout();
             this.tabPageUpdateForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
+            this.tabPageInfo.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlEditorSwitch
@@ -58,6 +64,7 @@
             this.tabControlEditorSwitch.Controls.Add(this.tabPageWelcome);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageDrawForm);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageUpdateForm);
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageInfo);
             this.tabControlEditorSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlEditorSwitch.Location = new System.Drawing.Point(0, 0);
             this.tabControlEditorSwitch.Name = "tabControlEditorSwitch";
@@ -246,6 +253,49 @@
             this.trackBarLogoFrames.Visible = false;
             this.trackBarLogoFrames.Scroll += new System.EventHandler(this.trackBarLogoFrames_Scroll);
             // 
+            // tabPageInfo
+            // 
+            this.tabPageInfo.Controls.Add(this.richTextBoxLicense);
+            this.tabPageInfo.Controls.Add(this.statusStrip);
+            this.tabPageInfo.Location = new System.Drawing.Point(4, 25);
+            this.tabPageInfo.Name = "tabPageInfo";
+            this.tabPageInfo.Size = new System.Drawing.Size(728, 399);
+            this.tabPageInfo.TabIndex = 3;
+            this.tabPageInfo.Text = "Info";
+            this.tabPageInfo.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButtonGitHub});
+            this.statusStrip.Location = new System.Drawing.Point(0, 361);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(728, 38);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 0;
+            // 
+            // toolStripDropDownButtonGitHub
+            // 
+            this.toolStripDropDownButtonGitHub.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonGitHub.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonGitHub.Image")));
+            this.toolStripDropDownButtonGitHub.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonGitHub.Name = "toolStripDropDownButtonGitHub";
+            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(379, 36);
+            this.toolStripDropDownButtonGitHub.Text = "Open this project on GitHub!";
+            this.toolStripDropDownButtonGitHub.Click += new System.EventHandler(this.toolStripDropDownButtonGitHub_Click);
+            // 
+            // richTextBoxLicense
+            // 
+            this.richTextBoxLicense.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLicense.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxLicense.Name = "richTextBoxLicense";
+            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 361);
+            this.richTextBoxLicense.TabIndex = 1;
+            this.richTextBoxLicense.Text = resources.GetString("richTextBoxLicense.Text");
+            this.richTextBoxLicense.ZoomFactor = 1.5F;
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -267,6 +317,10 @@
             this.tabPageUpdateForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).EndInit();
+            this.tabPageInfo.ResumeLayout(false);
+            this.tabPageInfo.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -289,6 +343,10 @@
         private MonoGame.Forms.Controls.UpdateWindow updateWindowWelcome;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.TrackBar trackBarLogoFrames;
+        private System.Windows.Forms.TabPage tabPageInfo;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonGitHub;
+        private System.Windows.Forms.RichTextBox richTextBoxLicense;
     }
 }
 

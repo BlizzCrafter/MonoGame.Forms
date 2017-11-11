@@ -117,7 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBoxLicense.Text" xml:space="preserve">
+    <value>MIT License
+
+Copyright (c) 2017 Marcel "sqrMin1" Härtel
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</value>
+  </data>
+  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripDropDownButtonGitHub.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAanSURBVHhe7VtLiBxFGN4NG3ygrjtTVd1jFlfiIioiiPg6
+        +MKLokaiCB7cKB70IJqDCQSJERLwAZpFD0IW0ZVoghqMeMhFRU/qQXMQFVmfuAqRjZqDiXGXjX5f9z+z
+        Mz1/zXbPq3vFDz52dvp/fH91V3VVd81ArxEEwTnW2g3OuKcDY9921n6Jv4ecsX8G1v1DRp/5XXxsP23h
+        M0FfCbOisCooB9cH1k6hsB+rRbbLOIadYkzGjlMUEDhbDkJ3OOtmtUK6wTi23RGGoZW0+WNNqTQKYc/h
+        TP2lie4FmYs5mVtk5ILVOBubIeaoJrIfjHPbzdQSS+oTKsZcigHrK01UHqQWahJ5PcUgRuiNSPi3JiRP
+        RpqMeZgaY6ldxujo6Cnod29oyYtEaqRWkd0djIyMDOP+/JGWsJCEVmoW+Z2BgdCqn6mJCkxo/rTjRqhU
+        KqeiNT/WEqwIQjtrkHIyYxAB3lIDrySiBtYSl5QBmItvUgOuQLIWKSsdnHNXwXEhGaiJ5eA6Y8wlobX3
+        4Da0tx+zwXgWaPcyJ3NTg2aX4AJrkvJaY3x8/KTAuG+UIEkeFJcahoeHz8TMbAsGoN8V+075B2Mzh6Sr
+        AccOJmybiZpYm7j4gYnONjVAE+0z4tIEikSc52G3WLXHmZtDw3yI76fBJ13ZPcKJC8nP0Xc8FtnYuaU8
+        bpGxtMKrgJZn6+y9RJxt4qIDl8laJD+uOTfT3ituXkRTZufuxuptLP4mPehD3zRTXGrRNTaStbFGcWsG
+        Au3SHDViYLlR3HIHtWgaddpd4taIykjlbBjMNzt4WA5uFdfcgS60TtWoc561iusS0DI7FWM/jblPXHMH
+        tagavbQ7xbWG1egfv+rGHhr3gvjmDmpRNXrIWuG29AwhMMEtmmErcq4t7rmDWjSNLYmaxZ0NYHerRn7O
+        B6XgcnHPHdQSadK16kTN4h41wCHVyEPcTx8T18IAmrZqWr1EzZFjWAovUA38/GVsbOzkyLlAoCZo+zmh
+        tSVZO1vufu2gj7B/VHIWDtSmafaRtfP2N6kd9BGTjnMlX+EAbeOaZj/tJEfQA/rBZsJ2VnIVFtCZuhuw
+        djrMJA94aey7kqewoEZVu84Z9JuGldcytK9KnsICGl/TtTcTtR9mA6Rc/UWDxrTkKSyoUdOukbWzC6gH
+        VcbP1woNaNyvavcwawOshDHgPVW7h+wCx7QDKo37VvIUFtSoalfI2tkAWVaBC11/7dRFUBs1JjR7ydoz
+        r6Qqxlwt+QqH0JhrNM0+snZeMvu0gz5ilH1K8hUO1KZp9hK18765XT3oIS6b75GriHt1VlGbptlPux1X
+        QPaHIfC5S5IWBtSkam1FPhSJNzcpB1vR2O86eenYbVBL9rMPovYoQNaBkHTWvhg5FwDUomlsxWgArCLr
+        OFAlBp2tEiI3QEPKN1lJov9XUSmXz9eN0tBO5fGEKL7n2yld0/JkzRIqBvrQJ5phSs7Ii5LebFBqxKBz
+        bn2WGV+SrFViLcFau0E1tvZ9Tn6Q9Da2OJz9q0djP8clubEXe3z5tAfcBD0db89jrRK2AUMI/lPSGIPF
+        bFgKLxSbAWPMeWlEoKF+QGNMR6LLbl2qV9OCcrl8emjtnRxj0Oh7EC/Tw85WZI1IMRRnSgBCH1CdjD2K
+        QibEjG9uLS7BNHsIYhr3CtyydA/uR3xJjdUhWaPkUDGEYr/QHCPWvQ8My+Fl+K72/t9HtPhvpVLpDHFL
+        DfpAy2EtZrtkbQitn/0q0Ndv0JxJBDhe3x1wlh7X7BppJ8U8M+CbauNDWrI2Cd0aSOzdJ4Ax4YCYEbxU
+        n9DsajTmZrHNDKzublJjtkXPvgAN6O+ntbrNoCUvFtMIGPWvwB1gt4wLRzhVxud9HG2zDH5JIM/aZO62
+        iFpYk4RNBxR1ES752s9a6omr4HUx6yniTVfN+bMwqgG1SMhsQKvdjiDqQIezs17MeoYuNMAia5Bw7QF9
+        XH13iJY9huB3iFlP0GkDULuE6gzcyqYlIJHkTVwNV8Ks69Pgjhog/u1A94CzPYHA3geOuCLmcM//AAMg
+        fxr3Dv7n2uJIq/19y6HNBligVgnRXeC2dC0Ky7SXqJ8NQG3UKO69AWZoa6IzrQjQ2K8GoCZqE9eeYxAT
+        iwfR4uptsp69boBYg30I5v1YijcCq7azMAhy0XIiKaxK9MdQzDMjWnQpMYUnkPtlahDz/MD1AVd8ENW0
+        U6uTX3lWKhWTjAcuMFf9mqQw4NnA5cjt8l/HYu0eOdQ2GIOx4ph2SyHO+P/4z2Bg4F9Yu8PP8On7UwAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAAAAAAAEAIACzZwAAhgAAAICAAAABACAAKAgBADloAABgYAAAAQAgAKiUAABhcAEAQEAAAAEA
