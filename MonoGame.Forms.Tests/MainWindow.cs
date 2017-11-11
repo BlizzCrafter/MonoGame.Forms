@@ -13,9 +13,6 @@ namespace MonoGame.Forms.Tests
         DrawTest drawTest = new DrawTest();
         UpdateTest updateTest = new UpdateTest();
 
-        bool CamButtonMouseDown = false;
-        System.Drawing.Point CamButtonFirstMouseDownPosition;
-        
         #region Welcome
 
         private void updateWindowWelcome_VisibleChanged(object sender, System.EventArgs e)
@@ -57,8 +54,11 @@ namespace MonoGame.Forms.Tests
         }
 
         #endregion
-        
+
         #region Update Window
+        
+        bool CamButtonMouseDown = false;
+        System.Drawing.Point CamButtonFirstMouseDownPosition;
 
         private void updateWindow_VisibleChanged(object sender, System.EventArgs e)
         {
