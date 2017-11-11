@@ -3,16 +3,46 @@ using System.Windows.Forms;
 using MonoGame.Forms;
 using MonoGame.Forms.Controls;
 using MonoGameFormsPCLTest.Tests;
+using System;
 
 namespace MonoGameFormsPCLTest
 {
     public partial class MainWindow : Form
     {
+        Welcome welcome = new Welcome();
         DrawTest drawTest = new DrawTest();
         UpdateTest updateTest = new UpdateTest();
 
         bool CamButtonMouseDown = false;
         System.Drawing.Point CamButtonFirstMouseDownPosition;
+        
+        #region Welcome
+
+        private void updateWindowWelcome_VisibleChanged(object sender, System.EventArgs e)
+        {
+            if (((UpdateWindow)sender).Editor != welcome) ((UpdateWindow)sender).Editor = welcome;
+        }
+
+        private void buttonEdit_Click(object sender, System.EventArgs e)
+        {
+            welcome.Logo.ResetAnimation(true);
+
+            welcome.EditMode = !welcome.EditMode;
+            trackBarLogoFrames.Visible = welcome.EditMode;
+
+            if (welcome.EditMode) buttonEdit.Text = "Resume";
+            else buttonEdit.Text = "Edit";
+        }
+
+        private void trackBarLogoFrames_Scroll(object sender, System.EventArgs e)
+        {
+            if (trackBarLogoFrames.Value > welcome.LastFrame) welcome.Logo.OneFrameForward();
+            else welcome.Logo.OneFrameBackwards();
+
+            welcome.LastFrame = trackBarLogoFrames.Value;
+        }
+
+        #endregion
 
         #region Draw Window
 

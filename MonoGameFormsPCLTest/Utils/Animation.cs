@@ -105,8 +105,7 @@ namespace MonoGameFormsPCLTest.Utils
             int verticalParts,
             float animationTime,
             bool horizontalAnimation,
-            bool loop,
-            bool drawDeathAnimWithShadow = true)
+            bool loop)
         {
             Texture = texture;
             GetLoop = loop;

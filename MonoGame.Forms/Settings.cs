@@ -21,6 +21,6 @@
             get { return _ShowCamPosition; }
             set { _ShowCamPosition = value; }
         }
-        private static bool _ShowCamPosition = true;
+        private static bool _ShowCamPosition = false;
     }
 }

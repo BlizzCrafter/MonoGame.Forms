@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tabControlEditorSwitch = new System.Windows.Forms.TabControl();
+            this.tabPageWelcome = new System.Windows.Forms.TabPage();
+            this.updateWindowWelcome = new MonoGame.Forms.Controls.UpdateWindow();
             this.tabPageDrawForm = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
             this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
@@ -40,14 +43,19 @@
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
             this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.tabControlEditorSwitch.SuspendLayout();
+            this.tabPageWelcome.SuspendLayout();
             this.tabPageDrawForm.SuspendLayout();
             this.tabPageUpdateForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlEditorSwitch
             // 
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageWelcome);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageDrawForm);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageUpdateForm);
             this.tabControlEditorSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -56,6 +64,29 @@
             this.tabControlEditorSwitch.SelectedIndex = 0;
             this.tabControlEditorSwitch.Size = new System.Drawing.Size(736, 428);
             this.tabControlEditorSwitch.TabIndex = 0;
+            // 
+            // tabPageWelcome
+            // 
+            this.tabPageWelcome.Controls.Add(this.trackBarLogoFrames);
+            this.tabPageWelcome.Controls.Add(this.buttonEdit);
+            this.tabPageWelcome.Controls.Add(this.updateWindowWelcome);
+            this.tabPageWelcome.Location = new System.Drawing.Point(4, 25);
+            this.tabPageWelcome.Name = "tabPageWelcome";
+            this.tabPageWelcome.Size = new System.Drawing.Size(728, 399);
+            this.tabPageWelcome.TabIndex = 2;
+            this.tabPageWelcome.Text = "Welcome";
+            this.tabPageWelcome.UseVisualStyleBackColor = true;
+            // 
+            // updateWindowWelcome
+            // 
+            this.updateWindowWelcome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateWindowWelcome.Editor = null;
+            this.updateWindowWelcome.Location = new System.Drawing.Point(0, 0);
+            this.updateWindowWelcome.Name = "updateWindowWelcome";
+            this.updateWindowWelcome.Size = new System.Drawing.Size(728, 399);
+            this.updateWindowWelcome.TabIndex = 0;
+            this.updateWindowWelcome.Text = "Welcome MonoGame.Forms!";
+            this.updateWindowWelcome.VisibleChanged += new System.EventHandler(this.updateWindowWelcome_VisibleChanged);
             // 
             // tabPageDrawForm
             // 
@@ -73,9 +104,10 @@
             // 
             this.textBoxTestText.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBoxTestText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTestText.Location = new System.Drawing.Point(3, 374);
+            this.textBoxTestText.Location = new System.Drawing.Point(3, 346);
+            this.textBoxTestText.Multiline = true;
             this.textBoxTestText.Name = "textBoxTestText";
-            this.textBoxTestText.Size = new System.Drawing.Size(722, 22);
+            this.textBoxTestText.Size = new System.Drawing.Size(722, 50);
             this.textBoxTestText.TabIndex = 2;
             this.textBoxTestText.Text = "Edit Me!";
             this.textBoxTestText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -124,8 +156,6 @@
             // checkBoxCam
             // 
             this.checkBoxCam.AutoSize = true;
-            this.checkBoxCam.Checked = true;
-            this.checkBoxCam.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCam.Location = new System.Drawing.Point(149, 369);
             this.checkBoxCam.Name = "checkBoxCam";
             this.checkBoxCam.Size = new System.Drawing.Size(58, 21);
@@ -194,23 +224,49 @@
             this.updateWindow.Text = "This is a simple update test. It uses the following control:";
             this.updateWindow.VisibleChanged += new System.EventHandler(this.updateWindow_VisibleChanged);
             // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(650, 3);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.TabIndex = 1;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // trackBarLogoFrames
+            // 
+            this.trackBarLogoFrames.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.trackBarLogoFrames.LargeChange = 1;
+            this.trackBarLogoFrames.Location = new System.Drawing.Point(0, 343);
+            this.trackBarLogoFrames.Maximum = 99;
+            this.trackBarLogoFrames.Name = "trackBarLogoFrames";
+            this.trackBarLogoFrames.Size = new System.Drawing.Size(728, 56);
+            this.trackBarLogoFrames.TabIndex = 2;
+            this.trackBarLogoFrames.Visible = false;
+            this.trackBarLogoFrames.Scroll += new System.EventHandler(this.trackBarLogoFrames_Scroll);
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(736, 428);
             this.Controls.Add(this.tabControlEditorSwitch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MonoGame.Forms";
             this.tabControlEditorSwitch.ResumeLayout(false);
+            this.tabPageWelcome.ResumeLayout(false);
+            this.tabPageWelcome.PerformLayout();
             this.tabPageDrawForm.ResumeLayout(false);
             this.tabPageDrawForm.PerformLayout();
             this.tabPageUpdateForm.ResumeLayout(false);
             this.tabPageUpdateForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,6 +285,10 @@
         private System.Windows.Forms.CheckBox checkBoxCursor;
         private System.Windows.Forms.CheckBox checkBoxFPS;
         private System.Windows.Forms.TrackBar trackBarCamZoom;
+        private System.Windows.Forms.TabPage tabPageWelcome;
+        private MonoGame.Forms.Controls.UpdateWindow updateWindowWelcome;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.TrackBar trackBarLogoFrames;
     }
 }
 
