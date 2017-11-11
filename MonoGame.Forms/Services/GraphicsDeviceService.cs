@@ -41,6 +41,7 @@ namespace MonoGame.Forms.Services
 
         public GraphicsDevice GraphicsDevice { get; private set; }
 
+        #pragma warning disable 67
         public event EventHandler<EventArgs> DeviceCreated;
         public event EventHandler<EventArgs> DeviceDisposing;
         public event EventHandler<EventArgs> DeviceReset;
