@@ -5,8 +5,8 @@ namespace MonoGame.Forms.Services
 {
     /// <summary>
     /// Extend from <see cref="UpdateService"/> in your custom class to attach basic initializing, updating and drawing logic to it.
-    /// Note: this class provides a game loop.
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
+    /// <remarks>Note: this class provides a game loop.</remarks>
     /// </summary>
     public class UpdateService : GFXService
     {

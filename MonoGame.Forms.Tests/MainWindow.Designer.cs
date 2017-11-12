@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tabControlEditorSwitch = new System.Windows.Forms.TabControl();
             this.tabPageWelcome = new System.Windows.Forms.TabPage();
+            this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
+            this.buttonEdit = new System.Windows.Forms.Button();
             this.updateWindowWelcome = new MonoGame.Forms.Controls.UpdateWindow();
             this.tabPageDrawForm = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
@@ -43,18 +45,17 @@
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
             this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
+            this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
-            this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
             this.tabPageDrawForm.SuspendLayout();
             this.tabPageUpdateForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
             this.tabPageInfo.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +84,28 @@
             this.tabPageWelcome.TabIndex = 2;
             this.tabPageWelcome.Text = "Welcome";
             this.tabPageWelcome.UseVisualStyleBackColor = true;
+            // 
+            // trackBarLogoFrames
+            // 
+            this.trackBarLogoFrames.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.trackBarLogoFrames.LargeChange = 1;
+            this.trackBarLogoFrames.Location = new System.Drawing.Point(0, 343);
+            this.trackBarLogoFrames.Maximum = 99;
+            this.trackBarLogoFrames.Name = "trackBarLogoFrames";
+            this.trackBarLogoFrames.Size = new System.Drawing.Size(728, 56);
+            this.trackBarLogoFrames.TabIndex = 2;
+            this.trackBarLogoFrames.Visible = false;
+            this.trackBarLogoFrames.Scroll += new System.EventHandler(this.trackBarLogoFrames_Scroll);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(650, 3);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.TabIndex = 1;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // updateWindowWelcome
             // 
@@ -133,6 +156,7 @@
             // 
             // tabPageUpdateForm
             // 
+            this.tabPageUpdateForm.Controls.Add(this.buttonHelp);
             this.tabPageUpdateForm.Controls.Add(this.trackBarCamZoom);
             this.tabPageUpdateForm.Controls.Add(this.checkBoxCam);
             this.tabPageUpdateForm.Controls.Add(this.checkBoxCursor);
@@ -231,28 +255,6 @@
             this.updateWindow.Text = "This is a simple update test. It uses the following control:";
             this.updateWindow.VisibleChanged += new System.EventHandler(this.updateWindow_VisibleChanged);
             // 
-            // buttonEdit
-            // 
-            this.buttonEdit.Location = new System.Drawing.Point(650, 3);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonEdit.TabIndex = 1;
-            this.buttonEdit.Text = "Edit";
-            this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
-            // 
-            // trackBarLogoFrames
-            // 
-            this.trackBarLogoFrames.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.trackBarLogoFrames.LargeChange = 1;
-            this.trackBarLogoFrames.Location = new System.Drawing.Point(0, 343);
-            this.trackBarLogoFrames.Maximum = 99;
-            this.trackBarLogoFrames.Name = "trackBarLogoFrames";
-            this.trackBarLogoFrames.Size = new System.Drawing.Size(728, 56);
-            this.trackBarLogoFrames.TabIndex = 2;
-            this.trackBarLogoFrames.Visible = false;
-            this.trackBarLogoFrames.Scroll += new System.EventHandler(this.trackBarLogoFrames_Scroll);
-            // 
             // tabPageInfo
             // 
             this.tabPageInfo.Controls.Add(this.richTextBoxLicense);
@@ -263,6 +265,17 @@
             this.tabPageInfo.TabIndex = 3;
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxLicense
+            // 
+            this.richTextBoxLicense.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLicense.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxLicense.Name = "richTextBoxLicense";
+            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 361);
+            this.richTextBoxLicense.TabIndex = 1;
+            this.richTextBoxLicense.Text = resources.GetString("richTextBoxLicense.Text");
+            this.richTextBoxLicense.ZoomFactor = 1.5F;
             // 
             // statusStrip
             // 
@@ -285,16 +298,17 @@
             this.toolStripDropDownButtonGitHub.Text = "Open this project on GitHub!";
             this.toolStripDropDownButtonGitHub.Click += new System.EventHandler(this.toolStripDropDownButtonGitHub_Click);
             // 
-            // richTextBoxLicense
+            // buttonHelp
             // 
-            this.richTextBoxLicense.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxLicense.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxLicense.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxLicense.Name = "richTextBoxLicense";
-            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 361);
-            this.richTextBoxLicense.TabIndex = 1;
-            this.richTextBoxLicense.Text = resources.GetString("richTextBoxLicense.Text");
-            this.richTextBoxLicense.ZoomFactor = 1.5F;
+            this.buttonHelp.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelp.Location = new System.Drawing.Point(9, 338);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(28, 25);
+            this.buttonHelp.TabIndex = 7;
+            this.buttonHelp.Text = "?";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // MainWindow
             // 
@@ -311,12 +325,12 @@
             this.tabControlEditorSwitch.ResumeLayout(false);
             this.tabPageWelcome.ResumeLayout(false);
             this.tabPageWelcome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).EndInit();
             this.tabPageDrawForm.ResumeLayout(false);
             this.tabPageDrawForm.PerformLayout();
             this.tabPageUpdateForm.ResumeLayout(false);
             this.tabPageUpdateForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).EndInit();
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -347,6 +361,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonGitHub;
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
+        private System.Windows.Forms.Button buttonHelp;
     }
 }
 

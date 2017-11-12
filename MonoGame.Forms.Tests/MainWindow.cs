@@ -97,6 +97,11 @@ namespace MonoGame.Forms.Tests
             updateTest.ResetCam();
             trackBarCamZoom.Value = (int)updateTest.Cam.GetZoom;
         }
+        
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please press a mouse button directly on the control to test if the different mouse events are working correctly." + Environment.NewLine + Environment.NewLine + "The mouse events are directly delivered to the corresponding classes, so it becomes very easy to work with them in your custom editor!", "Mouse Events 101", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
 
         private void checkBoxFPS_CheckedChanged(object sender, System.EventArgs e)
         {

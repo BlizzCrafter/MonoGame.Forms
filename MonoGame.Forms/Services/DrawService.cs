@@ -6,8 +6,8 @@ namespace MonoGame.Forms.Services
 {
     /// <summary>
     /// Extend from <see cref="DrawService"/> in your custom class to attach basic initializing and drawing logic to it.
-    /// Note: this class provides no game loop. If you need a real game loop, then please use the <see cref="UpdateService"/>
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
+    /// <remarks>Note: this class provides no game loop. If you need a real game loop, then please use the <see cref="UpdateService"/></remarks>
     /// </summary>
     public class DrawService : GFXService
     {

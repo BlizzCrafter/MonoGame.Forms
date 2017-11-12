@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
+using System.Windows.Forms;
 
 namespace MonoGame.Forms.Tests.Tests
 {
@@ -26,6 +27,17 @@ namespace MonoGame.Forms.Tests.Tests
             if (leftMouseButtonPressed)
             {
                 leftMouseButtonPressed = false;
+                MessageBox.Show("[Left_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (rightMouseButtonPressed)
+            {
+                rightMouseButtonPressed = false;
+                MessageBox.Show("[Right_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (middleMouseButtonPressed)
+            {
+                middleMouseButtonPressed = false;
+                MessageBox.Show("[Middle_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
