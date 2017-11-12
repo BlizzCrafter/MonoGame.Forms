@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms", "MonoGame.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Tests", "MonoGame.Forms.Tests\MonoGame.Forms.Tests.csproj", "{9C7B2133-768B-4B3B-883B-9601B02100D6}"
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{7CF7ED28-F168-42BF-A1BB-1E750352F2D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF7ED28-F168-42BF-A1BB-1E750352F2D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF7ED28-F168-42BF-A1BB-1E750352F2D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF7ED28-F168-42BF-A1BB-1E750352F2D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF7ED28-F168-42BF-A1BB-1E750352F2D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

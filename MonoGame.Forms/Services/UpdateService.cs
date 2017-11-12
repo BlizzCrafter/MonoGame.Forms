@@ -29,7 +29,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Override this basic updating method in your custom class to create your own initializing logic.
         /// </summary>
-        /// <param name="gameTime">The GameTime of the game loop.</param>
+        /// <param name="gameTime">The <see cref="GameTime"/> of the game loop.</param>
         /// <param name="relativeMousePosition">The mouse position relative to the dimensions of the control.</param>
         /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
         /// <param name="leftMouseButtonPressed">Set this value to false after using it to clear the state correctly! It checks if the left mouse button was pressed.</param>
