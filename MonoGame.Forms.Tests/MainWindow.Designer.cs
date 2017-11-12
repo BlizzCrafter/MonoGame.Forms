@@ -52,6 +52,7 @@
             this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitter = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitterEngine = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripDropDownButtonWiki = new System.Windows.Forms.ToolStripDropDownButton();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
@@ -295,6 +296,7 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButtonGitHub,
+            this.toolStripDropDownButtonWiki,
             this.toolStripDropDownButtonTwitter,
             this.toolStripDropDownButtonTwitterEngine});
             this.statusStrip.Location = new System.Drawing.Point(0, 361);
@@ -332,6 +334,16 @@
             this.toolStripDropDownButtonTwitterEngine.Size = new System.Drawing.Size(283, 36);
             this.toolStripDropDownButtonTwitterEngine.Text = "#RogueEngineEditor";
             this.toolStripDropDownButtonTwitterEngine.Click += new System.EventHandler(this.toolStripDropDownButtonTwitterEngine_Click);
+            // 
+            // toolStripDropDownButtonWiki
+            // 
+            this.toolStripDropDownButtonWiki.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonWiki.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonWiki.Image")));
+            this.toolStripDropDownButtonWiki.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonWiki.Name = "toolStripDropDownButtonWiki";
+            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(100, 36);
+            this.toolStripDropDownButtonWiki.Text = "Wiki";
+            this.toolStripDropDownButtonWiki.Click += new System.EventHandler(this.toolStripDropDownButtonWiki_Click);
             // 
             // MainWindow
             // 
@@ -387,6 +399,7 @@
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitter;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitterEngine;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonWiki;
     }
 }
 
