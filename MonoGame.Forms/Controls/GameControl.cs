@@ -7,8 +7,7 @@ namespace MonoGame.Forms.Controls
 {
     /// <summary>
     /// This class mainly creates the <see cref="GraphicsDeviceControl.GraphicsDevice"/>, the <see cref="GraphicsDeviceControl.SwapChainRenderTarget"/> and the game loop.
-    /// It inherits from <see cref="GraphicsDeviceControl"/>, which makes it available as a tool box control.
-    /// You can drag and drop the control directly from the tool box in the designer.
+    /// It inherits from <see cref="GraphicsDeviceControl"/>, which makes its childs available as a tool box control.
     /// </summary>
     public abstract class GameControl : GraphicsDeviceControl
     {
