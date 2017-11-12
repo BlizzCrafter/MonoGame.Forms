@@ -38,6 +38,7 @@
             this.textBoxTestText = new System.Windows.Forms.TextBox();
             this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
             this.tabPageUpdateForm = new System.Windows.Forms.TabPage();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
             this.checkBoxCam = new System.Windows.Forms.CheckBox();
             this.checkBoxCursor = new System.Windows.Forms.CheckBox();
@@ -49,7 +50,8 @@
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
-            this.buttonHelp = new System.Windows.Forms.Button();
+            this.toolStripDropDownButtonTwitter = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripDropDownButtonTwitterEngine = new System.Windows.Forms.ToolStripDropDownButton();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
@@ -172,6 +174,17 @@
             this.tabPageUpdateForm.Text = "Update Form";
             this.tabPageUpdateForm.UseVisualStyleBackColor = true;
             // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelp.Location = new System.Drawing.Point(9, 338);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(28, 25);
+            this.buttonHelp.TabIndex = 7;
+            this.buttonHelp.Text = "?";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
             // trackBarCamZoom
             // 
             this.trackBarCamZoom.LargeChange = 1;
@@ -281,7 +294,9 @@
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButtonGitHub});
+            this.toolStripDropDownButtonGitHub,
+            this.toolStripDropDownButtonTwitter,
+            this.toolStripDropDownButtonTwitterEngine});
             this.statusStrip.Location = new System.Drawing.Point(0, 361);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(728, 38);
@@ -294,21 +309,29 @@
             this.toolStripDropDownButtonGitHub.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonGitHub.Image")));
             this.toolStripDropDownButtonGitHub.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonGitHub.Name = "toolStripDropDownButtonGitHub";
-            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(379, 36);
-            this.toolStripDropDownButtonGitHub.Text = "Open this project on GitHub!";
+            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(259, 36);
+            this.toolStripDropDownButtonGitHub.Text = "MonoGame.Forms";
             this.toolStripDropDownButtonGitHub.Click += new System.EventHandler(this.toolStripDropDownButtonGitHub_Click);
             // 
-            // buttonHelp
+            // toolStripDropDownButtonTwitter
             // 
-            this.buttonHelp.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHelp.Location = new System.Drawing.Point(9, 338);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(28, 25);
-            this.buttonHelp.TabIndex = 7;
-            this.buttonHelp.Text = "?";
-            this.buttonHelp.UseVisualStyleBackColor = true;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            this.toolStripDropDownButtonTwitter.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonTwitter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitter.Image")));
+            this.toolStripDropDownButtonTwitter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonTwitter.Name = "toolStripDropDownButtonTwitter";
+            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(158, 36);
+            this.toolStripDropDownButtonTwitter.Text = "#sqrMin1";
+            this.toolStripDropDownButtonTwitter.Click += new System.EventHandler(this.toolStripDropDownButtonTwitter_Click);
+            // 
+            // toolStripDropDownButtonTwitterEngine
+            // 
+            this.toolStripDropDownButtonTwitterEngine.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonTwitterEngine.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitterEngine.Image")));
+            this.toolStripDropDownButtonTwitterEngine.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonTwitterEngine.Name = "toolStripDropDownButtonTwitterEngine";
+            this.toolStripDropDownButtonTwitterEngine.Size = new System.Drawing.Size(283, 36);
+            this.toolStripDropDownButtonTwitterEngine.Text = "#RogueEngineEditor";
+            this.toolStripDropDownButtonTwitterEngine.Click += new System.EventHandler(this.toolStripDropDownButtonTwitterEngine_Click);
             // 
             // MainWindow
             // 
@@ -362,6 +385,8 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonGitHub;
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
         private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitter;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitterEngine;
     }
 }
 

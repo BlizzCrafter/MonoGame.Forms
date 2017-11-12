@@ -132,6 +132,16 @@ namespace MonoGame.Forms.Tests
             Process.Start("https://github.com/sqrMin1/MonoGame.Forms");
         }
 
+        private void toolStripDropDownButtonTwitter_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://twitter.com/sqrMin1");
+        }
+
+        private void toolStripDropDownButtonTwitterEngine_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://twitter.com/hashtag/RogueEngineEditor?src=hash");
+        }
+
         #endregion
 
         public MainWindow()
