@@ -62,7 +62,7 @@ namespace MonoGame.Forms.Components
             set { Position = value; }
         }
         /// <summary>
-        /// Gets or Sets the absolute Rotation value of the camera.
+        /// Gets or Sets the absolute Position value of the camera.
         /// </summary>
         public Vector2 GetAbsolutPosition
         {
