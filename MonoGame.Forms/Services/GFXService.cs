@@ -31,7 +31,12 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public SpriteBatch spriteBatch { get; set; }
         /// <summary>
-        /// The <see cref="SwapChainRenderTarget"/>.
+        /// A swap chain used for rendering to a secondary GameWindow.
+        /// Note: When working with different <see cref="RenderTarget2D"/>, 
+        /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
+        /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
+        /// Otherwise you will see only a black control window.
+        /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
 
