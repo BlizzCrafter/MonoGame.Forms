@@ -237,6 +237,9 @@ namespace MonoGame.Forms.Services
             ref bool leftMouseButtonPressed,
             ref bool rightMouseButtonPressed,
             ref bool middleMouseButtonPressed);
+        /// <summary>
+        /// Basic drawing service.
+        /// </summary>
         public abstract void Draw();
     }
 }

@@ -8,14 +8,19 @@ namespace MonoGame.Forms.Components
     /// </summary>
     public class Camera2D
     {
-        #pragma warning disable 1591
-
         private float Zoom { get; set; }
+
+        /// <summary>
+        /// The transformation matrix of the camera.
+        /// </summary>
         public Matrix Transform { get; set; }
         private Vector2 Position { get; set; }
         private Vector2 AbsolutPosition { get; set; }
         private float Rotation { get; set; }
 
+        /// <summary>
+        /// The basic constructor.
+        /// </summary>
         public Camera2D()
         {
             GetZoom = 1.0f;
@@ -23,37 +28,53 @@ namespace MonoGame.Forms.Components
             Position = Vector2.Zero;
         }
 
-        // Sets and gets zoom
+        /// <summary>
+        /// Gets or Sets the Zoom value of the camera.
+        /// </summary>
         public float GetZoom
         {
             get { return Zoom; }
             set { Zoom = value; if (Zoom < 0.1f) Zoom = 0.1f; } // Negative zoom will flip image
         }
 
+        /// <summary>
+        /// Gets or Sets the Rotation value of the camera.
+        /// </summary>
         public float GetRotation
         {
             get { return Rotation; }
             set { Rotation = value; }
         }
-
-        // Auxiliary function to move the camera
+        
+        /// <summary>
+        /// Auxiliary method to move the camera
+        /// </summary>
         public void Move(Vector2 amount)
         {
             Position += amount;
         }
-        // Get set position
+        /// <summary>
+        /// Gets or Sets the Position value of the camera.
+        /// </summary>
         public Vector2 GetPosition
         {
             get { return Position; }
             set { Position = value; }
         }
-        // Get set absolut position
+        /// <summary>
+        /// Gets or Sets the absolute Rotation value of the camera.
+        /// </summary>
         public Vector2 GetAbsolutPosition
         {
             get { return AbsolutPosition; }
             set { AbsolutPosition = value; }
         }
 
+        /// <summary>
+        /// Get the Transformation.
+        /// </summary>
+        /// <param name="graphicsDevice">The GraphicsDevice.</param>
+        /// <returns></returns>
         public Matrix get_transformation(GraphicsDevice graphicsDevice)
         {
             Transform =
