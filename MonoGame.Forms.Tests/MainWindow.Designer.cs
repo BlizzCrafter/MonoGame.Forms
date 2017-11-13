@@ -33,10 +33,10 @@
             this.tabPageWelcome = new System.Windows.Forms.TabPage();
             this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.updateWindowWelcome = new MonoGame.Forms.Controls.UpdateWindow();
+            this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
             this.tabPageDrawForm = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
-            this.drawWindow = new MonoGame.Forms.Controls.DrawWindow();
+            this.drawTestControl = new MonoGame.Forms.Tests.Tests.DrawTest();
             this.tabPageUpdateForm = new System.Windows.Forms.TabPage();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
@@ -45,14 +45,14 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
-            this.updateWindow = new MonoGame.Forms.Controls.UpdateWindow();
+            this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripDropDownButtonWiki = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitter = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitterEngine = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripDropDownButtonWiki = new System.Windows.Forms.ToolStripDropDownButton();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
@@ -80,7 +80,7 @@
             // 
             this.tabPageWelcome.Controls.Add(this.trackBarLogoFrames);
             this.tabPageWelcome.Controls.Add(this.buttonEdit);
-            this.tabPageWelcome.Controls.Add(this.updateWindowWelcome);
+            this.tabPageWelcome.Controls.Add(this.welcomeControl);
             this.tabPageWelcome.Location = new System.Drawing.Point(4, 25);
             this.tabPageWelcome.Name = "tabPageWelcome";
             this.tabPageWelcome.Size = new System.Drawing.Size(728, 399);
@@ -110,21 +110,19 @@
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // updateWindowWelcome
+            // welcomeControl
             // 
-            this.updateWindowWelcome.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateWindowWelcome.Editor = null;
-            this.updateWindowWelcome.Location = new System.Drawing.Point(0, 0);
-            this.updateWindowWelcome.Name = "updateWindowWelcome";
-            this.updateWindowWelcome.Size = new System.Drawing.Size(728, 399);
-            this.updateWindowWelcome.TabIndex = 0;
-            this.updateWindowWelcome.Text = "Welcome MonoGame.Forms!";
-            this.updateWindowWelcome.VisibleChanged += new System.EventHandler(this.updateWindowWelcome_VisibleChanged);
+            this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.welcomeControl.Location = new System.Drawing.Point(0, 0);
+            this.welcomeControl.Name = "welcomeControl";
+            this.welcomeControl.Size = new System.Drawing.Size(728, 399);
+            this.welcomeControl.TabIndex = 3;
+            this.welcomeControl.Text = "Welcome to MonoGame.Forms!";
             // 
             // tabPageDrawForm
             // 
             this.tabPageDrawForm.Controls.Add(this.textBoxTestText);
-            this.tabPageDrawForm.Controls.Add(this.drawWindow);
+            this.tabPageDrawForm.Controls.Add(this.drawTestControl);
             this.tabPageDrawForm.Location = new System.Drawing.Point(4, 25);
             this.tabPageDrawForm.Name = "tabPageDrawForm";
             this.tabPageDrawForm.Padding = new System.Windows.Forms.Padding(3);
@@ -146,16 +144,14 @@
             this.textBoxTestText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTestText.TextChanged += new System.EventHandler(this.textBoxTestText_TextChanged);
             // 
-            // drawWindow
+            // drawTestControl
             // 
-            this.drawWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawWindow.Editor = null;
-            this.drawWindow.Location = new System.Drawing.Point(3, 3);
-            this.drawWindow.Name = "drawWindow";
-            this.drawWindow.Size = new System.Drawing.Size(722, 393);
-            this.drawWindow.TabIndex = 0;
-            this.drawWindow.Text = "This is a simple draw test. It uses the following control:";
-            this.drawWindow.VisibleChanged += new System.EventHandler(this.drawWindow_VisibleChanged);
+            this.drawTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawTestControl.Location = new System.Drawing.Point(3, 3);
+            this.drawTestControl.Name = "drawTestControl";
+            this.drawTestControl.Size = new System.Drawing.Size(722, 393);
+            this.drawTestControl.TabIndex = 3;
+            this.drawTestControl.Text = "This \'DrawWindow\' has no game loop, but it\'s updated through invalidation!";
             // 
             // tabPageUpdateForm
             // 
@@ -166,7 +162,7 @@
             this.tabPageUpdateForm.Controls.Add(this.checkBoxFPS);
             this.tabPageUpdateForm.Controls.Add(this.buttonResetCam);
             this.tabPageUpdateForm.Controls.Add(this.buttonMoveCam);
-            this.tabPageUpdateForm.Controls.Add(this.updateWindow);
+            this.tabPageUpdateForm.Controls.Add(this.updateTestControl);
             this.tabPageUpdateForm.Location = new System.Drawing.Point(4, 25);
             this.tabPageUpdateForm.Name = "tabPageUpdateForm";
             this.tabPageUpdateForm.Padding = new System.Windows.Forms.Padding(3);
@@ -258,16 +254,16 @@
             this.buttonMoveCam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseMove);
             this.buttonMoveCam.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseUp);
             // 
-            // updateWindow
+            // updateTestControl
             // 
-            this.updateWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateWindow.Editor = null;
-            this.updateWindow.Location = new System.Drawing.Point(3, 3);
-            this.updateWindow.Name = "updateWindow";
-            this.updateWindow.Size = new System.Drawing.Size(722, 393);
-            this.updateWindow.TabIndex = 0;
-            this.updateWindow.Text = "This is a simple update test. It uses the following control:";
-            this.updateWindow.VisibleChanged += new System.EventHandler(this.updateWindow_VisibleChanged);
+            this.updateTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateTestControl.Location = new System.Drawing.Point(3, 3);
+            this.updateTestControl.Name = "updateTestControl";
+            this.updateTestControl.Size = new System.Drawing.Size(722, 393);
+            this.updateTestControl.TabIndex = 8;
+            this.updateTestControl.Text = "This \'UpdateWindow\' has a game loop! Use it for complex \'GameTime\' based mechanic" +
+    "s.";
+            this.updateTestControl.VisibleChanged += new System.EventHandler(this.updateTestControl_VisibleChanged);
             // 
             // tabPageInfo
             // 
@@ -315,6 +311,16 @@
             this.toolStripDropDownButtonGitHub.Text = "MonoGame.Forms";
             this.toolStripDropDownButtonGitHub.Click += new System.EventHandler(this.toolStripDropDownButtonGitHub_Click);
             // 
+            // toolStripDropDownButtonWiki
+            // 
+            this.toolStripDropDownButtonWiki.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonWiki.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonWiki.Image")));
+            this.toolStripDropDownButtonWiki.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonWiki.Name = "toolStripDropDownButtonWiki";
+            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(100, 36);
+            this.toolStripDropDownButtonWiki.Text = "Wiki";
+            this.toolStripDropDownButtonWiki.Click += new System.EventHandler(this.toolStripDropDownButtonWiki_Click);
+            // 
             // toolStripDropDownButtonTwitter
             // 
             this.toolStripDropDownButtonTwitter.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,16 +340,6 @@
             this.toolStripDropDownButtonTwitterEngine.Size = new System.Drawing.Size(283, 36);
             this.toolStripDropDownButtonTwitterEngine.Text = "#RogueEngineEditor";
             this.toolStripDropDownButtonTwitterEngine.Click += new System.EventHandler(this.toolStripDropDownButtonTwitterEngine_Click);
-            // 
-            // toolStripDropDownButtonWiki
-            // 
-            this.toolStripDropDownButtonWiki.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripDropDownButtonWiki.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonWiki.Image")));
-            this.toolStripDropDownButtonWiki.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonWiki.Name = "toolStripDropDownButtonWiki";
-            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(100, 36);
-            this.toolStripDropDownButtonWiki.Text = "Wiki";
-            this.toolStripDropDownButtonWiki.Click += new System.EventHandler(this.toolStripDropDownButtonWiki_Click);
             // 
             // MainWindow
             // 
@@ -379,9 +375,7 @@
         private System.Windows.Forms.TabControl tabControlEditorSwitch;
         private System.Windows.Forms.TabPage tabPageDrawForm;
         private System.Windows.Forms.TabPage tabPageUpdateForm;
-        private MonoGame.Forms.Controls.DrawWindow drawWindow;
         private System.Windows.Forms.TextBox textBoxTestText;
-        private MonoGame.Forms.Controls.UpdateWindow updateWindow;
         private System.Windows.Forms.Button buttonMoveCam;
         private System.Windows.Forms.Button buttonResetCam;
         private System.Windows.Forms.CheckBox checkBoxCam;
@@ -389,7 +383,6 @@
         private System.Windows.Forms.CheckBox checkBoxFPS;
         private System.Windows.Forms.TrackBar trackBarCamZoom;
         private System.Windows.Forms.TabPage tabPageWelcome;
-        private MonoGame.Forms.Controls.UpdateWindow updateWindowWelcome;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.TrackBar trackBarLogoFrames;
         private System.Windows.Forms.TabPage tabPageInfo;
@@ -400,6 +393,9 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitter;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitterEngine;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonWiki;
+        private Tests.Welcome welcomeControl;
+        private Tests.DrawTest drawTestControl;
+        private Tests.UpdateTest updateTestControl;
     }
 }
 

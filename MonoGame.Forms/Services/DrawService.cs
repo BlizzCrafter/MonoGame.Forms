@@ -9,13 +9,8 @@ namespace MonoGame.Forms.Services
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
     /// <remarks>Note: this class provides no game loop. If you need a real game loop, then please use the <see cref="UpdateService"/></remarks>
     /// </summary>
-    public class DrawService : GFXService
+    public sealed class DrawService : GFXService
     {
-        /// <summary>
-        /// Basic constructor.
-        /// </summary>
-        public DrawService() { }
-
         internal DrawService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System

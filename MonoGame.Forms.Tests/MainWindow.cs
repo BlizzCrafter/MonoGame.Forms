@@ -1,56 +1,40 @@
-﻿using Microsoft.Xna.Framework;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System;
 using System.Diagnostics;
-using MonoGame.Forms.Controls;
-using MonoGame.Forms.Tests.Tests;
+using Microsoft.Xna.Framework;
 
 namespace MonoGame.Forms.Tests
 {
     public partial class MainWindow : Form
     {
-        Welcome welcome = new Welcome();
-        DrawTest drawTest = new DrawTest();
-        UpdateTest updateTest = new UpdateTest();
-
         #region Welcome
-
-        private void updateWindowWelcome_VisibleChanged(object sender, System.EventArgs e)
-        {
-            if (((UpdateWindow)sender).Editor != welcome) ((UpdateWindow)sender).Editor = welcome;
-        }
 
         private void buttonEdit_Click(object sender, System.EventArgs e)
         {
-            welcome.Logo.ResetAnimation(true);
+            welcomeControl.Logo.ResetAnimation(true);
 
-            welcome.EditMode = !welcome.EditMode;
-            trackBarLogoFrames.Visible = welcome.EditMode;
+            welcomeControl.EditMode = !welcomeControl.EditMode;
+            trackBarLogoFrames.Visible = welcomeControl.EditMode;
 
-            if (welcome.EditMode) buttonEdit.Text = "Resume";
+            if (welcomeControl.EditMode) buttonEdit.Text = "Resume";
             else buttonEdit.Text = "Edit";
         }
 
         private void trackBarLogoFrames_Scroll(object sender, System.EventArgs e)
         {
-            if (trackBarLogoFrames.Value > welcome.LastFrame) welcome.Logo.OneFrameForward();
-            else welcome.Logo.OneFrameBackwards();
+            if (trackBarLogoFrames.Value > welcomeControl.LastFrame) welcomeControl.Logo.OneFrameForward();
+            else welcomeControl.Logo.OneFrameBackwards();
 
-            welcome.LastFrame = trackBarLogoFrames.Value;
+            welcomeControl.LastFrame = trackBarLogoFrames.Value;
         }
 
         #endregion
 
         #region Draw Window
 
-        private void drawWindow_VisibleChanged(object sender, System.EventArgs e)
-        {
-            if (((DrawWindow)sender).Editor != drawTest) ((DrawWindow)sender).Editor = drawTest;
-        }
-
         private void textBoxTestText_TextChanged(object sender, System.EventArgs e)
         {
-            drawTest.WelcomeMessage = textBoxTestText.Text;
+            drawTestControl.WelcomeMessage = textBoxTestText.Text;
         }
 
         #endregion
@@ -59,12 +43,10 @@ namespace MonoGame.Forms.Tests
         
         bool CamButtonMouseDown = false;
         System.Drawing.Point CamButtonFirstMouseDownPosition;
-
-        private void updateWindow_VisibleChanged(object sender, System.EventArgs e)
+        
+        private void updateTestControl_VisibleChanged(object sender, EventArgs e)
         {
-            if (((UpdateWindow)sender).Editor != updateTest) ((UpdateWindow)sender).Editor = updateTest;
-
-            trackBarCamZoom.Value = (int)updateTest.Cam.GetZoom;
+            trackBarCamZoom.Value = (int)updateTestControl.Editor.Cam.GetZoom;
         }
 
         private void buttonMoveCam_MouseUp(object sender, MouseEventArgs e)
@@ -85,7 +67,7 @@ namespace MonoGame.Forms.Tests
                 int xDiff = CamButtonFirstMouseDownPosition.X - e.Location.X;
                 int yDiff = CamButtonFirstMouseDownPosition.Y - e.Location.Y;
 
-                updateTest.MoveCam(new Vector2(xDiff, yDiff));
+                updateTestControl.Editor.MoveCam(new Vector2(xDiff, yDiff));
 
                 CamButtonFirstMouseDownPosition.X = e.Location.X;
                 CamButtonFirstMouseDownPosition.Y = e.Location.Y;
@@ -94,8 +76,8 @@ namespace MonoGame.Forms.Tests
 
         private void buttonResetCam_Click(object sender, System.EventArgs e)
         {
-            updateTest.ResetCam();
-            trackBarCamZoom.Value = (int)updateTest.Cam.GetZoom;
+            updateTestControl.Editor.ResetCam();
+            trackBarCamZoom.Value = (int)updateTestControl.Editor.Cam.GetZoom;
         }
         
         private void buttonHelp_Click(object sender, EventArgs e)
@@ -120,7 +102,7 @@ namespace MonoGame.Forms.Tests
 
         private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
         {
-            updateTest.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
+            updateTestControl.Editor.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
         }
 
         #endregion

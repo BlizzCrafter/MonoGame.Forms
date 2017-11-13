@@ -1,33 +1,18 @@
 ﻿using MonoGame.Forms.Services;
-using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
     /// <summary>
-    /// This control is selectable in the tool box of the designer.
-    /// It just provides a place to draw. It has no game loop, but it's updated through invalidation.
-    /// You need to place this control onto a <see cref="System.Windows.Forms.Form"/>.
+    /// Inherit from this class in your custom class to create a draw control, which is selectable from the ToolBox during design time.
+    /// It provides 'NO' game loop, but it's updated through invalidation (<see cref="System.Windows.Forms.Control.Invalidate()"/>).
+    /// <remarks>This draw control is useful as a simple window, which doesn't need a classical game loop like a preview window for textures.</remarks>
     /// </summary>
-    [DesignTimeVisible(true)]
-    public class DrawWindow : GraphicsDeviceControl
+    public abstract class DrawWindow : GraphicsDeviceControl
     {
         /// <summary>
         /// The <see cref="DrawService"/> of the <see cref="DrawWindow"/> draws the actual content of the draw control.
-        /// Attach here your custom 'Editor', which should inherit from <see cref="DrawService"/> to be attachable.
         /// </summary>
-        public DrawService Editor
-        {
-            get { return _Editor; }
-            set
-            {
-                if (value != null)
-                {
-                    _Editor = value;
-                    _Editor.InitializeGFX(_graphicsDeviceService, SwapChainRenderTarget);
-                    _Editor.Initialize();
-                }
-            }
-        }
+        public DrawService Editor { get { return _Editor; } }
         private DrawService _Editor;
 
         /// <summary>

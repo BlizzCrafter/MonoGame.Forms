@@ -1,34 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using MonoGame.Forms.Services;
-using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
     /// <summary>
-    /// This control is selectable in the tool box of the designer.
+    /// Inherit from this class in your custom class to create a draw control with a game loop, which is selectable from the ToolBox during design time.
     /// It provides a game loop and a place to draw.
-    /// You need to place this control onto a <see cref="System.Windows.Forms.Form"/>.
+    /// <remarks>This game loop control is useful as a window, which needs a classical game loop for complex <see cref="GameTime"/> based mechanics.</remarks>
     /// </summary>
-    [DesignTimeVisible(true)]
-    public class UpdateWindow : GameControl
+    public abstract class UpdateWindow : GameControl
     {
         /// <summary>
         /// The <see cref="UpdateService"/> of the <see cref="UpdateWindow"/> draws and updates the actual content of the update control.
-        /// Attach here your custom 'Editor', which should inherit from <see cref="UpdateService"/> to be attachable.
         /// </summary>
-        public UpdateService Editor
-        {
-            get { return _Editor; }
-            set
-            {
-                if (value != null)
-                {
-                    _Editor = value;
-                    _Editor.InitializeGFX(_graphicsDeviceService, SwapChainRenderTarget);
-                    _Editor.Initialize();
-                }
-            }
-        }
+        public UpdateService Editor { get { return _Editor; } }
         private UpdateService _Editor;
 
         /// <summary>
