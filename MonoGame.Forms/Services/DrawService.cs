@@ -1,13 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.Controls;
 
 namespace MonoGame.Forms.Services
 {
     /// <summary>
-    /// Extend from <see cref="DrawService"/> in your custom class to attach basic initializing and drawing logic to it.
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
-    /// <remarks>Note: this class provides no game loop. If you need a real game loop, then please use the <see cref="UpdateService"/></remarks>
+    /// The <see cref="DrawWindow"/> inherits from this class.
+    /// <remarks>Note: this class provides no game loop. Only the <see cref="UpdateService"/> deliveres one.</remarks>
     /// </summary>
     public sealed class DrawService : GFXService
     {

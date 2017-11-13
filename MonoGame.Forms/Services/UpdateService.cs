@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.Controls;
 
 namespace MonoGame.Forms.Services
 {
     /// <summary>
-    /// Extend from <see cref="UpdateService"/> in your custom class to attach basic initializing, updating and drawing logic to it.
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
-    /// <remarks>Note: this class provides a game loop.</remarks>
+    /// The <see cref="UpdateWindow"/> inherits from this class.
+    /// <remarks>Note: this class provides a game loop. The <see cref="DrawService"/> is not using a game loop.</remarks>
     /// </summary>
     public sealed class UpdateService : GFXService
     {
