@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window to your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
-    <releaseNotes>Initial release of MonoGame.Forms.</releaseNotes>
+    <releaseNotes> Added XML documentation to the Release build configuration, so the XML comments become visible in the compiled .dll.</releaseNotes>
     <copyright>Copyright (c) 2017 Marcel 'sqrMin1' Härtel</copyright>
     <tags>MonoGame WindowsForms</tags>
   </metadata>
