@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MonoGame.Forms.Services;
+using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
@@ -8,6 +9,7 @@ namespace MonoGame.Forms.Controls
     /// It provides a game loop and a place to draw.
     /// You need to place this control onto a <see cref="System.Windows.Forms.Form"/>.
     /// </summary>
+    [DesignTimeVisible(true)]
     public class UpdateWindow : GameControl
     {
         /// <summary>

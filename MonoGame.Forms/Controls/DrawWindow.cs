@@ -1,4 +1,5 @@
 ﻿using MonoGame.Forms.Services;
+using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
@@ -7,6 +8,7 @@ namespace MonoGame.Forms.Controls
     /// It just provides a place to draw. It has no game loop, but it's updated through invalidation.
     /// You need to place this control onto a <see cref="System.Windows.Forms.Form"/>.
     /// </summary>
+    [DesignTimeVisible(true)]
     public class DrawWindow : GraphicsDeviceControl
     {
         /// <summary>
