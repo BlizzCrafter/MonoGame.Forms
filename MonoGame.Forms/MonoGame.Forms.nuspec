@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window to your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
-    <releaseNotes> Added XML documentation to the Release build configuration, so the XML comments become visible in the compiled .dll.</releaseNotes>
+    <releaseNotes>Reorganized the test project and rethought the control creation process. Now the user don't inherit from the service classes, but they need to inherit directly from the control classes, so the corresponding ToolBox control item will be automatically generated for him.</releaseNotes>
     <copyright>Copyright (c) 2017 Marcel 'sqrMin1' Härtel</copyright>
     <tags>MonoGame WindowsForms</tags>
   </metadata>
