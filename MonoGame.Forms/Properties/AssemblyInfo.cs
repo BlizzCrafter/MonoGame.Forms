@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("MonoGame.Forms")]
-[assembly: AssemblyDescription("The easy way to add a MonoGame render window to your windows forms project.")]
+[assembly: AssemblyDescription("The easiest way to add a MonoGame render window to your windows forms project.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Marcel 'sqrMin1' Härtel")]
 [assembly: AssemblyProduct("MonoGame.Forms")]
