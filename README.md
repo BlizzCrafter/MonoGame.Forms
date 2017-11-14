@@ -148,7 +148,6 @@ protected override void Update(GameTime gameTime)
 ```
 
 The update method makes realtime interactions with your game- / editor environment possible. Even complex mechanics are doable.
-But I don't want to pollute this Readme file any further. 
 
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
