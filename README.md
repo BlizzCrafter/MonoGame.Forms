@@ -15,7 +15,7 @@ The following is required to successfully compile the solution:
 - MonoGame 3.6 (WindowsDX)
 - Visual Studio 2015
 
-# How To
+# How-To
 #### Setup MonoGame.Forms
 
 First you need to make your MonoGame.Forms library ready to use. This step is very easy; you just need to compile the PCL
@@ -28,6 +28,8 @@ Another option is to install the library with the NuGet package manager:
 ![NuGet](doc/nuget.PNG)
 
 ↳ _This is the prefered and easiest route to be automatically up to date_.
+
+***
 
 #### Creating a simple [DrawWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/22dd89f4-5c58-230d-049f-923af79f1411)
 
@@ -53,7 +55,7 @@ This is how it should look now:
 
 ![Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/tut_00a.PNG)
 
-And yes, as you can see it is realy **THAT EASY**!
+And yes, as you can see: it is realy **THAT EASY**!
 
 Now I bet you wonder how to draw something to this control, right? I bet you think that this is now the difficult part, right?
 Well... it's not!
@@ -146,7 +148,6 @@ protected override void Update(GameTime gameTime)
 ```
 
 The update method makes realtime interactions with your game- / editor environment possible. Even complex mechanics are doable.
-But I don't want to pulute this Readme file further. 
 
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
