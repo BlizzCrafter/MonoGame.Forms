@@ -46,6 +46,11 @@
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
             this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
+            this.tabPageAdvancedControls = new System.Windows.Forms.TabPage();
+            this.checkBoxShowHelp = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowStats = new System.Windows.Forms.CheckBox();
+            this.buttonResetPlayer = new System.Windows.Forms.Button();
+            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedControlsTest();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -59,6 +64,7 @@
             this.tabPageDrawForm.SuspendLayout();
             this.tabPageUpdateForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
+            this.tabPageAdvancedControls.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +74,7 @@
             this.tabControlEditorSwitch.Controls.Add(this.tabPageWelcome);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageDrawForm);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageUpdateForm);
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageAdvancedControls);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageInfo);
             this.tabControlEditorSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlEditorSwitch.Location = new System.Drawing.Point(0, 0);
@@ -265,6 +272,64 @@
     "s.";
             this.updateTestControl.VisibleChanged += new System.EventHandler(this.updateTestControl_VisibleChanged);
             // 
+            // tabPageAdvancedControls
+            // 
+            this.tabPageAdvancedControls.Controls.Add(this.checkBoxShowHelp);
+            this.tabPageAdvancedControls.Controls.Add(this.checkBoxShowStats);
+            this.tabPageAdvancedControls.Controls.Add(this.buttonResetPlayer);
+            this.tabPageAdvancedControls.Controls.Add(this.advancedControlsTest);
+            this.tabPageAdvancedControls.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAdvancedControls.Name = "tabPageAdvancedControls";
+            this.tabPageAdvancedControls.Size = new System.Drawing.Size(728, 399);
+            this.tabPageAdvancedControls.TabIndex = 4;
+            this.tabPageAdvancedControls.Text = "Advanced Controls";
+            this.tabPageAdvancedControls.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowHelp
+            // 
+            this.checkBoxShowHelp.AutoSize = true;
+            this.checkBoxShowHelp.Checked = true;
+            this.checkBoxShowHelp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowHelp.Location = new System.Drawing.Point(8, 333);
+            this.checkBoxShowHelp.Name = "checkBoxShowHelp";
+            this.checkBoxShowHelp.Size = new System.Drawing.Size(97, 21);
+            this.checkBoxShowHelp.TabIndex = 3;
+            this.checkBoxShowHelp.Text = "Show Help";
+            this.checkBoxShowHelp.UseVisualStyleBackColor = true;
+            this.checkBoxShowHelp.CheckedChanged += new System.EventHandler(this.checkBoxShowHelp_CheckedChanged);
+            // 
+            // checkBoxShowStats
+            // 
+            this.checkBoxShowStats.AutoSize = true;
+            this.checkBoxShowStats.Checked = true;
+            this.checkBoxShowStats.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowStats.Location = new System.Drawing.Point(8, 306);
+            this.checkBoxShowStats.Name = "checkBoxShowStats";
+            this.checkBoxShowStats.Size = new System.Drawing.Size(100, 21);
+            this.checkBoxShowStats.TabIndex = 2;
+            this.checkBoxShowStats.Text = "Show Stats";
+            this.checkBoxShowStats.UseVisualStyleBackColor = true;
+            this.checkBoxShowStats.CheckedChanged += new System.EventHandler(this.checkBoxShowStats_CheckedChanged);
+            // 
+            // buttonResetPlayer
+            // 
+            this.buttonResetPlayer.Location = new System.Drawing.Point(8, 360);
+            this.buttonResetPlayer.Name = "buttonResetPlayer";
+            this.buttonResetPlayer.Size = new System.Drawing.Size(100, 31);
+            this.buttonResetPlayer.TabIndex = 1;
+            this.buttonResetPlayer.Text = "Reset Player";
+            this.buttonResetPlayer.UseVisualStyleBackColor = true;
+            this.buttonResetPlayer.Click += new System.EventHandler(this.buttonResetPlayer_Click);
+            // 
+            // advancedControlsTest
+            // 
+            this.advancedControlsTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.advancedControlsTest.Location = new System.Drawing.Point(0, 0);
+            this.advancedControlsTest.Name = "advancedControlsTest";
+            this.advancedControlsTest.Size = new System.Drawing.Size(728, 399);
+            this.advancedControlsTest.TabIndex = 0;
+            this.advancedControlsTest.Text = "This is a advanced controls test!";
+            // 
             // tabPageInfo
             // 
             this.tabPageInfo.Controls.Add(this.richTextBoxLicense);
@@ -362,6 +427,8 @@
             this.tabPageUpdateForm.ResumeLayout(false);
             this.tabPageUpdateForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
+            this.tabPageAdvancedControls.ResumeLayout(false);
+            this.tabPageAdvancedControls.PerformLayout();
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -396,6 +463,11 @@
         private Tests.Welcome welcomeControl;
         private Tests.DrawTest drawTestControl;
         private Tests.UpdateTest updateTestControl;
+        private System.Windows.Forms.TabPage tabPageAdvancedControls;
+        private Tests.AdvancedControlsTest advancedControlsTest;
+        private System.Windows.Forms.Button buttonResetPlayer;
+        private System.Windows.Forms.CheckBox checkBoxShowHelp;
+        private System.Windows.Forms.CheckBox checkBoxShowStats;
     }
 }
 

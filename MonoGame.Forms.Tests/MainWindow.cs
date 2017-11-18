@@ -106,6 +106,25 @@ namespace MonoGame.Forms.Tests
         }
 
         #endregion
+        
+        #region Advanced Control Test
+
+        private void buttonResetPlayer_Click(object sender, EventArgs e)
+        {
+            advancedControlsTest.ResetPlayer();
+        }
+
+        private void checkBoxShowStats_CheckedChanged(object sender, EventArgs e)
+        {
+            advancedControlsTest.ShowStats = checkBoxShowStats.Checked;
+        }
+
+        private void checkBoxShowHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            advancedControlsTest.ShowControls = checkBoxShowHelp.Checked;
+        }
+
+        #endregion
 
         #region Info
 
@@ -145,6 +164,9 @@ namespace MonoGame.Forms.Tests
         {
             //Register your controls here to enable Keyboard functionallity
             //Example -> welcomeControl.ProcessKeyPreview(ref m);
+
+            advancedControlsTest.ProcessKeyPreview(ref m);
+
             return base.ProcessKeyPreview(ref m);
         }
     }

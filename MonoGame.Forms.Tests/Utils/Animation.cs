@@ -138,6 +138,13 @@ namespace MonoGame.Forms.Tests.Utils
             LastRow = false;
         }
 
+        public Rectangle GetFirstFrame()
+        {
+            PositionX = 0;
+            PositionY = 0;
+
+            return new Rectangle(PositionX, PositionY, PartSizeX, PartSizeY);
+        }
         public Rectangle GetLastFrame()
         {
             PositionX = Texture.Width - PartSizeX;
