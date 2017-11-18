@@ -42,6 +42,8 @@ namespace MonoGame.Forms.Controls
                 ref LeftMouseButtonPressed,
                 ref RightMouseButtonPressed,
                 ref MiddleMouseButtonPressed);
+
+                GetKeyboardState = KeyboardService.GetState();
             }
         }
 

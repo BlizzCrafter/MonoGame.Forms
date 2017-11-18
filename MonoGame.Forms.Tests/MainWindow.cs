@@ -135,5 +135,17 @@ namespace MonoGame.Forms.Tests
         {
             InitializeComponent();            
         }
+
+        /// <summary>
+        /// The pressed keyboard keys will be transported through all of the below registered controls
+        /// </summary>
+        /// <param name="m">The sent window message (processed internally)</param>
+        /// <returns></returns>
+        protected override bool ProcessKeyPreview(ref Message m)
+        {
+            //Register your controls here to enable Keyboard functionallity
+            //Example -> welcomeControl.ProcessKeyPreview(ref m);
+            return base.ProcessKeyPreview(ref m);
+        }
     }
 }

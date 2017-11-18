@@ -65,9 +65,11 @@
     <Compile Include="Services\EditorInterfaces.cs" />
     <Compile Include="Services\GFXService.cs" />
     <Compile Include="Services\GraphicsDeviceService.cs" />
+    <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\ServiceContainer.cs" />
     <Compile Include="Services\UpdateService.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Utils\KeyboardUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
