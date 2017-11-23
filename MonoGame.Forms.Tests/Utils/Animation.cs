@@ -17,6 +17,10 @@ namespace MonoGame.Forms.Tests.Utils
         }
         private float AnimationTime = 0.5f;
         private float AnimationTimeMax = 0.5f, CurrentAnimationTime = 0.5f;
+        public float SetAnimationTimeMax
+        {
+            set { AnimationTimeMax = value; }
+        }
 
         public bool GetLoop
         {
