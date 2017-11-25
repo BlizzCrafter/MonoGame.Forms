@@ -28,16 +28,10 @@ namespace MonoGame.Forms.Services
         /// <param name="gameTime">The <see cref="GameTime"/> of the game loop.</param>
         /// <param name="relativeMousePosition">The mouse position relative to the dimensions of the control.</param>
         /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
-        /// <param name="leftMouseButtonPressed">Set this value to false after using it to clear the state correctly! It checks if the left mouse button was pressed.</param>
-        /// <param name="rightMouseButtonPressed">Set this value to false after using it to clear the state correctly! It checks if the right mouse button was pressed.</param>
-        /// <param name="middleMouseButtonPressed">Set this value to false after using it to clear the state correctly! It checks if the middle mouse button was pressed.</param>
         public override void Update(
             GameTime gameTime,
             Vector2 relativeMousePosition,
-            Vector2 absoluteMousePosition,
-            ref bool leftMouseButtonPressed,
-            ref bool rightMouseButtonPressed,
-            ref bool middleMouseButtonPressed)
+            Vector2 absoluteMousePosition)
         {
             UpdateDisplay(gameTime, relativeMousePosition);
         }

@@ -38,10 +38,7 @@ namespace MonoGame.Forms.Controls
                 _Editor.Update(
                 gameTime,
                 GetRelativeMousePosition,
-                GetAbsoluteMousePosition,
-                ref LeftMouseButtonPressed,
-                ref RightMouseButtonPressed,
-                ref MiddleMouseButtonPressed);
+                GetAbsoluteMousePosition);
 
                 GetKeyboardState = KeyboardService.GetState();
             }

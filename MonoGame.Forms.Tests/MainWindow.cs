@@ -106,8 +106,17 @@ namespace MonoGame.Forms.Tests
         }
 
         #endregion
+
+        #region Multiple Controls
         
-        #region Advanced Control Test
+        private void buttonHelpControls_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("[Left Mouse Button] Move Cam\n[Middle Mouse Button] Reset Cam\n[Mouse Wheel] Zoom Cam\n\nImages by Pixel32 from OpenGameArt.org", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        #region Advanced Input
 
         private void buttonResetPlayer_Click(object sender, EventArgs e)
         {

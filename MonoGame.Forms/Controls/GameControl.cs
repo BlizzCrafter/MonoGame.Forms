@@ -16,19 +16,6 @@ namespace MonoGame.Forms.Controls
         TimeSpan elapsed;
 
         /// <summary>
-        /// Shows if the left mouse button was pressed.
-        /// </summary>
-        protected bool LeftMouseButtonPressed = false;
-        /// <summary>
-        /// Shows if the right mouse button was pressed.
-        /// </summary>
-        protected bool RightMouseButtonPressed = false;
-        /// <summary>
-        /// Shows if the middle mouse button was pressed.
-        /// </summary>
-        protected bool MiddleMouseButtonPressed = false;
-
-        /// <summary>
         /// Get the relative mouse position as a <see cref="Vector2"/>
         /// </summary>
         protected Vector2 GetRelativeMousePosition { get; set; }
@@ -46,23 +33,6 @@ namespace MonoGame.Forms.Controls
             timer = Stopwatch.StartNew();
 
             Application.Idle += delegate { GameLoop(); };
-
-            MouseDown += GameControl_MouseDown;
-            MouseUp += GameControl_MouseUp;
-        }
-
-        private void GameControl_MouseUp(object sender, MouseEventArgs e)
-        {
-            LeftMouseButtonPressed = false;
-            RightMouseButtonPressed = false;
-            MiddleMouseButtonPressed = false;
-        }
-
-        private void GameControl_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) LeftMouseButtonPressed = true;
-            else if (e.Button == MouseButtons.Right) RightMouseButtonPressed = true;
-            else if (e.Button == MouseButtons.Middle) MiddleMouseButtonPressed = true;
         }
 
         /// <summary>

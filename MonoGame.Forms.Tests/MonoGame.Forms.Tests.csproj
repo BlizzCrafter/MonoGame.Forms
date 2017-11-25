@@ -61,10 +61,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\AdvancedControlsTest.cs">
+    <Compile Include="Tests\AdvancedInputTest.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tests\DrawTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tests\MultipleControls_First_Test.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tests\MultipleControls_Second_Test.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tests\UpdateTest.cs">
@@ -90,6 +96,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Logo_Sheet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Map_First.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Map_Second.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Player_Sheet.xnb">

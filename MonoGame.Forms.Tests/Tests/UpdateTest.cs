@@ -20,25 +20,16 @@ namespace MonoGame.Forms.Tests.Tests
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
         }
 
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            MessageBox.Show($"[{e.Button.ToString()}] mouse button pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            if (LeftMouseButtonPressed)
-            {
-                LeftMouseButtonPressed = false;
-                MessageBox.Show("[Left_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (RightMouseButtonPressed)
-            {
-                RightMouseButtonPressed = false;
-                MessageBox.Show("[Right_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (MiddleMouseButtonPressed)
-            {
-                MiddleMouseButtonPressed = false;
-                MessageBox.Show("[Middle_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         protected override void Draw()

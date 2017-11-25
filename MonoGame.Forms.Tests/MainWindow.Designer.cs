@@ -34,10 +34,10 @@
             this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
-            this.tabPageDrawForm = new System.Windows.Forms.TabPage();
+            this.tabPageDrawControl = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
             this.drawTestControl = new MonoGame.Forms.Tests.Tests.DrawTest();
-            this.tabPageUpdateForm = new System.Windows.Forms.TabPage();
+            this.tabPageUpdateControl = new System.Windows.Forms.TabPage();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
             this.checkBoxCam = new System.Windows.Forms.CheckBox();
@@ -46,11 +46,15 @@
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
             this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
-            this.tabPageAdvancedControls = new System.Windows.Forms.TabPage();
+            this.tabPageMultipleControls = new System.Windows.Forms.TabPage();
+            this.buttonHelpControls = new System.Windows.Forms.Button();
+            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_Second_Test();
+            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_First_Test();
+            this.tabPageAdvancedInput = new System.Windows.Forms.TabPage();
             this.checkBoxShowHelp = new System.Windows.Forms.CheckBox();
             this.checkBoxShowStats = new System.Windows.Forms.CheckBox();
             this.buttonResetPlayer = new System.Windows.Forms.Button();
-            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedControlsTest();
+            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -61,10 +65,11 @@
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
-            this.tabPageDrawForm.SuspendLayout();
-            this.tabPageUpdateForm.SuspendLayout();
+            this.tabPageDrawControl.SuspendLayout();
+            this.tabPageUpdateControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
-            this.tabPageAdvancedControls.SuspendLayout();
+            this.tabPageMultipleControls.SuspendLayout();
+            this.tabPageAdvancedInput.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -72,9 +77,10 @@
             // tabControlEditorSwitch
             // 
             this.tabControlEditorSwitch.Controls.Add(this.tabPageWelcome);
-            this.tabControlEditorSwitch.Controls.Add(this.tabPageDrawForm);
-            this.tabControlEditorSwitch.Controls.Add(this.tabPageUpdateForm);
-            this.tabControlEditorSwitch.Controls.Add(this.tabPageAdvancedControls);
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageDrawControl);
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageUpdateControl);
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageAdvancedInput);
+            this.tabControlEditorSwitch.Controls.Add(this.tabPageMultipleControls);
             this.tabControlEditorSwitch.Controls.Add(this.tabPageInfo);
             this.tabControlEditorSwitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlEditorSwitch.Location = new System.Drawing.Point(0, 0);
@@ -126,17 +132,17 @@
             this.welcomeControl.TabIndex = 3;
             this.welcomeControl.Text = "Welcome to MonoGame.Forms!";
             // 
-            // tabPageDrawForm
+            // tabPageDrawControl
             // 
-            this.tabPageDrawForm.Controls.Add(this.textBoxTestText);
-            this.tabPageDrawForm.Controls.Add(this.drawTestControl);
-            this.tabPageDrawForm.Location = new System.Drawing.Point(4, 25);
-            this.tabPageDrawForm.Name = "tabPageDrawForm";
-            this.tabPageDrawForm.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDrawForm.Size = new System.Drawing.Size(728, 399);
-            this.tabPageDrawForm.TabIndex = 0;
-            this.tabPageDrawForm.Text = "Draw Form";
-            this.tabPageDrawForm.UseVisualStyleBackColor = true;
+            this.tabPageDrawControl.Controls.Add(this.textBoxTestText);
+            this.tabPageDrawControl.Controls.Add(this.drawTestControl);
+            this.tabPageDrawControl.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDrawControl.Name = "tabPageDrawControl";
+            this.tabPageDrawControl.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDrawControl.Size = new System.Drawing.Size(728, 399);
+            this.tabPageDrawControl.TabIndex = 0;
+            this.tabPageDrawControl.Text = "Draw Control";
+            this.tabPageDrawControl.UseVisualStyleBackColor = true;
             // 
             // textBoxTestText
             // 
@@ -160,23 +166,23 @@
             this.drawTestControl.TabIndex = 3;
             this.drawTestControl.Text = "This \'DrawWindow\' has no game loop, but it\'s updated through invalidation!";
             // 
-            // tabPageUpdateForm
+            // tabPageUpdateControl
             // 
-            this.tabPageUpdateForm.Controls.Add(this.buttonHelp);
-            this.tabPageUpdateForm.Controls.Add(this.trackBarCamZoom);
-            this.tabPageUpdateForm.Controls.Add(this.checkBoxCam);
-            this.tabPageUpdateForm.Controls.Add(this.checkBoxCursor);
-            this.tabPageUpdateForm.Controls.Add(this.checkBoxFPS);
-            this.tabPageUpdateForm.Controls.Add(this.buttonResetCam);
-            this.tabPageUpdateForm.Controls.Add(this.buttonMoveCam);
-            this.tabPageUpdateForm.Controls.Add(this.updateTestControl);
-            this.tabPageUpdateForm.Location = new System.Drawing.Point(4, 25);
-            this.tabPageUpdateForm.Name = "tabPageUpdateForm";
-            this.tabPageUpdateForm.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUpdateForm.Size = new System.Drawing.Size(728, 399);
-            this.tabPageUpdateForm.TabIndex = 1;
-            this.tabPageUpdateForm.Text = "Update Form";
-            this.tabPageUpdateForm.UseVisualStyleBackColor = true;
+            this.tabPageUpdateControl.Controls.Add(this.buttonHelp);
+            this.tabPageUpdateControl.Controls.Add(this.trackBarCamZoom);
+            this.tabPageUpdateControl.Controls.Add(this.checkBoxCam);
+            this.tabPageUpdateControl.Controls.Add(this.checkBoxCursor);
+            this.tabPageUpdateControl.Controls.Add(this.checkBoxFPS);
+            this.tabPageUpdateControl.Controls.Add(this.buttonResetCam);
+            this.tabPageUpdateControl.Controls.Add(this.buttonMoveCam);
+            this.tabPageUpdateControl.Controls.Add(this.updateTestControl);
+            this.tabPageUpdateControl.Location = new System.Drawing.Point(4, 25);
+            this.tabPageUpdateControl.Name = "tabPageUpdateControl";
+            this.tabPageUpdateControl.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageUpdateControl.Size = new System.Drawing.Size(728, 399);
+            this.tabPageUpdateControl.TabIndex = 1;
+            this.tabPageUpdateControl.Text = "Update Control";
+            this.tabPageUpdateControl.UseVisualStyleBackColor = true;
             // 
             // buttonHelp
             // 
@@ -272,18 +278,59 @@
     "s.";
             this.updateTestControl.VisibleChanged += new System.EventHandler(this.updateTestControl_VisibleChanged);
             // 
-            // tabPageAdvancedControls
+            // tabPageMultipleControls
             // 
-            this.tabPageAdvancedControls.Controls.Add(this.checkBoxShowHelp);
-            this.tabPageAdvancedControls.Controls.Add(this.checkBoxShowStats);
-            this.tabPageAdvancedControls.Controls.Add(this.buttonResetPlayer);
-            this.tabPageAdvancedControls.Controls.Add(this.advancedControlsTest);
-            this.tabPageAdvancedControls.Location = new System.Drawing.Point(4, 25);
-            this.tabPageAdvancedControls.Name = "tabPageAdvancedControls";
-            this.tabPageAdvancedControls.Size = new System.Drawing.Size(728, 399);
-            this.tabPageAdvancedControls.TabIndex = 4;
-            this.tabPageAdvancedControls.Text = "Advanced Controls";
-            this.tabPageAdvancedControls.UseVisualStyleBackColor = true;
+            this.tabPageMultipleControls.Controls.Add(this.buttonHelpControls);
+            this.tabPageMultipleControls.Controls.Add(this.multipleControls_Second_Test1);
+            this.tabPageMultipleControls.Controls.Add(this.multipleControls_First_Test1);
+            this.tabPageMultipleControls.Location = new System.Drawing.Point(4, 25);
+            this.tabPageMultipleControls.Name = "tabPageMultipleControls";
+            this.tabPageMultipleControls.Size = new System.Drawing.Size(728, 399);
+            this.tabPageMultipleControls.TabIndex = 5;
+            this.tabPageMultipleControls.Text = "Multiple Controls";
+            this.tabPageMultipleControls.UseVisualStyleBackColor = true;
+            // 
+            // buttonHelpControls
+            // 
+            this.buttonHelpControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelpControls.Location = new System.Drawing.Point(3, 372);
+            this.buttonHelpControls.Name = "buttonHelpControls";
+            this.buttonHelpControls.Size = new System.Drawing.Size(75, 24);
+            this.buttonHelpControls.TabIndex = 2;
+            this.buttonHelpControls.Text = "Help";
+            this.buttonHelpControls.UseVisualStyleBackColor = true;
+            this.buttonHelpControls.Click += new System.EventHandler(this.buttonHelpControls_Click);
+            // 
+            // multipleControls_Second_Test1
+            // 
+            this.multipleControls_Second_Test1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.multipleControls_Second_Test1.Location = new System.Drawing.Point(352, 0);
+            this.multipleControls_Second_Test1.Name = "multipleControls_Second_Test1";
+            this.multipleControls_Second_Test1.Size = new System.Drawing.Size(376, 399);
+            this.multipleControls_Second_Test1.TabIndex = 1;
+            this.multipleControls_Second_Test1.Text = "multipleControls_Second_Test";
+            // 
+            // multipleControls_First_Test1
+            // 
+            this.multipleControls_First_Test1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.multipleControls_First_Test1.Location = new System.Drawing.Point(0, 0);
+            this.multipleControls_First_Test1.Name = "multipleControls_First_Test1";
+            this.multipleControls_First_Test1.Size = new System.Drawing.Size(346, 399);
+            this.multipleControls_First_Test1.TabIndex = 0;
+            this.multipleControls_First_Test1.Text = "multipleControls_First_Test";
+            // 
+            // tabPageAdvancedInput
+            // 
+            this.tabPageAdvancedInput.Controls.Add(this.checkBoxShowHelp);
+            this.tabPageAdvancedInput.Controls.Add(this.checkBoxShowStats);
+            this.tabPageAdvancedInput.Controls.Add(this.buttonResetPlayer);
+            this.tabPageAdvancedInput.Controls.Add(this.advancedControlsTest);
+            this.tabPageAdvancedInput.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAdvancedInput.Name = "tabPageAdvancedInput";
+            this.tabPageAdvancedInput.Size = new System.Drawing.Size(728, 399);
+            this.tabPageAdvancedInput.TabIndex = 4;
+            this.tabPageAdvancedInput.Text = "Advanced Input";
+            this.tabPageAdvancedInput.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowHelp
             // 
@@ -422,13 +469,14 @@
             this.tabPageWelcome.ResumeLayout(false);
             this.tabPageWelcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).EndInit();
-            this.tabPageDrawForm.ResumeLayout(false);
-            this.tabPageDrawForm.PerformLayout();
-            this.tabPageUpdateForm.ResumeLayout(false);
-            this.tabPageUpdateForm.PerformLayout();
+            this.tabPageDrawControl.ResumeLayout(false);
+            this.tabPageDrawControl.PerformLayout();
+            this.tabPageUpdateControl.ResumeLayout(false);
+            this.tabPageUpdateControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
-            this.tabPageAdvancedControls.ResumeLayout(false);
-            this.tabPageAdvancedControls.PerformLayout();
+            this.tabPageMultipleControls.ResumeLayout(false);
+            this.tabPageAdvancedInput.ResumeLayout(false);
+            this.tabPageAdvancedInput.PerformLayout();
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -440,8 +488,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControlEditorSwitch;
-        private System.Windows.Forms.TabPage tabPageDrawForm;
-        private System.Windows.Forms.TabPage tabPageUpdateForm;
+        private System.Windows.Forms.TabPage tabPageDrawControl;
+        private System.Windows.Forms.TabPage tabPageUpdateControl;
         private System.Windows.Forms.TextBox textBoxTestText;
         private System.Windows.Forms.Button buttonMoveCam;
         private System.Windows.Forms.Button buttonResetCam;
@@ -463,11 +511,15 @@
         private Tests.Welcome welcomeControl;
         private Tests.DrawTest drawTestControl;
         private Tests.UpdateTest updateTestControl;
-        private System.Windows.Forms.TabPage tabPageAdvancedControls;
-        private Tests.AdvancedControlsTest advancedControlsTest;
+        private System.Windows.Forms.TabPage tabPageAdvancedInput;
+        private Tests.AdvancedInputTest advancedControlsTest;
         private System.Windows.Forms.Button buttonResetPlayer;
         private System.Windows.Forms.CheckBox checkBoxShowHelp;
         private System.Windows.Forms.CheckBox checkBoxShowStats;
+        private System.Windows.Forms.TabPage tabPageMultipleControls;
+        private Tests.MultipleControls_First_Test multipleControls_First_Test1;
+        private Tests.MultipleControls_Second_Test multipleControls_Second_Test1;
+        private System.Windows.Forms.Button buttonHelpControls;
     }
 }
 

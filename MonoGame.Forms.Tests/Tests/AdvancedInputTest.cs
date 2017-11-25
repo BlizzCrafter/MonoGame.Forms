@@ -7,7 +7,7 @@ using System;
 
 namespace MonoGame.Forms.Tests.Tests
 {
-    public class AdvancedControlsTest : UpdateWindow
+    public class AdvancedInputTest : UpdateWindow
     {
         SpriteFont DrawFont;
 

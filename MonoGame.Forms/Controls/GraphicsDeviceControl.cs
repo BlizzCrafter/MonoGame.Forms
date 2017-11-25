@@ -221,6 +221,19 @@ namespace MonoGame.Forms.Controls
                 }
             }
         }
+        
+        public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);
+        public event MouseWheelUpwardsEvent OnMouseWheelUpwards;
+        public delegate void MouseWheelDownwardsEvent(MouseEventArgs e);
+        public event MouseWheelDownwardsEvent OnMouseWheelDownwards;
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            base.OnMouseWheel(e);
+
+            if (e.Delta > 0) OnMouseWheelUpwards?.Invoke(e);
+            else if (e.Delta < 0) OnMouseWheelDownwards?.Invoke(e);
+        }
 
         #endregion
     }

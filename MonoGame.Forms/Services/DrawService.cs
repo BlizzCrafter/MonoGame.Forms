@@ -27,7 +27,7 @@ namespace MonoGame.Forms.Services
         /// Throws a <see cref="NotImplementedException"/>, because a <see cref="DrawService"/> class doesn't contain a game loop.
         /// This is a basic implementation of the corresponding abstract method from the <see cref="GFXService"/> class.
         /// </summary>
-        public override void Update(GameTime gameTime, Vector2 relativeMousePosition, Vector2 absoluteMousePosition, ref bool leftMouseButtonPressed, ref bool rightMouseButtonPressed, ref bool middleMouseButtonPressed)
+        public override void Update(GameTime gameTime, Vector2 relativeMousePosition, Vector2 absoluteMousePosition)
         {
             throw new NotImplementedException();
         }
