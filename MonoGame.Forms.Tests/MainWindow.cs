@@ -123,6 +123,11 @@ namespace MonoGame.Forms.Tests
             advancedControlsTest.ResetPlayer();
         }
 
+        private void buttonHelpInput_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please plug in your GamePad if you want to switch from Keyboard to GamePad input.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void checkBoxShowStats_CheckedChanged(object sender, EventArgs e)
         {
             advancedControlsTest.ShowStats = checkBoxShowStats.Checked;
