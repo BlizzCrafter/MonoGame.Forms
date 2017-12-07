@@ -67,6 +67,9 @@
     <Compile Include="Tests\DrawTest.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Tests\MapHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Tests\MultipleControls_First_Test.cs">
       <SubType>Component</SubType>
     </Compile>
