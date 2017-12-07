@@ -7,7 +7,9 @@ namespace MonoGame.Forms.Tests.Tests
 {
     public class MultipleControls_Second_Test : UpdateWindow
     {
-        Texture2D HexMap;
+        Texture2D[] HexMaps;
+        int CurrentMap { get; set; } = 0;
+
         bool CamMouseDown = false;
         System.Drawing.Point CamFirstMouseDownPosition;
 
@@ -15,7 +17,12 @@ namespace MonoGame.Forms.Tests.Tests
         {
             base.Initialize();
 
-            HexMap = Editor.Content.Load<Texture2D>("Maps/0b");
+            HexMaps = new Texture2D[5];
+            HexMaps[0] = Editor.Content.Load<Texture2D>("Maps/0b");
+            HexMaps[1] = Editor.Content.Load<Texture2D>("Maps/1b");
+            HexMaps[2] = Editor.Content.Load<Texture2D>("Maps/2b");
+            HexMaps[3] = Editor.Content.Load<Texture2D>("Maps/3b");
+            HexMaps[4] = Editor.Content.Load<Texture2D>("Maps/4b");
 
             OnMouseWheelUpwards += MultipleControls_First_Test_OnMouseWheelUpwards;
             OnMouseWheelDownwards += MultipleControls_First_Test_OnMouseWheelDownwards;
@@ -40,13 +47,22 @@ namespace MonoGame.Forms.Tests.Tests
             base.OnMouseClick(e);
 
             if (e.Button == MouseButtons.Middle) Editor.ResetCam();
+            else if (e.Button == MouseButtons.XButton1) CurrentMap--;
+            else if (e.Button == MouseButtons.XButton2) CurrentMap++;
+
+            if (CurrentMap < 0) CurrentMap = HexMaps.Length - 1;
+            else if (CurrentMap > HexMaps.Length - 1) CurrentMap = 0;
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
 
-            CamMouseDown = false;
+            if (e.Button == MouseButtons.Left)
+            {
+                CamFirstMouseDownPosition = e.Location;
+                CamMouseDown = true;
+            }
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -86,9 +102,9 @@ namespace MonoGame.Forms.Tests.Tests
 
             Editor.BeginCamera2D();
 
-            Editor.spriteBatch.Draw(HexMap, new Vector2(
-                (Editor.graphics.Viewport.Width / 2) - (HexMap.Width / 2),
-                (Editor.graphics.Viewport.Height / 2) - (HexMap.Height / 2)),
+            Editor.spriteBatch.Draw(HexMaps[CurrentMap], new Vector2(
+                (Editor.graphics.Viewport.Width / 2) - (HexMaps[CurrentMap].Width / 2),
+                (Editor.graphics.Viewport.Height / 2) - (HexMaps[CurrentMap].Height / 2)),
                 Color.White);
 
             Editor.EndCamera2D();
