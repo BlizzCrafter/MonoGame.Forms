@@ -128,22 +128,6 @@ I just want to show you the only difference:
 protected override void Update(GameTime gameTime)
 {
     base.Update(gameTime);
-    
-    if (LeftMouseButtonPressed)
-    {
-        LeftMouseButtonPressed = false;
-        MessageBox.Show("[Left_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-    else if (RightMouseButtonPressed)
-    {
-        RightMouseButtonPressed = false;
-        MessageBox.Show("[Right_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-    else if (MiddleMouseButtonPressed)
-    {
-        MiddleMouseButtonPressed = false;
-        MessageBox.Show("[Middle_Mouse_Button] pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
 }
 ```
 
