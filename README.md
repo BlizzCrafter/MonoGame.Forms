@@ -40,18 +40,18 @@ _(it's assumed that you already have created a new **Windows Forms** project wit
 1. Create a new class and name it **DrawTest**
 2. Inherit from **MonoGame.Forms.Controls.DrawWindow**
 3. Override the **Initialize()** method from DrawWindow
-3. Override the **Draw()** method from DrawWindow
-4. **Save & Build** your solution
-5. **Double Click** on **Form1.cs** so that the Designer opens
-6. Open the **Toolbox**
-7. **Drag & Drop** the newly created control onto the Form1 control
-8. Open the **Properties** of the new control and set the **Dock** option to **Fill**
+4. Override the **Draw()** method from DrawWindow
+5. **Save & Build** your solution
+6. **Double Click** on **Form1.cs** so that the Designer opens
+7. Open the **Toolbox**
+8. **Drag & Drop** the newly created control onto the Form1 control
+9. Open the **Properties** of the new control and set the **Dock** option to **Fill**
 
 This is how it should look now:
 
 ![Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/tut_00.PNG)
 
-9. Now run the solution and see the classical **CornflowerBlue-Screen** you are (surly) familiar with! ;-)
+10. Now run the solution and see the classical **CornflowerBlue-Screen** you are (surly) familiar with! ;-)
 
 ![Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/tut_00a.PNG)
 
