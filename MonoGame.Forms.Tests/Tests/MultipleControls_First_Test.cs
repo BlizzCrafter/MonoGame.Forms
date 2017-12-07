@@ -15,34 +15,40 @@ namespace MonoGame.Forms.Tests.Tests
         {
             base.Initialize();
 
-            HexMap = Editor.Content.Load<Texture2D>("Map_First");
+            HexMap = Editor.Content.Load<Texture2D>("Maps/0a");
 
             OnMouseWheelUpwards += MultipleControls_First_Test_OnMouseWheelUpwards;
             OnMouseWheelDownwards += MultipleControls_First_Test_OnMouseWheelDownwards;
 
             Editor.BackgroundColor = Color.Black;
         }
-        
+
+        #region Mouse Input Events
+
         private void MultipleControls_First_Test_OnMouseWheelUpwards(System.Windows.Forms.MouseEventArgs e)
         {
             Editor.Cam.GetZoom += 0.1f;
         }
+
         private void MultipleControls_First_Test_OnMouseWheelDownwards(System.Windows.Forms.MouseEventArgs e)
         {
             if (Editor.Cam.GetZoom > 0.7f) Editor.Cam.GetZoom -= 0.1f;
         }
+
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
 
             if (e.Button == MouseButtons.Middle) Editor.ResetCam();
         }
+
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
 
             CamMouseDown = false;
         }
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -50,6 +56,7 @@ namespace MonoGame.Forms.Tests.Tests
             CamFirstMouseDownPosition = e.Location;
             CamMouseDown = true;
         }
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -65,6 +72,8 @@ namespace MonoGame.Forms.Tests.Tests
                 CamFirstMouseDownPosition.Y = e.Location.Y;
             }
         }
+
+        #endregion
 
         protected override void Update(GameTime gameTime)
         {

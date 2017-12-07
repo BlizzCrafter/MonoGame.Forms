@@ -98,10 +98,10 @@
     <None Include="Content\Logo_Sheet.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Map_First.xnb">
+    <None Include="Content\Maps\0a.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Map_Second.xnb">
+    <None Include="Content\Maps\0b.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Player_Sheet.xnb">
