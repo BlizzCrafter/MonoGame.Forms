@@ -14,13 +14,13 @@ namespace MonoGame.Forms.Tests.Tests
         System.Drawing.Point CamFirstMouseDownPosition;
 
         #region Mouse Input Events
-
-        private void MultipleControls_First_Test_OnMouseWheelUpwards(System.Windows.Forms.MouseEventArgs e)
+        
+        private void MapHost_OnMouseWheelUpwards(MouseEventArgs e)
         {
             Editor.Cam.GetZoom += 0.1f;
         }
 
-        private void MultipleControls_First_Test_OnMouseWheelDownwards(System.Windows.Forms.MouseEventArgs e)
+        private void MapHost_OnMouseWheelDownwards(MouseEventArgs e)
         {
             if (Editor.Cam.GetZoom > 0.7f) Editor.Cam.GetZoom -= 0.1f;
         }
@@ -82,8 +82,8 @@ namespace MonoGame.Forms.Tests.Tests
             HexMaps[3] = Editor.Content.Load<Texture2D>("Maps/3" + side);
             HexMaps[4] = Editor.Content.Load<Texture2D>("Maps/4" + side);
 
-            OnMouseWheelUpwards += MultipleControls_First_Test_OnMouseWheelUpwards;
-            OnMouseWheelDownwards += MultipleControls_First_Test_OnMouseWheelDownwards;
+            OnMouseWheelUpwards += MapHost_OnMouseWheelUpwards;
+            OnMouseWheelDownwards += MapHost_OnMouseWheelDownwards;
 
             Editor.BackgroundColor = Color.Black;
         }

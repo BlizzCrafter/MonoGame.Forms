@@ -2,13 +2,13 @@
 
 namespace MonoGame.Forms.Tests.Tests
 {
-    public class MultipleControls_Second_Test : MapHost
+    public class MultipleControls_a_Test : MapHost
     {
         protected override void Initialize()
         {
             base.Initialize();
 
-            InitializeMap("b");
+            InitializeMap("a");
         }
         protected override void Update(GameTime gameTime)
         {

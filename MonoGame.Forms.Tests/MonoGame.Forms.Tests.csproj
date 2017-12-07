@@ -70,10 +70,10 @@
     <Compile Include="Tests\MapHost.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Tests\MultipleControls_First_Test.cs">
+    <Compile Include="Tests\MultipleControls_a_Test.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Tests\MultipleControls_Second_Test.cs">
+    <Compile Include="Tests\MultipleControls_b_Test.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tests\UpdateTest.cs">

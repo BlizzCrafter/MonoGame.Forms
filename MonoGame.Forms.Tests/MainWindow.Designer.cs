@@ -60,8 +60,8 @@
             this.drawTestControl = new MonoGame.Forms.Tests.Tests.DrawTest();
             this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
             this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
-            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_Second_Test();
-            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_First_Test();
+            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
+            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
             this.buttonHelpInput = new System.Windows.Forms.Button();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
@@ -530,8 +530,8 @@
         private System.Windows.Forms.CheckBox checkBoxShowHelp;
         private System.Windows.Forms.CheckBox checkBoxShowStats;
         private System.Windows.Forms.TabPage tabPageMultipleControls;
-        private Tests.MultipleControls_First_Test multipleControls_First_Test1;
-        private Tests.MultipleControls_Second_Test multipleControls_Second_Test1;
+        private Tests.MultipleControls_a_Test multipleControls_First_Test1;
+        private Tests.MultipleControls_b_Test multipleControls_Second_Test1;
         private System.Windows.Forms.Button buttonHelpControls;
         private System.Windows.Forms.Button buttonHelpInput;
     }
