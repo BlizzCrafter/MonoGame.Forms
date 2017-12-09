@@ -111,7 +111,7 @@ namespace MonoGame.Forms.Tests
         
         private void buttonHelpControls_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("[Left Mouse Button] Move Cam\n[Middle Mouse Button] Reset Cam\n[XButton1] Previous Map\n[XButton2] Next Map\n[Mouse Wheel] Zoom Cam\n\nImages copyright (c) by FinTerra\nTile Art copyright (c) by Pixel32\n\nOpenGameArt.org\n\nAttribution 3.0 Unported (CC BY 3.0)", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("[Left Mouse Button] Move Cam\n[Right Mouse Button] Debug Display\n[Middle Mouse Button] Reset Cam\n[XButton1] Previous Map\n[XButton2] Next Map\n[Mouse Wheel] Zoom Cam\n\nImages copyright (c) by FinTerra\nTile Art copyright (c) by Pixel32\n\nOpenGameArt.org\n\nAttribution 3.0 Unported (CC BY 3.0)", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion

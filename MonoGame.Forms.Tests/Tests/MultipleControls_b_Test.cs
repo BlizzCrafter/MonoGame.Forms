@@ -10,6 +10,7 @@ namespace MonoGame.Forms.Tests.Tests
 
             InitializeMap("b");
         }
+
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -19,11 +20,7 @@ namespace MonoGame.Forms.Tests.Tests
         {
             base.Draw();
 
-            Editor.BeginCamera2D();
-
             DrawMap();
-
-            Editor.EndCamera2D();
         }
     }
 }

@@ -1,17 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Forms.Controls;
 using System.Windows.Forms;
+using MonoGame.Forms.Controls;
 
 namespace MonoGame.Forms.Tests.Tests
 {
     public abstract class MapHost : UpdateWindow
     {
-        protected Texture2D[] HexMaps;
-        int CurrentMap { get; set; } = 0;
+        private Texture2D[] HexMaps;
+        private int CurrentMap { get; set; } = 0;
+        private bool ShowDebugDisplay { get; set; } = false;
 
-        bool CamMouseDown = false;
-        System.Drawing.Point CamFirstMouseDownPosition;
+        private bool CamMouseDown = false;
+        private System.Drawing.Point CamFirstMouseDownPosition;
 
         #region Mouse Input Events
         
@@ -32,6 +33,7 @@ namespace MonoGame.Forms.Tests.Tests
             if (e.Button == MouseButtons.Middle) Editor.ResetCam();
             else if (e.Button == MouseButtons.XButton1) CurrentMap--;
             else if (e.Button == MouseButtons.XButton2) CurrentMap++;
+            else if (e.Button == MouseButtons.Right) ShowDebugDisplay = !ShowDebugDisplay;
 
             if (CurrentMap < 0) CurrentMap = HexMaps.Length - 1;
             else if (CurrentMap > HexMaps.Length - 1) CurrentMap = 0;
@@ -90,10 +92,16 @@ namespace MonoGame.Forms.Tests.Tests
 
         protected void DrawMap()
         {
+            Editor.BeginCamera2D();
+
             Editor.spriteBatch.Draw(HexMaps[CurrentMap], new Vector2(
                 (Editor.graphics.Viewport.Width / 2) - (HexMaps[CurrentMap].Width / 2),
                 (Editor.graphics.Viewport.Height / 2) - (HexMaps[CurrentMap].Height / 2)),
                 Color.White);
+
+            Editor.EndCamera2D();
+
+            if (ShowDebugDisplay) Editor.DrawDisplay();
         }
     }
 }
