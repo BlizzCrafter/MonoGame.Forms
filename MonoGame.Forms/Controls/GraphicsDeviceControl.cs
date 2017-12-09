@@ -14,9 +14,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
-using System.Collections.Generic;
-using MonoGame.Forms.Utils;
-using MonoGameKeys = Microsoft.Xna.Framework.Input.Keys;
 
 namespace MonoGame.Forms.Controls
 {
@@ -90,8 +87,6 @@ namespace MonoGame.Forms.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (MonoGameKeysList != null) KeyboardService.SetKeys(MonoGameKeysList);
-
             var beginDrawError = BeginDraw();
             if (string.IsNullOrEmpty(beginDrawError))
             {
@@ -195,32 +190,11 @@ namespace MonoGame.Forms.Controls
 
         #region Input
 
-        public Microsoft.Xna.Framework.Input.KeyboardState GetKeyboardState { get; set; }
-
-        private const int WM_KEYDOWN = 0x100;
-        private const int WM_KEYUP = 0x101;
-
-        private List<MonoGameKeys> MonoGameKeysList = new List<MonoGameKeys>();
-
-        /// <summary>
-        /// Register your controls by calling this method to enable Keyboard functionallity on this control.
-        /// </summary>
-        /// <param name="m">The sent window message.</param>
-        public new void ProcessKeyPreview(ref Message m)
+        public void SetKeyboardInput(bool enable)
         {
-            if (Visible)
-            {
-                if (m.Msg == WM_KEYDOWN)
-                {
-                    MonoGameKeys monoGameKeys = KeyboardUtil.FormsKeyToMonoGameKey((Keys)m.WParam);
-                    if (!MonoGameKeysList.Contains(monoGameKeys)) MonoGameKeysList.Add(monoGameKeys);
-                }
-                else if (m.Msg == WM_KEYUP)
-                {
-                    MonoGameKeys monoGameKeys = KeyboardUtil.FormsKeyToMonoGameKey((Keys)m.WParam);
-                    if (MonoGameKeysList.Contains(monoGameKeys)) MonoGameKeysList.Remove(monoGameKeys);
-                }
-            }
+            var keyboardType = typeof(Microsoft.Xna.Framework.Input.Keyboard);
+            var methodInfo = keyboardType.GetMethod("SetActive", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            methodInfo.Invoke(null, new object[] { enable });
         }
         
         public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);

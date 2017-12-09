@@ -39,8 +39,6 @@ namespace MonoGame.Forms.Controls
                 gameTime,
                 GetRelativeMousePosition,
                 GetAbsoluteMousePosition);
-
-                GetKeyboardState = KeyboardService.GetState();
             }
         }
 

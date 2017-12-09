@@ -37,8 +37,7 @@ namespace MonoGame.Forms.Tests.Tests
             Moving = false;
         }
         
-        GamePadState NewGamePadState;
-        GamePadState OldGamePadState;
+        GamePadState NewGamePadState, OldGamePadState;
 
         public bool ShowStats = true, ShowControls = true;
 
@@ -61,12 +60,14 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
             Player = new Animation(Editor.Content.Load<Texture2D>("Player_Sheet"), 8, 1, 0.5f, true, true);
             ResetPlayer();
+
+            SetKeyboardInput(true);
         }
 
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
+            
             NewGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
 
             if (NewGamePadState.IsConnected)
@@ -117,8 +118,8 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 #region Up Movement
 
                 //Up
-                if (GetKeyboardState.IsKeyDown(Keys.W) &&
-                    !GetKeyboardState.IsKeyDown(Keys.S) && !GetKeyboardState.IsKeyDown(Keys.A) && !GetKeyboardState.IsKeyDown(Keys.D))
+                if (Keyboard.GetState().IsKeyDown(Keys.W) &&
+                    Keyboard.GetState().IsKeyUp(Keys.S) && Keyboard.GetState().IsKeyUp(Keys.A) && Keyboard.GetState().IsKeyUp(Keys.D))
                 {
                     Moving = true;
                     PlayerPosition.Y -= PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -126,7 +127,7 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 }
 
                 //Up Right
-                if (GetKeyboardState.IsKeyDown(Keys.W) && GetKeyboardState.IsKeyDown(Keys.D))
+                if (Keyboard.GetState().IsKeyDown(Keys.W) && Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     Moving = true;
                     PlayerPosition.X += PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -135,7 +136,7 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 }
 
                 //Up Left
-                if (GetKeyboardState.IsKeyDown(Keys.W) && GetKeyboardState.IsKeyDown(Keys.A))
+                if (Keyboard.GetState().IsKeyDown(Keys.W) && Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     Moving = true;
                     PlayerPosition.X -= PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -148,8 +149,8 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 #region Down Movement
 
                 //Down
-                if (GetKeyboardState.IsKeyDown(Keys.S) &&
-                    !GetKeyboardState.IsKeyDown(Keys.W) && !GetKeyboardState.IsKeyDown(Keys.A) && !GetKeyboardState.IsKeyDown(Keys.D))
+                if (Keyboard.GetState().IsKeyDown(Keys.S) &&
+                    Keyboard.GetState().IsKeyUp(Keys.W) && Keyboard.GetState().IsKeyUp(Keys.A) && Keyboard.GetState().IsKeyUp(Keys.D))
                 {
                     Moving = true;
                     PlayerPosition.Y += PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -157,7 +158,7 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 }
 
                 //Down Right
-                if (GetKeyboardState.IsKeyDown(Keys.S) && GetKeyboardState.IsKeyDown(Keys.D))
+                if (Keyboard.GetState().IsKeyDown(Keys.S) && Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     Moving = true;
                     PlayerPosition.X += PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -166,7 +167,7 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 }
 
                 //Down Left
-                if (GetKeyboardState.IsKeyDown(Keys.S) && GetKeyboardState.IsKeyDown(Keys.A))
+                if (Keyboard.GetState().IsKeyDown(Keys.S) && Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     Moving = true;
                     PlayerPosition.X -= PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -179,8 +180,8 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 #region Left Movement
 
                 //Left
-                if (GetKeyboardState.IsKeyDown(Keys.A) &&
-                    !GetKeyboardState.IsKeyDown(Keys.W) && !GetKeyboardState.IsKeyDown(Keys.S) && !GetKeyboardState.IsKeyDown(Keys.D))
+                if (Keyboard.GetState().IsKeyDown(Keys.A) &&
+                    Keyboard.GetState().IsKeyUp(Keys.W) && Keyboard.GetState().IsKeyUp(Keys.S) && Keyboard.GetState().IsKeyUp(Keys.D))
                 {
                     Moving = true;
                     PlayerPosition.X -= PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -192,8 +193,8 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
                 #region Right Movement
 
                 //Right
-                if (GetKeyboardState.IsKeyDown(Keys.D) &&
-                    !GetKeyboardState.IsKeyDown(Keys.A) && !GetKeyboardState.IsKeyDown(Keys.W) && !GetKeyboardState.IsKeyDown(Keys.S))
+                if (Keyboard.GetState().IsKeyDown(Keys.D) &&
+                    Keyboard.GetState().IsKeyUp(Keys.A) && Keyboard.GetState().IsKeyUp(Keys.W) && Keyboard.GetState().IsKeyUp(Keys.S))
                 {
                     Moving = true;
                     PlayerPosition.X += PlayerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -202,50 +203,50 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
 
                 #endregion
 
-                if (!GetKeyboardState.IsKeyDown(Keys.W) && !GetKeyboardState.IsKeyDown(Keys.S) &&
-                    !GetKeyboardState.IsKeyDown(Keys.A) && !GetKeyboardState.IsKeyDown(Keys.D)) Moving = false;
+                if (Keyboard.GetState().IsKeyUp(Keys.W) && Keyboard.GetState().IsKeyUp(Keys.S) &&
+                    Keyboard.GetState().IsKeyUp(Keys.A) && Keyboard.GetState().IsKeyUp(Keys.D)) Moving = false;
 
                 #endregion
 
                 #region Stats
 
-                if (!GetKeyboardState.IsKeyDown(Keys.E))
+                if (Keyboard.GetState().IsKeyUp(Keys.E))
                 {
-                    if (GetKeyboardState.IsKeyDown(Keys.OemPlus)) PlayerSpeed++;
-                    else if (GetKeyboardState.IsKeyDown(Keys.OemMinus)) PlayerSpeed--;
+                    if (Keyboard.GetState().IsKeyDown(Keys.OemPlus)) PlayerSpeed++;
+                    else if (Keyboard.GetState().IsKeyDown(Keys.OemMinus)) PlayerSpeed--;
                 }
                 else
                 {
-                    if (GetKeyboardState.IsKeyDown(Keys.OemPlus)) PlayerScale += 0.1f;
-                    else if (GetKeyboardState.IsKeyDown(Keys.OemMinus)) PlayerScale -= 0.1f;
+                    if (Keyboard.GetState().IsKeyDown(Keys.OemPlus)) PlayerScale += 0.1f;
+                    else if (Keyboard.GetState().IsKeyDown(Keys.OemMinus)) PlayerScale -= 0.1f;
                 }
 
-                if (GetKeyboardState.IsKeyDown(Keys.NumPad7))
+                if (Keyboard.GetState().IsKeyDown(Keys.NumPad7))
                 {
                     PlayerColorR++;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (GetKeyboardState.IsKeyDown(Keys.NumPad8))
+                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
                 {
                     PlayerColorG++;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (GetKeyboardState.IsKeyDown(Keys.NumPad9))
+                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad9))
                 {
                     PlayerColorB++;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (GetKeyboardState.IsKeyDown(Keys.NumPad4))
+                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
                 {
                     PlayerColorR--;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (GetKeyboardState.IsKeyDown(Keys.NumPad5))
+                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
                 {
                     PlayerColorG--;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (GetKeyboardState.IsKeyDown(Keys.NumPad6))
+                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
                 {
                     PlayerColorB--;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);

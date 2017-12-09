@@ -33,8 +33,6 @@ namespace MonoGame.Forms.Controls
             if (_Editor != null)
             {
                 _Editor.Draw();
-                GetKeyboardState = KeyboardService.GetState();
-
                 Invalidate();
             }
         }
