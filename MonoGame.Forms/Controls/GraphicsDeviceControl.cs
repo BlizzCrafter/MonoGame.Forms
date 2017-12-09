@@ -73,6 +73,7 @@ namespace MonoGame.Forms.Controls
                     ClientSize.Height);
                 Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
                 Initialize();
+                Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
             }
             base.OnCreateControl();
         }
