@@ -190,13 +190,32 @@ namespace MonoGame.Forms.Controls
 
         #region Input
 
-        public void SetKeyboardInput(bool enable)
+        /// <summary>
+        /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
+        /// </summary>
+        protected bool AlwaysEnableKeyboardInput { get; set; } = false;
+
+        private void SetKeyboardInput(bool enable)
         {
             var keyboardType = typeof(Microsoft.Xna.Framework.Input.Keyboard);
             var methodInfo = keyboardType.GetMethod("SetActive", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             methodInfo.Invoke(null, new object[] { enable });
         }
-        
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+
+            SetKeyboardInput(true);
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+
+            if (!AlwaysEnableKeyboardInput) SetKeyboardInput(false);
+        }
+
         public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);
         public event MouseWheelUpwardsEvent OnMouseWheelUpwards;
         public delegate void MouseWheelDownwardsEvent(MouseEventArgs e);
