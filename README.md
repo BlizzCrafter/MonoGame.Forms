@@ -12,7 +12,7 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 
 The following is required to successfully compile the solution:
 
-- MonoGame 3.6 (WindowsDX)
+- MonoGame 3.7.0.1114 (WindowsDX) [Precompiled + Included]
 - Visual Studio 2015
 
 # How-To
