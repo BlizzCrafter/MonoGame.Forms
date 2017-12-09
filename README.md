@@ -167,3 +167,8 @@ GitHub: [PenumbraPhysics.Editor](https://github.com/sqrMin1/PenumbraPhysics.Edit
 [![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
 
 ![Logo](https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_Shadow_256.png)
+
+### Special Thanks
+- nkast from the MonoGame community
+- everyone else from the official [MonoGame.Forms_Thread](http://community.monogame.net/t/monogame-forms-create-your-editor-environment/9954)
+- the awesome MonoGame community itself :)
