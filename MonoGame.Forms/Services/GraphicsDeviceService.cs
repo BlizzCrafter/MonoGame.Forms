@@ -35,7 +35,7 @@ namespace MonoGame.Forms.Services
                 IsFullScreen = false
             };
             GraphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
-                                                         GraphicsProfile.Reach,
+                                                         GraphicsProfile.HiDef,
                                                          _parameters);
         }
 
