@@ -103,5 +103,13 @@ namespace MonoGame.Forms.Tests.Tests
 
             if (ShowDebugDisplay) Editor.DrawDisplay();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            OnMouseWheelUpwards -= MapHost_OnMouseWheelUpwards;
+            OnMouseWheelDownwards -= MapHost_OnMouseWheelDownwards;
+
+            base.Dispose(disposing);
+        }
     }
 }
