@@ -10,9 +10,18 @@
     <projectUrl>https://github.com/sqrMin1/MonoGame.Forms</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window to your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
-    <releaseNotes>Now with native Mouse Input and Keyboard Input from the MonoGame Framework!</releaseNotes>
+    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
+    <releaseNotes> You can now set the GraphicsProfile to "Reach" or "HiDef" from the property grid during Design-Time. Added missing Monogame.Framework dependencies to the .nuspec file.</releaseNotes>
     <copyright>Copyright (c) 2017 Marcel 'sqrMin1' Härtel</copyright>
     <tags>MonoGame WindowsForms</tags>
+	<references>
+		<group targetFramework="net451">
+		<reference file="MonoGame.Forms.dll" />
+        <reference file="MonoGame.Framework.dll" />
+		</group>
+	</references>
   </metadata>
+  <files>
+    <file src="..\Libs\**" target="lib\net451" />
+</files>
 </package>
