@@ -22,7 +22,7 @@ namespace MonoGame.Forms.Services
         private static int _referenceCount;
         private readonly PresentationParameters _parameters;
 
-        private GraphicsDeviceService(IntPtr windowHandle, int width, int height)
+        private GraphicsDeviceService(IntPtr windowHandle, int width, int height, GraphicsProfile graphicsProfile)
         {
             _parameters = new PresentationParameters
             {
@@ -35,7 +35,7 @@ namespace MonoGame.Forms.Services
                 IsFullScreen = false
             };
             GraphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
-                                                         GraphicsProfile.HiDef,
+                                                         graphicsProfile,
                                                          _parameters);
         }
 
@@ -47,11 +47,11 @@ namespace MonoGame.Forms.Services
         public event EventHandler<EventArgs> DeviceReset;
         public event EventHandler<EventArgs> DeviceResetting;
 
-        public static GraphicsDeviceService AddRef(IntPtr windowHandle, int width, int height)
+        public static GraphicsDeviceService AddRef(IntPtr windowHandle, int width, int height, GraphicsProfile graphicsProfile)
         {
             if (Interlocked.Increment(ref _referenceCount) == 1)
             {
-                _singletonInstance = new GraphicsDeviceService(windowHandle, width, height);
+                _singletonInstance = new GraphicsDeviceService(windowHandle, width, height, graphicsProfile);
             }
             return _singletonInstance;
         }

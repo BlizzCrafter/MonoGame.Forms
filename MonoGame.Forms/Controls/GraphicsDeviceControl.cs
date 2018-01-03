@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
+using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
@@ -35,6 +36,14 @@ namespace MonoGame.Forms.Controls
         }
 
         /// <summary>
+        /// Set the <see cref="Microsoft.Xna.Framework.Graphics.GraphicsProfile"/> in the property grid during Design-Time (HiDef or Reach).
+        /// You shouldn't change this during Run-Time!
+        /// </summary>
+        [Browsable(true)]
+        [DefaultValue(GraphicsProfile.Reach)]
+        public GraphicsProfile GraphicsProfile { get; set; } = GraphicsProfile.Reach;
+
+        /// <summary>
         /// A swap chain used for rendering to a secondary GameWindow.
         /// Note: When working with different <see cref="RenderTarget2D"/>, 
         /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
@@ -42,12 +51,14 @@ namespace MonoGame.Forms.Controls
         /// Otherwise you will see only a black control window.
         /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
+        [Browsable(false)]
         public SwapChainRenderTarget SwapChainRenderTarget { get { return _chain; } }
         private SwapChainRenderTarget _chain;
 
         /// <summary>
         /// Get the GraphicsDevice.
         /// </summary>
+        [Browsable(false)]
         public GraphicsDevice GraphicsDevice => _graphicsDeviceService.GraphicsDevice;
 
         /// <summary>
@@ -65,7 +76,7 @@ namespace MonoGame.Forms.Controls
         {
             if (!designMode)
             {
-                _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height);
+                _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
                 _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
                     ClientSize.Height);
                 Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
@@ -82,6 +93,8 @@ namespace MonoGame.Forms.Controls
                 _graphicsDeviceService.Release(disposing);
                 _graphicsDeviceService = null;
             }
+            OnMouseWheelDownwards = null;
+            OnMouseWheelUpwards = null;
             base.Dispose(disposing);
         }
 
@@ -217,8 +230,13 @@ namespace MonoGame.Forms.Controls
         }
 
         public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);
+        [DisplayName("MouseWheelUp")]
+        [Description("Scroll the mouse wheel upwards to trigger this event.")]
         public event MouseWheelUpwardsEvent OnMouseWheelUpwards;
+
         public delegate void MouseWheelDownwardsEvent(MouseEventArgs e);
+        [DisplayName("MouseWheelDown")]
+        [Description("Scroll the mouse wheel downwards to trigger this event.")]
         public event MouseWheelDownwardsEvent OnMouseWheelDownwards;
 
         protected override void OnMouseWheel(MouseEventArgs e)
