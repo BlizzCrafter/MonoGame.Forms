@@ -93,8 +93,6 @@ namespace MonoGame.Forms.Controls
                 _graphicsDeviceService.Release(disposing);
                 _graphicsDeviceService = null;
             }
-            OnMouseWheelDownwards = null;
-            OnMouseWheelUpwards = null;
             base.Dispose(disposing);
         }
 
