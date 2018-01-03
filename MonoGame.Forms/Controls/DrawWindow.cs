@@ -1,4 +1,5 @@
 ﻿using MonoGame.Forms.Services;
+using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
@@ -12,6 +13,7 @@ namespace MonoGame.Forms.Controls
         /// <summary>
         /// The <see cref="DrawService"/> of the <see cref="DrawWindow"/> draws the actual content of the draw control.
         /// </summary>
+        [Browsable(false)]
         public DrawService Editor { get { return _Editor; } }
         private DrawService _Editor;
 

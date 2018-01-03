@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MonoGame.Forms.Services;
+using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
 {
@@ -13,6 +14,7 @@ namespace MonoGame.Forms.Controls
         /// <summary>
         /// The <see cref="UpdateService"/> of the <see cref="UpdateWindow"/> draws and updates the actual content of the update control.
         /// </summary>
+        [Browsable(false)]
         public UpdateService Editor { get { return _Editor; } }
         private UpdateService _Editor;
 
