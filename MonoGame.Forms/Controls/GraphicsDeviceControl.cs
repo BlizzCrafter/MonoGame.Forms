@@ -147,6 +147,21 @@ namespace MonoGame.Forms.Controls
             }
         }
 
+        protected override void OnClientSizeChanged(EventArgs e)
+        {
+            base.OnClientSizeChanged(e);
+
+            if (_chain != null)
+            {
+                if (ClientSize.Width > 0 && ClientSize.Height > 0)
+                {
+                    _chain.Dispose();
+                    _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
+                            ClientSize.Height);
+                }
+            }
+        }
+
         private string HandleDeviceReset()
         {
             var deviceNeedsReset = false;
