@@ -114,6 +114,11 @@ namespace MonoGame.Forms.Tests
             MessageBox.Show("[Left Mouse Button] Move Cam\n[Right Mouse Button] Debug Display\n[Middle Mouse Button] Reset Cam\n[XButton1] Previous Map\n[XButton2] Next Map\n[Mouse Wheel] Zoom Cam\n\nImages copyright (c) by FinTerra\nTile Art copyright (c) by Pixel32\n\nOpenGameArt.org\n\nAttribution 3.0 Unported (CC BY 3.0)", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void splitContainerMapHost_VisibleChanged(object sender, EventArgs e)
+        {
+            splitContainerMapHost.SplitterDistance = (int)(splitContainerMapHost.ClientSize.Width * 0.5f);
+        }
+
         #endregion
 
         #region Advanced Input

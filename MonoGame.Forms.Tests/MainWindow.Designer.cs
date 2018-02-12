@@ -53,8 +53,8 @@
             this.buttonResetPlayer = new System.Windows.Forms.Button();
             this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
             this.tabPageMultipleControls = new System.Windows.Forms.TabPage();
+            this.splitContainerMapHost = new System.Windows.Forms.SplitContainer();
             this.buttonHelpControls = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
             this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
@@ -72,10 +72,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
             this.tabPageAdvancedInput.SuspendLayout();
             this.tabPageMultipleControls.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapHost)).BeginInit();
+            this.splitContainerMapHost.Panel1.SuspendLayout();
+            this.splitContainerMapHost.Panel2.SuspendLayout();
+            this.splitContainerMapHost.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -369,13 +369,32 @@
             // 
             // tabPageMultipleControls
             // 
-            this.tabPageMultipleControls.Controls.Add(this.splitContainer1);
+            this.tabPageMultipleControls.Controls.Add(this.splitContainerMapHost);
             this.tabPageMultipleControls.Location = new System.Drawing.Point(4, 25);
             this.tabPageMultipleControls.Name = "tabPageMultipleControls";
             this.tabPageMultipleControls.Size = new System.Drawing.Size(728, 399);
             this.tabPageMultipleControls.TabIndex = 5;
             this.tabPageMultipleControls.Text = "Multiple Controls";
             this.tabPageMultipleControls.UseVisualStyleBackColor = true;
+            // 
+            // splitContainerMapHost
+            // 
+            this.splitContainerMapHost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMapHost.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMapHost.Name = "splitContainerMapHost";
+            // 
+            // splitContainerMapHost.Panel1
+            // 
+            this.splitContainerMapHost.Panel1.Controls.Add(this.buttonHelpControls);
+            this.splitContainerMapHost.Panel1.Controls.Add(this.multipleControls_First_Test1);
+            // 
+            // splitContainerMapHost.Panel2
+            // 
+            this.splitContainerMapHost.Panel2.Controls.Add(this.multipleControls_Second_Test1);
+            this.splitContainerMapHost.Size = new System.Drawing.Size(728, 399);
+            this.splitContainerMapHost.SplitterDistance = 350;
+            this.splitContainerMapHost.TabIndex = 3;
+            this.splitContainerMapHost.VisibleChanged += new System.EventHandler(this.splitContainerMapHost_VisibleChanged);
             // 
             // buttonHelpControls
             // 
@@ -388,24 +407,6 @@
             this.buttonHelpControls.Text = "Help";
             this.buttonHelpControls.UseVisualStyleBackColor = true;
             this.buttonHelpControls.Click += new System.EventHandler(this.buttonHelpControls_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.buttonHelpControls);
-            this.splitContainer1.Panel1.Controls.Add(this.multipleControls_First_Test1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.multipleControls_Second_Test1);
-            this.splitContainer1.Size = new System.Drawing.Size(728, 399);
-            this.splitContainer1.SplitterDistance = 350;
-            this.splitContainer1.TabIndex = 3;
             // 
             // multipleControls_First_Test1
             // 
@@ -522,10 +523,10 @@
             this.tabPageAdvancedInput.ResumeLayout(false);
             this.tabPageAdvancedInput.PerformLayout();
             this.tabPageMultipleControls.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainerMapHost.Panel1.ResumeLayout(false);
+            this.splitContainerMapHost.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapHost)).EndInit();
+            this.splitContainerMapHost.ResumeLayout(false);
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -570,7 +571,7 @@
         private Tests.MultipleControls_b_Test multipleControls_Second_Test1;
         private System.Windows.Forms.Button buttonHelpControls;
         private System.Windows.Forms.Button buttonHelpInput;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainerMapHost;
     }
 }
 
