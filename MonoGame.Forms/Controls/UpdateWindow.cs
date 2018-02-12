@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MonoGame.Forms.Services;
+using System;
 using System.ComponentModel;
 
 namespace MonoGame.Forms.Controls
@@ -50,6 +51,16 @@ namespace MonoGame.Forms.Controls
         protected override void Draw()
         {
             if (_Editor != null) _Editor.Draw();
+        }
+
+        /// <summary>
+        /// Updates the camera position according to the changed <see cref="System.Windows.Forms.Control.ClientSize"/>.
+        /// </summary>
+        protected override void OnClientSizeChanged(EventArgs e)
+        {
+            base.OnClientSizeChanged(e);
+
+            if (Editor != null) Editor.CamHoldPosition(ClientSize);
         }
     }
 }
