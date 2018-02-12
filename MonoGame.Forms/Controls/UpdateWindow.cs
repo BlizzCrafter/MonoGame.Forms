@@ -62,10 +62,20 @@ namespace MonoGame.Forms.Controls
 
             if (Editor != null) Editor.CamHoldPosition(ClientSize);
         }
-        
+
         /// <summary>
-         /// Disposes the contents of the attached Editor.
-         /// </summary>
+        /// In case the ClientSize was changed before activating the window, the cam position gets updated according to this changes.
+        /// </summary>
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+
+            if (Editor != null) Editor.CamHoldPosition(ClientSize);
+        }
+
+        /// <summary>
+        /// Disposes the contents of the attached Editor.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
