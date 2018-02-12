@@ -10,7 +10,7 @@ namespace MonoGame.Forms.Services
     /// The <see cref="DrawWindow"/> inherits from this class.
     /// <remarks>Note: this class provides no game loop. Only the <see cref="UpdateService"/> deliveres one.</remarks>
     /// </summary>
-    public sealed class DrawService : GFXService
+    public sealed class DrawService : GFXService, IDisposable
     {
         internal DrawService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
@@ -39,6 +39,16 @@ namespace MonoGame.Forms.Services
         public override void Draw()
         {
             graphics.Clear(BackgroundColor);
+        }
+
+        /// <summary>
+        /// Disposes the contents of this draw service.
+        /// </summary>
+        public void Dispose()
+        {
+            Content?.Dispose();
+            Font = null;
+            Format = null;
         }
     }
 }

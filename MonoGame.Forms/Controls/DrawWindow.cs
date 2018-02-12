@@ -49,5 +49,15 @@ namespace MonoGame.Forms.Controls
 
             if (Editor != null) Editor.CamHoldPosition(ClientSize);
         }
+
+        /// <summary>
+        /// Disposes the contents of the attached Editor.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            _Editor?.Dispose();
+        }
     }
 }

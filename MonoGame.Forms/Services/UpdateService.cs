@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
+using System;
 
 namespace MonoGame.Forms.Services
 {
@@ -9,7 +10,7 @@ namespace MonoGame.Forms.Services
     /// The <see cref="UpdateWindow"/> inherits from this class.
     /// <remarks>Note: this class provides a game loop. The <see cref="DrawService"/> is not using a game loop.</remarks>
     /// </summary>
-    public sealed class UpdateService : GFXService
+    public sealed class UpdateService : GFXService, IDisposable
     {
         internal UpdateService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
@@ -46,6 +47,16 @@ namespace MonoGame.Forms.Services
             UpdateFrameCounter();
 
             graphics.Clear(BackgroundColor);
+        }
+
+        /// <summary>
+        /// Disposes the contents of this update service.
+        /// </summary>
+        public void Dispose()
+        {
+            Content?.Dispose();
+            Font = null;
+            Format = null;
         }
     }
 }
