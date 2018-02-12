@@ -33,8 +33,10 @@
             this.tabPageWelcome = new System.Windows.Forms.TabPage();
             this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.buttonEdit = new System.Windows.Forms.Button();
+            this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
             this.tabPageDrawControl = new System.Windows.Forms.TabPage();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
+            this.drawTestControl = new MonoGame.Forms.Tests.Tests.DrawTest();
             this.tabPageUpdateControl = new System.Windows.Forms.TabPage();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
@@ -43,13 +45,18 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
+            this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
             this.tabPageAdvancedInput = new System.Windows.Forms.TabPage();
             this.buttonHelpInput = new System.Windows.Forms.Button();
             this.checkBoxShowHelp = new System.Windows.Forms.CheckBox();
             this.checkBoxShowStats = new System.Windows.Forms.CheckBox();
             this.buttonResetPlayer = new System.Windows.Forms.Button();
+            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
             this.tabPageMultipleControls = new System.Windows.Forms.TabPage();
             this.buttonHelpControls = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
+            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -57,12 +64,6 @@
             this.toolStripDropDownButtonWiki = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitter = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitterEngine = new System.Windows.Forms.ToolStripDropDownButton();
-            this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
-            this.drawTestControl = new MonoGame.Forms.Tests.Tests.DrawTest();
-            this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
-            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
-            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
-            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
@@ -71,6 +72,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).BeginInit();
             this.tabPageAdvancedInput.SuspendLayout();
             this.tabPageMultipleControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -116,6 +121,7 @@
             // 
             // buttonEdit
             // 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEdit.Location = new System.Drawing.Point(650, 3);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 23);
@@ -123,6 +129,15 @@
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // welcomeControl
+            // 
+            this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.welcomeControl.Location = new System.Drawing.Point(0, 0);
+            this.welcomeControl.Name = "welcomeControl";
+            this.welcomeControl.Size = new System.Drawing.Size(728, 399);
+            this.welcomeControl.TabIndex = 3;
+            this.welcomeControl.Text = "Welcome to MonoGame.Forms!";
             // 
             // tabPageDrawControl
             // 
@@ -149,6 +164,15 @@
             this.textBoxTestText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTestText.TextChanged += new System.EventHandler(this.textBoxTestText_TextChanged);
             // 
+            // drawTestControl
+            // 
+            this.drawTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawTestControl.Location = new System.Drawing.Point(3, 3);
+            this.drawTestControl.Name = "drawTestControl";
+            this.drawTestControl.Size = new System.Drawing.Size(722, 393);
+            this.drawTestControl.TabIndex = 3;
+            this.drawTestControl.Text = "This \'DrawWindow\' has no game loop, but it\'s updated through invalidation!";
+            // 
             // tabPageUpdateControl
             // 
             this.tabPageUpdateControl.Controls.Add(this.buttonHelp);
@@ -169,6 +193,7 @@
             // 
             // buttonHelp
             // 
+            this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelp.Location = new System.Drawing.Point(9, 338);
             this.buttonHelp.Name = "buttonHelp";
@@ -180,6 +205,8 @@
             // 
             // trackBarCamZoom
             // 
+            this.trackBarCamZoom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarCamZoom.LargeChange = 1;
             this.trackBarCamZoom.Location = new System.Drawing.Point(664, 6);
             this.trackBarCamZoom.Maximum = 8;
@@ -192,6 +219,7 @@
             // 
             // checkBoxCam
             // 
+            this.checkBoxCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxCam.AutoSize = true;
             this.checkBoxCam.Location = new System.Drawing.Point(149, 369);
             this.checkBoxCam.Name = "checkBoxCam";
@@ -203,6 +231,7 @@
             // 
             // checkBoxCursor
             // 
+            this.checkBoxCursor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxCursor.AutoSize = true;
             this.checkBoxCursor.Checked = true;
             this.checkBoxCursor.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -216,6 +245,7 @@
             // 
             // checkBoxFPS
             // 
+            this.checkBoxFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxFPS.AutoSize = true;
             this.checkBoxFPS.Checked = true;
             this.checkBoxFPS.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -229,6 +259,7 @@
             // 
             // buttonResetCam
             // 
+            this.buttonResetCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetCam.Location = new System.Drawing.Point(611, 308);
             this.buttonResetCam.Name = "buttonResetCam";
             this.buttonResetCam.Size = new System.Drawing.Size(109, 30);
@@ -239,6 +270,7 @@
             // 
             // buttonMoveCam
             // 
+            this.buttonMoveCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMoveCam.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.buttonMoveCam.Location = new System.Drawing.Point(611, 344);
             this.buttonMoveCam.Name = "buttonMoveCam";
@@ -249,6 +281,17 @@
             this.buttonMoveCam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseDown);
             this.buttonMoveCam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseMove);
             this.buttonMoveCam.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseUp);
+            // 
+            // updateTestControl
+            // 
+            this.updateTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateTestControl.Location = new System.Drawing.Point(3, 3);
+            this.updateTestControl.Name = "updateTestControl";
+            this.updateTestControl.Size = new System.Drawing.Size(722, 393);
+            this.updateTestControl.TabIndex = 8;
+            this.updateTestControl.Text = "This \'UpdateWindow\' has a game loop! Use it for complex \'GameTime\' based mechanic" +
+    "s.";
+            this.updateTestControl.VisibleChanged += new System.EventHandler(this.updateTestControl_VisibleChanged);
             // 
             // tabPageAdvancedInput
             // 
@@ -266,6 +309,7 @@
             // 
             // buttonHelpInput
             // 
+            this.buttonHelpInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonHelpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelpInput.Location = new System.Drawing.Point(114, 360);
             this.buttonHelpInput.Name = "buttonHelpInput";
@@ -277,6 +321,7 @@
             // 
             // checkBoxShowHelp
             // 
+            this.checkBoxShowHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxShowHelp.AutoSize = true;
             this.checkBoxShowHelp.Checked = true;
             this.checkBoxShowHelp.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -290,6 +335,7 @@
             // 
             // checkBoxShowStats
             // 
+            this.checkBoxShowStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxShowStats.AutoSize = true;
             this.checkBoxShowStats.Checked = true;
             this.checkBoxShowStats.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -303,6 +349,7 @@
             // 
             // buttonResetPlayer
             // 
+            this.buttonResetPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonResetPlayer.Location = new System.Drawing.Point(8, 360);
             this.buttonResetPlayer.Name = "buttonResetPlayer";
             this.buttonResetPlayer.Size = new System.Drawing.Size(100, 31);
@@ -311,11 +358,18 @@
             this.buttonResetPlayer.UseVisualStyleBackColor = true;
             this.buttonResetPlayer.Click += new System.EventHandler(this.buttonResetPlayer_Click);
             // 
+            // advancedControlsTest
+            // 
+            this.advancedControlsTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.advancedControlsTest.Location = new System.Drawing.Point(0, 0);
+            this.advancedControlsTest.Name = "advancedControlsTest";
+            this.advancedControlsTest.Size = new System.Drawing.Size(728, 399);
+            this.advancedControlsTest.TabIndex = 0;
+            this.advancedControlsTest.Text = "This is a advanced controls test!";
+            // 
             // tabPageMultipleControls
             // 
-            this.tabPageMultipleControls.Controls.Add(this.buttonHelpControls);
-            this.tabPageMultipleControls.Controls.Add(this.multipleControls_Second_Test1);
-            this.tabPageMultipleControls.Controls.Add(this.multipleControls_First_Test1);
+            this.tabPageMultipleControls.Controls.Add(this.splitContainer1);
             this.tabPageMultipleControls.Location = new System.Drawing.Point(4, 25);
             this.tabPageMultipleControls.Name = "tabPageMultipleControls";
             this.tabPageMultipleControls.Size = new System.Drawing.Size(728, 399);
@@ -325,6 +379,7 @@
             // 
             // buttonHelpControls
             // 
+            this.buttonHelpControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonHelpControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelpControls.Location = new System.Drawing.Point(3, 372);
             this.buttonHelpControls.Name = "buttonHelpControls";
@@ -333,6 +388,42 @@
             this.buttonHelpControls.Text = "Help";
             this.buttonHelpControls.UseVisualStyleBackColor = true;
             this.buttonHelpControls.Click += new System.EventHandler(this.buttonHelpControls_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.buttonHelpControls);
+            this.splitContainer1.Panel1.Controls.Add(this.multipleControls_First_Test1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.multipleControls_Second_Test1);
+            this.splitContainer1.Size = new System.Drawing.Size(728, 399);
+            this.splitContainer1.SplitterDistance = 350;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // multipleControls_First_Test1
+            // 
+            this.multipleControls_First_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.multipleControls_First_Test1.Location = new System.Drawing.Point(0, 0);
+            this.multipleControls_First_Test1.Name = "multipleControls_First_Test1";
+            this.multipleControls_First_Test1.Size = new System.Drawing.Size(350, 399);
+            this.multipleControls_First_Test1.TabIndex = 0;
+            this.multipleControls_First_Test1.Text = "multipleControls_First_Test";
+            // 
+            // multipleControls_Second_Test1
+            // 
+            this.multipleControls_Second_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.multipleControls_Second_Test1.Location = new System.Drawing.Point(0, 0);
+            this.multipleControls_Second_Test1.Name = "multipleControls_Second_Test1";
+            this.multipleControls_Second_Test1.Size = new System.Drawing.Size(374, 399);
+            this.multipleControls_Second_Test1.TabIndex = 1;
+            this.multipleControls_Second_Test1.Text = "multipleControls_Second_Test";
             // 
             // tabPageInfo
             // 
@@ -410,71 +501,12 @@
             this.toolStripDropDownButtonTwitterEngine.Text = "#RogueEngineEditor";
             this.toolStripDropDownButtonTwitterEngine.Click += new System.EventHandler(this.toolStripDropDownButtonTwitterEngine_Click);
             // 
-            // welcomeControl
-            // 
-            this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.welcomeControl.Location = new System.Drawing.Point(0, 0);
-            this.welcomeControl.Name = "welcomeControl";
-            this.welcomeControl.Size = new System.Drawing.Size(728, 399);
-            this.welcomeControl.TabIndex = 3;
-            this.welcomeControl.Text = "Welcome to MonoGame.Forms!";
-            // 
-            // drawTestControl
-            // 
-            this.drawTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawTestControl.Location = new System.Drawing.Point(3, 3);
-            this.drawTestControl.Name = "drawTestControl";
-            this.drawTestControl.Size = new System.Drawing.Size(722, 393);
-            this.drawTestControl.TabIndex = 3;
-            this.drawTestControl.Text = "This \'DrawWindow\' has no game loop, but it\'s updated through invalidation!";
-            // 
-            // updateTestControl
-            // 
-            this.updateTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateTestControl.Location = new System.Drawing.Point(3, 3);
-            this.updateTestControl.Name = "updateTestControl";
-            this.updateTestControl.Size = new System.Drawing.Size(722, 393);
-            this.updateTestControl.TabIndex = 8;
-            this.updateTestControl.Text = "This \'UpdateWindow\' has a game loop! Use it for complex \'GameTime\' based mechanic" +
-    "s.";
-            this.updateTestControl.VisibleChanged += new System.EventHandler(this.updateTestControl_VisibleChanged);
-            // 
-            // advancedControlsTest
-            // 
-            this.advancedControlsTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.advancedControlsTest.Location = new System.Drawing.Point(0, 0);
-            this.advancedControlsTest.Name = "advancedControlsTest";
-            this.advancedControlsTest.Size = new System.Drawing.Size(728, 399);
-            this.advancedControlsTest.TabIndex = 0;
-            this.advancedControlsTest.Text = "This is a advanced controls test!";
-            // 
-            // multipleControls_Second_Test1
-            // 
-            this.multipleControls_Second_Test1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.multipleControls_Second_Test1.Location = new System.Drawing.Point(352, 0);
-            this.multipleControls_Second_Test1.Name = "multipleControls_Second_Test1";
-            this.multipleControls_Second_Test1.Size = new System.Drawing.Size(376, 399);
-            this.multipleControls_Second_Test1.TabIndex = 1;
-            this.multipleControls_Second_Test1.Text = "multipleControls_Second_Test";
-            // 
-            // multipleControls_First_Test1
-            // 
-            this.multipleControls_First_Test1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.multipleControls_First_Test1.Location = new System.Drawing.Point(0, 0);
-            this.multipleControls_First_Test1.Name = "multipleControls_First_Test1";
-            this.multipleControls_First_Test1.Size = new System.Drawing.Size(346, 399);
-            this.multipleControls_First_Test1.TabIndex = 0;
-            this.multipleControls_First_Test1.Text = "multipleControls_First_Test";
-            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(736, 428);
             this.Controls.Add(this.tabControlEditorSwitch);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MonoGame.Forms";
@@ -490,6 +522,10 @@
             this.tabPageAdvancedInput.ResumeLayout(false);
             this.tabPageAdvancedInput.PerformLayout();
             this.tabPageMultipleControls.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -534,6 +570,7 @@
         private Tests.MultipleControls_b_Test multipleControls_Second_Test1;
         private System.Windows.Forms.Button buttonHelpControls;
         private System.Windows.Forms.Button buttonHelpInput;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
