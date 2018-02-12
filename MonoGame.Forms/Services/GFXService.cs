@@ -220,6 +220,25 @@ namespace MonoGame.Forms.Services
             CurrentWorldShiftY = 0;
             Cam.GetZoom = 1f;
             Cam.GetRotation = 0f;
+
+            Cam.GetPosition = new Vector2(
+                graphics.Viewport.Width / 2, graphics.Viewport.Height / 2);
+        }
+        
+        internal void CamHoldPosition(System.Drawing.Size newClientSize)
+        {
+            if (Cam != null && graphics != null)
+            {
+                Cam.GetPosition = new Vector2(newClientSize.Width / 2, newClientSize.Height / 2);
+
+                float oldCamPoxX = CurrentWorldShiftX;
+                float oldCamPoxY = CurrentWorldShiftY;
+
+                CurrentWorldShiftX = 0;
+                CurrentWorldShiftY = 0;
+
+                MoveCam(new Vector2(oldCamPoxX, oldCamPoxY));
+            }
         }
 
         /// <summary>
