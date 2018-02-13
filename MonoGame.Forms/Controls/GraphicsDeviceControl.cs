@@ -158,6 +158,9 @@ namespace MonoGame.Forms.Controls
                     _chain.Dispose();
                     _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
                             ClientSize.Height);
+
+                    GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+                    GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
                 }
             }
         }
