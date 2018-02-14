@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
-    <releaseNotes>Hotfix: The **PresentationParameters** of the **GraphicsDevice** are now correctly updated when resizing a control.</releaseNotes>
+    <releaseNotes>Added the bool property "AutomaticInvalidation" to the DrawWindow and UpdateWindow / GameControl classes, so it's possible to turn the invalidation of the controls on and off. This is useful when working with NodeGraphEditors where the automatic invalidations would block the whole NodeGraph.</releaseNotes>
     <copyright>Copyright (c) 2017 Marcel 'sqrMin1' Härtel</copyright>
     <tags>MonoGame WindowsForms</tags>
 	<references>
