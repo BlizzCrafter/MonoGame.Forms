@@ -153,7 +153,8 @@
             // 
             this.textBoxTestText.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBoxTestText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxTestText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTestText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTestText.ForeColor = System.Drawing.SystemColors.Control;
             this.textBoxTestText.Location = new System.Drawing.Point(3, 346);
             this.textBoxTestText.Multiline = true;
             this.textBoxTestText.Name = "textBoxTestText";
