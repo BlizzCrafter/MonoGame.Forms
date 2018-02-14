@@ -37,10 +37,29 @@ namespace MonoGame.Forms.Tests
             drawTestControl.WelcomeMessage = textBoxTestText.Text;
         }
 
+        private void buttonInvalidate_Click(object sender, EventArgs e)
+        {
+            drawTestControl.Invalidate();
+        }
+
+        private void radioButtonAutoInvalidateOn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAutoInvalidateOn.Checked)
+            {
+                drawTestControl.GetAutoInvalidation = true;
+                drawTestControl.Invalidate();
+            }
+        }
+
+        private void radioButtonAutoInvalidateOff_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAutoInvalidateOff.Checked) drawTestControl.GetAutoInvalidation = false;
+        }
+
         #endregion
 
         #region Update Window
-        
+
         bool CamButtonMouseDown = false;
         System.Drawing.Point CamButtonFirstMouseDownPosition;
         
