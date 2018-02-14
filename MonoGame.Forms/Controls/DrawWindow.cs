@@ -19,6 +19,21 @@ namespace MonoGame.Forms.Controls
         private DrawService _Editor;
 
         /// <summary>
+        /// "true" if you want the editor view automatically updates itself.
+        /// Set this to "false" to update the editor view manually by calling "Invalidate()" on a custom control.
+        /// </summary>
+        /// <remarks>
+        /// This option is useful when you are using a MonoGame.Forms render control inside a NodeGraphEditor for example and you don't want to block the
+        /// whole NodeGraph with the invalidations taking place here.
+        /// </remarks>
+        protected bool AutomaticInvalidation
+        {
+            get { return _AutomaticInvalidation; }
+            set { _AutomaticInvalidation = value; }
+        }
+        private bool _AutomaticInvalidation = true;
+
+        /// <summary>
         /// Basic initializing.
         /// </summary>
         protected override void Initialize()
@@ -36,7 +51,7 @@ namespace MonoGame.Forms.Controls
             if (_Editor != null)
             {
                 _Editor.Draw();
-                Invalidate();
+                if (AutomaticInvalidation) Invalidate();
             }
         }
 

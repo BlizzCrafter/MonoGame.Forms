@@ -7,8 +7,14 @@ namespace MonoGame.Forms.Tests.Tests
     public class DrawTest : DrawWindow
     {
         public string WelcomeMessage = "This is a draw window without a real game loop,\nbut it's updated through invalidation.\n\nTry it with the text box below!";
-
+        
         SpriteFont DrawFont;
+        
+        public bool GetAutoInvalidation
+        {
+            get { return AutomaticInvalidation; }
+            set { AutomaticInvalidation = value; }
+        }
 
         protected override void Initialize()
         {
