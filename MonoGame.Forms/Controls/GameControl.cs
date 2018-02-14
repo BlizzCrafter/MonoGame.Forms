@@ -60,7 +60,7 @@ namespace MonoGame.Forms.Controls
 
         private void GameLoop()
         {
-            if (Visible)
+            if (Visible && AutomaticInvalidation)
             {
                 gameTime = new GameTime(timer.Elapsed, timer.Elapsed - elapsed);
                 elapsed = timer.Elapsed;
@@ -78,7 +78,7 @@ namespace MonoGame.Forms.Controls
                 }
 
                 Update(gameTime);
-                if (AutomaticInvalidation) Invalidate();
+                Invalidate();
             }
         }
 
