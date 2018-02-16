@@ -35,7 +35,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public void AddService<T>(T service)
         {
-            _services.Add(typeof(T), service);
+            if (!_services.ContainsKey(typeof(T))) _services.Add(typeof(T), service);
         }
     }
 }
