@@ -13,6 +13,25 @@ namespace MonoGame.Forms.Services
     public abstract class GFXService : IGFXInterface
     {
         /// <summary>
+        /// DisplayStyle enumerations for the integrated display.
+        /// </summary>
+        public enum DisplayStyle
+        {
+            /// <summary>
+            /// Draws the integrated display in the top left corner of the custom control.
+            /// </summary>
+            TopLeft,
+            /// <summary>
+            /// Draws the integrated display in the top right corner of the custom control.
+            /// </summary>
+            TopRight
+        }
+        /// <summary>
+        /// Directly sets the <see cref="DisplayStyle"/> of the integrated display.
+        /// </summary>
+        public DisplayStyle SetDisplayStyle { get; set; } = DisplayStyle.TopLeft;
+
+        /// <summary>
         /// The <see cref="ContentManager"/> is for loading custom content from the content root.
         /// </summary>
         public ContentManager Content { get; set; }
@@ -65,20 +84,40 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// This formats the fps style.
         /// </summary>
-        public NumberFormatInfo Format { get; set; }
+        private NumberFormatInfo Format { get; set; }
         /// <summary>
         /// The elapsed <see cref="GameTime"/>.
         /// </summary>
-        public TimeSpan ElapsedTime { get; set; } = TimeSpan.Zero;
+        private TimeSpan ElapsedTime { get; set; } = TimeSpan.Zero;
         /// <summary>
         /// The frame counter used by the fps display.
         /// </summary>
-        public int FrameCounter { get; set; }
+        private int FrameCounter { get; set; }
         /// <summary>
         /// The actual frames per second (FPS).
         /// </summary>
-        public int FrameRate { get; set; }
-        
+        private int FrameRate { get; set; }
+
+        /// <summary>
+        /// Height of the display Font - Cached in InitializeGFX().
+        /// </summary>
+        private float FontHeight;
+
+        /// <summary>
+        /// Show or hide the 'FPS' (frames per second) of the corresponding control / window.
+        /// </summary>
+        public bool ShowFPS { get; set; } = true;
+
+        /// <summary>
+        /// Show or hide the 'cursor position' of the corresponding control / window.
+        /// </summary>
+        public bool ShowCursorPosition { get; set; } = true;
+
+        /// <summary>
+        /// Show or hide the 'cam position' of the corresponding control / window.
+        /// </summary>
+        public bool ShowCamPosition { get; set; } = false;
+
         /// <summary>
         /// Initializes the GFX system, which contains basic MonoGame functionality.
         /// </summary>
@@ -97,6 +136,7 @@ namespace MonoGame.Forms.Services
             
             InternContent = new ResourceContentManager(services, Properties.Resources.ResourceManager);
             Font = InternContent.Load<SpriteFont>("Font");
+            FontHeight = Font.MeasureString("A").Y;
 
             Format = new System.Globalization.NumberFormatInfo();
             Format.CurrencyDecimalSeparator = ".";
@@ -132,33 +172,20 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public void DrawDisplay()
         {
-            if (Settings.ShowFPS || Settings.ShowCursorPosition || Settings.ShowCamPosition)
+            if (ShowFPS || ShowCursorPosition || ShowCamPosition)
             {
                 spriteBatch.Begin();
 
-                string fps = string.Format(Format, "{0} fps", FrameRate);
-
-                if (Settings.ShowFPS)
-                {
-                    // Draw FPS display
-                    spriteBatch.DrawString(Font, fps, new Vector2(5, 0), Color.White);
-                }
-
-                if (Settings.ShowCursorPosition)
-                {
-                    // Draw FPS display
-                    spriteBatch.DrawString(Font, GetMousePosition.ToString(), new Vector2(
-                        5, (!Settings.ShowFPS ? 0 : Font.MeasureString(fps).Y)), Color.White);
-                }
-
-                if (Settings.ShowCamPosition)
-                {
-                    // Draw FPS display
-                    spriteBatch.DrawString(Font, Cam.GetAbsolutPosition.ToString(), new Vector2(
-                        5, (!Settings.ShowFPS && !Settings.ShowCursorPosition ? 0 :
-                        !Settings.ShowFPS || !Settings.ShowCursorPosition ? Font.MeasureString(fps).Y :
-                        Font.MeasureString(fps).Y * 2)), Color.White);
-                }
+                // Draw FPS display
+                //FPS
+                if (ShowFPS) spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", FrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, 0) : 
+                    new Vector2(graphics.Viewport.Width - Font.MeasureString(string.Format(Format, "{0} fps", FrameRate)).X - 5, 0), Color.White);
+                //Cursor Position
+                if (ShowCursorPosition) spriteBatch.DrawString(Font, GetMousePosition.ToString(), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, ShowFPS ? FontHeight : 0) : 
+                    new Vector2(graphics.Viewport.Width - Font.MeasureString(GetMousePosition.ToString()).X - 5, ShowFPS ? FontHeight : 0), Color.White);
+                //Cam Position
+                if (ShowCamPosition) spriteBatch.DrawString(Font, Cam.GetAbsolutPosition.ToString(), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0) : 
+                    new Vector2(graphics.Viewport.Width - Font.MeasureString(Cam.GetAbsolutPosition.ToString()).X - 5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0), Color.White);
 
                 spriteBatch.End();
             }
