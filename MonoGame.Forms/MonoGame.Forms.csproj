@@ -67,7 +67,6 @@
     <Compile Include="Services\GraphicsDeviceService.cs" />
     <Compile Include="Services\ServiceContainer.cs" />
     <Compile Include="Services\UpdateService.cs" />
-    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Font.xnb" />
