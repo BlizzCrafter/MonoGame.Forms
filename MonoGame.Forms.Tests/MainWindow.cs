@@ -106,17 +106,17 @@ namespace MonoGame.Forms.Tests
 
         private void checkBoxFPS_CheckedChanged(object sender, System.EventArgs e)
         {
-            Settings.ShowFPS = checkBoxFPS.Checked;
+            updateTestControl.Editor.ShowFPS = checkBoxFPS.Checked;
         }
 
         private void checkBoxCursor_CheckedChanged(object sender, System.EventArgs e)
         {
-            Settings.ShowCursorPosition = checkBoxCursor.Checked;
+            updateTestControl.Editor.ShowCursorPosition = checkBoxCursor.Checked;
         }
 
         private void checkBoxCam_CheckedChanged(object sender, System.EventArgs e)
         {
-            Settings.ShowCamPosition = checkBoxCam.Checked;
+            updateTestControl.Editor.ShowCamPosition = checkBoxCam.Checked;
         }
 
         private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
