@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using MonoGame.Forms.Components;
 
 namespace MonoGame.Forms.Services
@@ -20,10 +19,6 @@ namespace MonoGame.Forms.Services
         // Display
         SpriteFont Font { get; set; }
         Vector2 GetMousePosition { get; set; }
-        int FrameCounter { get; set; }
-        TimeSpan ElapsedTime { get; set; }
-        int FrameRate { get; set; }
-        System.Globalization.NumberFormatInfo Format { get; set; }
 
         void MoveCam(Vector2 amount);
         void ResetCam();
