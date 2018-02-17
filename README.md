@@ -29,6 +29,8 @@ Another option is to install the library with the NuGet package manager:
 
 ↳ _This is the prefered and easiest route to be automatically up to date_.
 
+> Note: You need to set the .Net Framework version to 4.5.1 to install from NuGet!
+
 ***
 
 #### Creating a simple [DrawWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/22dd89f4-5c58-230d-049f-923af79f1411)
@@ -138,7 +140,7 @@ which is part of this repo. Take a look at it and learn from its samples.
 
 Here is a funny pic of one of the samples:
 
-![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/sample.PNG)
+![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/UpdateSample.png)
 
 # Projects using MonoGame.Forms!
 
