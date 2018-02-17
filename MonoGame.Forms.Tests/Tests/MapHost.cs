@@ -88,6 +88,7 @@ namespace MonoGame.Forms.Tests.Tests
             OnMouseWheelDownwards += MapHost_OnMouseWheelDownwards;
 
             Editor.BackgroundColor = Color.Black;
+            Editor.ShowCamPosition = true;
         }
 
         protected void DrawMap()
