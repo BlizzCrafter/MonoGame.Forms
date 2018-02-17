@@ -56,7 +56,6 @@ namespace MonoGame.Forms.Services
         {
             Content?.Dispose();
             Font = null;
-            Format = null;
         }
     }
 }
