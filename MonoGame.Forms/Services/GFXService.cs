@@ -99,6 +99,11 @@ namespace MonoGame.Forms.Services
         private int FrameRate { get; set; }
 
         /// <summary>
+        /// Set the font color of the integrated display.
+        /// </summary>
+        public Color DisplayColor { get; set; } = Color.White;
+
+        /// <summary>
         /// Height of the display Font - Cached in InitializeGFX().
         /// </summary>
         private float FontHeight;
@@ -179,13 +184,13 @@ namespace MonoGame.Forms.Services
                 // Draw FPS display
                 //FPS
                 if (ShowFPS) spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", FrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, 0) : 
-                    new Vector2(graphics.Viewport.Width - Font.MeasureString(string.Format(Format, "{0} fps", FrameRate)).X - 5, 0), Color.White);
+                    new Vector2(graphics.Viewport.Width - Font.MeasureString(string.Format(Format, "{0} fps", FrameRate)).X - 5, 0), DisplayColor);
                 //Cursor Position
                 if (ShowCursorPosition) spriteBatch.DrawString(Font, GetMousePosition.ToString(), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, ShowFPS ? FontHeight : 0) : 
-                    new Vector2(graphics.Viewport.Width - Font.MeasureString(GetMousePosition.ToString()).X - 5, ShowFPS ? FontHeight : 0), Color.White);
+                    new Vector2(graphics.Viewport.Width - Font.MeasureString(GetMousePosition.ToString()).X - 5, ShowFPS ? FontHeight : 0), DisplayColor);
                 //Cam Position
                 if (ShowCamPosition) spriteBatch.DrawString(Font, Cam.GetAbsolutPosition.ToString(), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0) : 
-                    new Vector2(graphics.Viewport.Width - Font.MeasureString(Cam.GetAbsolutPosition.ToString()).X - 5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0), Color.White);
+                    new Vector2(graphics.Viewport.Width - Font.MeasureString(Cam.GetAbsolutPosition.ToString()).X - 5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0), DisplayColor);
 
                 spriteBatch.End();
             }
