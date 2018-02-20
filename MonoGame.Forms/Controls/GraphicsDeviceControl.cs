@@ -56,6 +56,13 @@ namespace MonoGame.Forms.Controls
         private SwapChainRenderTarget _chain;
 
         /// <summary>
+        /// Transfers the new <see cref="SwapChainRenderTarget"/> to the editor service object after resizing a custom control.
+        /// <remarks>Make sure to subscribe to this event in your custom control to update your custom <see cref="RenderTarget2D"/>'s
+        /// according to the recent changes in the back buffer (BackBufferWidth and BackBufferHeight).</remarks>
+        /// </summary>
+        protected event Action<SwapChainRenderTarget> UpdateSwapChainRenderTarget = delegate { };
+
+        /// <summary>
         /// Get the GraphicsDevice.
         /// </summary>
         [Browsable(false)]
@@ -161,6 +168,8 @@ namespace MonoGame.Forms.Controls
 
                     GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
                     GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+
+                    UpdateSwapChainRenderTarget?.Invoke(_chain);
                 }
             }
         }
