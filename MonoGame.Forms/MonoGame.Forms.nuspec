@@ -11,7 +11,6 @@
     <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
-    <releaseNotes>The ServiceContainer class now checks if a specific service was already added to the services dictionary to prevent a crash after reinitializing a custom control. Added DisplayStyle enumeration with the options to place the integrated display in the TopLeft or TopRight corner using the new SetDisplayStyle property, which defaults to TopLeft.</releaseNotes>
     <copyright>Copyright (c) 2017 Marcel 'sqrMin1' Härtel</copyright>
     <tags>MonoGame WindowsForms</tags>
 	<references>
