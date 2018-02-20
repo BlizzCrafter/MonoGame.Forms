@@ -28,6 +28,13 @@ namespace MonoGame.Forms.Controls
 
             _Editor = new UpdateService(_graphicsDeviceService, SwapChainRenderTarget);
             _Editor.Initialize();
+
+            UpdateSwapChainRenderTarget += UpdateWindow_UpdateSwapChainRenderTarget;
+        }
+
+        private void UpdateWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
+        {
+            _Editor.SwapChainRenderTarget = obj;
         }
 
         /// <summary>
@@ -81,6 +88,7 @@ namespace MonoGame.Forms.Controls
             base.Dispose(disposing);
 
             _Editor?.Dispose();
+            UpdateSwapChainRenderTarget -= UpdateWindow_UpdateSwapChainRenderTarget;
         }
     }
 }
