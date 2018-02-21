@@ -30,7 +30,7 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected override void Initialize()
         {
-            timer = Stopwatch.StartNew();
+            if (timer == null) timer = Stopwatch.StartNew();
 
             Application.Idle += delegate { GameLoop(); };
         }
