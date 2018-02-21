@@ -15,6 +15,8 @@ The following is required to successfully compile the solution:
 - MonoGame 3.7.0.1114 (WindowsDX) [Precompiled + Included]
 - Visual Studio 2015
 
+> Note: It's possible to use older **MonoGame.Frameworks** like the **3.6** iteration, but you will then lose the **Mouse.GetState()** functionallity. You would then rely on the **WindowsForms Event System** for mouse input, which can be slower in some cases.
+
 # How-To
 #### Setup MonoGame.Forms
 
