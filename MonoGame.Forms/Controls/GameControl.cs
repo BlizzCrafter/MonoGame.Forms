@@ -51,16 +51,13 @@ namespace MonoGame.Forms.Controls
                 gameTime = new GameTime(timer.Elapsed, timer.Elapsed - elapsed);
                 elapsed = timer.Elapsed;
 
-                System.Drawing.Point p = this.PointToClient(
-                    new System.Drawing.Point(Cursor.Position.X, Cursor.Position.Y));
-
                 GetAbsoluteMousePosition = new Vector2(Cursor.Position.X, Cursor.Position.Y);
 
-                if (ClientRectangle.Contains(p))
+                if (IsMouseInsideControl)
                 {
                     GetRelativeMousePosition = new Vector2(
-                        MathHelper.Clamp(p.X, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Width),
-                        MathHelper.Clamp(p.Y, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Height));
+                        MathHelper.Clamp(PointToClient(Cursor.Position).X, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Width),
+                        MathHelper.Clamp(PointToClient(Cursor.Position).Y, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Height));
                 }
 
                 Update(gameTime);
