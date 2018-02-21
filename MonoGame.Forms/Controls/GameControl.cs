@@ -32,7 +32,8 @@ namespace MonoGame.Forms.Controls
         {
             if (timer == null) timer = Stopwatch.StartNew();
 
-            Application.Idle += delegate { GameLoop(); };
+            Application.Idle -= GameLoop;
+            Application.Idle += GameLoop;
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace MonoGame.Forms.Controls
             Draw();
         }
 
-        private void GameLoop()
+        private void GameLoop(object sender, EventArgs e)
         {
             if (Visible && AutomaticInvalidation)
             {
