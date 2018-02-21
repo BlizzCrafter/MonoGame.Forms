@@ -62,7 +62,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Gets the current mouse position in the control.
         /// </summary>
-        public Vector2 GetMousePosition { get; set; }
+        public System.Drawing.Point GetMousePosition { get; set; }
 
         /// <summary>
         /// The Camera2D component.
@@ -161,7 +161,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
         /// <param name="mousePosition">The mouse position.</param>
-        public void UpdateDisplay(GameTime gameTime, Vector2 mousePosition)
+        public void UpdateDisplay(GameTime gameTime, System.Drawing.Point mousePosition)
         {
             GetMousePosition = mousePosition;
 
@@ -285,8 +285,8 @@ namespace MonoGame.Forms.Services
         /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
         public abstract void Update(
             GameTime gameTime,
-            Vector2 relativeMousePosition,
-            Vector2 absoluteMousePosition);
+            System.Drawing.Point relativeMousePosition,
+            System.Drawing.Point absoluteMousePosition);
         /// <summary>
         /// Basic drawing service.
         /// </summary>
