@@ -16,11 +16,11 @@ namespace MonoGame.Forms.Controls
         TimeSpan elapsed;
 
         /// <summary>
-        /// Get the relative mouse position as a <see cref="Vector2"/>
+        /// Get the relative mouse position as a <see cref="System.Drawing.Point"/>
         /// </summary>
         protected System.Drawing.Point GetRelativeMousePosition { get; set; }
         /// <summary>
-        /// Get the absolute mouse position as a <see cref="Vector2"/>
+        /// Get the absolute mouse position as a <see cref="System.Drawing.Point"/>
         /// </summary>
         protected System.Drawing.Point GetAbsoluteMousePosition { get; set; }
 
