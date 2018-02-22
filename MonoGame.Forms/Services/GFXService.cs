@@ -106,7 +106,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Height of the display Font - Cached in InitializeGFX().
         /// </summary>
-        private float FontHeight;
+        public float FontHeight { get; set; }
 
         /// <summary>
         /// Show or hide the 'FPS' (frames per second) of the corresponding control / window.
