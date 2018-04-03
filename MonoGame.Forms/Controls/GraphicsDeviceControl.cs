@@ -266,12 +266,16 @@ namespace MonoGame.Forms.Controls
         {
             base.OnMouseEnter(e);
 
+            if (!Focused) Focus();
+
             SetKeyboardInput(true);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
+
+            if (Focused) Parent.Focus();
 
             if (!AlwaysEnableKeyboardInput) SetKeyboardInput(false);
         }
