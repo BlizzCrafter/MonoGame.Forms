@@ -62,7 +62,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Gets the current mouse position in the control.
         /// </summary>
-        public Vector2 GetMousePosition { get; set; }
+        public System.Drawing.Point GetMousePosition { get; set; }
 
         /// <summary>
         /// The Camera2D component.
@@ -99,14 +99,24 @@ namespace MonoGame.Forms.Services
         private int FrameRate { get; set; }
 
         /// <summary>
+        /// A plain white pixel mainly to draw the background of the integrated display, but you can also use it in your custom control.
+        /// </summary>
+        public Texture2D Pixel { get; set; }
+
+        /// <summary>
+        /// Set the back color of the integrated display.
+        /// </summary>
+        public Color DisplayBackColor { get; set; } = new Color(0, 0, 0, 100);
+
+        /// <summary>
         /// Set the font color of the integrated display.
         /// </summary>
-        public Color DisplayColor { get; set; } = Color.White;
+        public Color DisplayForeColor { get; set; } = Color.White;
 
         /// <summary>
         /// Height of the display Font - Cached in InitializeGFX().
         /// </summary>
-        private float FontHeight;
+        public float FontHeight { get; set; }
 
         /// <summary>
         /// Show or hide the 'FPS' (frames per second) of the corresponding control / window.
@@ -143,6 +153,9 @@ namespace MonoGame.Forms.Services
             Font = InternContent.Load<SpriteFont>("Font");
             FontHeight = Font.MeasureString("A").Y;
 
+            Pixel = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            Pixel.SetData(new[] { Color.White });
+
             Format = new System.Globalization.NumberFormatInfo();
             Format.CurrencyDecimalSeparator = ".";
 
@@ -161,7 +174,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
         /// <param name="mousePosition">The mouse position.</param>
-        public void UpdateDisplay(GameTime gameTime, Vector2 mousePosition)
+        public void UpdateDisplay(GameTime gameTime, System.Drawing.Point mousePosition)
         {
             GetMousePosition = mousePosition;
 
@@ -179,18 +192,55 @@ namespace MonoGame.Forms.Services
         {
             if (ShowFPS || ShowCursorPosition || ShowCamPosition)
             {
-                spriteBatch.Begin();
+                spriteBatch.Begin(SpriteSortMode.BackToFront);
 
-                // Draw FPS display
-                //FPS
-                if (ShowFPS) spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", FrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, 0) : 
-                    new Vector2(graphics.Viewport.Width - Font.MeasureString(string.Format(Format, "{0} fps", FrameRate)).X - 5, 0), DisplayColor);
-                //Cursor Position
-                if (ShowCursorPosition) spriteBatch.DrawString(Font, GetMousePosition.ToString(), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, ShowFPS ? FontHeight : 0) : 
-                    new Vector2(graphics.Viewport.Width - Font.MeasureString(GetMousePosition.ToString()).X - 5, ShowFPS ? FontHeight : 0), DisplayColor);
-                //Cam Position
-                if (ShowCamPosition) spriteBatch.DrawString(Font, Cam.GetAbsolutPosition.ToString(), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0) : 
-                    new Vector2(graphics.Viewport.Width - Font.MeasureString(Cam.GetAbsolutPosition.ToString()).X - 5, ShowFPS && !ShowCursorPosition ? FontHeight : ShowFPS && ShowCursorPosition ? FontHeight * 2 : 0), DisplayColor);
+                float MaxHeight = -FontHeight;
+
+                float FPSWidth = 0;
+                float MouseWidth = 0;
+                float CamWidth = 0;
+
+                if (ShowFPS)
+                {
+                    FPSWidth = Font.MeasureString(string.Format(Format, "{0} fps", FrameRate)).X;
+                    MaxHeight += FontHeight;
+
+                    spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", FrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, 0) :
+                        new Vector2(graphics.Viewport.Width - FPSWidth - 10, 0), DisplayForeColor,
+                        0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                }
+                else FPSWidth = 0;
+
+                if (ShowCursorPosition)
+                {
+                    MouseWidth = Font.MeasureString($"X:{GetMousePosition.X} Y:{GetMousePosition.Y}").X;
+                    MaxHeight += FontHeight;
+
+                    spriteBatch.DrawString(Font, $"X:{GetMousePosition.X} Y:{GetMousePosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
+                        new Vector2(graphics.Viewport.Width - MouseWidth - 10, MaxHeight), DisplayForeColor,
+                        0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                }
+                else MouseWidth = 0;
+
+                if (ShowCamPosition)
+                {
+                    CamWidth = Font.MeasureString($"X:{Cam.GetAbsolutPosition.X} Y:{Cam.GetAbsolutPosition.Y}").X;
+                    MaxHeight += FontHeight;
+
+                    spriteBatch.DrawString(Font, $"X:{Cam.GetAbsolutPosition.X} Y:{Cam.GetAbsolutPosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
+                        new Vector2(graphics.Viewport.Width - CamWidth - 10, MaxHeight), DisplayForeColor,
+                        0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                }
+                else CamWidth = 0;
+
+                MaxHeight += FontHeight;
+                
+                float MaxWidth = Math.Max(FPSWidth, Math.Max(MouseWidth, CamWidth));
+
+                spriteBatch.Draw(Pixel, SetDisplayStyle == DisplayStyle.TopLeft ?
+                    new Rectangle(0, 0, (int)MaxWidth + 20, (int)MaxHeight + 5) :
+                    new Rectangle(graphics.Viewport.Width - (int)MaxWidth - 20, 0, (int)MaxWidth + 20, (int)MaxHeight + 5), 
+                    null, DisplayBackColor, 0f, Vector2.Zero, SpriteEffects.None, 0.1f);
 
                 spriteBatch.End();
             }
@@ -285,8 +335,8 @@ namespace MonoGame.Forms.Services
         /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
         public abstract void Update(
             GameTime gameTime,
-            Vector2 relativeMousePosition,
-            Vector2 absoluteMousePosition);
+            System.Drawing.Point relativeMousePosition,
+            System.Drawing.Point absoluteMousePosition);
         /// <summary>
         /// Basic drawing service.
         /// </summary>

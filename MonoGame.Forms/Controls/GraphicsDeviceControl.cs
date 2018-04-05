@@ -88,6 +88,18 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected bool AutomaticInvalidation { get; set; } = true;
 
+        /// <summary>
+        /// Returns true when the mouse cursor is inside the control.
+        /// </summary>
+        protected bool IsMouseInsideControl
+        {
+            get
+            {
+                if (ClientRectangle.Contains(PointToClient(Cursor.Position))) return true;
+                else return false;
+            }
+        }
+
         #pragma warning disable 1591
         protected override void OnCreateControl()
         {
@@ -254,12 +266,16 @@ namespace MonoGame.Forms.Controls
         {
             base.OnMouseEnter(e);
 
+            if (!Focused) Focus();
+
             SetKeyboardInput(true);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
+
+            if (Focused) Parent.Focus();
 
             if (!AlwaysEnableKeyboardInput) SetKeyboardInput(false);
         }

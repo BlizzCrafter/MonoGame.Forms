@@ -31,8 +31,8 @@ namespace MonoGame.Forms.Services
         /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
         public override void Update(
             GameTime gameTime,
-            Vector2 relativeMousePosition,
-            Vector2 absoluteMousePosition)
+            System.Drawing.Point relativeMousePosition,
+            System.Drawing.Point absoluteMousePosition)
         {
             UpdateDisplay(gameTime, relativeMousePosition);
         }
