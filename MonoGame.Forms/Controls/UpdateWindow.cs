@@ -45,10 +45,8 @@ namespace MonoGame.Forms.Controls
         {
             if (_Editor != null)
             {
-                _Editor.Update(
-                gameTime,
-                GetRelativeMousePosition,
-                GetAbsoluteMousePosition);
+                Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
+                _Editor.Update(gameTime);
             }
         }
 

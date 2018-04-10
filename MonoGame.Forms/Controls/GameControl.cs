@@ -16,15 +16,6 @@ namespace MonoGame.Forms.Controls
         TimeSpan elapsed;
 
         /// <summary>
-        /// Get the relative mouse position as a <see cref="System.Drawing.Point"/>
-        /// </summary>
-        protected System.Drawing.Point GetRelativeMousePosition { get; set; }
-        /// <summary>
-        /// Get the absolute mouse position as a <see cref="System.Drawing.Point"/>
-        /// </summary>
-        protected System.Drawing.Point GetAbsoluteMousePosition { get; set; }
-
-        /// <summary>
         /// Basic initializing of the game control.
         /// It starts a <see cref="Stopwatch"/> and creates the mouse events.
         /// </summary>
@@ -51,14 +42,7 @@ namespace MonoGame.Forms.Controls
                 gameTime = new GameTime(timer.Elapsed, timer.Elapsed - elapsed);
                 elapsed = timer.Elapsed;
 
-                GetAbsoluteMousePosition = new System.Drawing.Point(Cursor.Position.X, Cursor.Position.Y);
-
-                if (IsMouseInsideControl)
-                {
-                    GetRelativeMousePosition = new System.Drawing.Point(
-                        MathHelper.Clamp(PointToClient(Cursor.Position).X, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Width),
-                        MathHelper.Clamp(PointToClient(Cursor.Position).Y, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Height));
-                }
+                UpdateMousePositions();
 
                 Update(gameTime);
                 Invalidate();

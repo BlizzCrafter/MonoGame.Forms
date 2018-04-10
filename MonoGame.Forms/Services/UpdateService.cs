@@ -27,14 +27,9 @@ namespace MonoGame.Forms.Services
         /// Override this basic updating method in your custom class to create your own initializing logic.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> of the game loop.</param>
-        /// <param name="relativeMousePosition">The mouse position relative to the dimensions of the control.</param>
-        /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
-        public override void Update(
-            GameTime gameTime,
-            System.Drawing.Point relativeMousePosition,
-            System.Drawing.Point absoluteMousePosition)
+        public override void Update(GameTime gameTime)
         {
-            UpdateDisplay(gameTime, relativeMousePosition);
+            UpdateDisplay(gameTime);
         }
 
         /// <summary>

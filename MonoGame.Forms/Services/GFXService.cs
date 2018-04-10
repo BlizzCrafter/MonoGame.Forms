@@ -60,9 +60,20 @@ namespace MonoGame.Forms.Services
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
 
         /// <summary>
-        /// Gets the current mouse position in the control.
+        /// Get the current mouse position in the control.
         /// </summary>
-        public System.Drawing.Point GetMousePosition { get; set; }
+        public System.Drawing.Point GetRelativeMousePosition { get; set; }
+
+        /// <summary>
+        /// Get the current mouse position.
+        /// </summary>
+        public System.Drawing.Point GetAbsoluteMousePosition { get; set; }
+        
+        internal void UpdateMousePositions(System.Drawing.Point relativeMousePosition, System.Drawing.Point absoluteMousePosition)
+        {
+            GetRelativeMousePosition = relativeMousePosition;
+            GetAbsoluteMousePosition = absoluteMousePosition;
+        }
 
         /// <summary>
         /// The Camera2D component.
@@ -173,11 +184,8 @@ namespace MonoGame.Forms.Services
         /// Updates the integrated display.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
-        /// <param name="mousePosition">The mouse position.</param>
-        public void UpdateDisplay(GameTime gameTime, System.Drawing.Point mousePosition)
+        public void UpdateDisplay(GameTime gameTime)
         {
-            GetMousePosition = mousePosition;
-
             ElapsedTime += gameTime.ElapsedGameTime;
             if (ElapsedTime <= TimeSpan.FromSeconds(1)) return;
             ElapsedTime -= TimeSpan.FromSeconds(1);
@@ -213,10 +221,10 @@ namespace MonoGame.Forms.Services
 
                 if (ShowCursorPosition)
                 {
-                    MouseWidth = Font.MeasureString($"X:{GetMousePosition.X} Y:{GetMousePosition.Y}").X;
+                    MouseWidth = Font.MeasureString($"X:{GetRelativeMousePosition.X} Y:{GetRelativeMousePosition.Y}").X;
                     MaxHeight += FontHeight;
 
-                    spriteBatch.DrawString(Font, $"X:{GetMousePosition.X} Y:{GetMousePosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
+                    spriteBatch.DrawString(Font, $"X:{GetRelativeMousePosition.X} Y:{GetRelativeMousePosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
                         new Vector2(graphics.Viewport.Width - MouseWidth - 10, MaxHeight), DisplayForeColor,
                         0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
@@ -331,12 +339,7 @@ namespace MonoGame.Forms.Services
         /// Basic updating service.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
-        /// <param name="relativeMousePosition">The mouse position relative to the dimensions of the control.</param>
-        /// <param name="absoluteMousePosition">The absolute mouse position relative to the dimensions of the client area.</param>
-        public abstract void Update(
-            GameTime gameTime,
-            System.Drawing.Point relativeMousePosition,
-            System.Drawing.Point absoluteMousePosition);
+        public abstract void Update(GameTime gameTime);
         /// <summary>
         /// Basic drawing service.
         /// </summary>

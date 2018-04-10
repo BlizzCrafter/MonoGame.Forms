@@ -18,7 +18,8 @@ namespace MonoGame.Forms.Services
 
         // Display
         SpriteFont Font { get; set; }
-        System.Drawing.Point GetMousePosition { get; set; }
+        System.Drawing.Point GetRelativeMousePosition { get; set; }
+        System.Drawing.Point GetAbsoluteMousePosition { get; set; }
 
         void MoveCam(Vector2 amount);
         void ResetCam();
@@ -26,7 +27,7 @@ namespace MonoGame.Forms.Services
         void InitializeGFX(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget);
 
         void UpdateFrameCounter();
-        void UpdateDisplay(GameTime gameTime, System.Drawing.Point mousePosition);
+        void UpdateDisplay(GameTime gameTime);
 
         void DrawDisplay();
         void BeginCamera2D(

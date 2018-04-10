@@ -88,18 +88,6 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected bool AutomaticInvalidation { get; set; } = true;
 
-        /// <summary>
-        /// Returns true when the mouse cursor is inside the control.
-        /// </summary>
-        protected bool IsMouseInsideControl
-        {
-            get
-            {
-                if (ClientRectangle.Contains(PointToClient(Cursor.Position))) return true;
-                else return false;
-            }
-        }
-
         #pragma warning disable 1591
         protected override void OnCreateControl()
         {
@@ -278,6 +266,32 @@ namespace MonoGame.Forms.Controls
             if (Focused) Parent.Focus();
 
             if (!AlwaysEnableKeyboardInput) SetKeyboardInput(false);
+        }
+        
+        internal Point GetRelativeMousePosition { get; set; }
+        internal Point GetAbsoluteMousePosition { get; set; }
+        internal void UpdateMousePositions()
+        {
+            GetAbsoluteMousePosition = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+            if (IsMouseInsideControl)
+            {
+                GetRelativeMousePosition = new Point(
+                    Microsoft.Xna.Framework.MathHelper.Clamp(PointToClient(Cursor.Position).X, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Width),
+                    Microsoft.Xna.Framework.MathHelper.Clamp(PointToClient(Cursor.Position).Y, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Height));
+            }
+        }
+
+        /// <summary>
+        /// Returns true when the mouse cursor is inside the control.
+        /// </summary>
+        protected bool IsMouseInsideControl
+        {
+            get
+            {
+                if (ClientRectangle.Contains(PointToClient(Cursor.Position))) return true;
+                else return false;
+            }
         }
 
         public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);

@@ -42,7 +42,11 @@ namespace MonoGame.Forms.Controls
         {
             if (_Editor != null)
             {
+                UpdateMousePositions();
+                Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
+
                 _Editor.Draw();
+
                 if (AutomaticInvalidation) Invalidate();
             }
         }
