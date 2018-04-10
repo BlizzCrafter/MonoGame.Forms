@@ -10,7 +10,7 @@ namespace MonoGame.Forms.Services
     /// <summary>
     /// The <see cref="GFXService"/> class provides basic functionality of MonoGame
     /// </summary>
-    public abstract class GFXService : IGFXInterface
+    public abstract class GFXService
     {
         /// <summary>
         /// DisplayStyle enumerations for the integrated display.
@@ -178,13 +178,13 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Updates the frame counter (FPS).
         /// </summary>
-        public void UpdateFrameCounter() => FrameCounter++;
+        internal void UpdateFrameCounter() => FrameCounter++;
 
         /// <summary>
         /// Updates the integrated display.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
-        public void UpdateDisplay(GameTime gameTime)
+        internal void UpdateDisplay(GameTime gameTime)
         {
             ElapsedTime += gameTime.ElapsedGameTime;
             if (ElapsedTime <= TimeSpan.FromSeconds(1)) return;
@@ -194,7 +194,7 @@ namespace MonoGame.Forms.Services
         }
 
         /// <summary>
-        /// Draws the integrated display in the upper left corner.
+        /// Draws the integrated display.
         /// </summary>
         public void DrawDisplay()
         {
