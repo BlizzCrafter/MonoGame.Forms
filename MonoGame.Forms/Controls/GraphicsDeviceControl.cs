@@ -148,6 +148,8 @@ namespace MonoGame.Forms.Controls
                 MaxDepth = 1
             };
             GraphicsDevice.Viewport = viewport;
+            GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+            GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
             _graphicsDeviceService.GraphicsDevice.SetRenderTarget(_chain);
             return null;
         }
