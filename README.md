@@ -35,7 +35,7 @@ Another option is to install the library with the NuGet package manager:
 
 ***
 
-#### Creating a simple [DrawWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/22dd89f4-5c58-230d-049f-923af79f1411)
+#### Creating a simple [DrawWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/3D4B182C)
 
 Let's start using the MonoGame.Forms library by creating a simple draw window! 
 
@@ -68,7 +68,7 @@ More than that it's basically the same like you are used to do in the **MonoGame
 Just with a small difference (no it's still not difficult!)
 
 In MonoGame you could draw someting to the screen with the [SpriteBatch](https://msdn.microsoft.com/de-de/library/microsoft.xna.framework.graphics.spritebatch(v=xnagamestudio.40).aspx).
-In **MonoGame.Forms** you will do the same but you need to use the [DrawService](https://github.com/sqrMin1/MonoGame.Forms/wiki/5d951285-f30c-49cd-61f0-403145659820) for this.
+In **MonoGame.Forms** you will do the same but you need to use the [DrawService](https://github.com/sqrMin1/MonoGame.Forms/wiki/AC3C5B70) for this.
 
 In the **DrawWindow** class this service is called **Editor**. To draw something to the **SpriteBatch** you need to do this:
 
@@ -78,8 +78,8 @@ Editor.spriteBatch.DrawString();
 
 Do you see? Easy! :)
 
-The **DrawService** class inherits from [GFXService](https://github.com/sqrMin1/MonoGame.Forms/wiki/843019aa-13ba-6e12-701f-4f88fdd1092a).
-It contains some MonoGame specific stuff like a [ContentManager](https://github.com/sqrMin1/MonoGame.Forms/wiki/ed80423c-b251-24a6-d9a2-4ad1ec530b2d).
+The **DrawService** class inherits from [GFXService](https://github.com/sqrMin1/MonoGame.Forms/wiki/3A4C800C).
+It contains some MonoGame specific stuff like a [ContentManager](https://github.com/sqrMin1/MonoGame.Forms/wiki/A72EF9E7).
 Examine everything calmly. I just want to explain a little how **MonoGame.Forms** works under the hood!
 
 To sum things up, let's take a look at the final **DrawTest** class:
@@ -123,7 +123,7 @@ It's pretty much like in the **MonoGame.Framework!**
 
 ***
 
-#### Creating a simple [UpdateWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/8327e97e-c937-17c8-639d-11753054130d)
+#### Creating a simple [UpdateWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/F370F561)
 
 As you might though right: Yes, this is also very easy. It's the same like for the **DrawWindow**. 
 I just want to show you the only difference:
