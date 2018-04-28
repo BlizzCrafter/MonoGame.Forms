@@ -63,6 +63,34 @@ namespace MonoGame.Forms.Controls
         protected event Action<SwapChainRenderTarget> UpdateSwapChainRenderTarget = delegate { };
 
         /// <summary>
+        /// Get the MultiSampleCount (MSAA Antialising) to the nearest power of two in relation of what the users <see cref="GraphicsDevice"/> can handle.
+        /// </summary>
+        /// <param name="multiSampleCount">The desired multisample count (MSAA)</param>
+        /// <returns>The power of two of the MultiSampleCount</returns>
+        protected int GetClampedMultisampleCount(int multiSampleCount)
+        {
+            if (multiSampleCount > 1)
+            {
+                // Round down MultiSampleCount to the nearest power of two
+                // hack from http://stackoverflow.com/a/2681094
+                // Note: this will return an incorrect, but large value
+                // for very large numbers. That doesn't matter because
+                // the number will get clamped below anyway in this case.
+                var msc = multiSampleCount;
+                msc = msc | (msc >> 1);
+                msc = msc | (msc >> 2);
+                msc = msc | (msc >> 4);
+                msc -= (msc >> 1);
+                // and clamp it to what the device can handle
+                if (msc > GraphicsDevice.PresentationParameters.MultiSampleCount)
+                    msc = GraphicsDevice.PresentationParameters.MultiSampleCount;
+
+                return msc;
+            }
+            else return 0;
+        }
+
+        /// <summary>
         /// Get the GraphicsDevice.
         /// </summary>
         [Browsable(false)]
