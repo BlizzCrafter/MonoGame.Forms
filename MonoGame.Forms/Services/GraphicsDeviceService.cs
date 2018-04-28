@@ -34,9 +34,26 @@ namespace MonoGame.Forms.Services
                 PresentationInterval = PresentInterval.Immediate,
                 IsFullScreen = false
             };
+
             GraphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
                                                          graphicsProfile,
                                                          _parameters);
+
+            _parameters.MultiSampleCount = GetMaxMultiSampleCount(GraphicsDevice);
+        }
+        private int GetMaxMultiSampleCount(GraphicsDevice device)
+        {
+            var format = SharpDXHelper.ToFormat(device.PresentationParameters.BackBufferFormat);
+            var qualityLevels = 0;
+            var maxLevel = 32;
+            while (maxLevel > 0)
+            {
+                qualityLevels = ((SharpDX.Direct3D11.Device)device.Handle).CheckMultisampleQualityLevels(format, maxLevel);
+                if (qualityLevels > 0)
+                    break;
+                maxLevel /= 2;
+            }
+            return maxLevel;
         }
 
         public GraphicsDevice GraphicsDevice { get; private set; }
