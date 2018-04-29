@@ -82,8 +82,8 @@ namespace MonoGame.Forms.Controls
                 msc = msc | (msc >> 4);
                 msc -= (msc >> 1);
                 // and clamp it to what the device can handle
-                if (msc > GraphicsDevice.PresentationParameters.MultiSampleCount)
-                    msc = GraphicsDevice.PresentationParameters.MultiSampleCount;
+                if (msc > _graphicsDeviceService.MaxMultiSampleCount)
+                    msc = _graphicsDeviceService.MaxMultiSampleCount;
 
                 return msc;
             }
@@ -109,7 +109,7 @@ namespace MonoGame.Forms.Controls
         /// <summary>
         /// Get the GraphicsDeviceService.
         /// </summary>
-        protected GraphicsDeviceService _graphicsDeviceService;
+        private GraphicsDeviceService _graphicsDeviceService;
 
         /// <summary>
         /// Get the ServiceContainer.
