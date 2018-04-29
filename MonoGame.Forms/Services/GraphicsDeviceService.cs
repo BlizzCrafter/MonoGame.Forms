@@ -16,11 +16,13 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MonoGame.Forms.Services
 {
     #pragma warning disable 1591
-    public class GraphicsDeviceService : IGraphicsDeviceService
+    internal class GraphicsDeviceService : IGraphicsDeviceService
     {
         private static GraphicsDeviceService _singletonInstance;
         private static int _referenceCount;
         private readonly PresentationParameters _parameters;
+
+        internal int MaxMultiSampleCount;
 
         private GraphicsDeviceService(IntPtr windowHandle, int width, int height, GraphicsProfile graphicsProfile)
         {
@@ -39,7 +41,7 @@ namespace MonoGame.Forms.Services
                                                          graphicsProfile,
                                                          _parameters);
 
-            _parameters.MultiSampleCount = GetMaxMultiSampleCount(GraphicsDevice);
+            MaxMultiSampleCount = GetMaxMultiSampleCount(GraphicsDevice);
         }
         private int GetMaxMultiSampleCount(GraphicsDevice device)
         {
