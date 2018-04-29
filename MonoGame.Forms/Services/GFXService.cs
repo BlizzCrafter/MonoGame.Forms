@@ -296,8 +296,8 @@ namespace MonoGame.Forms.Services
 
         /// <summary>
         /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
-        /// </summary>
         /// <remarks>Ending the Antialising will automatically draw the result to the <see cref="SpriteBatch"/>.</remarks>
+        /// </summary>
         public void EndAntialising()
         {
             graphics.SetRenderTarget(SwapChainRenderTarget);
