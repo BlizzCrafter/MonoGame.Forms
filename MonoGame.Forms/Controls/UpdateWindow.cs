@@ -95,6 +95,7 @@ namespace MonoGame.Forms.Controls
 
             _Editor?.Dispose();
             UpdateSwapChainRenderTarget -= UpdateWindow_UpdateSwapChainRenderTarget;
+            UpdateMultiSampleCount -= UpdateWindow_UpdateMultiSampleCount;
         }
     }
 }
