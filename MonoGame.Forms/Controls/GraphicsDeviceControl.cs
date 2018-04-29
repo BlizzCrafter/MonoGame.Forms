@@ -109,7 +109,7 @@ namespace MonoGame.Forms.Controls
         /// <summary>
         /// Get the GraphicsDeviceService.
         /// </summary>
-        private GraphicsDeviceService _graphicsDeviceService;
+        internal GraphicsDeviceService _graphicsDeviceService;
 
         /// <summary>
         /// Get the ServiceContainer.
