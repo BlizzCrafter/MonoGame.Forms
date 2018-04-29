@@ -58,6 +58,17 @@ namespace MonoGame.Forms.Services
         /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
+                
+        internal RenderTarget2D AntialisingRenderTarget { get; set; }
+        internal void RefreshAntiAlisingRenderTarget(SwapChainRenderTarget obj, int multiSampleCount = -1)
+        {
+            if (multiSampleCount > 0) WantedMultiSampleCount = multiSampleCount;
+
+            AntialisingRenderTarget = new RenderTarget2D(graphics,
+                obj.Width, obj.Height,
+                false, SurfaceFormat.Color, DepthFormat.Depth24, WantedMultiSampleCount > 0 ? WantedMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
+        }
+        private int WantedMultiSampleCount = -1;
 
         /// <summary>
         /// Get the current mouse position in the control.
@@ -157,6 +168,8 @@ namespace MonoGame.Forms.Services
             this.graphics = graphics.GraphicsDevice;
             SwapChainRenderTarget = swapChainRenderTarget;
 
+            RefreshAntiAlisingRenderTarget(SwapChainRenderTarget, 0);
+
             Content = new ContentManager(services, "Content");
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
             
@@ -252,6 +265,47 @@ namespace MonoGame.Forms.Services
 
                 spriteBatch.End();
             }
+        }
+
+        /// <summary>
+        /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// protected override void Draw()
+        /// {
+        ///    base.Draw();
+        ///    
+        ///    Editor.BeginAntialising();
+        ///
+        ///    Editor.spriteBatch.Begin();
+        ///
+        ///    //Your drawings
+        ///
+        ///    Editor.spriteBatch.End();
+        ///
+        ///    Editor.EndAntialising();
+        /// }
+        /// </code>
+        /// </example>
+        public void BeginAntialising()
+        {
+            graphics.SetRenderTarget(AntialisingRenderTarget);
+            graphics.Clear(BackgroundColor);
+        }
+
+        /// <summary>
+        /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
+        /// </summary>
+        /// <remarks>Ending the Antialising will automatically draw the result to the <see cref="SpriteBatch"/>.</remarks>
+        public void EndAntialising()
+        {
+            graphics.SetRenderTarget(SwapChainRenderTarget);
+            graphics.Clear(BackgroundColor);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(AntialisingRenderTarget, Vector2.Zero, Color.White);
+            spriteBatch.End();
         }
 
         /// <summary>
