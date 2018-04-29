@@ -1,4 +1,6 @@
-﻿using MonoGame.Forms.Services;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.Services;
 using System;
 using System.ComponentModel;
 
@@ -27,11 +29,18 @@ namespace MonoGame.Forms.Controls
             _Editor.Initialize();
 
             UpdateSwapChainRenderTarget += DrawWindow_UpdateSwapChainRenderTarget;
+            UpdateMultiSampleCount += DrawWindow_UpdateMultiSampleCount;
         }
 
-        private void DrawWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
+        private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
         {
             _Editor.SwapChainRenderTarget = obj;
+            _Editor.RefreshAntiAlisingRenderTarget(obj);
+        }
+
+        private void DrawWindow_UpdateMultiSampleCount(int obj)
+        {
+            _Editor.RefreshAntiAlisingRenderTarget(_Editor.SwapChainRenderTarget, obj);
         }
 
         /// <summary>

@@ -67,7 +67,7 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         /// <param name="multiSampleCount">The desired multisample count (MSAA)</param>
         /// <returns>The power of two of the MultiSampleCount</returns>
-        protected int GetClampedMultisampleCount(int multiSampleCount)
+        internal int GetClampedMultisampleCount(int multiSampleCount)
         {
             if (multiSampleCount > 1)
             {
@@ -89,6 +89,16 @@ namespace MonoGame.Forms.Controls
             }
             else return 0;
         }
+        /// <summary>
+        /// Set the "MultiSampleCount" for Multi Sampled AntiAlising (MSAA).
+        /// The input value will be automatically clamped to the nearest power of two in relation of what the users <see cref="GraphicsDevice"/> can handle.
+        /// </summary>
+        /// <param name="multiSampleCount">Usual numbers are 0, 2, 4, 8.</param>
+        public void SetMultiSampleCount(int multiSampleCount)
+        {
+            UpdateMultiSampleCount?.Invoke(GetClampedMultisampleCount(multiSampleCount));
+        }
+        internal event Action<int> UpdateMultiSampleCount = delegate { };
 
         /// <summary>
         /// Get the GraphicsDevice.
