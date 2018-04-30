@@ -62,13 +62,17 @@ namespace MonoGame.Forms.Services
         internal RenderTarget2D AntialisingRenderTarget { get; set; }
         internal void RefreshAntiAlisingRenderTarget(SwapChainRenderTarget obj, int multiSampleCount = -1)
         {
-            if (multiSampleCount > 0) WantedMultiSampleCount = multiSampleCount;
+            if (multiSampleCount > 0) _CurrentMultiSampleCount = multiSampleCount;
 
             AntialisingRenderTarget = new RenderTarget2D(graphics,
                 obj.Width, obj.Height,
-                false, SurfaceFormat.Color, DepthFormat.Depth24, WantedMultiSampleCount > 0 ? WantedMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
+                false, SurfaceFormat.Color, DepthFormat.Depth24, _CurrentMultiSampleCount > 0 ? _CurrentMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
         }
-        private int WantedMultiSampleCount = -1;
+        /// <summary>
+        /// Get the current active MultiSampleCount.
+        /// </summary>
+        public int GetCurrentMultiSampleCount { get { return _CurrentMultiSampleCount; } }
+        private int _CurrentMultiSampleCount = -1;
 
         /// <summary>
         /// Get the current mouse position in the control.
