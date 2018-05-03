@@ -44,7 +44,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// The <see cref="GameServiceContainer"/>.
         /// </summary>
-        public GameServiceContainer services { get; set; }
+        public GameServiceContainer services { get; private set; }
         /// <summary>
         /// The <see cref="SpriteBatch"/>.
         /// </summary>
@@ -77,12 +77,12 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Get the current mouse position in the control.
         /// </summary>
-        public System.Drawing.Point GetRelativeMousePosition { get; set; }
+        public System.Drawing.Point GetRelativeMousePosition { get; private set; }
 
         /// <summary>
         /// Get the current mouse position.
         /// </summary>
-        public System.Drawing.Point GetAbsoluteMousePosition { get; set; }
+        public System.Drawing.Point GetAbsoluteMousePosition { get; private set; }
         
         internal void UpdateMousePositions(System.Drawing.Point relativeMousePosition, System.Drawing.Point absoluteMousePosition)
         {
@@ -142,7 +142,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Height of the display Font - Cached in InitializeGFX().
         /// </summary>
-        public float FontHeight { get; set; }
+        public float FontHeight { get; private set; }
 
         /// <summary>
         /// Show or hide the 'FPS' (frames per second) of the corresponding control / window.
