@@ -17,6 +17,9 @@
 		<group targetFramework="net451">
 		<reference file="MonoGame.Forms.dll" />
         <reference file="MonoGame.Framework.dll" />
+		<reference file="SharpDX.dll" />
+		<reference file="SharpDX.DXGI.dll" />
+		<reference file="SharpDX.Direct3D11.dll" />
 		</group>
 	</references>
   </metadata>
