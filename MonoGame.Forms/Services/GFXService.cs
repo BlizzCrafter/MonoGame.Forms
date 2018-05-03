@@ -120,7 +120,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         private int FrameCounter { get; set; }
         /// <summary>
-        /// The actual frames per second (FPS).
+        /// Get the current frames per second (FPS).
         /// </summary>
         public int GetFrameRate { get; private set; }
 
