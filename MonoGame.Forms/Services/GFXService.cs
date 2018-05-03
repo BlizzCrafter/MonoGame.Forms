@@ -122,7 +122,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// The actual frames per second (FPS).
         /// </summary>
-        private int FrameRate { get; set; }
+        public int GetFrameRate { get; private set; }
 
         /// <summary>
         /// A plain white pixel mainly to draw the background of the integrated display, but you can also use it in your custom control.
@@ -206,7 +206,7 @@ namespace MonoGame.Forms.Services
             ElapsedTime += gameTime.ElapsedGameTime;
             if (ElapsedTime <= TimeSpan.FromSeconds(1)) return;
             ElapsedTime -= TimeSpan.FromSeconds(1);
-            FrameRate = FrameCounter;
+            GetFrameRate = FrameCounter;
             FrameCounter = 0;
         }
 
@@ -227,10 +227,10 @@ namespace MonoGame.Forms.Services
 
                 if (ShowFPS)
                 {
-                    FPSWidth = Font.MeasureString(string.Format(Format, "{0} fps", FrameRate)).X;
+                    FPSWidth = Font.MeasureString(string.Format(Format, "{0} fps", GetFrameRate)).X;
                     MaxHeight += FontHeight;
 
-                    spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", FrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, 0) :
+                    spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", GetFrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, 0) :
                         new Vector2(graphics.Viewport.Width - FPSWidth - 10, 0), DisplayForeColor,
                         0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
