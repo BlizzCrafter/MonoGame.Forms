@@ -64,6 +64,8 @@ namespace MonoGame.Forms.Services
         {
             if (multiSampleCount > 0) _CurrentMultiSampleCount = multiSampleCount;
 
+            if (AntialisingRenderTarget != null) AntialisingRenderTarget.Dispose();
+
             AntialisingRenderTarget = new RenderTarget2D(graphics,
                 obj.Width, obj.Height,
                 false, SurfaceFormat.Color, DepthFormat.Depth24, _CurrentMultiSampleCount > 0 ? _CurrentMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
