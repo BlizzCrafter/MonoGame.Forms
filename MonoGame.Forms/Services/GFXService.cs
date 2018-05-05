@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Components;
+using System.Timers;
 
 namespace MonoGame.Forms.Services
 {
@@ -60,21 +61,71 @@ namespace MonoGame.Forms.Services
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
                 
         internal RenderTarget2D AntialisingRenderTarget { get; set; }
+        private void CreateAntialisingRenderTarget(Vector2 size)
+        {
+            AntialisingRenderTarget = new RenderTarget2D(graphics,
+                    (int)size.X, 
+                    (int)size.Y,
+                    false, SurfaceFormat.Color, DepthFormat.Depth24, _CurrentMultiSampleCount > 0 ? _CurrentMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
+        }
         internal void RefreshAntiAlisingRenderTarget(SwapChainRenderTarget obj, int multiSampleCount = -1)
         {
+            if (AntialisingRenderTarget == null) return;
+
+            IsRefreshingAntialisingRenderTarget = !IsRefreshingAntialisingRenderTarget;
+
+            AntialisingRenderTarget.Dispose();
+
             if (multiSampleCount > 0) _CurrentMultiSampleCount = multiSampleCount;
 
-            if (AntialisingRenderTarget != null) AntialisingRenderTarget.Dispose();
+            CreateAntialisingRenderTarget(new Vector2(obj.Width, obj.Height));
 
-            AntialisingRenderTarget = new RenderTarget2D(graphics,
-                obj.Width, obj.Height,
-                false, SurfaceFormat.Color, DepthFormat.Depth24, _CurrentMultiSampleCount > 0 ? _CurrentMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
+            IsRefreshingAntialisingRenderTarget = !IsRefreshingAntialisingRenderTarget;
         }
+        private bool IsRefreshingAntialisingRenderTarget = false;
         /// <summary>
         /// Get the current active MultiSampleCount.
         /// </summary>
         public int GetCurrentMultiSampleCount { get { return _CurrentMultiSampleCount; } }
         private int _CurrentMultiSampleCount = -1;
+
+        /// <summary>
+        /// Subscribe to this event in your custom control to get <see cref="ResizeStart"/> events.
+        /// <remarks>
+        /// Note: This event doesn't work like the resizing event of a Form. 
+        /// It can trigger multiple times and is maybe not the right choice for you - depending on what you are trying to achieve.
+        /// It can be useful if you don't want to trigger some events very often, but from time to time in the <see cref="ResizeStart"/> event block for example.
+        /// </remarks>
+        /// </summary>
+        public event Action<SwapChainRenderTarget> ResizeStart = delegate { };
+        internal void InvokeResizeStart()
+        {
+            ResizeStart?.Invoke(SwapChainRenderTarget);
+        }
+        /// <summary>
+        /// Subscribe to this event in your custom control to get <see cref="ResizeEnd"/> events.
+        /// <remarks>
+        /// Note: This event doesn't work like the resizing event of a Form. 
+        /// It can trigger multiple times and is maybe not the right choice for you - depending on what you are trying to achieve.
+        /// It can be useful if you don't want to trigger some events very often, but from time to time in the <see cref="ResizeEnd"/> event block for example.
+        /// </remarks>
+        /// </summary>
+        public event Action<SwapChainRenderTarget> ResizeEnd = delegate { };
+        internal void InvokeResizeEnd()
+        {
+            ResizeEnd?.Invoke(SwapChainRenderTarget);
+        }
+        internal void OnResizeEnd()
+        {
+            Timer.Stop();
+
+            ResizeStarted = false;
+
+            RefreshAntiAlisingRenderTarget(SwapChainRenderTarget);
+            InvokeResizeEnd();
+        }
+        internal bool ResizeStarted = false, ResizeEnded = false;
+        internal Timer Timer { get; private set; }
 
         /// <summary>
         /// Get the current mouse position in the control.
@@ -174,7 +225,7 @@ namespace MonoGame.Forms.Services
             this.graphics = graphics.GraphicsDevice;
             SwapChainRenderTarget = swapChainRenderTarget;
 
-            RefreshAntiAlisingRenderTarget(SwapChainRenderTarget, 0);
+            CreateAntialisingRenderTarget(new Vector2(graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height));
 
             Content = new ContentManager(services, "Content");
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
@@ -192,6 +243,10 @@ namespace MonoGame.Forms.Services
             Cam = new Camera2D();
             Cam.GetPosition = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+
+            Timer = new Timer();
+            Timer.Interval = 500;
+            Timer.Elapsed += (sender, e) => OnResizeEnd();
         }
 
         /// <summary>
@@ -296,6 +351,8 @@ namespace MonoGame.Forms.Services
         /// </example>
         public void BeginAntialising()
         {
+            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget) return;
+
             graphics.SetRenderTarget(AntialisingRenderTarget);
             graphics.Clear(BackgroundColor);
         }
@@ -306,6 +363,8 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public void EndAntialising()
         {
+            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget) return;
+
             graphics.SetRenderTarget(SwapChainRenderTarget);
             graphics.Clear(BackgroundColor);
 
