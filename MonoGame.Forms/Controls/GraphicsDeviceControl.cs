@@ -170,7 +170,7 @@ namespace MonoGame.Forms.Controls
 
         private string BeginDraw()
         {
-            if (_graphicsDeviceService == null)
+            if (_graphicsDeviceService == null || _chain == null)
             {
                 return Text + "\n\n" + GetType();
             }
@@ -179,6 +179,7 @@ namespace MonoGame.Forms.Controls
             {
                 return deviceResetError;
             }
+
             var viewport = new Viewport
             {
                 X = 0,
