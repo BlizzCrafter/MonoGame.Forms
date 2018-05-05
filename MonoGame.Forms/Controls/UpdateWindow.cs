@@ -37,7 +37,6 @@ namespace MonoGame.Forms.Controls
         private void UpdateWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
         {
             _Editor.SwapChainRenderTarget = obj;
-            _Editor.RefreshAntiAlisingRenderTarget(obj);
         }
 
         private void UpdateWindow_UpdateMultiSampleCount(int obj)
@@ -74,6 +73,25 @@ namespace MonoGame.Forms.Controls
             base.OnClientSizeChanged(e);
 
             if (Editor != null) Editor.CamHoldPosition(ClientSize);
+        }
+
+        /// <summary>
+        /// Handles Control resizing events.
+        /// </summary>
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+
+            if (Editor != null)
+            {
+                if (!Editor.ResizeStarted)
+                {
+                    Editor.ResizeStarted = true;
+                    Editor.InvokeResizeStart();
+                }
+
+                if (Editor.Timer != null) Editor.Timer.Start();
+            }
         }
 
         /// <summary>
