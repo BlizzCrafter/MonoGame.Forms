@@ -107,7 +107,7 @@ namespace nugetTest
 
             Editor.spriteBatch.DrawString(Editor.Font, WelcomeMessage, new Vector2(
                 (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(WelcomeMessage).X / 2),
-                (Editor.graphics.Viewport.Height / 2) - (Editor.Font.MeasureString(WelcomeMessage).Y / 2)),
+                (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
                 Color.White);
 
             Editor.spriteBatch.End();
