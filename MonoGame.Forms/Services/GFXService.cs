@@ -84,48 +84,31 @@ namespace MonoGame.Forms.Services
         }
         private bool IsRefreshingAntialisingRenderTarget = false;
         /// <summary>
+        /// Disable the Antialising <see cref="RenderTarget2D"/>, before it becomes reactivated after 500 milliseconds.
+        /// </summary>
+        public void DisableAntialising()
+        {
+            if (AntialisingTimer != null)
+            {
+                AntialisingEnabled = false;
+                AntialisingTimer.Start();
+            }
+        }
+        internal void OnAntialisingTimeOutEnd()
+        {
+            AntialisingTimer.Stop();
+
+            RefreshAntiAlisingRenderTarget(SwapChainRenderTarget);
+            AntialisingEnabled = true;
+        }
+        private bool AntialisingEnabled = true;
+        internal Timer AntialisingTimer { get; private set; }
+
+        /// <summary>
         /// Get the current active MultiSampleCount.
         /// </summary>
         public int GetCurrentMultiSampleCount { get { return _CurrentMultiSampleCount; } }
         private int _CurrentMultiSampleCount = -1;
-
-        /// <summary>
-        /// Subscribe to this event in your custom control to get <see cref="ResizeStart"/> events.
-        /// <remarks>
-        /// Note: This event doesn't work like the resizing event of a Form. 
-        /// It can trigger multiple times and is maybe not the right choice for you - depending on what you are trying to achieve.
-        /// It can be useful if you don't want to trigger some events very often, but from time to time in the <see cref="ResizeStart"/> event block for example.
-        /// </remarks>
-        /// </summary>
-        public event Action<SwapChainRenderTarget> ResizeStart = delegate { };
-        internal void InvokeResizeStart()
-        {
-            ResizeStart?.Invoke(SwapChainRenderTarget);
-        }
-        /// <summary>
-        /// Subscribe to this event in your custom control to get <see cref="ResizeEnd"/> events.
-        /// <remarks>
-        /// Note: This event doesn't work like the resizing event of a Form. 
-        /// It can trigger multiple times and is maybe not the right choice for you - depending on what you are trying to achieve.
-        /// It can be useful if you don't want to trigger some events very often, but from time to time in the <see cref="ResizeEnd"/> event block for example.
-        /// </remarks>
-        /// </summary>
-        public event Action<SwapChainRenderTarget> ResizeEnd = delegate { };
-        internal void InvokeResizeEnd()
-        {
-            ResizeEnd?.Invoke(SwapChainRenderTarget);
-        }
-        internal void OnResizeEnd()
-        {
-            Timer.Stop();
-
-            ResizeStarted = false;
-
-            RefreshAntiAlisingRenderTarget(SwapChainRenderTarget);
-            InvokeResizeEnd();
-        }
-        internal bool ResizeStarted = false, ResizeEnded = false;
-        internal Timer Timer { get; private set; }
 
         /// <summary>
         /// Get the current mouse position in the control.
@@ -244,9 +227,9 @@ namespace MonoGame.Forms.Services
             Cam.GetPosition = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 
-            Timer = new Timer();
-            Timer.Interval = 500;
-            Timer.Elapsed += (sender, e) => OnResizeEnd();
+            AntialisingTimer = new Timer();
+            AntialisingTimer.Interval = 500;
+            AntialisingTimer.Elapsed += (sender, e) => OnAntialisingTimeOutEnd();
         }
 
         /// <summary>
@@ -351,7 +334,7 @@ namespace MonoGame.Forms.Services
         /// </example>
         public void BeginAntialising()
         {
-            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget) return;
+            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget || !AntialisingEnabled) return;
 
             graphics.SetRenderTarget(AntialisingRenderTarget);
             graphics.Clear(BackgroundColor);
@@ -363,7 +346,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public void EndAntialising()
         {
-            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget) return;
+            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget || !AntialisingEnabled) return;
 
             graphics.SetRenderTarget(SwapChainRenderTarget);
             graphics.Clear(BackgroundColor);
