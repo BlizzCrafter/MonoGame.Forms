@@ -38,7 +38,7 @@ namespace MonoGame.Forms.Controls
 
         private void DrawWindow_UpdateMultiSampleCount(int obj)
         {
-            _Editor.RefreshAntiAlisingRenderTarget(_Editor.SwapChainRenderTarget, obj);
+            _Editor.GetCurrentMultiSampleCount = obj;
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace MonoGame.Forms.Controls
 
             if (Editor != null)
             {
-                Editor.DisableAntialising();
+                Editor.DisableRenderTargets();
                 Editor.CamHoldPosition(ClientSize);
             }
         }
