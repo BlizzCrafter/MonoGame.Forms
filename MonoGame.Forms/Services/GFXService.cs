@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Globalization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Components;
 using System.Timers;
+using System.Collections.Generic;
 
 namespace MonoGame.Forms.Services
 {
@@ -13,6 +15,105 @@ namespace MonoGame.Forms.Services
     /// </summary>
     public abstract class GFXService
     {
+        /// <summary>
+        /// This manager will manage all of your custom <see cref="RenderTarget2D"/>'s automatically - based on the current ClientSize and MultiSampleCount. 
+        /// </summary>
+        public class RenderTargetManager
+        {
+            /// <summary>
+            /// This helper class helps to hold additional <see cref="RenderTarget2D"/> data.
+            /// </summary>
+            public class RenderTarget2DHelper
+            {
+                private GFXService GetGFXService;
+
+                /// <summary>
+                /// Get the actual <see cref="RenderTarget2D"/>.
+                /// </summary>
+                public RenderTarget2D GetRenderTarget2D { get; set; }
+
+                internal bool Enabled { get; set; } = false;
+                internal bool IsRefreshing { get; set; } = false;
+                private bool UseMultiSampling { get; set; } = false;
+
+                private void CreateNewRenderTarget2D(bool useMultiSampling)
+                {
+                    GetRenderTarget2D = new RenderTarget2D(
+                        GetGFXService.graphics,
+                        GetGFXService.graphics.PresentationParameters.BackBufferWidth,
+                        GetGFXService.graphics.PresentationParameters.BackBufferHeight,
+                        false,
+                        SurfaceFormat.Color,
+                        DepthFormat.Depth24,
+                        useMultiSampling ? GetGFXService.GetCurrentMultiSampleCount : 0,
+                        RenderTargetUsage.DiscardContents);
+                }
+                
+                internal RenderTarget2DHelper(GFXService _GFXService, bool useMultiSampling)
+                {
+                    GetGFXService = _GFXService;
+                    UseMultiSampling = useMultiSampling;
+
+                    CreateNewRenderTarget2D(useMultiSampling);
+                }
+
+                internal void RefreshRenderTarget2D()
+                {
+                    if (GetRenderTarget2D == null) return;
+
+                    IsRefreshing = true;
+
+                    GetRenderTarget2D.Dispose();
+
+                    CreateNewRenderTarget2D(UseMultiSampling);
+
+                    IsRefreshing = false;
+                }
+            }
+
+            internal Dictionary<string, RenderTarget2DHelper> RenderTargets { get; set; }
+
+            private GFXService GetGFXService;
+
+            internal void RefreshRenderTargets()
+            {
+                foreach (string key in RenderTargets.Keys) RenderTargets[key].RefreshRenderTarget2D();
+            }
+
+            internal RenderTargetManager(GFXService _GFXService)
+            {
+                GetGFXService = _GFXService;
+                RenderTargets = new Dictionary<string, RenderTarget2DHelper>();
+            }
+
+            /// <summary>
+            /// Use this function to create a <see cref="RenderTarget2D"/>, which is fully managed internally.
+            /// </summary>
+            /// <param name="key">Set a key (name) for the new <see cref="RenderTarget2D"/>.</param>
+            /// <param name="useMultiSampling"><c>true</c> if you want to use multi sampling on this <see cref="RenderTarget2D"/>.</param>
+            /// <returns>The freshly created <see cref="RenderTarget2D"/>.</returns>
+            public RenderTarget2DHelper CreateNewRenderTarget2D(string key, bool useMultiSampling)
+            {
+                if (RenderTargets.ContainsKey(key)) return RenderTargets[key];
+
+                RenderTargets.Add(key, new RenderTarget2DHelper(GetGFXService, useMultiSampling));
+
+                return RenderTargets[key];
+            }
+
+            /// <summary>
+            /// Get a <see cref="RenderTarget2D"/> out of the Manager's list.
+            /// </summary>
+            /// <param name="key">Your previously set key (name) for the <see cref="RenderTarget2D"/> you want to get.</param>
+            /// <returns>Your desired <see cref="RenderTarget2D"/> or <c>null</c> if the key is not availablbe.</returns>
+            public RenderTarget2D GetRenderTarget2D(string key)
+            {
+                if (RenderTargets.ContainsKey(key)) return RenderTargets[key].GetRenderTarget2D;
+
+                return null;
+            }
+        }
+
         /// <summary>
         /// DisplayStyle enumerations for the integrated display.
         /// </summary>
@@ -31,6 +132,17 @@ namespace MonoGame.Forms.Services
         /// Directly sets the <see cref="DisplayStyle"/> of the integrated display.
         /// </summary>
         public DisplayStyle SetDisplayStyle { get; set; } = DisplayStyle.TopLeft;
+
+        /// <summary>
+        /// Get the internal <see cref="RenderTargetManager"/>.
+        /// <remarks>
+        /// When working with custom <see cref="RenderTarget2D"/>'s, it's strongly recomended to create these render targets with this RenderTargetManager,
+        /// because they will updated automatically when the client size or the multi sample count changes.
+        /// </remarks>
+        /// </summary>
+        public RenderTargetManager GetRenderTargetManager { get; private set; }
+
+        internal RenderTargetManager.RenderTarget2DHelper AntialisingRenderTarget { get; set; }
 
         /// <summary>
         /// The <see cref="ContentManager"/> is for loading custom content from the content root.
@@ -59,56 +171,40 @@ namespace MonoGame.Forms.Services
         /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
-                
-        internal RenderTarget2D AntialisingRenderTarget { get; set; }
-        private void CreateAntialisingRenderTarget(Vector2 size)
-        {
-            AntialisingRenderTarget = new RenderTarget2D(graphics,
-                    (int)size.X, 
-                    (int)size.Y,
-                    false, SurfaceFormat.Color, DepthFormat.Depth24, _CurrentMultiSampleCount > 0 ? _CurrentMultiSampleCount : 0, RenderTargetUsage.DiscardContents);
-        }
-        internal void RefreshAntiAlisingRenderTarget(SwapChainRenderTarget obj, int multiSampleCount = -1)
-        {
-            if (AntialisingRenderTarget == null) return;
 
-            IsRefreshingAntialisingRenderTarget = !IsRefreshingAntialisingRenderTarget;
-
-            AntialisingRenderTarget.Dispose();
-
-            if (multiSampleCount > 0) _CurrentMultiSampleCount = multiSampleCount;
-
-            CreateAntialisingRenderTarget(new Vector2(obj.Width, obj.Height));
-
-            IsRefreshingAntialisingRenderTarget = !IsRefreshingAntialisingRenderTarget;
-        }
-        private bool IsRefreshingAntialisingRenderTarget = false;
         /// <summary>
-        /// Disable the Antialising <see cref="RenderTarget2D"/>, before it becomes reactivated after 500 milliseconds.
+        /// Disable all custom <see cref="RenderTarget2D"/>'s hold by the <see cref="RenderTargetManager"/>, before they becoming reactivated after 500 milliseconds.
         /// </summary>
-        public void DisableAntialising()
+        public void DisableRenderTargets()
         {
-            if (AntialisingTimer != null)
+            if (RenderTargetTimer != null)
             {
-                AntialisingEnabled = false;
-                AntialisingTimer.Start();
+                GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = false);
+                RenderTargetTimer.Start();
             }
         }
-        internal void OnAntialisingTimeOutEnd()
+        internal void OnRenderTargetTimeOutEnd()
         {
-            AntialisingTimer.Stop();
+            RenderTargetTimer.Stop();
 
-            RefreshAntiAlisingRenderTarget(SwapChainRenderTarget);
-            AntialisingEnabled = true;
+            GetRenderTargetManager.RefreshRenderTargets();
+            GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = true);
         }
-        private bool AntialisingEnabled = true;
-        internal Timer AntialisingTimer { get; private set; }
+        internal Timer RenderTargetTimer { get; private set; }
 
         /// <summary>
         /// Get the current active MultiSampleCount.
         /// </summary>
-        public int GetCurrentMultiSampleCount { get { return _CurrentMultiSampleCount; } }
-        private int _CurrentMultiSampleCount = -1;
+        public int GetCurrentMultiSampleCount
+        {
+            get { return _CurrentMultiSampleCount; }
+            internal set
+            {
+                _CurrentMultiSampleCount = value;
+                GetRenderTargetManager.RefreshRenderTargets();
+            }
+        }
+        private int _CurrentMultiSampleCount = 0;
 
         /// <summary>
         /// Get the current mouse position in the control.
@@ -208,7 +304,8 @@ namespace MonoGame.Forms.Services
             this.graphics = graphics.GraphicsDevice;
             SwapChainRenderTarget = swapChainRenderTarget;
 
-            CreateAntialisingRenderTarget(new Vector2(graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height));
+            GetRenderTargetManager = new RenderTargetManager(this);
+            AntialisingRenderTarget = GetRenderTargetManager.CreateNewRenderTarget2D("MSAA", true);
 
             Content = new ContentManager(services, "Content");
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
@@ -227,9 +324,9 @@ namespace MonoGame.Forms.Services
             Cam.GetPosition = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 
-            AntialisingTimer = new Timer();
-            AntialisingTimer.Interval = 500;
-            AntialisingTimer.Elapsed += (sender, e) => OnAntialisingTimeOutEnd();
+            RenderTargetTimer = new Timer();
+            RenderTargetTimer.Interval = 500;
+            RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
         }
 
         /// <summary>
@@ -332,28 +429,103 @@ namespace MonoGame.Forms.Services
         /// }
         /// </code>
         /// </example>
-        public void BeginAntialising()
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        public void BeginAntialising(bool clearGraphics = true, Color? clearColor = null)
         {
-            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget || !AntialisingEnabled) return;
+            if (AntialisingRenderTarget.GetRenderTarget2D == null ||
+                AntialisingRenderTarget.IsRefreshing || 
+                !AntialisingRenderTarget.Enabled) return;
 
-            graphics.SetRenderTarget(AntialisingRenderTarget);
-            graphics.Clear(BackgroundColor);
+            graphics.SetRenderTarget(AntialisingRenderTarget.GetRenderTarget2D);
+            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
         }
 
         /// <summary>
         /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
-        /// <remarks>Ending the Antialising will automatically draw the result to the <see cref="SpriteBatch"/>.</remarks>
         /// </summary>
-        public void EndAntialising()
+        /// <param name="drawToSpriteBatch"><c>true</c> to automatically draw the result to the <see cref="SpriteBatch"/>.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <returns>The Antialising <see cref="RenderTarget2D"/>.</returns>
+        public RenderTarget2D EndAntialising(bool drawToSpriteBatch = true, bool clearGraphics = true, Color? clearColor = null)
         {
-            if (AntialisingRenderTarget == null || IsRefreshingAntialisingRenderTarget || !AntialisingEnabled) return;
+            if (AntialisingRenderTarget.GetRenderTarget2D == null ||
+                AntialisingRenderTarget.IsRefreshing ||
+                !AntialisingRenderTarget.Enabled) return null;
 
             graphics.SetRenderTarget(SwapChainRenderTarget);
-            graphics.Clear(BackgroundColor);
+            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(AntialisingRenderTarget, Vector2.Zero, Color.White);
-            spriteBatch.End();
+            if (drawToSpriteBatch)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(AntialisingRenderTarget.GetRenderTarget2D, Vector2.Zero, Color.White);
+                spriteBatch.End();
+            }
+
+            return AntialisingRenderTarget.GetRenderTarget2D;
+        }
+
+        /// <summary>
+        /// Everything between <c>BeginRenderTarget()</c> and <c>EndRenderTarget()</c> will be drawn to the <see cref="RenderTarget2D"/>.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// protected override void Draw()
+        /// {
+        ///    base.Draw();
+        ///    
+        ///    Editor.BeginRenderTarget("MyRenderTarget");
+        ///
+        ///    Editor.spriteBatch.Begin();
+        ///
+        ///    //Your drawings
+        ///
+        ///    Editor.spriteBatch.End();
+        ///
+        ///    Editor.EndRenderTarget("MyRenderTarget", false);
+        /// }
+        /// </code>
+        /// </example>
+        /// <param name="key">Please enter a previously set key of the <see cref="RenderTarget2D"/> you want to begin with.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        public void BeginRenderTarget(string key, bool clearGraphics = true, Color? clearColor = null)
+        {
+            if (GetRenderTargetManager.GetRenderTarget2D(key) == null ||
+                GetRenderTargetManager.RenderTargets[key].IsRefreshing ||
+                !GetRenderTargetManager.RenderTargets[key].Enabled) return;
+
+            graphics.SetRenderTarget(GetRenderTargetManager.GetRenderTarget2D(key));
+            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
+        }
+
+        /// <summary>
+        /// Everything between <c>BeginRenderTarget()</c> and <c>EndRenderTarget()</c> will be drawn to the <see cref="RenderTarget2D"/>.
+        /// </summary>
+        /// <param name="key">Please enter a previously set key of the <see cref="RenderTarget2D"/> you want to end.</param>
+        /// <param name="drawToSpriteBatch"><c>true</c> to automatically draw the result to the <see cref="SpriteBatch"/>.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <returns>The resulting <see cref="RenderTarget2D"/>.</returns>
+        public RenderTarget2D EndRenderTarget(string key, bool drawToSpriteBatch = true, bool clearGraphics = true, Color? clearColor = null)
+        {
+            if (GetRenderTargetManager.GetRenderTarget2D(key) == null ||
+                GetRenderTargetManager.RenderTargets[key].IsRefreshing ||
+                !GetRenderTargetManager.RenderTargets[key].Enabled) return null;
+
+            graphics.SetRenderTarget(SwapChainRenderTarget);
+            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
+
+            if (drawToSpriteBatch)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(GetRenderTargetManager.GetRenderTarget2D(key), Vector2.Zero, Color.White);
+                spriteBatch.End();
+            }
+
+            return GetRenderTargetManager.GetRenderTarget2D(key);
         }
 
         /// <summary>
