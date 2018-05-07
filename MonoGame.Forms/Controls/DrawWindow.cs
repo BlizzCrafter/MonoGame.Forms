@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
 using System;
 using System.ComponentModel;
@@ -66,25 +65,10 @@ namespace MonoGame.Forms.Controls
         {
             base.OnClientSizeChanged(e);
 
-            if (Editor != null) Editor.CamHoldPosition(ClientSize);
-        }
-
-        /// <summary>
-        /// Handles Control resizing events.
-        /// </summary>
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            base.OnSizeChanged(e);
-
             if (Editor != null)
             {
-                if (!Editor.ResizeStarted)
-                {
-                    Editor.ResizeStarted = true;
-                    Editor.InvokeResizeStart();
-                }
-
-                if (Editor.Timer != null) Editor.Timer.Start();
+                Editor.DisableAntialising();
+                Editor.CamHoldPosition(ClientSize);
             }
         }
 
