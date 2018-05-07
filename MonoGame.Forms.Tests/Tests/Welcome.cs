@@ -44,7 +44,7 @@ namespace MonoGame.Forms.Tests.Tests
 
             Editor.spriteBatch.DrawString(Editor.Font, WelcomeMessage, new Vector2(
                 (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(WelcomeMessage).X / 2),
-                (Editor.graphics.Viewport.Height / 2) - (Editor.Font.MeasureString(WelcomeMessage).Y / 2) + Logo.GetOrigin.Y + 10),
+                (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2) + Logo.GetOrigin.Y + 10),
                 Color.White);
 
             Editor.spriteBatch.End();
