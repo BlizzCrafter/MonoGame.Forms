@@ -27,6 +27,8 @@ namespace MonoGame.Forms.Controls
             _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
             _Editor.Initialize();
 
+            UpdateSwapChainRenderTarget -= DrawWindow_UpdateSwapChainRenderTarget;
+            UpdateMultiSampleCount -= DrawWindow_UpdateMultiSampleCount;
             UpdateSwapChainRenderTarget += DrawWindow_UpdateSwapChainRenderTarget;
             UpdateMultiSampleCount += DrawWindow_UpdateMultiSampleCount;
         }
