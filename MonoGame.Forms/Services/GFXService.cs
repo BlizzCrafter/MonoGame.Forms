@@ -142,7 +142,40 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public RenderTargetManager GetRenderTargetManager { get; private set; }
 
+        /// <summary>
+        /// Disable all custom <see cref="RenderTarget2D"/>'s hold by the <see cref="RenderTargetManager"/>, before they becoming reactivated after 500 milliseconds.
+        /// </summary>
+        public void DisableRenderTargets()
+        {
+            if (RenderTargetTimer != null)
+            {
+                GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = false);
+                RenderTargetTimer.Start();
+            }
+        }
+        internal void OnRenderTargetTimeOutEnd()
+        {
+            RenderTargetTimer.Stop();
+
+            GetRenderTargetManager.RefreshRenderTargets();
+            GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = true);
+        }
+        internal Timer RenderTargetTimer { get; private set; }
+
         internal RenderTargetManager.RenderTarget2DHelper AntialisingRenderTarget { get; set; }
+        /// <summary>
+        /// Get the current active MultiSampleCount.
+        /// </summary>
+        public int GetCurrentMultiSampleCount
+        {
+            get { return _CurrentMultiSampleCount; }
+            internal set
+            {
+                _CurrentMultiSampleCount = value;
+                GetRenderTargetManager.RefreshRenderTargets();
+            }
+        }
+        private int _CurrentMultiSampleCount = 0;
 
         /// <summary>
         /// The <see cref="ContentManager"/> is for loading custom content from the content root.
@@ -171,40 +204,6 @@ namespace MonoGame.Forms.Services
         /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
-
-        /// <summary>
-        /// Disable all custom <see cref="RenderTarget2D"/>'s hold by the <see cref="RenderTargetManager"/>, before they becoming reactivated after 500 milliseconds.
-        /// </summary>
-        public void DisableRenderTargets()
-        {
-            if (RenderTargetTimer != null)
-            {
-                GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = false);
-                RenderTargetTimer.Start();
-            }
-        }
-        internal void OnRenderTargetTimeOutEnd()
-        {
-            RenderTargetTimer.Stop();
-
-            GetRenderTargetManager.RefreshRenderTargets();
-            GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = true);
-        }
-        internal Timer RenderTargetTimer { get; private set; }
-
-        /// <summary>
-        /// Get the current active MultiSampleCount.
-        /// </summary>
-        public int GetCurrentMultiSampleCount
-        {
-            get { return _CurrentMultiSampleCount; }
-            internal set
-            {
-                _CurrentMultiSampleCount = value;
-                GetRenderTargetManager.RefreshRenderTargets();
-            }
-        }
-        private int _CurrentMultiSampleCount = 0;
 
         /// <summary>
         /// Get the current mouse position in the control.
