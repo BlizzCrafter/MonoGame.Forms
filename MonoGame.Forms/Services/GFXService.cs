@@ -552,7 +552,7 @@ namespace MonoGame.Forms.Services
                         depthStencilState,
                         rasterizerState,
                         effect,
-                        Cam.get_transformation(graphics));
+                        Cam.GetTransformation(graphics));
         }
 
         /// <summary>
