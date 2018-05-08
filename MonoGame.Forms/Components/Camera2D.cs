@@ -75,7 +75,7 @@ namespace MonoGame.Forms.Components
         /// </summary>
         /// <param name="graphicsDevice">The GraphicsDevice.</param>
         /// <returns></returns>
-        public Matrix get_transformation(GraphicsDevice graphicsDevice)
+        public Matrix GetTransformation(GraphicsDevice graphicsDevice)
         {
             Transform =
               Matrix.CreateTranslation(new Vector3(-GetPosition.X, -GetPosition.Y, 0)) *
