@@ -159,8 +159,15 @@ namespace MonoGame.Forms.Services
 
             GetRenderTargetManager.RefreshRenderTargets();
             GetRenderTargetManager.RenderTargets.ToList().ForEach(x => x.Value.Enabled = true);
+
+            RenderTargetsRefreshed?.Invoke();
         }
         internal Timer RenderTargetTimer { get; private set; }
+        /// <summary>
+        /// Subscribe to this event in your custom control to get notified when <see cref="RenderTarget2D"/>'s, 
+        /// hold by the <see cref="RenderTargetManager"/>, got refreshed.
+        /// </summary>
+        public event Action RenderTargetsRefreshed = delegate { };
 
         internal RenderTargetManager.RenderTarget2DHelper AntialisingRenderTarget { get; set; }
         /// <summary>
