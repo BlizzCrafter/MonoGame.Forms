@@ -99,7 +99,7 @@ namespace MonoGame.Forms.Controls
             UpdateMultiSampleCount?.Invoke(GetClampedMultisampleCount(multiSampleCount));
         }
         /// <summary>
-        /// Subscribe to this event in your custom control to update your custom <see cref="RenderTarget2D"/>'s with MultiSampling.
+        /// Subscribe to this event in your custom control to react to MultiSampleCount changes in your custom controls.
         /// </summary>
         public event Action<int> UpdateMultiSampleCount = delegate { };
 

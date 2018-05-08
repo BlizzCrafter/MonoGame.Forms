@@ -65,7 +65,7 @@ namespace MonoGame.Forms.Controls
         }
 
         /// <summary>
-        /// Updates the camera position according to the changed <see cref="System.Windows.Forms.Control.ClientSize"/>.
+        /// Updates related Editor services when the <see cref="System.Windows.Forms.Control.ClientSize"/> changes.
         /// </summary>
         protected override void OnClientSizeChanged(EventArgs e)
         {
