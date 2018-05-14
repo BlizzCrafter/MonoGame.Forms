@@ -97,7 +97,7 @@ namespace MonoGame.Forms.Controls
             MultiSampleCountRefreshed?.Invoke(GetClampedMultisampleCount(multiSampleCount));
         }
         /// <summary>
-        /// Subscribe to this event in your custom control to react to MultiSampleCount changes in your custom controls.
+        /// Subscribe to this event to react to MultiSampleCount changes in your custom controls.
         /// </summary>
         public event Action<int> MultiSampleCountRefreshed = delegate { };
 
