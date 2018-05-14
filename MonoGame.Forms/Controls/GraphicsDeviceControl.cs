@@ -56,11 +56,9 @@ namespace MonoGame.Forms.Controls
         private SwapChainRenderTarget _chain;
 
         /// <summary>
-        /// Transfers the new <see cref="SwapChainRenderTarget"/> to the editor service object after resizing a custom control.
-        /// <remarks>Make sure to subscribe to this event in your custom control to update your custom <see cref="RenderTarget2D"/>'s
-        /// according to the recent changes in the back buffer (BackBufferWidth and BackBufferHeight).</remarks>
+        /// Mainly transfers the new <see cref="SwapChainRenderTarget"/> to the editor service objects after resizing a custom control.
         /// </summary>
-        protected event Action<SwapChainRenderTarget> UpdateSwapChainRenderTarget = delegate { };
+        internal event Action<SwapChainRenderTarget> SwapChainRenderTargetRefreshed = delegate { };
 
         /// <summary>
         /// Get the MultiSampleCount (MSAA Antialising) to the nearest power of two in relation of what the users <see cref="GraphicsDevice"/> can handle.
@@ -96,12 +94,12 @@ namespace MonoGame.Forms.Controls
         /// <param name="multiSampleCount">Usual numbers are 0, 2, 4, 8.</param>
         public void SetMultiSampleCount(int multiSampleCount)
         {
-            UpdateMultiSampleCount?.Invoke(GetClampedMultisampleCount(multiSampleCount));
+            MultiSampleCountRefreshed?.Invoke(GetClampedMultisampleCount(multiSampleCount));
         }
         /// <summary>
         /// Subscribe to this event in your custom control to react to MultiSampleCount changes in your custom controls.
         /// </summary>
-        public event Action<int> UpdateMultiSampleCount = delegate { };
+        public event Action<int> MultiSampleCountRefreshed = delegate { };
 
         /// <summary>
         /// Get the GraphicsDevice.
@@ -223,7 +221,7 @@ namespace MonoGame.Forms.Controls
                     GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
                     GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
 
-                    UpdateSwapChainRenderTarget?.Invoke(_chain);
+                    SwapChainRenderTargetRefreshed?.Invoke(_chain);
                 }
             }
         }

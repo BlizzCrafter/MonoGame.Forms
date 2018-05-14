@@ -27,10 +27,10 @@ namespace MonoGame.Forms.Controls
             _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
             _Editor.Initialize();
 
-            UpdateSwapChainRenderTarget -= DrawWindow_UpdateSwapChainRenderTarget;
-            UpdateMultiSampleCount -= DrawWindow_UpdateMultiSampleCount;
-            UpdateSwapChainRenderTarget += DrawWindow_UpdateSwapChainRenderTarget;
-            UpdateMultiSampleCount += DrawWindow_UpdateMultiSampleCount;
+            SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
+            MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
+            SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
+            MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
         }
 
         private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
@@ -92,8 +92,8 @@ namespace MonoGame.Forms.Controls
             base.Dispose(disposing);
 
             _Editor?.Dispose();
-            UpdateSwapChainRenderTarget -= DrawWindow_UpdateSwapChainRenderTarget;
-            UpdateMultiSampleCount -= DrawWindow_UpdateMultiSampleCount;
+            SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
+            MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
         }
     }
 }
