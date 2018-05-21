@@ -54,6 +54,7 @@ namespace MonoGame.Forms.Controls
             if (_Editor != null)
             {
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
+                Editor.IsMouseInsideControl = IsMouseInsideControl;
                 _Editor.Update(gameTime);
             }
         }
