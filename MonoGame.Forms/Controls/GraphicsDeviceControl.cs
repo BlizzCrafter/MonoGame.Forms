@@ -51,15 +51,20 @@ namespace MonoGame.Forms.Controls
         /// Otherwise you will see only a black control window.
         /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
+#if DX
         [Browsable(false)]
         public SwapChainRenderTarget SwapChainRenderTarget { get { return _chain; } }
         private SwapChainRenderTarget _chain;
+#endif
 
         /// <summary>
         /// Mainly transfers the new <see cref="SwapChainRenderTarget"/> to the editor service objects after resizing a custom control.
         /// </summary>
+#if DX
         internal event Action<SwapChainRenderTarget> SwapChainRenderTargetRefreshed = delegate { };
+#endif
 
+#if DX
         /// <summary>
         /// Get the MultiSampleCount (MSAA Antialising) to the nearest power of two in relation of what the users <see cref="GraphicsDevice"/> can handle.
         /// </summary>
@@ -100,6 +105,7 @@ namespace MonoGame.Forms.Controls
         /// Subscribe to this event to react to MultiSampleCount changes in your custom controls.
         /// </summary>
         public event Action<int> MultiSampleCountRefreshed = delegate { };
+#endif
 
         /// <summary>
         /// Get the GraphicsDevice.
@@ -133,8 +139,9 @@ namespace MonoGame.Forms.Controls
             if (!designMode)
             {
                 _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
-                _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
-                    ClientSize.Height);
+#if DX
+                _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width, ClientSize.Height);
+#endif
                 Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
                 Initialize();
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
@@ -168,7 +175,7 @@ namespace MonoGame.Forms.Controls
 
         private string BeginDraw()
         {
-            if (_graphicsDeviceService == null || _chain == null)
+            if (_graphicsDeviceService == null)
             {
                 return Text + "\n\n" + GetType();
             }
@@ -190,7 +197,9 @@ namespace MonoGame.Forms.Controls
             GraphicsDevice.Viewport = viewport;
             GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
             GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+#if DX
             _graphicsDeviceService.GraphicsDevice.SetRenderTarget(_chain);
+#endif
             return null;
         }
 
@@ -198,7 +207,9 @@ namespace MonoGame.Forms.Controls
         {
             try
             {
+#if DX
                 _chain.Present();
+#endif
             }
             catch
             {
@@ -210,9 +221,10 @@ namespace MonoGame.Forms.Controls
         {
             base.OnClientSizeChanged(e);
 
-            if (_chain != null)
+            if (ClientSize.Width > 0 && ClientSize.Height > 0)
             {
-                if (ClientSize.Width > 0 && ClientSize.Height > 0)
+#if DX
+                if (_chain != null)
                 {
                     _chain.Dispose();
                     _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
@@ -223,6 +235,7 @@ namespace MonoGame.Forms.Controls
 
                     SwapChainRenderTargetRefreshed?.Invoke(_chain);
                 }
+#endif
             }
         }
 

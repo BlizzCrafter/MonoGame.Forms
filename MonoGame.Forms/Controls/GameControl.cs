@@ -45,7 +45,9 @@ namespace MonoGame.Forms.Controls
                 UpdateMousePositions();
 
                 Update(gameTime);
+#if DX
                 Invalidate();
+#endif
             }
         }
 

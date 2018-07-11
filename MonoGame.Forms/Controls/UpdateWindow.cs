@@ -25,16 +25,18 @@ namespace MonoGame.Forms.Controls
         protected override void Initialize()
         {
             base.Initialize();
-
+#if DX
             _Editor = new UpdateService(_graphicsDeviceService, SwapChainRenderTarget);
-            _Editor.Initialize();
 
             SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
-            MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
             SwapChainRenderTargetRefreshed += UpdateWindow_UpdateSwapChainRenderTarget;
+            MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += UpdateWindow_UpdateMultiSampleCount;
+#endif
+            _Editor.Initialize();
         }
 
+#if DX
         private void UpdateWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
         {
             _Editor.SwapChainRenderTarget = obj;
@@ -44,6 +46,7 @@ namespace MonoGame.Forms.Controls
         {
             _Editor.GetCurrentMultiSampleCount = obj;
         }
+#endif
 
         /// <summary>
         /// Basic updating.
@@ -76,7 +79,9 @@ namespace MonoGame.Forms.Controls
 
             if (Editor != null)
             {
+#if DX
                 Editor.DisableRenderTargets();
+#endif
                 Editor.CamHoldPosition(ClientSize);
             }
         }
@@ -99,8 +104,10 @@ namespace MonoGame.Forms.Controls
             base.Dispose(disposing);
 
             _Editor?.Dispose();
+#if DX
             SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
+#endif
         }
     }
 }

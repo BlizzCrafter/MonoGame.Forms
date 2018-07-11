@@ -13,12 +13,13 @@ namespace MonoGame.Forms.Services
     /// <summary>
     /// The <see cref="GFXService"/> class provides basic functionality of MonoGame
     /// </summary>
-    public abstract class GFXService
+    public abstract class GFXService : IDisposable
     {
+#if DX
         /// <summary>
         /// This manager will manage all of your custom <see cref="RenderTarget2D"/>'s automatically - based on the current ClientSize and MultiSampleCount. 
         /// </summary>
-        public class RenderTargetManager
+        public class RenderTargetManager : IDisposable
         {
             /// <summary>
             /// This helper class helps to hold additional <see cref="RenderTarget2D"/> data.
@@ -77,7 +78,7 @@ namespace MonoGame.Forms.Services
 
             internal void RefreshRenderTargets()
             {
-                foreach (string key in RenderTargets.Keys) RenderTargets[key].RefreshRenderTarget2D();
+                RenderTargets.ToList().ForEach(x => x.Value.RefreshRenderTarget2D());
             }
 
             internal RenderTargetManager(GFXService _GFXService)
@@ -112,27 +113,16 @@ namespace MonoGame.Forms.Services
 
                 return null;
             }
-        }
 
-        /// <summary>
-        /// DisplayStyle enumerations for the integrated display.
-        /// </summary>
-        public enum DisplayStyle
-        {
             /// <summary>
-            /// Draws the integrated display in the top left corner of the custom control.
+            /// Disposes the <see cref="RenderTarget2D"/>s of the <see cref="RenderTargetManager"/>.
             /// </summary>
-            TopLeft,
-            /// <summary>
-            /// Draws the integrated display in the top right corner of the custom control.
-            /// </summary>
-            TopRight
+            public void Dispose()
+            {
+                RenderTargets.ToList().ForEach(x => x.Value.GetRenderTarget2D.Dispose());
+            }
         }
-        /// <summary>
-        /// Directly sets the <see cref="DisplayStyle"/> of the integrated display.
-        /// </summary>
-        public DisplayStyle SetDisplayStyle { get; set; } = DisplayStyle.TopLeft;
-
+        
         /// <summary>
         /// Get the internal <see cref="RenderTargetManager"/>.
         /// <remarks>
@@ -183,6 +173,26 @@ namespace MonoGame.Forms.Services
             }
         }
         private int _CurrentMultiSampleCount = 0;
+#endif
+
+        /// <summary>
+        /// DisplayStyle enumerations for the integrated display.
+        /// </summary>
+        public enum DisplayStyle
+        {
+            /// <summary>
+            /// Draws the integrated display in the top left corner of the custom control.
+            /// </summary>
+            TopLeft,
+            /// <summary>
+            /// Draws the integrated display in the top right corner of the custom control.
+            /// </summary>
+            TopRight
+        }
+        /// <summary>
+        /// Directly sets the <see cref="DisplayStyle"/> of the integrated display.
+        /// </summary>
+        public DisplayStyle SetDisplayStyle { get; set; } = DisplayStyle.TopLeft;
 
         /// <summary>
         /// The <see cref="ContentManager"/> is for loading custom content from the content root.
@@ -202,15 +212,16 @@ namespace MonoGame.Forms.Services
         /// The <see cref="SpriteBatch"/>.
         /// </summary>
         public SpriteBatch spriteBatch { get; set; }
+#if DX
         /// <summary>
         /// A swap chain used for rendering to a secondary GameWindow.
         /// Note: When working with different <see cref="RenderTarget2D"/>, 
         /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
         /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
         /// Otherwise you will see only a black control window.
-        /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
+#endif
 
         /// <summary>
         /// Get the current mouse position in the control.
@@ -302,28 +313,30 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public bool ShowCamPosition { get; set; } = false;
 
+#if DX
         /// <summary>
         /// Initializes the GFX system, which contains basic MonoGame functionality.
         /// </summary>
         /// <param name="graphics">The graphics device service</param>
         /// <param name="swapChainRenderTarget">The swap chain render target</param>
-        public void InitializeGFX(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
+        public void InitializeGFX_DX(
+            IGraphicsDeviceService graphics,
+            SwapChainRenderTarget swapChainRenderTarget)
+        {
+            InitializeGFX(graphics);
+
+            SwapChainRenderTarget = swapChainRenderTarget;
+        }
+#endif
+
+        private void InitializeGFX(IGraphicsDeviceService graphics)
         {
             services = new GameServiceContainer();
             services.AddService<IGraphicsDeviceService>(graphics);
-
             this.graphics = graphics.GraphicsDevice;
-            SwapChainRenderTarget = swapChainRenderTarget;
-
-            GetRenderTargetManager = new RenderTargetManager(this);
-            AntialisingRenderTarget = GetRenderTargetManager.CreateNewRenderTarget2D("MSAA", true);
 
             Content = new ContentManager(services, "Content");
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
-            
-            InternContent = new ResourceContentManager(services, Properties.Resources.ResourceManager);
-            Font = InternContent.Load<SpriteFont>("Font");
-            FontHeight = Font.MeasureString("A").Y;
 
             Pixel = new Texture2D(graphics.GraphicsDevice, 1, 1);
             Pixel.SetData(new[] { Color.White });
@@ -334,10 +347,18 @@ namespace MonoGame.Forms.Services
             Cam = new Camera2D();
             Cam.GetPosition = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+#if DX
+            InternContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
+
+            GetRenderTargetManager = new RenderTargetManager(this);
+            AntialisingRenderTarget = GetRenderTargetManager.CreateNewRenderTarget2D("MSAA", true);
 
             RenderTargetTimer = new Timer();
             RenderTargetTimer.Interval = 500;
             RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
+#endif
+            Font = InternContent.Load<SpriteFont>("Font");
+            FontHeight = Font.MeasureString("A").Y;
         }
 
         /// <summary>
@@ -419,6 +440,7 @@ namespace MonoGame.Forms.Services
             }
         }
 
+#if DX
         /// <summary>
         /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
         /// </summary>
@@ -466,6 +488,7 @@ namespace MonoGame.Forms.Services
                 !AntialisingRenderTarget.Enabled) return null;
 
             graphics.SetRenderTarget(SwapChainRenderTarget);
+
             if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
 
             if (drawToSpriteBatch)
@@ -527,6 +550,7 @@ namespace MonoGame.Forms.Services
                 !GetRenderTargetManager.RenderTargets[key].Enabled) return null;
 
             graphics.SetRenderTarget(SwapChainRenderTarget);
+
             if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
 
             if (drawToSpriteBatch)
@@ -538,6 +562,7 @@ namespace MonoGame.Forms.Services
 
             return GetRenderTargetManager.GetRenderTarget2D(key);
         }
+#endif
 
         /// <summary>
         /// Use 'BeginCamera2D' as a replacement of <see cref="SpriteBatch"/>.Begin(<see cref="SpriteSortMode"/>, <see cref="BlendState"/>, <see cref="SamplerState"/>, <see cref="DepthStencilState"/>, <see cref="RasterizerState"/>, <see cref="Effect"/>, <see cref="Matrix"/>?).
@@ -629,5 +654,20 @@ namespace MonoGame.Forms.Services
         /// Basic drawing service.
         /// </summary>
         public abstract void Draw();
+
+        /// <summary>
+        /// Disposes the contents of this service.
+        /// </summary>
+        public void Dispose()
+        {
+            Content?.Dispose();
+            InternContent?.Dispose();
+            Pixel.Dispose();
+            Font = null;
+#if DX
+            GetRenderTargetManager?.Dispose();
+            RenderTargetTimer?.Dispose();
+#endif
+        }
     }
 }

@@ -22,8 +22,6 @@ namespace MonoGame.Forms.Services
         private static int _referenceCount;
         private readonly PresentationParameters _parameters;
 
-        internal int MaxMultiSampleCount;
-
         private GraphicsDeviceService(IntPtr windowHandle, int width, int height, GraphicsProfile graphicsProfile)
         {
             _parameters = new PresentationParameters
@@ -40,9 +38,13 @@ namespace MonoGame.Forms.Services
             GraphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
                                                          graphicsProfile,
                                                          _parameters);
-
+#if DX
             MaxMultiSampleCount = GetMaxMultiSampleCount(GraphicsDevice);
+#endif
         }
+#if DX
+        internal int MaxMultiSampleCount;
+
         private int GetMaxMultiSampleCount(GraphicsDevice device)
         {
             var format = SharpDXHelper.ToFormat(device.PresentationParameters.BackBufferFormat);
@@ -57,6 +59,7 @@ namespace MonoGame.Forms.Services
             }
             return maxLevel;
         }
+#endif
 
         public GraphicsDevice GraphicsDevice { get; private set; }
 

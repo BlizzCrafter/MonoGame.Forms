@@ -10,13 +10,15 @@ namespace MonoGame.Forms.Services
     /// The <see cref="UpdateWindow"/> inherits from this class.
     /// <remarks>Note: this class provides a game loop. The <see cref="DrawService"/> is not using a game loop.</remarks>
     /// </summary>
-    public sealed class UpdateService : GFXService, IDisposable
+    public sealed class UpdateService : GFXService
     {
+#if DX
         internal UpdateService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System
-            InitializeGFX(graphics, swapChainRenderTarget);
+            InitializeGFX_DX(graphics, swapChainRenderTarget);
         }
+#endif
 
         /// <summary>
         /// Override this basic intitializing method in your custom class to create your own initializing logic.
@@ -42,15 +44,6 @@ namespace MonoGame.Forms.Services
             UpdateFrameCounter();
 
             graphics.Clear(BackgroundColor);
-        }
-
-        /// <summary>
-        /// Disposes the contents of this update service.
-        /// </summary>
-        public void Dispose()
-        {
-            Content?.Dispose();
-            Font = null;
         }
     }
 }

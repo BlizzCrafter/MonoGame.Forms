@@ -10,13 +10,15 @@ namespace MonoGame.Forms.Services
     /// The <see cref="DrawWindow"/> inherits from this class.
     /// <remarks>Note: this class provides no game loop. Only the <see cref="UpdateService"/> deliveres one.</remarks>
     /// </summary>
-    public sealed class DrawService : GFXService, IDisposable
+    public sealed class DrawService : GFXService
     {
+#if DX
         internal DrawService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System
-            InitializeGFX(graphics, swapChainRenderTarget);
+            InitializeGFX_DX(graphics, swapChainRenderTarget);
         }
+#endif
 
         /// <summary>
         /// Override this basic intitializing method in your custom class to create your own initializing logic.
@@ -39,15 +41,6 @@ namespace MonoGame.Forms.Services
         public override void Draw()
         {
             graphics.Clear(BackgroundColor);
-        }
-
-        /// <summary>
-        /// Disposes the contents of this draw service.
-        /// </summary>
-        public void Dispose()
-        {
-            Content?.Dispose();
-            Font = null;
         }
     }
 }

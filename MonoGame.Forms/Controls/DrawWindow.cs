@@ -24,15 +24,18 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected override void Initialize()
         {
+#if DX
             _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
-            _Editor.Initialize();
 
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
-            MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
+            MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
+#endif
+            _Editor.Initialize();
         }
 
+#if DX
         private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
         {
             _Editor.SwapChainRenderTarget = obj;
@@ -42,6 +45,7 @@ namespace MonoGame.Forms.Controls
         {
             _Editor.GetCurrentMultiSampleCount = obj;
         }
+#endif
 
         /// <summary>
         /// Basic drawing.
@@ -56,8 +60,9 @@ namespace MonoGame.Forms.Controls
                 Editor.IsMouseInsideControl = IsMouseInsideControl;
 
                 _Editor.Draw();
-
+#if DX
                 if (AutomaticInvalidation) Invalidate();
+#endif
             }
         }
 
@@ -70,7 +75,9 @@ namespace MonoGame.Forms.Controls
 
             if (Editor != null)
             {
+#if DX
                 Editor.DisableRenderTargets();
+#endif
                 Editor.CamHoldPosition(ClientSize);
             }
         }
@@ -93,8 +100,10 @@ namespace MonoGame.Forms.Controls
             base.Dispose(disposing);
 
             _Editor?.Dispose();
+#if DX
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
+#endif
         }
     }
 }
