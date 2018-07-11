@@ -116,6 +116,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SwapChainRenderTarget.GL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\MonoGame.Forms\Resources\Font.xnb">
