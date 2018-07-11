@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.DX", "MonoGame.Forms\MonoGame.Forms.DX.csproj", "{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Tests", "MonoGame.Forms.Tests\MonoGame.Forms.Tests.csproj", "{9C7B2133-768B-4B3B-883B-9601B02100D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Tests.DX", "MonoGame.Forms.Tests\MonoGame.Forms.Tests.DX.csproj", "{9C7B2133-768B-4B3B-883B-9601B02100D6}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{7CF7ED28-F168-42BF-A1BB-1E750352F2D4}"
 EndProject
