@@ -34,6 +34,23 @@ namespace MonoGame.Forms.Controls
                 return res;
             }
         }
+#if GL
+        [Browsable(true)]
+        [Description("Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 1ms means realtime updates, which costs performance. Use values like 50ms or 100ms to get a better performance but not so frequent updates.")]
+        [DefaultValue(1)]
+        /// <summary>
+        /// Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 
+        /// 1ms means realtime updates, which costs performance. 
+        /// Use values like 50ms or 100ms to get a better performance but not so frequent updates.
+        /// </summary>
+        public int DrawInterval
+        {
+            get { return _Intervall.Interval; }
+            set { _Intervall.Interval = value; }
+        }
+        private Timer _Intervall = new Timer() { Interval = 1 };
+        internal bool _DrawThisFrame = true;
+#endif
 
         /// <summary>
         /// Set the <see cref="Microsoft.Xna.Framework.Graphics.GraphicsProfile"/> in the property grid during Design-Time (HiDef or Reach).
@@ -133,7 +150,7 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected bool AutomaticInvalidation { get; set; } = true;
 
-        #pragma warning disable 1591
+#pragma warning disable 1591
         protected override void OnCreateControl()
         {
             if (!designMode)
@@ -291,7 +308,7 @@ namespace MonoGame.Forms.Controls
         protected abstract void Initialize();
         protected abstract void Draw();
 
-        #region Input
+#region Input
 
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
@@ -367,6 +384,6 @@ namespace MonoGame.Forms.Controls
             else if (e.Delta < 0) OnMouseWheelDownwards?.Invoke(e);
         }
 
-        #endregion
+#endregion
     }
 }
