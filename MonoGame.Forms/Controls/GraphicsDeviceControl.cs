@@ -18,6 +18,7 @@ using System.ComponentModel;
 
 #if GL
 using MonoGame.Forms.GL;
+using Microsoft.Xna.Framework.SDL;
 #endif
 
 namespace MonoGame.Forms.Controls
@@ -445,6 +446,7 @@ namespace MonoGame.Forms.Controls
         [Description("Scroll the mouse wheel downwards to trigger this event.")]
         public event MouseWheelDownwardsEvent OnMouseWheelDownwards;
 
+#if DX
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             base.OnMouseWheel(e);
@@ -452,7 +454,205 @@ namespace MonoGame.Forms.Controls
             if (e.Delta > 0) OnMouseWheelUpwards?.Invoke(e);
             else if (e.Delta < 0) OnMouseWheelDownwards?.Invoke(e);
         }
+#elif GL
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (!LockKeyboardInput)
+            {
+                try
+                {
+                    if (!designMode)
+                    {
+                        Sdl.Event evt = GetKeyEvent((SDLK.Key)Enum.Parse(typeof(SDLK.Key), e.KeyCode.ToString()), (SDLK.ModifierKeys)e.Modifiers, true);
+                        Sdl.PushEvent(out evt);
+                    }
+                }
+                catch { }
+            }
 
+            base.OnKeyDown(e);
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            if (!LockKeyboardInput)
+            {
+                try
+                {
+                    if (!designMode)
+                    {
+                        Sdl.Event evt = GetKeyEvent((SDLK.Key)Enum.Parse(typeof(SDLK.Key), e.KeyCode.ToString()), (SDLK.ModifierKeys)e.Modifiers, false);
+                        Sdl.PushEvent(out evt);
+                    }
+                }
+                catch { }
+            }
+            base.OnKeyUp(e);
+        }
+
+        public Sdl.Event GetKeyEvent(SDLK.Key key, SDLK.ModifierKeys modifierKeys, bool down)
+        {
+            Sdl.Event evt = new Sdl.Event();
+            evt.Key.Keysym.Scancode = 0;
+            evt.Key.Keysym.Sym = (int)key;
+            evt.Key.Keysym.Mod = (int)modifierKeys;
+            if (down)
+            {
+                evt.Key.State = (byte)SDLB.ButtonKeyState.Pressed;
+                evt.Type = Sdl.EventType.KeyDown;
+            }
+            else
+            {
+                evt.Key.State = (byte)SDLB.ButtonKeyState.NotPressed;
+                evt.Type = Sdl.EventType.KeyUp;
+            }
+
+            return evt;
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            try
+            {
+                if (!designMode)
+                {
+                    Sdl.Event evt = GetButtonEvent(ConvertMouseButtons(e), true, (short)e.X, (short)e.Y);
+                    Sdl.PushEvent(out evt);
+                }
+            }
+            catch { }
+            base.OnMouseDown(e);
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            try
+            {
+                if (!designMode)
+                {
+                    Sdl.Event evt = GetButtonEvent(ConvertMouseButtons(e), false, (short)e.X, (short)e.Y);
+                    Sdl.PushEvent(out evt);
+                }
+            }
+            catch { }
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            try
+            {
+                if (!designMode)
+                {
+                    Sdl.Event evt = GetMotionEvent(ConvertMouseButtons(e), false, (short)e.X, (short)e.Y, (short)(e.X - lastX), (short)(e.Y - lastY));
+                    Sdl.PushEvent(out evt);
+                }
+            }
+            catch { }
+            base.OnMouseMove(e);
+        }
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            base.OnMouseWheel(e);
+
+            if (e.Delta > 0) OnMouseWheelUpwards?.Invoke(e);
+            else if (e.Delta < 0) OnMouseWheelDownwards?.Invoke(e);
+
+            try
+            {
+                if (!designMode)
+                {
+                    Sdl.Event evt = GetWheelEvent(e.Delta);
+                    Sdl.PushEvent(out evt);
+                }
+            }
+            catch { }
+        }
+
+        private Sdl.Event GetWheelEvent(int delta)
+        {
+            Sdl.Event evt = new Sdl.Event();
+            evt.Wheel.Which = 0;
+            evt.Wheel.Type = Sdl.EventType.MouseWheel;
+            evt.Wheel.Y = delta;
+            evt.Type = Sdl.EventType.MouseWheel;
+            return evt;
+        }
+
+        private Sdl.Event GetButtonEvent(SDLB.MouseButton button, bool buttonPressed, short positionX, short positionY)
+        {
+            Sdl.Event evt = new Sdl.Event();
+            evt.Button.button = (byte)button;
+            evt.Button.which = 0;
+            evt.Button.x = positionX;
+            evt.Button.y = positionY;
+            if (buttonPressed)
+            {
+                evt.Button.state = (byte)SDLB.ButtonKeyState.Pressed;
+                evt.Type = Sdl.EventType.MouseButtonDown;
+            }
+            else
+            {
+                evt.Button.state = (byte)SDLB.ButtonKeyState.NotPressed;
+                evt.Type = Sdl.EventType.MouseButtonup;
+            }
+            return evt;
+        }
+
+        int lastX, lastY;
+        private Sdl.Event GetMotionEvent(
+            SDLB.MouseButton button,
+            bool buttonPressed,
+            short positionX, short positionY,
+            short relativeX, short relativeY)
+        {
+            Sdl.Event evt = new Sdl.Event();
+            evt.Motion.Xrel = relativeX;
+            evt.Motion.Yrel = relativeY;
+            evt.Motion.Which = (byte)button;
+            evt.Motion.X = positionX;
+            evt.Motion.Y = positionY;
+            evt.Type = Sdl.EventType.MouseMotion;
+            if (buttonPressed)
+            {
+                evt.Motion.State = (byte)SDLB.ButtonKeyState.Pressed;
+            }
+            else
+            {
+                evt.Motion.State = (byte)SDLB.ButtonKeyState.NotPressed;
+            }
+            return evt;
+        }
+
+        private static SDLB.MouseButton ConvertMouseButtons(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                return SDLB.MouseButton.PrimaryButton;
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                return SDLB.MouseButton.SecondaryButton;
+            }
+            else if (e.Button == MouseButtons.Middle)
+            {
+                return SDLB.MouseButton.MiddleButton;
+            }
+            else if (e.Button == MouseButtons.XButton1)
+            {
+                return SDLB.MouseButton.WheelDown;
+            }
+            else if (e.Button == MouseButtons.XButton2)
+            {
+                return SDLB.MouseButton.WheelUp;
+            }
+            else
+            {
+                return SDLB.MouseButton.None;
+            }
+        }
+#endif
         #endregion
     }
 }
