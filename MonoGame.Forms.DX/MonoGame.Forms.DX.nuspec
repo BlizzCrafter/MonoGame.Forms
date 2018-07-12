@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>MonoGame.Forms</id>
+    <id>MonoGame.Forms.DX</id>
     <version>$version$</version>
-    <title>MonoGame.Forms</title>
+    <title>MonoGame.Forms.DX</title>
     <authors>Marcel 'sqrMin1' Härtel</authors>
     <owners>Marcel Härtel</owners>
     <licenseUrl>https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE</licenseUrl>
@@ -15,7 +15,7 @@
     <tags>MonoGame WindowsForms</tags>
 	<references>
 		<group targetFramework="net451">
-		<reference file="MonoGame.Forms.dll" />
+		<reference file="MonoGame.Forms.DX.dll" />
         <reference file="MonoGame.Framework.dll" />
 		<reference file="SharpDX.dll" />
 		<reference file="SharpDX.DXGI.dll" />
@@ -24,6 +24,6 @@
 	</references>
   </metadata>
   <files>
-    <file src="..\Libs\**" target="lib\net451" />
+    <file src="..\Libs\MonoGame\WindowsDX\**" target="lib\net451" />
 </files>
 </package>
