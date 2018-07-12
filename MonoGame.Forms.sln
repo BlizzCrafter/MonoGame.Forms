@@ -11,6 +11,8 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.GL", "MonoGame.Forms.GL\MonoGame.Forms.GL.csproj", "{794ECA96-6B4E-4445-928E-1A4FCAB8B95B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Tests.GL", "MonoGame.Forms.Tests.GL\MonoGame.Forms.Tests.GL.csproj", "{F094D35F-8716-4D73-B30F-5C8BBE45AD94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{794ECA96-6B4E-4445-928E-1A4FCAB8B95B}.GL_Release|Any CPU.Build.0 = GL_Release|Any CPU
 		{794ECA96-6B4E-4445-928E-1A4FCAB8B95B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{794ECA96-6B4E-4445-928E-1A4FCAB8B95B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.DX_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.DX_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.DX_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.DX_Release|Any CPU.Build.0 = Release|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.GL_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.GL_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.GL_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.GL_Release|Any CPU.Build.0 = Release|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F094D35F-8716-4D73-B30F-5C8BBE45AD94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
