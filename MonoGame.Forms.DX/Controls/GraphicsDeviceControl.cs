@@ -299,7 +299,7 @@ namespace MonoGame.Forms.Controls
                 _Intervall.Enabled = false;
                 _Intervall.Dispose();
 
-                _chain.Dispose();
+                if (_chain != null) _chain.Dispose();
 #endif
             }
             base.Dispose(disposing);
