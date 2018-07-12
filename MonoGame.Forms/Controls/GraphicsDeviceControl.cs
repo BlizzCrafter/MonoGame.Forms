@@ -127,6 +127,19 @@ namespace MonoGame.Forms.Controls
             }
             else if (AutomaticInvalidation) Invalidate();
         }
+
+        private void RefreshWindow()
+        {
+            _chain.Dispose();
+            _chain = new SwapChainRenderTarget_GL(_graphicsDeviceService.GraphicsDevice, ClientSize.Width,
+                    ClientSize.Height);
+
+            GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+            GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+            GraphicsDevice.Viewport = new Viewport(0, 0, ClientSize.Width, ClientSize.Height);
+
+            Sdl.Window.SetSize(_graphicsDeviceService.SDLPlatform.Window.Handle, ClientSize.Width, ClientSize.Height);
+        }
 #endif
 
         /// <summary>
@@ -252,11 +265,12 @@ namespace MonoGame.Forms.Controls
         protected override void OnClientSizeChanged(EventArgs e)
         {
             base.OnClientSizeChanged(e);
-#if DX
+
             if (ClientSize.Width > 0 && ClientSize.Height > 0)
             {
                 if (_chain != null)
                 {
+#if DX
                     _chain.Dispose();
                     _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
                             ClientSize.Height);
@@ -265,9 +279,9 @@ namespace MonoGame.Forms.Controls
                     GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
 
                     SwapChainRenderTargetRefreshed?.Invoke(_chain);
+#endif
                 }
             }
-#endif
         }
 
         private string HandleDeviceReset()
