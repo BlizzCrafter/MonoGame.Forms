@@ -1,12 +1,17 @@
 ﻿using System;
-using System.Linq;
 using System.Globalization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Components;
+
+#if GL
+using MonoGame.Forms.GL;
+#elif DX
+using System.Linq;
 using System.Timers;
 using System.Collections.Generic;
+#endif
 
 namespace MonoGame.Forms.Services
 {
@@ -173,6 +178,24 @@ namespace MonoGame.Forms.Services
             }
         }
         private int _CurrentMultiSampleCount = 0;
+
+        /// <summary>
+        /// A swap chain used for rendering to a secondary GameWindow.
+        /// Note: When working with different <see cref="RenderTarget2D"/>, 
+        /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
+        /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
+        /// Otherwise you will see only a black control window.
+        /// </summary>
+        public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
+#elif GL
+        /// <summary>
+        /// A swap chain used for rendering to a secondary GameWindow.
+        /// Note: When working with different <see cref="RenderTarget2D"/>, 
+        /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
+        /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
+        /// Otherwise you will see only a black control window.
+        /// </summary>
+        public SwapChainRenderTarget_GL SwapChainRenderTarget { get; set; }
 #endif
 
         /// <summary>
@@ -212,16 +235,6 @@ namespace MonoGame.Forms.Services
         /// The <see cref="SpriteBatch"/>.
         /// </summary>
         public SpriteBatch spriteBatch { get; set; }
-#if DX
-        /// <summary>
-        /// A swap chain used for rendering to a secondary GameWindow.
-        /// Note: When working with different <see cref="RenderTarget2D"/>, 
-        /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
-        /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
-        /// Otherwise you will see only a black control window.
-        /// </summary>
-        public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
-#endif
 
         /// <summary>
         /// Get the current mouse position in the control.
