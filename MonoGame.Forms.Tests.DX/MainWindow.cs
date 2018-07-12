@@ -190,7 +190,12 @@ namespace MonoGame.Forms.Tests
 
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+#if GL
+            Text = "MonoGame.Forms.GL";
+#elif DX
+            Text = "MonoGame.Forms.DX";
+#endif
         }
     }
 }
