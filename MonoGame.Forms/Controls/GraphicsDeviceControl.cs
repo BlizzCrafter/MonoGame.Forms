@@ -156,12 +156,17 @@ namespace MonoGame.Forms.Controls
             if (!designMode)
             {
                 _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
+                Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
 #if DX
                 _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width, ClientSize.Height);
+#elif GL
+                _Intervall.Enabled = true;
+                _Intervall.Start();
+                _Intervall.Tick += (sender, e) => { PresentDirty(); };
 #endif
-                Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
                 Initialize();
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
+
             }
             base.OnCreateControl();
         }
@@ -173,6 +178,11 @@ namespace MonoGame.Forms.Controls
                 _graphicsDeviceService.Release(disposing);
                 _graphicsDeviceService = null;
             }
+#if GL
+            _Intervall.Stop();
+            _Intervall.Enabled = false;
+            _Intervall.Dispose();
+#endif
             base.Dispose(disposing);
         }
 
