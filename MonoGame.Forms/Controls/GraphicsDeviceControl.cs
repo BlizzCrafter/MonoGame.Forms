@@ -202,7 +202,18 @@ namespace MonoGame.Forms.Controls
         /// whole NodeGraph with the invalidations taking place here.
         /// </remarks>
         /// </summary>
-        protected bool AutomaticInvalidation { get; set; } = true;
+        protected bool AutomaticInvalidation
+        {
+            get { return _AutomaticInvalidation; }
+            set
+            {
+                _AutomaticInvalidation = value;
+#if GL
+                _Intervall.Enabled = value;
+#endif
+            }
+        }
+        private bool _AutomaticInvalidation;
 
 #pragma warning disable 1591
         protected override void OnCreateControl()
@@ -222,6 +233,7 @@ namespace MonoGame.Forms.Controls
                 _Intervall.Start();
                 _Intervall.Tick += (sender, e) => { PresentDirty(); };
 #endif
+                AutomaticInvalidation = true;
                 Initialize();
 
             }
@@ -381,7 +393,7 @@ namespace MonoGame.Forms.Controls
         protected abstract void Initialize();
         protected abstract void Draw();
 
-        #region Input
+#region Input
 
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
