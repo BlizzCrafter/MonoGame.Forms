@@ -94,7 +94,13 @@ namespace MonoGame.Forms.Controls
         {
             base.OnVisibleChanged(e);
 
-            if (Editor != null) Editor.CamHoldPosition(ClientSize);
+            if (Editor != null)
+            {
+                Editor.CamHoldPosition(ClientSize);
+#if GL
+                PresentDirty(true);
+#endif
+            }
         }
 
         /// <summary>
