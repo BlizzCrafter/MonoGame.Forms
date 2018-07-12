@@ -146,17 +146,26 @@ namespace MonoGame.Forms.Controls
             set { _Intervall.Interval = value; }
         }
         private Timer _Intervall = new Timer() { Interval = 1 };
-        internal bool _DrawThisFrame = true;
+        private bool _DrawThisFrame = true;
+
+        protected override void OnInvalidated(InvalidateEventArgs e)
+        {
+            base.OnInvalidated(e);
+
+            if (Visible) _DrawThisFrame = true;
+        }
 
         internal void PresentDirty(bool forceInvalidation = false)
         {
-            _DrawThisFrame = true;
-            if (forceInvalidation)
+            if (Visible)
             {
-                RefreshGLWindow();
-                Invalidate();
+                if (forceInvalidation)
+                {
+                    RefreshGLWindow();
+                    Invalidate();
+                }
+                else if (AutomaticInvalidation) Invalidate();
             }
-            else if (AutomaticInvalidation) Invalidate();
         }
 
         private void RefreshGLWindow()
@@ -209,7 +218,7 @@ namespace MonoGame.Forms.Controls
             {
                 _AutomaticInvalidation = value;
 #if GL
-                _Intervall.Enabled = value;
+                if (_chain != null) _Intervall.Enabled = value;
 #endif
             }
         }
@@ -235,7 +244,6 @@ namespace MonoGame.Forms.Controls
 #endif
                 AutomaticInvalidation = true;
                 Initialize();
-
             }
             base.OnCreateControl();
         }
