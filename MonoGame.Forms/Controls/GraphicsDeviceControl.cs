@@ -384,21 +384,18 @@ namespace MonoGame.Forms.Controls
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
         /// </summary>
         protected bool AlwaysEnableKeyboardInput { get; set; } = false;
-
-        private void SetKeyboardInput(bool enable)
-        {
-            var keyboardType = typeof(Microsoft.Xna.Framework.Input.Keyboard);
-            var methodInfo = keyboardType.GetMethod("SetActive", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            methodInfo.Invoke(null, new object[] { enable });
-        }
+        private bool _LockKeyboardInput = false;
 
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
 
             if (!Focused) Focus();
-
+#if DX
             SetKeyboardInput(true);
+#elif GL
+            _LockKeyboardInput = false;
+#endif
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -407,7 +404,14 @@ namespace MonoGame.Forms.Controls
 
             if (Focused) Parent.Focus();
 
-            if (!AlwaysEnableKeyboardInput) SetKeyboardInput(false);
+            if (!AlwaysEnableKeyboardInput)
+            {
+#if DX
+                SetKeyboardInput(false);
+#elif GL
+                _LockKeyboardInput = true;
+#endif
+            }
         }
         
         internal Point GetRelativeMousePosition { get; set; }
@@ -447,6 +451,13 @@ namespace MonoGame.Forms.Controls
         public event MouseWheelDownwardsEvent OnMouseWheelDownwards;
 
 #if DX
+        private void SetKeyboardInput(bool enable)
+        {
+            var keyboardType = typeof(Microsoft.Xna.Framework.Input.Keyboard);
+            var methodInfo = keyboardType.GetMethod("SetActive", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            methodInfo.Invoke(null, new object[] { enable });
+        }
+
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             base.OnMouseWheel(e);
@@ -457,7 +468,7 @@ namespace MonoGame.Forms.Controls
 #elif GL
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (!LockKeyboardInput)
+            if (!_LockKeyboardInput)
             {
                 try
                 {
@@ -475,7 +486,7 @@ namespace MonoGame.Forms.Controls
 
         protected override void OnKeyUp(KeyEventArgs e)
         {
-            if (!LockKeyboardInput)
+            if (!_LockKeyboardInput)
             {
                 try
                 {
@@ -653,6 +664,6 @@ namespace MonoGame.Forms.Controls
             }
         }
 #endif
-        #endregion
+#endregion
     }
 }
