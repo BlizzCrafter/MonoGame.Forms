@@ -16,6 +16,10 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Services;
 using System.ComponentModel;
 
+#if GL
+using MonoGame.Forms.GL;
+#endif
+
 namespace MonoGame.Forms.Controls
 {
     /// <summary>
@@ -49,7 +53,6 @@ namespace MonoGame.Forms.Controls
         /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
         /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
         /// Otherwise you will see only a black control window.
-        /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
         [Browsable(false)]
         public SwapChainRenderTarget SwapChainRenderTarget { get { return _chain; } }
@@ -100,7 +103,34 @@ namespace MonoGame.Forms.Controls
         /// Subscribe to this event to react to MultiSampleCount changes in your custom controls.
         /// </summary>
         public event Action<int> MultiSampleCountRefreshed = delegate { };
+
+        private void RefreshDXWindow()
+        {
+            if (_chain != null)
+            {
+                _chain.Dispose();
+                _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
+                        ClientSize.Height);
+
+                GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+                GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+
+                SwapChainRenderTargetRefreshed?.Invoke(_chain);
+            }
+        }
 #elif GL
+        /// <summary>
+        /// A swap chain used for rendering to a secondary GameWindow.
+        /// </summary>
+        [Browsable(false)]
+        public SwapChainRenderTarget_GL SwapChainRenderTarget { get { return _chain; } }
+        private SwapChainRenderTarget_GL _chain;
+
+        /// <summary>
+        /// Mainly transfers the new <see cref="SwapChainRenderTarget"/> to the editor service objects after resizing a custom control.
+        /// </summary>
+        internal event Action<SwapChainRenderTarget_GL> SwapChainRenderTargetRefreshed = delegate { };
+
         [Browsable(true)]
         [Description("Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 1ms means realtime updates, which costs performance. Use values like 50ms or 100ms to get a better performance but not so frequent updates.")]
         [DefaultValue(1)]
@@ -122,30 +152,35 @@ namespace MonoGame.Forms.Controls
             _DrawThisFrame = true;
             if (forceInvalidation)
             {
-                RefreshWindow();
+                RefreshGLWindow();
                 Invalidate();
             }
             else if (AutomaticInvalidation) Invalidate();
         }
 
-        private void RefreshWindow()
+        private void RefreshGLWindow()
         {
-            _chain.Dispose();
-            _chain = new SwapChainRenderTarget_GL(_graphicsDeviceService.GraphicsDevice, ClientSize.Width,
-                    ClientSize.Height);
+            if (_chain != null)
+            {
+                _chain.Dispose();
+                _chain = new SwapChainRenderTarget_GL(_graphicsDeviceService.GraphicsDevice, ClientSize.Width,
+                        ClientSize.Height);
 
-            GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
-            GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
-            GraphicsDevice.Viewport = new Viewport(0, 0, ClientSize.Width, ClientSize.Height);
+                GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+                GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+                GraphicsDevice.Viewport = new Viewport(0, 0, ClientSize.Width, ClientSize.Height);
 
-            Sdl.Window.SetSize(_graphicsDeviceService.SDLPlatform.Window.Handle, ClientSize.Width, ClientSize.Height);
+                Sdl.Window.SetSize(_graphicsDeviceService.SDLPlatform.Window.Handle, ClientSize.Width, ClientSize.Height);
+
+                SwapChainRenderTargetRefreshed?.Invoke(_chain);
+            }
         }
 #endif
 
-        /// <summary>
-        /// Get the GraphicsDevice.
-        /// </summary>
-        [Browsable(false)]
+    /// <summary>
+    /// Get the GraphicsDevice.
+    /// </summary>
+    [Browsable(false)]
         public GraphicsDevice GraphicsDevice => _graphicsDeviceService.GraphicsDevice;
 
         /// <summary>
@@ -266,21 +301,14 @@ namespace MonoGame.Forms.Controls
         {
             base.OnClientSizeChanged(e);
 
-            if (ClientSize.Width > 0 && ClientSize.Height > 0)
+            if (ClientSize.Width > 0 && 
+                ClientSize.Height > 0)
             {
-                if (_chain != null)
-                {
 #if DX
-                    _chain.Dispose();
-                    _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
-                            ClientSize.Height);
-
-                    GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
-                    GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
-
-                    SwapChainRenderTargetRefreshed?.Invoke(_chain);
+                RefreshDXWindow();
+#elif GL
+                RefreshGLWindow();
 #endif
-                }
             }
         }
 
