@@ -11,9 +11,9 @@ namespace MonoGame.Forms.Controls
     /// </summary>
     public abstract class GameControl : GraphicsDeviceControl
     {
-        GameTime gameTime;
-        Stopwatch timer;
-        TimeSpan elapsed;
+        internal GameTime _GameTime;
+        internal Stopwatch _Timer;
+        internal TimeSpan _Elapsed;
 
         /// <summary>
         /// Basic initializing of the game control.
@@ -21,7 +21,7 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected override void Initialize()
         {
-            if (timer == null) timer = Stopwatch.StartNew();
+            if (_Timer == null) _Timer = Stopwatch.StartNew();
 
             Application.Idle -= GameLoop;
             Application.Idle += GameLoop;
@@ -39,12 +39,12 @@ namespace MonoGame.Forms.Controls
         {
             if (Visible && AutomaticInvalidation)
             {
-                gameTime = new GameTime(timer.Elapsed, timer.Elapsed - elapsed);
-                elapsed = timer.Elapsed;
+                _GameTime = new GameTime(_Timer.Elapsed, _Timer.Elapsed - _Elapsed);
+                _Elapsed = _Timer.Elapsed;
 
                 UpdateMousePositions();
 
-                Update(gameTime);
+                Update(_GameTime);
 #if DX
                 Invalidate();
 #endif

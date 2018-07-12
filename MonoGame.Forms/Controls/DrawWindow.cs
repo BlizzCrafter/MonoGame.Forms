@@ -1,7 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Forms.Services;
+﻿using MonoGame.Forms.Services;
 using System;
 using System.ComponentModel;
+
+#if DX
+using Microsoft.Xna.Framework.Graphics;
+#endif
 
 namespace MonoGame.Forms.Controls
 {
