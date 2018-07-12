@@ -34,34 +34,6 @@ namespace MonoGame.Forms.Controls
                 return res;
             }
         }
-#if GL
-        [Browsable(true)]
-        [Description("Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 1ms means realtime updates, which costs performance. Use values like 50ms or 100ms to get a better performance but not so frequent updates.")]
-        [DefaultValue(1)]
-        /// <summary>
-        /// Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 
-        /// 1ms means realtime updates, which costs performance. 
-        /// Use values like 50ms or 100ms to get a better performance but not so frequent updates.
-        /// </summary>
-        public int DrawInterval
-        {
-            get { return _Intervall.Interval; }
-            set { _Intervall.Interval = value; }
-        }
-        private Timer _Intervall = new Timer() { Interval = 1 };
-        internal bool _DrawThisFrame = true;
-
-        internal void PresentDirty(bool forceInvalidation = false)
-        {
-            _DrawThisFrame = true;
-            if (forceInvalidation)
-            {
-                RefreshWindow();
-                Invalidate();
-            }
-            else if (AutomaticInvalidation) Invalidate();
-        }
-#endif
 
         /// <summary>
         /// Set the <see cref="Microsoft.Xna.Framework.Graphics.GraphicsProfile"/> in the property grid during Design-Time (HiDef or Reach).
@@ -70,7 +42,7 @@ namespace MonoGame.Forms.Controls
         [Browsable(true)]
         [DefaultValue(GraphicsProfile.Reach)]
         public GraphicsProfile GraphicsProfile { get; set; } = GraphicsProfile.Reach;
-
+#if DX
         /// <summary>
         /// A swap chain used for rendering to a secondary GameWindow.
         /// Note: When working with different <see cref="RenderTarget2D"/>, 
@@ -79,20 +51,15 @@ namespace MonoGame.Forms.Controls
         /// Otherwise you will see only a black control window.
         /// <remarks>This is an extension and not part of stock XNA. It is currently implemented for Windows and DirectX only.</remarks>
         /// </summary>
-#if DX
         [Browsable(false)]
         public SwapChainRenderTarget SwapChainRenderTarget { get { return _chain; } }
         private SwapChainRenderTarget _chain;
-#endif
 
         /// <summary>
         /// Mainly transfers the new <see cref="SwapChainRenderTarget"/> to the editor service objects after resizing a custom control.
         /// </summary>
-#if DX
         internal event Action<SwapChainRenderTarget> SwapChainRenderTargetRefreshed = delegate { };
-#endif
 
-#if DX
         /// <summary>
         /// Get the MultiSampleCount (MSAA Antialising) to the nearest power of two in relation of what the users <see cref="GraphicsDevice"/> can handle.
         /// </summary>
@@ -133,6 +100,33 @@ namespace MonoGame.Forms.Controls
         /// Subscribe to this event to react to MultiSampleCount changes in your custom controls.
         /// </summary>
         public event Action<int> MultiSampleCountRefreshed = delegate { };
+#elif GL
+        [Browsable(true)]
+        [Description("Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 1ms means realtime updates, which costs performance. Use values like 50ms or 100ms to get a better performance but not so frequent updates.")]
+        [DefaultValue(1)]
+        /// <summary>
+        /// Define here the intervall in milliseconds of how often this control gets the BackBufferData of the GraphicsDevice. 
+        /// 1ms means realtime updates, which costs performance. 
+        /// Use values like 50ms or 100ms to get a better performance but not so frequent updates.
+        /// </summary>
+        public int DrawInterval
+        {
+            get { return _Intervall.Interval; }
+            set { _Intervall.Interval = value; }
+        }
+        private Timer _Intervall = new Timer() { Interval = 1 };
+        internal bool _DrawThisFrame = true;
+
+        internal void PresentDirty(bool forceInvalidation = false)
+        {
+            _DrawThisFrame = true;
+            if (forceInvalidation)
+            {
+                RefreshWindow();
+                Invalidate();
+            }
+            else if (AutomaticInvalidation) Invalidate();
+        }
 #endif
 
         /// <summary>
@@ -258,10 +252,9 @@ namespace MonoGame.Forms.Controls
         protected override void OnClientSizeChanged(EventArgs e)
         {
             base.OnClientSizeChanged(e);
-
+#if DX
             if (ClientSize.Width > 0 && ClientSize.Height > 0)
             {
-#if DX
                 if (_chain != null)
                 {
                     _chain.Dispose();
@@ -273,8 +266,8 @@ namespace MonoGame.Forms.Controls
 
                     SwapChainRenderTargetRefreshed?.Invoke(_chain);
                 }
-#endif
             }
+#endif
         }
 
         private string HandleDeviceReset()
@@ -329,7 +322,7 @@ namespace MonoGame.Forms.Controls
         protected abstract void Initialize();
         protected abstract void Draw();
 
-#region Input
+        #region Input
 
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
@@ -405,6 +398,6 @@ namespace MonoGame.Forms.Controls
             else if (e.Delta < 0) OnMouseWheelDownwards?.Invoke(e);
         }
 
-#endregion
+        #endregion
     }
 }
