@@ -228,6 +228,10 @@ namespace MonoGame.Forms.Controls
         {
             if (_graphicsDeviceService != null)
             {
+#if GL
+                _graphicsDeviceService.SDLPlatform.Exit();
+                _graphicsDeviceService.SDLPlatform.Dispose();
+#endif
                 _graphicsDeviceService.Release(disposing);
                 _graphicsDeviceService = null;
             }
@@ -235,6 +239,8 @@ namespace MonoGame.Forms.Controls
             _Intervall.Stop();
             _Intervall.Enabled = false;
             _Intervall.Dispose();
+
+            _chain.Dispose();
 #endif
             base.Dispose(disposing);
         }
