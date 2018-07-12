@@ -12,11 +12,15 @@
 using System;
 using System.Threading;
 using Microsoft.Xna.Framework.Graphics;
+
+#if GL
+using MonoGame.Forms.GL;
 using Microsoft.Xna.Framework;
+#endif
 
 namespace MonoGame.Forms.Services
 {
-    #pragma warning disable 1591
+#pragma warning disable 1591
     internal class GraphicsDeviceService : IGraphicsDeviceService
     {
         private static GraphicsDeviceService _singletonInstance;
