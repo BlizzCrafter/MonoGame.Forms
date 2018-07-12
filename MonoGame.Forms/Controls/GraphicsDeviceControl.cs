@@ -170,6 +170,18 @@ namespace MonoGame.Forms.Controls
             }
             base.OnCreateControl();
         }
+#if GL
+        internal void PresentDirty(bool forceInvalidation = false)
+        {
+            _DrawThisFrame = true;
+            if (forceInvalidation)
+            {
+                RefreshWindow();
+                Invalidate();
+            }
+            else if (AutomaticInvalidation) Invalidate();
+        }
+#endif
 
         protected override void Dispose(bool disposing)
         {
