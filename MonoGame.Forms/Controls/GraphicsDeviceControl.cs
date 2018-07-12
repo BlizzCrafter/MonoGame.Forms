@@ -213,8 +213,11 @@ namespace MonoGame.Forms.Controls
                 Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
 #if DX
                 _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width, ClientSize.Height);
+
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
 #elif GL
+                _chain = new SwapChainRenderTarget_GL(_graphicsDeviceService.GraphicsDevice, ClientSize.Width, ClientSize.Height);
+
                 _Intervall.Enabled = true;
                 _Intervall.Start();
                 _Intervall.Tick += (sender, e) => { PresentDirty(); };
