@@ -401,7 +401,7 @@ namespace MonoGame.Forms.Controls
         protected abstract void Initialize();
         protected abstract void Draw();
 
-#region Input
+        #region Input
 
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
@@ -687,6 +687,6 @@ namespace MonoGame.Forms.Controls
             }
         }
 #endif
-#endregion
+        #endregion
     }
 }
