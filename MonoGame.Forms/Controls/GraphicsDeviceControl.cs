@@ -251,7 +251,7 @@ namespace MonoGame.Forms.Controls
             if (string.IsNullOrEmpty(beginDrawError))
             {
                 Draw();
-                EndDraw();
+                EndDraw(e);
             }
             else
             {
@@ -289,12 +289,19 @@ namespace MonoGame.Forms.Controls
             return null;
         }
 
-        private void EndDraw()
+        private void EndDraw(PaintEventArgs e)
         {
             try
             {
 #if DX
                 _chain.Present();
+#elif GL
+                if (_DrawThisFrame)
+                {
+                    _DrawThisFrame = false;
+                    e.Graphics.DrawImage(_chain.Present(), 0, 0, _chain.Width, _chain.Height);
+                }
+                _graphicsDeviceService.SDLPlatform.RunLoop();
 #endif
             }
             catch
