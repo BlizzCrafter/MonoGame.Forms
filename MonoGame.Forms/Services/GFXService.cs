@@ -340,6 +340,20 @@ namespace MonoGame.Forms.Services
 
             SwapChainRenderTarget = swapChainRenderTarget;
         }
+#elif GL
+        /// <summary>
+        /// Initializes the GFX system, which contains basic MonoGame functionality.
+        /// </summary>
+        /// <param name="graphics">The graphics device service</param>
+        /// <param name="swapChainRenderTarget">The swap chain render target</param>
+        public void InitializeGFX_GL(
+            IGraphicsDeviceService graphics,
+            SwapChainRenderTarget_GL swapChainRenderTarget)
+        {
+            InitializeGFX(graphics);
+
+            SwapChainRenderTarget = swapChainRenderTarget;
+        }
 #endif
 
         private void InitializeGFX(IGraphicsDeviceService graphics)
@@ -369,6 +383,8 @@ namespace MonoGame.Forms.Services
             RenderTargetTimer = new Timer();
             RenderTargetTimer.Interval = 500;
             RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
+#elif GL
+            InternContent = new ResourceContentManager(services, GL.Properties.Resources.ResourceManager);
 #endif
             Font = InternContent.Load<SpriteFont>("Font");
             FontHeight = Font.MeasureString("A").Y;

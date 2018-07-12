@@ -1,13 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Forms.Controls;
-using System;
+
+#if GL
+using MonoGame.Forms.GL;
+#endif
 
 namespace MonoGame.Forms.Services
 {
     /// <summary>
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
-    /// The <see cref="UpdateWindow"/> inherits from this class.
+    /// The <see cref="MonoGame.Forms.Controls.UpdateWindow"/> inherits from this class.
     /// <remarks>Note: this class provides a game loop. The <see cref="DrawService"/> is not using a game loop.</remarks>
     /// </summary>
     public sealed class UpdateService : GFXService
@@ -17,6 +19,12 @@ namespace MonoGame.Forms.Services
         {
             // Initialize GFX-System
             InitializeGFX_DX(graphics, swapChainRenderTarget);
+        }
+#elif GL
+        internal UpdateService(IGraphicsDeviceService graphics, SwapChainRenderTarget_GL swapChainRenderTarget)
+        {
+            // Initialize GFX-System
+            InitializeGFX_GL(graphics, swapChainRenderTarget);
         }
 #endif
 

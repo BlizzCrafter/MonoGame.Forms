@@ -34,6 +34,8 @@ namespace MonoGame.Forms.Controls
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
+#elif GL
+            _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
 #endif
             _Editor.Initialize();
         }
