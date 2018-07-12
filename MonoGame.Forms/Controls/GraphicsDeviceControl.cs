@@ -177,10 +177,10 @@ namespace MonoGame.Forms.Controls
         }
 #endif
 
-    /// <summary>
-    /// Get the GraphicsDevice.
-    /// </summary>
-    [Browsable(false)]
+        /// <summary>
+        /// Get the GraphicsDevice.
+        /// </summary>
+        [Browsable(false)]
         public GraphicsDevice GraphicsDevice => _graphicsDeviceService.GraphicsDevice;
 
         /// <summary>
