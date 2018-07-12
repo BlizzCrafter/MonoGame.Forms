@@ -44,48 +44,48 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MonoGame.Forms.Tests\MainWindow.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\MainWindow.cs">
       <Link>MainWindow.cs</Link>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\MainWindow.Designer.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\MainWindow.Designer.cs">
       <Link>MainWindow.Designer.cs</Link>
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\AdvancedInputTest.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\AdvancedInputTest.cs">
       <Link>Tests\AdvancedInputTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\DrawTest.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\DrawTest.cs">
       <Link>Tests\DrawTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\MapHost.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MapHost.cs">
       <Link>Tests\MapHost.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\MultipleControls_a_Test.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MultipleControls_a_Test.cs">
       <Link>Tests\MultipleControls_a_Test.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\MultipleControls_b_Test.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MultipleControls_b_Test.cs">
       <Link>Tests\MultipleControls_b_Test.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\UpdateTest.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\UpdateTest.cs">
       <Link>Tests\UpdateTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Tests\Welcome.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\Welcome.cs">
       <Link>Tests\Welcome.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests\Utils\Animation.cs">
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Utils\Animation.cs">
       <Link>Utils\Animation.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="..\MonoGame.Forms.Tests\MainWindow.resx">
+    <EmbeddedResource Include="..\MonoGame.Forms.Tests.DX\MainWindow.resx">
       <Link>MainWindow.resx</Link>
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,59 +98,59 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="..\MonoGame.Forms.Tests\Content\DrawFont.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\DrawFont.xnb">
       <Link>Content\DrawFont.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Logo_Sheet.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Logo_Sheet.xnb">
       <Link>Content\Logo_Sheet.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\0a.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\0a.xnb">
       <Link>Content\Maps\0a.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\0b.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\0b.xnb">
       <Link>Content\Maps\0b.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\1a.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\1a.xnb">
       <Link>Content\Maps\1a.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\1b.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\1b.xnb">
       <Link>Content\Maps\1b.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\2a.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\2a.xnb">
       <Link>Content\Maps\2a.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\2b.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\2b.xnb">
       <Link>Content\Maps\2b.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\3a.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\3a.xnb">
       <Link>Content\Maps\3a.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\3b.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\3b.xnb">
       <Link>Content\Maps\3b.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\4a.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\4a.xnb">
       <Link>Content\Maps\4a.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Maps\4b.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Maps\4b.xnb">
       <Link>Content\Maps\4b.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\Player_Sheet.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\Player_Sheet.xnb">
       <Link>Content\Player_Sheet.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\MonoGame.Forms.Tests\Content\SmileyMap.xnb">
+    <None Include="..\MonoGame.Forms.Tests.DX\Content\SmileyMap.xnb">
       <Link>Content\SmileyMap.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

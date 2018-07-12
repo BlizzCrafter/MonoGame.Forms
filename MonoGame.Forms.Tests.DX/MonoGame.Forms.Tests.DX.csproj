@@ -185,7 +185,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MonoGame.Forms\MonoGame.Forms.DX.csproj">
+    <ProjectReference Include="..\MonoGame.Forms.DX\MonoGame.Forms.DX.csproj">
       <Project>{c1fe2c42-5590-4202-adc7-ecff8ff404d7}</Project>
       <Name>MonoGame.Forms.DX</Name>
     </ProjectReference>
