@@ -42,11 +42,44 @@ namespace MonoGame.Forms.Controls
 
         /// <summary>
         /// Set the <see cref="Microsoft.Xna.Framework.Graphics.GraphicsProfile"/> in the property grid during Design-Time (HiDef or Reach).
-        /// You shouldn't change this during Run-Time!
+        /// You shouldn't change this during runtime!
         /// </summary>
         [Browsable(true)]
+        [Description("Set the GraphicsProfile on initialization. Please do not change this during runtime!")]
         [DefaultValue(GraphicsProfile.Reach)]
         public GraphicsProfile GraphicsProfile { get; set; } = GraphicsProfile.Reach;
+
+        /// <summary>
+        /// Set the background color of this Control in the designer.
+        /// </summary>
+        [Browsable(true)]
+        [DefaultValue(typeof(Color), "105, 105, 105")]
+        new public Color BackColor
+        {
+            get { return _BackColor; }
+            set
+            {
+                _BackColor = value;
+                if (designMode) Invalidate();
+            }
+        }
+        private Color _BackColor = Color.DimGray;
+
+        /// <summary>
+        /// Set the foreground color of this Control in the designer.
+        /// </summary>
+        [Browsable(true)]
+        [DefaultValue(typeof(Color), "100, 149, 237")]
+        new public Color ForeColor
+        {
+            get { return _ForeColor; }
+            set
+            {
+                _ForeColor = value;
+                if (designMode) Invalidate();
+            }
+        }
+        private Color _ForeColor = Color.CornflowerBlue;
 #if DX
         /// <summary>
         /// A swap chain used for rendering to a secondary GameWindow.
@@ -250,22 +283,25 @@ namespace MonoGame.Forms.Controls
 
         protected override void Dispose(bool disposing)
         {
-            if (_graphicsDeviceService != null)
+            if (!designMode)
             {
+                if (_graphicsDeviceService != null)
+                {
 #if GL
-                _graphicsDeviceService.SDLPlatform.Exit();
-                _graphicsDeviceService.SDLPlatform.Dispose();
+                    _graphicsDeviceService.SDLPlatform.Exit();
+                    _graphicsDeviceService.SDLPlatform.Dispose();
 #endif
-                _graphicsDeviceService.Release(disposing);
-                _graphicsDeviceService = null;
-            }
+                    _graphicsDeviceService.Release(disposing);
+                    _graphicsDeviceService = null;
+                }
 #if GL
-            _Intervall.Stop();
-            _Intervall.Enabled = false;
-            _Intervall.Dispose();
+                _Intervall.Stop();
+                _Intervall.Enabled = false;
+                _Intervall.Dispose();
 
-            _chain.Dispose();
+                _chain.Dispose();
 #endif
+            }
             base.Dispose(disposing);
         }
 
@@ -382,8 +418,8 @@ namespace MonoGame.Forms.Controls
 
         protected virtual void PaintUsingSystemDrawing(System.Drawing.Graphics graphics, string text)
         {
-            graphics.Clear(System.Drawing.Color.DimGray);
-            using (Brush brush = new SolidBrush(System.Drawing.Color.CornflowerBlue))
+            graphics.Clear(BackColor);
+            using (Brush brush = new SolidBrush(ForeColor))
             {
                 using (var format = new StringFormat())
                 {
