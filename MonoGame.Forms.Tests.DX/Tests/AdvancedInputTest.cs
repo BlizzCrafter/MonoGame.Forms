@@ -42,10 +42,10 @@ namespace MonoGame.Forms.Tests.Tests
         public bool ShowStats = true, ShowControls = true;
 
         string ControlsHelpKeyboard = $@"Movement: [W,A,S,D]
-Speed: [OemMinus, OemPlus]
-Scale: Hold [E] + press [OemMinus, OemPlus]
-Color (Increase): [Num7, Num8, Num9]
-Color (Decrease): [Num4, Num5, Num6]";
+Speed: [I, O]
+Scale: Hold [E] + press [I, O]
+Color (Increase): [7, 8, 9]
+Color (Decrease): [4, 5, 6]";
 
         string ControlsHelpGamePad = $@"Movement: [L-Thumbstick]
 Speed: [L-Trigger, R-Trigger]
@@ -210,41 +210,41 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
 
                 if (Keyboard.GetState().IsKeyUp(Keys.E))
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.OemPlus)) PlayerSpeed++;
-                    else if (Keyboard.GetState().IsKeyDown(Keys.OemMinus)) PlayerSpeed--;
+                    if (Keyboard.GetState().IsKeyDown(Keys.O)) PlayerSpeed++;
+                    else if (Keyboard.GetState().IsKeyDown(Keys.I)) PlayerSpeed--;
                 }
                 else
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.OemPlus)) PlayerScale += 0.1f;
-                    else if (Keyboard.GetState().IsKeyDown(Keys.OemMinus)) PlayerScale -= 0.1f;
+                    if (Keyboard.GetState().IsKeyDown(Keys.O)) PlayerScale += 0.1f;
+                    else if (Keyboard.GetState().IsKeyDown(Keys.I)) PlayerScale -= 0.1f;
                 }
 
-                if (Keyboard.GetState().IsKeyDown(Keys.NumPad7))
+                if (Keyboard.GetState().IsKeyDown(Keys.D7))
                 {
                     PlayerColorR++;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
+                else if (Keyboard.GetState().IsKeyDown(Keys.D8))
                 {
                     PlayerColorG++;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad9))
+                else if (Keyboard.GetState().IsKeyDown(Keys.D9))
                 {
                     PlayerColorB++;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+                else if (Keyboard.GetState().IsKeyDown(Keys.D4))
                 {
                     PlayerColorR--;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
+                else if (Keyboard.GetState().IsKeyDown(Keys.D5))
                 {
                     PlayerColorG--;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
+                else if (Keyboard.GetState().IsKeyDown(Keys.D6))
                 {
                     PlayerColorB--;
                     Player.GetDrawingColor = new Color(PlayerColorR, PlayerColorG, PlayerColorB);
