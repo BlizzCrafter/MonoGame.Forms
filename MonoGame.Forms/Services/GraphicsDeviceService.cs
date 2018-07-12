@@ -12,6 +12,7 @@
 using System;
 using System.Threading;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace MonoGame.Forms.Services
 {
@@ -21,7 +22,9 @@ namespace MonoGame.Forms.Services
         private static GraphicsDeviceService _singletonInstance;
         private static int _referenceCount;
         private readonly PresentationParameters _parameters;
-
+#if GL
+        internal SdlGamePlatform SDLPlatform { get; set; }
+#endif
         private GraphicsDeviceService(IntPtr windowHandle, int width, int height, GraphicsProfile graphicsProfile)
         {
             _parameters = new PresentationParameters
@@ -34,12 +37,22 @@ namespace MonoGame.Forms.Services
                 PresentationInterval = PresentInterval.Immediate,
                 IsFullScreen = false
             };
+#if GL
+            PreferredBackBufferFormat = SurfaceFormat.Color;
+            PreferredDepthStencilFormat = DepthFormat.Depth24;
+
+            SDLPlatform = new SdlGamePlatform();
+            PlatformInitialize(_parameters);
+            SDLPlatform.IsActive = true;
+#endif
 
             GraphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
                                                          graphicsProfile,
                                                          _parameters);
 #if DX
             MaxMultiSampleCount = GetMaxMultiSampleCount(GraphicsDevice);
+#elif GL
+            ((SdlGameWindow)SdlGameWindow.Instance).GetGraphicsDevice = GraphicsDevice;
 #endif
         }
 #if DX
@@ -63,7 +76,7 @@ namespace MonoGame.Forms.Services
 
         public GraphicsDevice GraphicsDevice { get; private set; }
 
-        #pragma warning disable 67
+#pragma warning disable 67
         public event EventHandler<EventArgs> DeviceCreated;
         public event EventHandler<EventArgs> DeviceDisposing;
         public event EventHandler<EventArgs> DeviceReset;
