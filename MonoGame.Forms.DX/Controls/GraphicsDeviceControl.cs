@@ -419,6 +419,24 @@ namespace MonoGame.Forms.Controls
         protected virtual void PaintUsingSystemDrawing(System.Drawing.Graphics graphics, string text)
         {
             graphics.Clear(BackColor);
+
+            try
+            {
+                Image logo;
+#if DX
+                logo = DX.Properties.Resources.MonoGame_Logo;
+#elif GL
+                logo = GL.Properties.Resources.MonoGame_Logo;
+#endif
+                graphics.DrawImage(
+                    logo,
+                    (Size.Width / 2) - (logo.Width / 2),
+                    20,
+                    logo.Width,
+                    logo.Height);
+            }
+            catch { }
+
             using (Brush brush = new SolidBrush(ForeColor))
             {
                 using (var format = new StringFormat())
@@ -437,7 +455,7 @@ namespace MonoGame.Forms.Controls
         protected abstract void Initialize();
         protected abstract void Draw();
 
-        #region Input
+#region Input
 
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
@@ -723,6 +741,6 @@ namespace MonoGame.Forms.Controls
             }
         }
 #endif
-        #endregion
+#endregion
     }
 }

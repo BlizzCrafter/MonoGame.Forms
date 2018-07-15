@@ -69,5 +69,15 @@ namespace MonoGame.Forms.DX.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap MonoGame_Logo {
+            get {
+                object obj = ResourceManager.GetObject("MonoGame_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
