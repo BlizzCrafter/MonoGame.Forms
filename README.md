@@ -146,6 +146,10 @@ The update method makes realtime interactions with your game- / editor environme
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
+> Note: To raise the performance of an OpenGL UpdateWindow, it's recommended to change the DrawIntervall from 1ms to 50ms or 100ms!
+
+![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/intervall.PNG)
+
 Here are some pics of some samples included with the repo:
 
 ### DX (Windows 10 Pro 64 bit)
