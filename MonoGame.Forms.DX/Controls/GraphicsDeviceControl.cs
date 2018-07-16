@@ -430,8 +430,8 @@ namespace MonoGame.Forms.Controls
 #endif
                 graphics.DrawImage(
                     logo,
-                    10,
-                    10,
+                    (Size.Width / 2) - (logo.Width / 2),
+                    (Size.Height / 2) - (logo.Height / 2) - (Font.Height * 4.5f),
                     logo.Width,
                     logo.Height);
             }
