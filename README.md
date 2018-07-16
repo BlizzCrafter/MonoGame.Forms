@@ -29,7 +29,7 @@ First you need to make your MonoGame.Forms library ready to use. This step is ve
 
 Another option is to install the library with the NuGet package manager:
 
-![NuGet](doc/nuget.PNG)
+![NuGet](doc/NuGet_Manager.PNG)
 
 ↳ _This is the prefered and easiest route to be automatically up to date_.
 
