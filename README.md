@@ -146,9 +146,19 @@ The update method makes realtime interactions with your game- / editor environme
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
-> Note: To raise the performance of an OpenGL UpdateWindow, it's recommended to change the DrawIntervall from 1ms to 50ms or 100ms!
+> Note: To raise the performance of an OpenGL UpdateWindow, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
 
-![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/intervall.PNG)
+![DrawIntervall](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/intervall.PNG)
+
+Did you notice the **BackColor** and **ForeColor** property? 
+Changing these values makes it possible to style your controls to something like this:
+
+![Style](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/style.PNG)
+
+Do it to keep the overview and feel of your custom editor project!
+> Note: The MonoGame logo is placed automatically inside a newly created control to make it clear, that it is a render control with MonoGame functionality!
+
+### Sample Pics
 
 Here are some pics of some samples included with the repo:
 
