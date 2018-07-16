@@ -146,9 +146,13 @@ The update method makes realtime interactions with your game- / editor environme
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
-Here is a funny pic of one of the samples:
+Here are some pics of some samples included with the repo:
 
+### DX (Windows 10 Pro 64 bit)
 ![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/UpdateSample.png)
+
+### GL (Ubuntu 18.04 LTS [Bionic Beaver] 64 bit)
+![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/gl_Test.png)
 
 # Projects using MonoGame.Forms!
 
