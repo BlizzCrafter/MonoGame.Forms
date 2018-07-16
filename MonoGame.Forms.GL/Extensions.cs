@@ -4,7 +4,7 @@ using System;
 
 namespace MonoGame.Forms.GL
 {
-    public static class Extensions
+    internal static class Extensions
     {
         public static ColorFormat GetColorFormat(this SurfaceFormat format)
         {
