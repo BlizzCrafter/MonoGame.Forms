@@ -17,7 +17,7 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 
 * The **MonoGame.Forms.DX** project uses the MonoGame.Framwork 3.7.0.1114, which is already precompiled and included in this repo.
   * It's possible to use older **MonoGame.Frameworks** like the **3.6** iteration, but you will then lose the **Mouse.GetState()** functionallity. You would then rely on the **WindowsForms Event System** for mouse input, which can be slower in some cases.
-* The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framwework based on the development build from 16th of JULY 2018.
+* The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framework based on the development build from 16th of JULY 2018.
   * It's **not** possible to exchange the MonoGame.Framework easily. If you want to use a newer build, it would be neccessary to modify it to suit the needs of MonoGame.Forms!
 
 # How-To
