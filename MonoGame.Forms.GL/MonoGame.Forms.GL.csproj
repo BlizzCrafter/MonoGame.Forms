@@ -69,7 +69,7 @@
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\MonoGame\DesktopGL\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\Libs\MonoGame\DesktopGL\Lib\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

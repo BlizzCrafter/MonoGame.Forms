@@ -21,6 +21,8 @@
 	</references>
   </metadata>
   <files>
-    <file src="..\Libs\MonoGame\DesktopGL\**\*.*" target="lib\net451" />
+    <file src="..\Libs\MonoGame\DesktopGL\Lib\**\*.*" target="lib\net451" />
+	<file src="..\Libs\MonoGame\DesktopGL\Build\**\*.*" target="Build\" />
+	<file src="MonoGame.Forms.GL.targets" target="Build\" />
 </files>
 </package>
