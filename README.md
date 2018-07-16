@@ -3,25 +3,27 @@
 # Welcome to MonoGame.Forms!
 [![Twitter Follow](https://img.shields.io/twitter/follow/sqrMin1.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/sqrMin1)
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=ba51ff&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
-[![NuGet](https://img.shields.io/badge/NuGet-Available!-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms/)
 [![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
+
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX/2.0.0)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL/2.0.0)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms_(OUTDATED)-red.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms/)
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
+#### Now with OpenGL support!
+
 ### Building
 
-The following is required to successfully compile the solution:
-
-- MonoGame 3.7.0.1114 (WindowsDX) [Precompiled + Included]
-- Visual Studio 2015
-
-> Note: It's possible to use older **MonoGame.Frameworks** like the **3.6** iteration, but you will then lose the **Mouse.GetState()** functionallity. You would then rely on the **WindowsForms Event System** for mouse input, which can be slower in some cases.
+* The **MonoGame.Forms.DX** project uses the MonoGame.Framwork 3.7.0.1114, which is already precompiled and included in this repo.
+  * It's possible to use older **MonoGame.Frameworks** like the **3.6** iteration, but you will then lose the **Mouse.GetState()** functionallity. You would then rely on the **WindowsForms Event System** for mouse input, which can be slower in some cases.
+* The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framwework based on the development build from 16th of JULY 2018.
+  * It's **not** possible to exchange the MonoGame.Framework easily. If you want to use a newer build, it would be neccessary to modify it to suit the needs of MonoGame.Forms!
 
 # How-To
 #### Setup MonoGame.Forms
 
-First you need to make your MonoGame.Forms library ready to use. This step is very easy; you just need to compile the PCL
-from source and then just add the compiled DLL to your project.
+First you need to make your MonoGame.Forms library ready to use. This step is very easy; you just need to compile either the MonoGame.Forms.DX or the MonoGame.Forms.GL PCL from source and then just add the compiled DLL's to your project.
 
 ↳ _This is the prefered route, when you want to make you own custom changes to the library or extend it_.
 
@@ -34,6 +36,10 @@ Another option is to install the library with the NuGet package manager:
 > Note: You need to set the .Net Framework version to 4.5.1 to install from NuGet!
 
 ***
+
+### Tutorial
+
+The following tutorial is working exactly the same on both libraries (DX and GL).
 
 #### Creating a simple [DrawWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/3D4B182C)
 
@@ -167,12 +173,15 @@ GitHub: [PenumbraPhysics.Editor](https://github.com/sqrMin1/PenumbraPhysics.Edit
 ### Now Have Fun with MonoGame.Forms!
 [![Twitter Follow](https://img.shields.io/twitter/follow/sqrMin1.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/sqrMin1)
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=ba51ff&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
-[![NuGet](https://img.shields.io/badge/NuGet-Available!-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms/)
 [![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
+
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX/2.0.0)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL/2.0.0)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms_(OUTDATED)-red.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms/)
 
 ![Logo](https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_Shadow_256.png)
 
 ### Special Thanks
-- nkast from the MonoGame community
+- [nkast](https://github.com/nkast) and [SpiceyWolf](https://github.com/SpiceyWolf) from the MonoGame community
 - everyone else from the official [MonoGame.Forms_Thread](http://community.monogame.net/t/monogame-forms-create-your-editor-environment/9954)
 - the awesome MonoGame community itself :)
