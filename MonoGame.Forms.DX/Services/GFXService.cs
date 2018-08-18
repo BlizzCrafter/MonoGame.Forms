@@ -38,7 +38,7 @@ namespace MonoGame.Forms.Services
                 /// </summary>
                 public RenderTarget2D GetRenderTarget2D { get; set; }
 
-                internal bool Enabled { get; set; } = false;
+                internal bool Enabled { get; set; } = true;
                 internal bool IsRefreshing { get; set; } = false;
                 private bool UseMultiSampling { get; set; } = false;
 
