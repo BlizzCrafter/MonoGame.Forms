@@ -40,6 +40,7 @@ namespace MonoGame.Forms.Services
         public override void Update(GameTime gameTime)
         {
             UpdateDisplay(gameTime);
+            FrameworkDispatcher.Update();
         }
 
         /// <summary>

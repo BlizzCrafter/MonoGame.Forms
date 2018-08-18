@@ -388,6 +388,8 @@ namespace MonoGame.Forms.Services
 #endif
             Font = InternContent.Load<SpriteFont>("Font");
             FontHeight = Font.MeasureString("A").Y;
+
+            FrameworkDispatcher.Update();
         }
 
         /// <summary>
