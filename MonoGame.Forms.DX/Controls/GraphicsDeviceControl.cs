@@ -274,11 +274,18 @@ namespace MonoGame.Forms.Controls
                 _Intervall.Enabled = true;
                 _Intervall.Start();
                 _Intervall.Tick += (sender, e) => { PresentDirty(); };
+
+                Application.ApplicationExit += Application_ApplicationExit;
 #endif
                 AutomaticInvalidation = true;
                 Initialize();
             }
             base.OnCreateControl();
+        }
+
+        private void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
         }
 
         protected override void Dispose(bool disposing)
