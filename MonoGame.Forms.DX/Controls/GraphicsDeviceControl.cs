@@ -275,6 +275,7 @@ namespace MonoGame.Forms.Controls
                 _Intervall.Start();
                 _Intervall.Tick += (sender, e) => { PresentDirty(); };
 
+                Application.ApplicationExit -= Application_ApplicationExit;
                 Application.ApplicationExit += Application_ApplicationExit;
 #endif
                 AutomaticInvalidation = true;
