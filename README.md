@@ -20,6 +20,13 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 * The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framework based on the development build from 16th of JULY 2018.
   * It's **not** possible to exchange the MonoGame.Framework easily. If you want to use a newer build, it would be neccessary to modify it to suit the needs of MonoGame.Forms!
 
+#### Tips & Tricks / Dos & Don'ts
+
+The OpenGL version of the library currently renders differently than the DirectX one, which makes it generally slower. If you need as much perormance as possible, you should definitley use the DirectX library.
+
+* Boost performance of a custom OpenGL control by raising its **DrawIntervall** with the property window during design time (try 50ms or 100ms. 1ms aims to 60 fps)
+* **Never** use **DoubleBuffering** on a custom control. This counts for the OpenGL library **as well as** for the DirectX library! It will cause flickering and slow downs.
+
 # How-To
 #### Setup MonoGame.Forms
 
