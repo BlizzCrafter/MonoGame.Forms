@@ -1,7 +1,7 @@
 ![Banner](Logos/Logo_Banner_800.png)
 
 # Welcome to MonoGame.Forms!
-[![Twitter Follow](https://img.shields.io/twitter/follow/sqrMin1.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/sqrMin1)
+[![Twitter Follow](https://img.shields.io/twitter/follow/SandboxBlizz.svg?style=social&label=Follow)](https://twitter.com/SandboxBlizz)
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=ba51ff&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
 [![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
 
@@ -196,7 +196,7 @@ GitHub: [PenumbraPhysics.Editor](https://github.com/sqrMin1/PenumbraPhysics.Edit
 ***
 
 ### Now Have Fun with MonoGame.Forms!
-[![Twitter Follow](https://img.shields.io/twitter/follow/sqrMin1.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/sqrMin1)
+[![Twitter Follow](https://img.shields.io/twitter/follow/SandboxBlizz.svg?style=social&label=Follow)](https://twitter.com/SandboxBlizz)
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=ba51ff&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
 [![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
 
