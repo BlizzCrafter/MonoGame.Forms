@@ -68,7 +68,7 @@ Part II:
 9. Use this file with your **ContentManager** (e.g. `Editor.Content.Load<SpriteFont>(@"TestFont");`
 10. Be Happy!
 
-This should accelerate your "content compiling workflow" by alot!
+This should boost your "content compiling workflow" by alot!
 
 Feel free to ask questions if something is not clear enough.
 
