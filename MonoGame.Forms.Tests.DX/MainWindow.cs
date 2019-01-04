@@ -30,30 +30,16 @@ namespace MonoGame.Forms.Tests
 
         #endregion
 
-        #region Draw Window
+        #region Invalidation Control
 
         private void textBoxTestText_TextChanged(object sender, System.EventArgs e)
         {
-            drawTestControl.WelcomeMessage = textBoxTestText.Text;
+            invalidationTestControl.WelcomeMessage = textBoxTestText.Text;
         }
 
         private void buttonInvalidate_Click(object sender, EventArgs e)
         {
-            drawTestControl.Invalidate();
-        }
-
-        private void radioButtonAutoInvalidateOn_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonAutoInvalidateOn.Checked)
-            {
-                drawTestControl.GetAutoInvalidation = true;
-                drawTestControl.Invalidate();
-            }
-        }
-
-        private void radioButtonAutoInvalidateOff_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonAutoInvalidateOff.Checked) drawTestControl.GetAutoInvalidation = false;
+            invalidationTestControl.Invalidate();
         }
 
         #endregion
@@ -62,10 +48,11 @@ namespace MonoGame.Forms.Tests
 
         bool CamButtonMouseDown = false;
         System.Drawing.Point CamButtonFirstMouseDownPosition;
-        
-        private void updateTestControl_VisibleChanged(object sender, EventArgs e)
+
+
+        private void monoGameTestControl_VisibleChanged(object sender, EventArgs e)
         {
-            trackBarCamZoom.Value = (int)updateTestControl.Editor.Cam.GetZoom;
+            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.GetZoom;
         }
 
         private void buttonMoveCam_MouseUp(object sender, MouseEventArgs e)
@@ -86,7 +73,7 @@ namespace MonoGame.Forms.Tests
                 int xDiff = CamButtonFirstMouseDownPosition.X - e.Location.X;
                 int yDiff = CamButtonFirstMouseDownPosition.Y - e.Location.Y;
 
-                updateTestControl.Editor.MoveCam(new Vector2(xDiff, yDiff));
+                monoGameTestControl.Editor.MoveCam(new Vector2(xDiff, yDiff));
 
                 CamButtonFirstMouseDownPosition.X = e.Location.X;
                 CamButtonFirstMouseDownPosition.Y = e.Location.Y;
@@ -95,8 +82,8 @@ namespace MonoGame.Forms.Tests
 
         private void buttonResetCam_Click(object sender, System.EventArgs e)
         {
-            updateTestControl.Editor.ResetCam();
-            trackBarCamZoom.Value = (int)updateTestControl.Editor.Cam.GetZoom;
+            monoGameTestControl.Editor.ResetCam();
+            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.GetZoom;
         }
         
         private void buttonHelp_Click(object sender, EventArgs e)
@@ -106,22 +93,22 @@ namespace MonoGame.Forms.Tests
 
         private void checkBoxFPS_CheckedChanged(object sender, System.EventArgs e)
         {
-            updateTestControl.Editor.ShowFPS = checkBoxFPS.Checked;
+            monoGameTestControl.Editor.ShowFPS = checkBoxFPS.Checked;
         }
 
         private void checkBoxCursor_CheckedChanged(object sender, System.EventArgs e)
         {
-            updateTestControl.Editor.ShowCursorPosition = checkBoxCursor.Checked;
+            monoGameTestControl.Editor.ShowCursorPosition = checkBoxCursor.Checked;
         }
 
         private void checkBoxCam_CheckedChanged(object sender, System.EventArgs e)
         {
-            updateTestControl.Editor.ShowCamPosition = checkBoxCam.Checked;
+            monoGameTestControl.Editor.ShowCamPosition = checkBoxCam.Checked;
         }
 
         private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
         {
-            updateTestControl.Editor.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
+            monoGameTestControl.Editor.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
         }
 
         #endregion

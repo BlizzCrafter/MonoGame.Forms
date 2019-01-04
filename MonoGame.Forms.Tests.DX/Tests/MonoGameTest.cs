@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace MonoGame.Forms.Tests.Tests
 {
-    public class UpdateTest : UpdateWindow
+    public class MonoGameTest : MonoGameControl
     {
         public string WelcomeMessage = "Everything in this world is magic and nothing can exist without magic!";
 

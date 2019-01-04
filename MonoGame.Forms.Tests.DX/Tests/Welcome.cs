@@ -5,7 +5,7 @@ using MonoGame.Forms.Tests.Utils;
 
 namespace MonoGame.Forms.Tests.Tests
 {
-    public class Welcome : UpdateWindow
+    public class Welcome : MonoGameControl
     {
         string WelcomeMessage = "Welcome to MonoGame.Forms!";
         public Animation Logo;

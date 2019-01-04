@@ -33,15 +33,10 @@
             this.tabPageWelcome = new System.Windows.Forms.TabPage();
             this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
             this.tabPageDrawControl = new System.Windows.Forms.TabPage();
             this.panelInvalidation = new System.Windows.Forms.Panel();
-            this.labelAutoInvalidation = new System.Windows.Forms.Label();
-            this.radioButtonAutoInvalidateOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonAutoInvalidateOn = new System.Windows.Forms.RadioButton();
             this.buttonInvalidate = new System.Windows.Forms.Button();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
-            this.drawTestControl = new MonoGame.Forms.Tests.Tests.DrawTest();
             this.tabPageUpdateControl = new System.Windows.Forms.TabPage();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
@@ -50,25 +45,26 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
-            this.updateTestControl = new MonoGame.Forms.Tests.Tests.UpdateTest();
             this.tabPageAdvancedInput = new System.Windows.Forms.TabPage();
             this.buttonHelpInput = new System.Windows.Forms.Button();
             this.checkBoxShowHelp = new System.Windows.Forms.CheckBox();
             this.checkBoxShowStats = new System.Windows.Forms.CheckBox();
             this.buttonResetPlayer = new System.Windows.Forms.Button();
-            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
             this.tabPageMultipleControls = new System.Windows.Forms.TabPage();
             this.splitContainerMapHost = new System.Windows.Forms.SplitContainer();
             this.buttonHelpControls = new System.Windows.Forms.Button();
-            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
-            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonWiki = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonTwitter = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripDropDownButtonTwitterEngine = new System.Windows.Forms.ToolStripDropDownButton();
+            this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
+            this.invalidationTestControl = new MonoGame.Forms.Tests.Tests.InvalidationTest();
+            this.monoGameTestControl = new MonoGame.Forms.Tests.Tests.MonoGameTest();
+            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
+            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
+            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
@@ -136,77 +132,28 @@
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // welcomeControl
-            // 
-            this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.welcomeControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeControl.Location = new System.Drawing.Point(0, 0);
-            this.welcomeControl.Name = "welcomeControl";
-            this.welcomeControl.Size = new System.Drawing.Size(728, 399);
-            this.welcomeControl.TabIndex = 3;
-            this.welcomeControl.Text = "Welcome to MonoGame.Forms!";
-            // 
             // tabPageDrawControl
             // 
             this.tabPageDrawControl.Controls.Add(this.panelInvalidation);
             this.tabPageDrawControl.Controls.Add(this.textBoxTestText);
-            this.tabPageDrawControl.Controls.Add(this.drawTestControl);
+            this.tabPageDrawControl.Controls.Add(this.invalidationTestControl);
             this.tabPageDrawControl.Location = new System.Drawing.Point(4, 25);
             this.tabPageDrawControl.Name = "tabPageDrawControl";
             this.tabPageDrawControl.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDrawControl.Size = new System.Drawing.Size(728, 399);
             this.tabPageDrawControl.TabIndex = 0;
-            this.tabPageDrawControl.Text = "Draw Control";
+            this.tabPageDrawControl.Text = "Invalidation Control";
             this.tabPageDrawControl.UseVisualStyleBackColor = true;
             // 
             // panelInvalidation
             // 
             this.panelInvalidation.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panelInvalidation.Controls.Add(this.labelAutoInvalidation);
-            this.panelInvalidation.Controls.Add(this.radioButtonAutoInvalidateOff);
-            this.panelInvalidation.Controls.Add(this.radioButtonAutoInvalidateOn);
             this.panelInvalidation.Controls.Add(this.buttonInvalidate);
             this.panelInvalidation.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelInvalidation.Location = new System.Drawing.Point(3, 312);
             this.panelInvalidation.Name = "panelInvalidation";
             this.panelInvalidation.Size = new System.Drawing.Size(722, 34);
             this.panelInvalidation.TabIndex = 4;
-            // 
-            // labelAutoInvalidation
-            // 
-            this.labelAutoInvalidation.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelAutoInvalidation.Location = new System.Drawing.Point(499, 0);
-            this.labelAutoInvalidation.Name = "labelAutoInvalidation";
-            this.labelAutoInvalidation.Size = new System.Drawing.Size(127, 34);
-            this.labelAutoInvalidation.TabIndex = 3;
-            this.labelAutoInvalidation.Text = "Auto Invalidation";
-            this.labelAutoInvalidation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // radioButtonAutoInvalidateOff
-            // 
-            this.radioButtonAutoInvalidateOff.AutoSize = true;
-            this.radioButtonAutoInvalidateOff.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radioButtonAutoInvalidateOff.Location = new System.Drawing.Point(626, 0);
-            this.radioButtonAutoInvalidateOff.Name = "radioButtonAutoInvalidateOff";
-            this.radioButtonAutoInvalidateOff.Size = new System.Drawing.Size(48, 34);
-            this.radioButtonAutoInvalidateOff.TabIndex = 1;
-            this.radioButtonAutoInvalidateOff.Text = "Off";
-            this.radioButtonAutoInvalidateOff.UseVisualStyleBackColor = true;
-            this.radioButtonAutoInvalidateOff.CheckedChanged += new System.EventHandler(this.radioButtonAutoInvalidateOff_CheckedChanged);
-            // 
-            // radioButtonAutoInvalidateOn
-            // 
-            this.radioButtonAutoInvalidateOn.AutoSize = true;
-            this.radioButtonAutoInvalidateOn.Checked = true;
-            this.radioButtonAutoInvalidateOn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radioButtonAutoInvalidateOn.Location = new System.Drawing.Point(674, 0);
-            this.radioButtonAutoInvalidateOn.Name = "radioButtonAutoInvalidateOn";
-            this.radioButtonAutoInvalidateOn.Size = new System.Drawing.Size(48, 34);
-            this.radioButtonAutoInvalidateOn.TabIndex = 0;
-            this.radioButtonAutoInvalidateOn.TabStop = true;
-            this.radioButtonAutoInvalidateOn.Text = "On";
-            this.radioButtonAutoInvalidateOn.UseVisualStyleBackColor = true;
-            this.radioButtonAutoInvalidateOn.CheckedChanged += new System.EventHandler(this.radioButtonAutoInvalidateOn_CheckedChanged);
             // 
             // buttonInvalidate
             // 
@@ -234,19 +181,6 @@
             this.textBoxTestText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTestText.TextChanged += new System.EventHandler(this.textBoxTestText_TextChanged);
             // 
-            // drawTestControl
-            // 
-            this.drawTestControl.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.drawTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawTestControl.ForeColor = System.Drawing.Color.Yellow;
-            this.drawTestControl.GetAutoInvalidation = true;
-            this.drawTestControl.Location = new System.Drawing.Point(3, 3);
-            this.drawTestControl.Name = "drawTestControl";
-            this.drawTestControl.Size = new System.Drawing.Size(722, 393);
-            this.drawTestControl.TabIndex = 3;
-            this.drawTestControl.Text = "This \'DrawWindow\' has no game loop, but it\'s updated through invalidation!";
-            // 
             // tabPageUpdateControl
             // 
             this.tabPageUpdateControl.Controls.Add(this.buttonHelp);
@@ -256,13 +190,13 @@
             this.tabPageUpdateControl.Controls.Add(this.checkBoxFPS);
             this.tabPageUpdateControl.Controls.Add(this.buttonResetCam);
             this.tabPageUpdateControl.Controls.Add(this.buttonMoveCam);
-            this.tabPageUpdateControl.Controls.Add(this.updateTestControl);
+            this.tabPageUpdateControl.Controls.Add(this.monoGameTestControl);
             this.tabPageUpdateControl.Location = new System.Drawing.Point(4, 25);
             this.tabPageUpdateControl.Name = "tabPageUpdateControl";
             this.tabPageUpdateControl.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageUpdateControl.Size = new System.Drawing.Size(728, 399);
             this.tabPageUpdateControl.TabIndex = 1;
-            this.tabPageUpdateControl.Text = "Update Control";
+            this.tabPageUpdateControl.Text = "MonoGame Control";
             this.tabPageUpdateControl.UseVisualStyleBackColor = true;
             // 
             // buttonHelp
@@ -356,18 +290,6 @@
             this.buttonMoveCam.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseMove);
             this.buttonMoveCam.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMoveCam_MouseUp);
             // 
-            // updateTestControl
-            // 
-            this.updateTestControl.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.updateTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateTestControl.Location = new System.Drawing.Point(3, 3);
-            this.updateTestControl.Name = "updateTestControl";
-            this.updateTestControl.Size = new System.Drawing.Size(722, 393);
-            this.updateTestControl.TabIndex = 8;
-            this.updateTestControl.Text = "The \'UpdateWindow\' has a game loop!";
-            this.updateTestControl.VisibleChanged += new System.EventHandler(this.updateTestControl_VisibleChanged);
-            // 
             // tabPageAdvancedInput
             // 
             this.tabPageAdvancedInput.Controls.Add(this.buttonHelpInput);
@@ -433,18 +355,6 @@
             this.buttonResetPlayer.UseVisualStyleBackColor = true;
             this.buttonResetPlayer.Click += new System.EventHandler(this.buttonResetPlayer_Click);
             // 
-            // advancedControlsTest
-            // 
-            this.advancedControlsTest.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.advancedControlsTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.advancedControlsTest.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.advancedControlsTest.ForeColor = System.Drawing.Color.FloralWhite;
-            this.advancedControlsTest.Location = new System.Drawing.Point(0, 0);
-            this.advancedControlsTest.Name = "advancedControlsTest";
-            this.advancedControlsTest.Size = new System.Drawing.Size(728, 399);
-            this.advancedControlsTest.TabIndex = 0;
-            this.advancedControlsTest.Text = "Test Keyboard, Mouse and GamePad input here!";
-            // 
             // tabPageMultipleControls
             // 
             this.tabPageMultipleControls.Controls.Add(this.splitContainerMapHost);
@@ -486,30 +396,6 @@
             this.buttonHelpControls.UseVisualStyleBackColor = true;
             this.buttonHelpControls.Click += new System.EventHandler(this.buttonHelpControls_Click);
             // 
-            // multipleControls_First_Test1
-            // 
-            this.multipleControls_First_Test1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.multipleControls_First_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.multipleControls_First_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.multipleControls_First_Test1.ForeColor = System.Drawing.Color.Lavender;
-            this.multipleControls_First_Test1.Location = new System.Drawing.Point(0, 0);
-            this.multipleControls_First_Test1.Name = "multipleControls_First_Test1";
-            this.multipleControls_First_Test1.Size = new System.Drawing.Size(350, 399);
-            this.multipleControls_First_Test1.TabIndex = 0;
-            this.multipleControls_First_Test1.Text = "Left Map";
-            // 
-            // multipleControls_Second_Test1
-            // 
-            this.multipleControls_Second_Test1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.multipleControls_Second_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.multipleControls_Second_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.multipleControls_Second_Test1.ForeColor = System.Drawing.Color.Lavender;
-            this.multipleControls_Second_Test1.Location = new System.Drawing.Point(0, 0);
-            this.multipleControls_Second_Test1.Name = "multipleControls_Second_Test1";
-            this.multipleControls_Second_Test1.Size = new System.Drawing.Size(374, 399);
-            this.multipleControls_Second_Test1.TabIndex = 1;
-            this.multipleControls_Second_Test1.Text = "Right Map";
-            // 
             // tabPageInfo
             // 
             this.tabPageInfo.Controls.Add(this.richTextBoxLicense);
@@ -538,8 +424,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButtonGitHub,
             this.toolStripDropDownButtonWiki,
-            this.toolStripDropDownButtonTwitter,
-            this.toolStripDropDownButtonTwitterEngine});
+            this.toolStripDropDownButtonTwitter});
             this.statusStrip.Location = new System.Drawing.Point(0, 361);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(728, 38);
@@ -572,19 +457,80 @@
             this.toolStripDropDownButtonTwitter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitter.Image")));
             this.toolStripDropDownButtonTwitter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonTwitter.Name = "toolStripDropDownButtonTwitter";
-            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(158, 36);
-            this.toolStripDropDownButtonTwitter.Text = "#sqrMin1";
+            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(224, 36);
+            this.toolStripDropDownButtonTwitter.Text = "@SandboxBlizz";
             this.toolStripDropDownButtonTwitter.Click += new System.EventHandler(this.toolStripDropDownButtonTwitter_Click);
             // 
-            // toolStripDropDownButtonTwitterEngine
+            // welcomeControl
             // 
-            this.toolStripDropDownButtonTwitterEngine.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripDropDownButtonTwitterEngine.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitterEngine.Image")));
-            this.toolStripDropDownButtonTwitterEngine.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonTwitterEngine.Name = "toolStripDropDownButtonTwitterEngine";
-            this.toolStripDropDownButtonTwitterEngine.Size = new System.Drawing.Size(283, 36);
-            this.toolStripDropDownButtonTwitterEngine.Text = "#RogueEngineEditor";
-            this.toolStripDropDownButtonTwitterEngine.Click += new System.EventHandler(this.toolStripDropDownButtonTwitterEngine_Click);
+            this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.welcomeControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeControl.Location = new System.Drawing.Point(0, 0);
+            this.welcomeControl.Name = "welcomeControl";
+            this.welcomeControl.Size = new System.Drawing.Size(728, 399);
+            this.welcomeControl.TabIndex = 3;
+            this.welcomeControl.Text = "Welcome to MonoGame.Forms!";
+            // 
+            // invalidationTestControl
+            // 
+            this.invalidationTestControl.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.invalidationTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invalidationTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidationTestControl.ForeColor = System.Drawing.Color.Yellow;
+            this.invalidationTestControl.Location = new System.Drawing.Point(3, 3);
+            this.invalidationTestControl.Name = "invalidationTestControl";
+            this.invalidationTestControl.Size = new System.Drawing.Size(722, 393);
+            this.invalidationTestControl.TabIndex = 5;
+            this.invalidationTestControl.Text = "This \'InvalidationControl\' has no game loop, but it\'s updated through invalidatio" +
+    "n!";
+            // 
+            // monoGameTestControl
+            // 
+            this.monoGameTestControl.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.monoGameTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monoGameTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monoGameTestControl.Location = new System.Drawing.Point(3, 3);
+            this.monoGameTestControl.Name = "monoGameTestControl";
+            this.monoGameTestControl.Size = new System.Drawing.Size(722, 393);
+            this.monoGameTestControl.TabIndex = 8;
+            this.monoGameTestControl.Text = "The \'MonoGameControl\' has a game loop!";
+            this.monoGameTestControl.VisibleChanged += new System.EventHandler(this.monoGameTestControl_VisibleChanged);
+            // 
+            // advancedControlsTest
+            // 
+            this.advancedControlsTest.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.advancedControlsTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.advancedControlsTest.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advancedControlsTest.ForeColor = System.Drawing.Color.FloralWhite;
+            this.advancedControlsTest.Location = new System.Drawing.Point(0, 0);
+            this.advancedControlsTest.Name = "advancedControlsTest";
+            this.advancedControlsTest.Size = new System.Drawing.Size(728, 399);
+            this.advancedControlsTest.TabIndex = 0;
+            this.advancedControlsTest.Text = "Test Keyboard, Mouse and GamePad input here!";
+            // 
+            // multipleControls_First_Test1
+            // 
+            this.multipleControls_First_Test1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.multipleControls_First_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.multipleControls_First_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multipleControls_First_Test1.ForeColor = System.Drawing.Color.Lavender;
+            this.multipleControls_First_Test1.Location = new System.Drawing.Point(0, 0);
+            this.multipleControls_First_Test1.Name = "multipleControls_First_Test1";
+            this.multipleControls_First_Test1.Size = new System.Drawing.Size(350, 399);
+            this.multipleControls_First_Test1.TabIndex = 0;
+            this.multipleControls_First_Test1.Text = "Left Map";
+            // 
+            // multipleControls_Second_Test1
+            // 
+            this.multipleControls_Second_Test1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.multipleControls_Second_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.multipleControls_Second_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multipleControls_Second_Test1.ForeColor = System.Drawing.Color.Lavender;
+            this.multipleControls_Second_Test1.Location = new System.Drawing.Point(0, 0);
+            this.multipleControls_Second_Test1.Name = "multipleControls_Second_Test1";
+            this.multipleControls_Second_Test1.Size = new System.Drawing.Size(374, 399);
+            this.multipleControls_Second_Test1.TabIndex = 1;
+            this.multipleControls_Second_Test1.Text = "Right Map";
             // 
             // MainWindow
             // 
@@ -602,7 +548,6 @@
             this.tabPageDrawControl.ResumeLayout(false);
             this.tabPageDrawControl.PerformLayout();
             this.panelInvalidation.ResumeLayout(false);
-            this.panelInvalidation.PerformLayout();
             this.tabPageUpdateControl.ResumeLayout(false);
             this.tabPageUpdateControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCamZoom)).EndInit();
@@ -642,11 +587,8 @@
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitter;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitterEngine;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonWiki;
         private Tests.Welcome welcomeControl;
-        private Tests.DrawTest drawTestControl;
-        private Tests.UpdateTest updateTestControl;
         private System.Windows.Forms.TabPage tabPageAdvancedInput;
         private Tests.AdvancedInputTest advancedControlsTest;
         private System.Windows.Forms.Button buttonResetPlayer;
@@ -660,9 +602,8 @@
         private System.Windows.Forms.SplitContainer splitContainerMapHost;
         private System.Windows.Forms.Panel panelInvalidation;
         private System.Windows.Forms.Button buttonInvalidate;
-        private System.Windows.Forms.RadioButton radioButtonAutoInvalidateOff;
-        private System.Windows.Forms.RadioButton radioButtonAutoInvalidateOn;
-        private System.Windows.Forms.Label labelAutoInvalidation;
+        private Tests.InvalidationTest invalidationTestControl;
+        private Tests.MonoGameTest monoGameTestControl;
     }
 }
 
