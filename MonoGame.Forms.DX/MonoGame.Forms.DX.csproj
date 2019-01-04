@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Camera2D.cs" />
-    <Compile Include="Controls\DrawWindow.cs">
+    <Compile Include="Controls\InvalidationControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\GameControl.cs">
@@ -104,7 +104,7 @@
     <Compile Include="Controls\GraphicsDeviceControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\UpdateWindow.cs">
+    <Compile Include="Controls\MonoGameControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,11 +113,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\DrawService.cs" />
+    <Compile Include="Services\InvalidationService.cs" />
     <Compile Include="Services\GFXService.cs" />
     <Compile Include="Services\GraphicsDeviceService.cs" />
     <Compile Include="Services\ServiceContainer.cs" />
-    <Compile Include="Services\UpdateService.cs" />
+    <Compile Include="Services\MonoGameService.cs" />
     <Compile Include="SharpDXHelper.cs" />
   </ItemGroup>
   <ItemGroup>

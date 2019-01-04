@@ -37,7 +37,7 @@ namespace MonoGame.Forms.Controls
 
         private void GameLoop(object sender, EventArgs e)
         {
-            if (Visible && AutomaticInvalidation)
+            if (Visible)
             {
                 _GameTime = new GameTime(_Timer.Elapsed, _Timer.Elapsed - _Elapsed);
                 _Elapsed = _Timer.Elapsed;

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 #if GL
@@ -8,20 +9,20 @@ using MonoGame.Forms.GL;
 namespace MonoGame.Forms.Services
 {
     /// <summary>
-    /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of MonoGame.
-    /// The <see cref="MonoGame.Forms.Controls.UpdateWindow"/> inherits from this class.
-    /// <remarks>Note: this class provides a game loop. The <see cref="DrawService"/> is not using a game loop.</remarks>
+    /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of the MonoGame.Framework.
+    /// The <see cref="MonoGame.Forms.Controls.InvalidationControl"/> inherits from this class.
+    /// <remarks>Note: this class provides no game loop. Only the <see cref="MonoGameService"/> deliveres one.</remarks>
     /// </summary>
-    public sealed class UpdateService : GFXService
+    public sealed class InvalidationService : GFXService
     {
 #if DX
-        internal UpdateService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
+        internal InvalidationService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System
             InitializeGFX_DX(graphics, swapChainRenderTarget);
         }
 #elif GL
-        internal UpdateService(IGraphicsDeviceService graphics, SwapChainRenderTarget_GL swapChainRenderTarget)
+        internal InvalidationService(IGraphicsDeviceService graphics, SwapChainRenderTarget_GL swapChainRenderTarget)
         {
             // Initialize GFX-System
             InitializeGFX_GL(graphics, swapChainRenderTarget);
@@ -34,24 +35,20 @@ namespace MonoGame.Forms.Services
         public override void Initialize() { }
 
         /// <summary>
-        /// Override this basic updating method in your custom class to create your own initializing logic.
+        /// Throws a <see cref="NotImplementedException"/>, because a <see cref="InvalidationService"/> class doesn't contain a game loop.
+        /// This is a basic implementation of the corresponding abstract method from the <see cref="GFXService"/> class.
         /// </summary>
-        /// <param name="gameTime">The <see cref="GameTime"/> of the game loop.</param>
         public override void Update(GameTime gameTime)
         {
-            UpdateDisplay(gameTime);
-            FrameworkDispatcher.Update();
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// Override this basic drawing method in your custom class to create your own drawing logic.
         /// This basic implementation just clears the background color of the draw control in the predefined color: <see cref="GFXService.BackgroundColor"/>
-        /// and updates the FrameCounter, which shows the current FPS of the window / control.
         /// </summary>
         public override void Draw()
         {
-            UpdateFrameCounter();
-
             graphics.Clear(BackgroundColor);
         }
     }

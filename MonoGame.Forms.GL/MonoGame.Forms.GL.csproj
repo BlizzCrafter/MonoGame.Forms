@@ -80,10 +80,6 @@
     <Compile Include="..\MonoGame.Forms.DX\Components\Camera2D.cs">
       <Link>Components\Camera2D.cs</Link>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.DX\Controls\DrawWindow.cs">
-      <Link>Controls\DrawWindow.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="..\MonoGame.Forms.DX\Controls\GameControl.cs">
       <Link>Controls\GameControl.cs</Link>
       <SubType>Component</SubType>
@@ -92,12 +88,13 @@
       <Link>Controls\GraphicsDeviceControl.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.DX\Controls\UpdateWindow.cs">
-      <Link>Controls\UpdateWindow.cs</Link>
+    <Compile Include="..\MonoGame.Forms.DX\Controls\InvalidationControl.cs">
+      <Link>Controls\InvalidationControl.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.DX\Services\DrawService.cs">
-      <Link>Services\DrawService.cs</Link>
+    <Compile Include="..\MonoGame.Forms.DX\Controls\MonoGameControl.cs">
+      <Link>Controls\MonoGameControl.cs</Link>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.DX\Services\GFXService.cs">
       <Link>Services\GFXService.cs</Link>
@@ -105,11 +102,14 @@
     <Compile Include="..\MonoGame.Forms.DX\Services\GraphicsDeviceService.cs">
       <Link>Services\GraphicsDeviceService.cs</Link>
     </Compile>
+    <Compile Include="..\MonoGame.Forms.DX\Services\InvalidationService.cs">
+      <Link>Services\InvalidationService.cs</Link>
+    </Compile>
+    <Compile Include="..\MonoGame.Forms.DX\Services\MonoGameService.cs">
+      <Link>Services\MonoGameService.cs</Link>
+    </Compile>
     <Compile Include="..\MonoGame.Forms.DX\Services\ServiceContainer.cs">
       <Link>Services\ServiceContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\MonoGame.Forms.DX\Services\UpdateService.cs">
-      <Link>Services\UpdateService.cs</Link>
     </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

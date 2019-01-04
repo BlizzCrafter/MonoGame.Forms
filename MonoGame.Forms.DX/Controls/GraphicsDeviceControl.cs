@@ -197,7 +197,6 @@ namespace MonoGame.Forms.Controls
                     RefreshGLWindow();
                     Invalidate();
                 }
-                else if (AutomaticInvalidation) Invalidate();
             }
         }
 
@@ -236,27 +235,6 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected ServiceContainer Services { get; } = new ServiceContainer();
 
-        /// <summary>
-        /// "true" if you want the editor view automatically updates itself.
-        /// Set this to "false" to update the editor view manually by calling "Invalidate()" on a custom control.
-        /// <remarks>
-        /// This option is useful when you are using a MonoGame.Forms render control inside a NodeGraphEditor for example and you don't want to block the
-        /// whole NodeGraph with the invalidations taking place here.
-        /// </remarks>
-        /// </summary>
-        protected bool AutomaticInvalidation
-        {
-            get { return _AutomaticInvalidation; }
-            set
-            {
-                _AutomaticInvalidation = value;
-#if GL
-                if (_chain != null) _Intervall.Enabled = value;
-#endif
-            }
-        }
-        private bool _AutomaticInvalidation;
-
 #pragma warning disable 1591
         protected override void OnCreateControl()
         {
@@ -278,7 +256,6 @@ namespace MonoGame.Forms.Controls
                 Application.ApplicationExit -= Application_ApplicationExit;
                 Application.ApplicationExit += Application_ApplicationExit;
 #endif
-                AutomaticInvalidation = true;
                 Initialize();
             }
             base.OnCreateControl();
