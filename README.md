@@ -49,16 +49,16 @@ Another option is to install the library with the NuGet package manager:
 
 The following tutorial is working exactly the same on both libraries (DX and GL).
 
-#### Creating a simple [DrawWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/3D4B182C)
+#### Creating a simple [InvalidationControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/1802024)
 
-Let's start using the MonoGame.Forms library by creating a simple draw window! 
+Let's start using the MonoGame.Forms library by creating a simple control to render stuff! 
 
 _(it's assumed that you already have created a new **Windows Forms** project with the installed library)_
 
 1. Create a new class and name it **DrawTest**
-2. Inherit from **MonoGame.Forms.Controls.DrawWindow**
-3. Override the **Initialize()** method from DrawWindow
-4. Override the **Draw()** method from DrawWindow
+2. Inherit from **MonoGame.Forms.Controls.InvalidationControl**
+3. Override its **Initialize()** method
+4. Override its **Draw()** method
 5. **Save & Build** your solution
 6. **Double Click** on **Form1.cs** so that the Designer opens
 7. Open the **Toolbox**
@@ -82,9 +82,9 @@ More than that it's basically the same like you are used to do in the **MonoGame
 Just with a small difference (no it's still not difficult!)
 
 In MonoGame you could draw someting to the screen with the [SpriteBatch](https://msdn.microsoft.com/de-de/library/microsoft.xna.framework.graphics.spritebatch(v=xnagamestudio.40).aspx).
-In **MonoGame.Forms** you will do the same but you need to use the [DrawService](https://github.com/sqrMin1/MonoGame.Forms/wiki/AC3C5B70) for this.
+In **MonoGame.Forms** you will do the same but you need to use [GFXService](https://github.com/sqrMin1/MonoGame.Forms/wiki/3A4C800C) for this.
 
-In the **DrawWindow** class this service is called **Editor**. To draw something to the **SpriteBatch** you need to do this:
+In the **InvalidationControl** and **MonoGameControl** class this service is called **Editor**. To draw something to the **SpriteBatch** you need to do this:
 
 ```c
 Editor.spriteBatch.DrawString();
@@ -92,8 +92,7 @@ Editor.spriteBatch.DrawString();
 
 Do you see? Easy! :)
 
-The **DrawService** class inherits from [GFXService](https://github.com/sqrMin1/MonoGame.Forms/wiki/3A4C800C).
-It contains some MonoGame specific stuff like a [ContentManager](https://github.com/sqrMin1/MonoGame.Forms/wiki/A72EF9E7).
+The **GFXService** class contains some MonoGame specific stuff like a [ContentManager](https://github.com/sqrMin1/MonoGame.Forms/wiki/A72EF9E7).
 Examine everything calmly. I just want to explain a little how **MonoGame.Forms** works under the hood!
 
 To sum things up, let's take a look at the final **DrawTest** class:
@@ -104,7 +103,7 @@ using MonoGame.Forms.Controls;
 
 namespace nugetTest
 {
-    public class DrawTest : DrawWindow
+    public class DrawTest : InvalidationControl
     {
         string WelcomeMessage = "Hello MonoGame.Forms!";
 
@@ -137,9 +136,9 @@ It's pretty much like in the **MonoGame.Framework!**
 
 ***
 
-#### Creating a simple [UpdateWindow](https://github.com/sqrMin1/MonoGame.Forms/wiki/F370F561)
+#### Creating a simple [MonoGameControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/C5EB9086)
 
-As you might though right: Yes, this is also very easy. It's the same like for the **DrawWindow**. 
+As you might though right: Yes, this is also very easy. It's the same like for the **InvalidationControl**. 
 I just want to show you the only difference:
 
 ```c
@@ -154,7 +153,7 @@ The update method makes realtime interactions with your game- / editor environme
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
-> Note: To raise the performance of an OpenGL UpdateWindow, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
+> Note: To raise the performance of an OpenGL MonoGameControl, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
 
 ![DrawIntervall](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/intervall.PNG)
 
