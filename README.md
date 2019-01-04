@@ -134,6 +134,10 @@ Result:
 
 It's pretty much like in the **MonoGame.Framework!**
 
+> Note: If you are doing changes to the SpriteBatch when your editor project is running (not during design time), then you simply need to call **Invalidate()** on a custom control for every change you are doing. This command commits those changes and after that your control does not consume CPU power anymore. This process is great when creating preview controls for textures and similar things!
+
+For realtime interactions (game loop) please read the next topic about the **MonoGameControl**!
+
 ***
 
 #### Creating a simple [MonoGameControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/C5EB9086)
