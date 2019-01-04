@@ -197,6 +197,7 @@ namespace MonoGame.Forms.Controls
                     RefreshGLWindow();
                     Invalidate();
                 }
+                else if (this is MonoGameControl) Invalidate();
             }
         }
 
