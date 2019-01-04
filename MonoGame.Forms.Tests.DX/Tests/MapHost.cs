@@ -5,7 +5,7 @@ using MonoGame.Forms.Controls;
 
 namespace MonoGame.Forms.Tests.Tests
 {
-    public abstract class MapHost : UpdateWindow
+    public abstract class MapHost : MonoGameControl
     {
         private Texture2D[] HexMaps;
         private int CurrentMap { get; set; } = 0;

@@ -60,12 +60,16 @@
       <Link>Tests\AdvancedInputTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\DrawTest.cs">
-      <Link>Tests\DrawTest.cs</Link>
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\InvalidationTest.cs">
+      <Link>Tests\InvalidationTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MapHost.cs">
       <Link>Tests\MapHost.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MonoGameTest.cs">
+      <Link>Tests\MonoGameTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MultipleControls_a_Test.cs">
@@ -74,10 +78,6 @@
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MultipleControls_b_Test.cs">
       <Link>Tests\MultipleControls_b_Test.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\UpdateTest.cs">
-      <Link>Tests\UpdateTest.cs</Link>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\Welcome.cs">

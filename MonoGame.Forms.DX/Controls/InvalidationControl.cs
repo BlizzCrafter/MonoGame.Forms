@@ -9,18 +9,19 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MonoGame.Forms.Controls
 {
     /// <summary>
-    /// Inherit from this class in your custom class to create a draw control, which is selectable from the ToolBox during design time.
+    /// Inherit from this class in your custom class to create an invalidation control, which is selectable from the ToolBox during design time.
     /// It provides 'NO' game loop, but it's updated through invalidation (<see cref="System.Windows.Forms.Control.Invalidate()"/>).
-    /// <remarks>This draw control is useful as a simple window, which doesn't need a classical game loop like a preview window for textures.</remarks>
+    /// You need to call 'Invalidate()' on a custom control by yourself to update its contents.
+    /// <remarks>This control is useful as a simple CPU gentle control, which doesn't need a classical game loop like a preview window for textures.</remarks>
     /// </summary>
-    public abstract class DrawWindow : GraphicsDeviceControl
+    public abstract class InvalidationControl : GraphicsDeviceControl
     {
         /// <summary>
-        /// The <see cref="DrawService"/> of the <see cref="DrawWindow"/> draws the actual content of the draw control.
+        /// The <see cref="InvalidationService"/> of the <see cref="InvalidationControl"/> draws the actual content of the draw control.
         /// </summary>
         [Browsable(false)]
-        public DrawService Editor { get { return _Editor; } }
-        private DrawService _Editor;
+        public InvalidationService Editor { get { return _Editor; } }
+        private InvalidationService _Editor;
 
         /// <summary>
         /// Basic initializing.
@@ -28,14 +29,14 @@ namespace MonoGame.Forms.Controls
         protected override void Initialize()
         {
 #if DX
-            _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
+            _Editor = new InvalidationService(_graphicsDeviceService, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
 #elif GL
-            _Editor = new DrawService(_graphicsDeviceService, SwapChainRenderTarget);
+            _Editor = new InvalidationService(_graphicsDeviceService, SwapChainRenderTarget);
 #endif
             _Editor.Initialize();
         }
@@ -54,7 +55,7 @@ namespace MonoGame.Forms.Controls
 
         /// <summary>
         /// Basic drawing.
-        /// The draw control becomes updated though invalidation: <see cref="System.Windows.Forms.Control.Invalidate()"/>
+        /// This control becomes updated though invalidation: <see cref="System.Windows.Forms.Control.Invalidate()"/>
         /// </summary>
         protected override void Draw()
         {
@@ -65,9 +66,6 @@ namespace MonoGame.Forms.Controls
                 Editor.IsMouseInsideControl = IsMouseInsideControl;
 
                 _Editor.Draw();
-#if DX
-                if (AutomaticInvalidation) Invalidate();
-#endif
             }
         }
 
@@ -88,7 +86,7 @@ namespace MonoGame.Forms.Controls
         }
 
         /// <summary>
-        /// In case the ClientSize was changed before activating the window, the cam position gets updated according to this changes.
+        /// In case the ClientSize was changed before activating the control, the cam position gets updated according to this changes.
         /// </summary>
         protected override void OnVisibleChanged(EventArgs e)
         {

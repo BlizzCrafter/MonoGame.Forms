@@ -44,15 +44,19 @@ namespace MonoGame.Forms.Services
 
                 private void CreateNewRenderTarget2D(bool useMultiSampling)
                 {
-                    GetRenderTarget2D = new RenderTarget2D(
-                        GetGFXService.graphics,
-                        GetGFXService.graphics.PresentationParameters.BackBufferWidth,
-                        GetGFXService.graphics.PresentationParameters.BackBufferHeight,
-                        false,
-                        SurfaceFormat.Color,
-                        DepthFormat.Depth24,
-                        useMultiSampling ? GetGFXService.GetCurrentMultiSampleCount : 0,
-                        RenderTargetUsage.DiscardContents);
+                    if (GetGFXService.graphics.PresentationParameters.BackBufferWidth > 0 &&
+                        GetGFXService.graphics.PresentationParameters.BackBufferHeight > 0)
+                    {
+                        GetRenderTarget2D = new RenderTarget2D(
+                            GetGFXService.graphics,
+                            GetGFXService.graphics.PresentationParameters.BackBufferWidth,
+                            GetGFXService.graphics.PresentationParameters.BackBufferHeight,
+                            false,
+                            SurfaceFormat.Color,
+                            DepthFormat.Depth24,
+                            useMultiSampling ? GetGFXService.GetCurrentMultiSampleCount : 0,
+                            RenderTargetUsage.DiscardContents);
+                    }
                 }
                 
                 internal RenderTarget2DHelper(GFXService _GFXService, bool useMultiSampling)

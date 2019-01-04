@@ -97,7 +97,7 @@
     <Compile Include="Tests\AdvancedInputTest.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Tests\DrawTest.cs">
+    <Compile Include="Tests\InvalidationTest.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tests\MapHost.cs">
@@ -109,7 +109,7 @@
     <Compile Include="Tests\MultipleControls_b_Test.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Tests\UpdateTest.cs">
+    <Compile Include="Tests\MonoGameTest.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tests\Welcome.cs">

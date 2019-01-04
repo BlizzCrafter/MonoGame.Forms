@@ -10,14 +10,14 @@ namespace MonoGame.Forms.Controls
     /// It provides a game loop and a place to draw.
     /// <remarks>This game loop control is useful as a window, which needs a classical game loop for complex <see cref="GameTime"/> based mechanics.</remarks>
     /// </summary>
-    public abstract class UpdateWindow : GameControl
+    public abstract class MonoGameControl : GameControl
     {
         /// <summary>
-        /// The <see cref="UpdateService"/> of the <see cref="UpdateWindow"/> draws and updates the actual content of the update control.
+        /// The <see cref="MonoGameService"/> of the <see cref="MonoGameControl"/> draws and updates the actual content of the update control.
         /// </summary>
         [Browsable(false)]
-        public UpdateService Editor { get { return _Editor; } }
-        private UpdateService _Editor;
+        public MonoGameService Editor { get { return _Editor; } }
+        private MonoGameService _Editor;
 
         /// <summary>
         /// Basic initializing.
@@ -26,14 +26,14 @@ namespace MonoGame.Forms.Controls
         {
             base.Initialize();
 #if DX
-            _Editor = new UpdateService(_graphicsDeviceService, SwapChainRenderTarget);
+            _Editor = new MonoGameService(_graphicsDeviceService, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += UpdateWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += UpdateWindow_UpdateMultiSampleCount;
 #elif GL
-            _Editor = new UpdateService(_graphicsDeviceService, SwapChainRenderTarget);
+            _Editor = new MonoGameService(_graphicsDeviceService, SwapChainRenderTarget);
 #endif
             _Editor.Initialize();
         }
