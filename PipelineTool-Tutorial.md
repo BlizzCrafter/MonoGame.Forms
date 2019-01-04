@@ -4,7 +4,7 @@ This tutorial will guid you step by step through the path of integrating the **M
 
 With this tool it's possible to **directly compile your content files to the .xnb file format** - ready to be used by the MonoGame **ContentManager**!
 
-As a starting point we will use a fresh **WindowsForms project** on a Windows machine, which has nothing related to the MonoGame.Framework referenced.
+As a starting point we will use a fresh **WindowsForms project** on a **Windows machine**, which has nothing - related to the MonoGame.Framework - referenced.
 
 Let's start!
 
@@ -42,7 +42,7 @@ Part I:
 #---------------------------------- Content ---------------------------------#
 ```
 
-10. When you now **double click** on the **Content.mgcb** file it sould open the **PipelineTool** without errors and it should display your content project.
+10. When you now **double click** on the **Content.mgcb** file it sould open the **PipelineTool** without errors and it should display your content project
 
 We are done with the preperation!
 
@@ -63,21 +63,21 @@ Part II:
 4. Save your changes and open Visual Studio again
 5. You will be greeted with a **prompt**. Just tell him to **reload everything**
 6. Now **select** the **"Content.mgcb"** file and in the **Visual Studio property panel** under **Build Process** choose the **MonoGameContentReference** option
-7. Add a **test file** by using the **PipelineTool** (e.g. TestFont.SpriteFont) and **save the content project**
+7. Add a **test file** by using the **PipelineTool** (e.g. TestFont.spritefont) and **save the content project**
 8. If you now **rebuild** or **run** your WindowsForms project you will see a **"Content" folder** with the **compiled "TestFont.xnb"** file in your **output directory**
-9. Use this file with your **ContentManager** (e.g. *Editor.Content.Load<SpriteFont>(@"TestFont")*;
+9. Use this file with your **ContentManager** (e.g. `Editor.Content.Load<SpriteFont>(@"TestFont");`
 10. Be Happy!
 
-This should accelerate your "content compiling workflow" by alot!
+This should boost your "content compiling workflow" by alot!
 
 Feel free to ask questions if something is not clear enough.
 
-You can reach me here:
+You can reach me on **Twitter**:
 
 [![Twitter](https://img.shields.io/twitter/follow/SandboxBlizz.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/SandboxBlizz)
 
 or visit the official
-[MonoGame.Forms_Thread](http://community.monogame.net/t/monogame-forms-create-your-editor-environment/9954)
+**[MonoGame.Forms_Thread](http://community.monogame.net/t/monogame-forms-create-your-editor-environment/9954)**
 
 Cheers,
 

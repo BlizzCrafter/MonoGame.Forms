@@ -26,6 +26,7 @@ The OpenGL version of the library currently renders differently than the DirectX
 
 * Boost performance of a custom OpenGL control by raising its **DrawIntervall** with the property window during design time (try 50ms or 100ms. 1ms aims to 60 fps)
 * **Never** use **DoubleBuffering** on a custom control. This counts for the OpenGL library **as well as** for the DirectX library! It will cause flickering and slow downs.
+* If you need to have the **MonoGame-PipelineTool** integrated into your **MonoGame.Forms** project, you should check out the **[PipelineTool-Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/PipelineTool-Tutorial.md)!**
 
 # How-To
 #### Setup MonoGame.Forms
