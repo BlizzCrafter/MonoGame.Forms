@@ -14,6 +14,11 @@ namespace MonoGame.Forms.Services
     /// </summary>
     public sealed class MonoGameService : GFXService
     {
+        /// <summary>
+        /// Get the current <see cref="GameTime"/> of the game loop.
+        /// </summary>
+        public GameTime GameTime { get; private set; }
+
 #if DX
         internal MonoGameService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
@@ -41,6 +46,7 @@ namespace MonoGame.Forms.Services
         {
             UpdateDisplay(gameTime);
             FrameworkDispatcher.Update();
+            GameTime = gameTime;
         }
 
         /// <summary>
