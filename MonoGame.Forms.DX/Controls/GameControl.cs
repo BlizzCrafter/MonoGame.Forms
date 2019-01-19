@@ -19,7 +19,7 @@ namespace MonoGame.Forms.Controls
         /// Set this to 'true' to only update this control when the mouse cursor is inside (OnMouseHover).
         /// <remarks>
         /// This technique is useful when you only need to update this control temporarily or always on demand.
-        /// Settings this property to 'true' will cause that this control will only consume CPU power to update its contents, when the mouse cursor is inside it
+        /// Setting this property to 'true' will cause that this control will only consume CPU power to update its contents, when the mouse cursor is inside it
         /// or when you call 'RunOneFrame();' manually.
         /// </remarks>
         /// </summary>
