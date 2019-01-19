@@ -11,14 +11,16 @@
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
-#### Now with OpenGL support!
+<a href="https://www.paypal.me/SandboxBlizz"><img src="https://drive.google.com/uc?export=view&id=1zdtTsiUsHcoIFsmQnIrIVPQSCCuYkHZ0" style="width: 170px; max-width: 100%; height: auto" title="Donate with PayPal!" /></a>
+
+> Feel free to buy me a *Lithium-ion battery* so I can **code like a machine**!
+>
+> ... or simply show your support by donating **what you want** :>
 
 ### Building
 
-* The **MonoGame.Forms.DX** project uses the MonoGame.Framwork 3.7.0.1114, which is already precompiled and included in this repo.
-  * It's possible to use older **MonoGame.Frameworks** like the **3.6** iteration, but you will then lose the **Mouse.GetState()** functionallity. You would then rely on the **WindowsForms Event System** for mouse input, which can be slower in some cases.
+* The **MonoGame.Forms.DX** project uses the MonoGame.Framwork 3.8.0.270, which is already precompiled and included in this repo.
 * The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framework based on the development build from 16th of JULY 2018.
-  * It's **not** possible to exchange the MonoGame.Framework easily. If you want to use a newer build, it would be neccessary to modify it to suit the needs of MonoGame.Forms!
 
 #### Tips & Tricks / Dos & Don'ts
 
