@@ -16,6 +16,21 @@ namespace MonoGame.Forms.Controls
         internal TimeSpan _Elapsed;
 
         /// <summary>
+        /// Set this to 'true' to only update this control when the mouse cursor is inside (OnMouseHover).
+        /// <remarks>
+        /// This technique is useful when you only need to update this control temporarily or always on demand.
+        /// Settings this property to 'true' will cause that this control will only consume CPU power to update its contents, when the mouse cursor is inside it
+        /// or when you call 'RunOneFrame();' manually.
+        /// </remarks>
+        /// </summary>
+        public bool MouseHoverUpdatesOnly { get; set; } = false;
+        /// <summary>
+        /// Runs exactly one frame by internally calling 'Invalidate();' one single time.
+        /// This will run the game loop only once and immediately shows the result.
+        /// </summary>
+        public void RunOneFrame() => Invalidate();
+
+        /// <summary>
         /// Basic initializing of the game control.
         /// It starts a <see cref="Stopwatch"/> and creates the mouse events.
         /// </summary>
@@ -46,7 +61,8 @@ namespace MonoGame.Forms.Controls
 
                 Update(_GameTime);
 #if DX
-                Invalidate();
+                if (MouseHoverUpdatesOnly && IsMouseInsideControl) Invalidate();
+                else if (!MouseHoverUpdatesOnly) Invalidate();
 #endif
             }
         }
