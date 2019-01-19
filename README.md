@@ -19,7 +19,7 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 
 ### Building
 
-* The **MonoGame.Forms.DX** project uses the MonoGame.Framwork 3.8.0.270, which is already precompiled and included in this repo.
+* The **MonoGame.Forms.DX** project uses the MonoGame.Framework 3.8.0.270, which is already precompiled and included in this repo.
 * The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framework based on the development build from 16th of JULY 2018.
 
 #### Tips & Tricks / Dos & Don'ts
