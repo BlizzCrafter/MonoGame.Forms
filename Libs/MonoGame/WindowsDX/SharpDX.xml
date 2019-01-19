@@ -26062,7 +26062,7 @@
         </member>
         <member name="F:SharpDX.Configuration.EnableTrackingReleaseOnFinalizer">
             <summary>
-            Enables or disables writing a warning via <see cref="!:System.Diagnostics.Trace"/> if a <see cref="T:SharpDX.ComObject"/> was disposed in the finalizer. Default is enabled (true).
+            Enables or disables writing a warning via <see cref="T:System.Diagnostics.Trace"/> if a <see cref="T:SharpDX.ComObject"/> was disposed in the finalizer. Default is enabled (true).
             </summary>
         </member>
         <member name="F:SharpDX.Configuration.ThrowOnShaderCompileError">
@@ -38233,7 +38233,7 @@
         </member>
         <member name="T:SharpDX.Size2">
             <summary>
-            Structure using the same layout than <see cref="!:System.Drawing.Size"/>.
+            Structure using the same layout than <see cref="T:System.Drawing.Size"/>.
             </summary>
         </member>
         <member name="F:SharpDX.Size2.Zero">
@@ -38300,7 +38300,7 @@
         </member>
         <member name="T:SharpDX.Size2F">
             <summary>
-            Structure using the same layout than <see cref="!:System.Drawing.SizeF"/>.
+            Structure using the same layout than <see cref="T:System.Drawing.SizeF"/>.
             </summary>
         </member>
         <member name="F:SharpDX.Size2F.Zero">
@@ -38386,18 +38386,7 @@
         </member>
         <member name="T:SharpDX.Text.Encoding">
             <summary>
-            Overrides <see cref="!:System.Text.ASCIIEncoding"/> in order to provide <see cref="T:SharpDX.Text.ASCIIEncoding"/> for Win8 Modern App.
-            </summary>
-        </member>
-        <member name="F:SharpDX.Text.Encoding.ASCII">
-            <summary>
-            Returns an encoding for the ASCII character set. The returned encoding
-             will be an instance of the ASCIIEncoding class.
-            </summary>
-        </member>
-        <member name="T:SharpDX.Text.ASCIIEncoding">
-            <summary>
-            Provides a basic implementation to replace <see cref="!:System.Text.ASCIIEncoding"/> (not available on Win8 Modern App).
+            Overrides <see cref="T:System.Text.ASCIIEncoding"/> in order to provide <see cref="!:ASCIIEncoding"/> for Win8 Modern App.
             </summary>
         </member>
         <member name="T:SharpDX.Text.NamespaceDoc">

@@ -1346,5 +1346,11 @@
             Device is not connected
             </summary>
         </member>
+        <member name="T:SharpDX.XInput.XInput13">
+            <summary>	
+            Functions	
+            </summary>	
+            <!-- No matching elements were found for the following include tag --><!-- No matching elements were found for the following include tag --><include file="Documentation\CodeComments.xml" path="/comments/comment[@id='SharpDX.XInput.XInput']/*" />	
+        </member>
     </members>
 </doc>
