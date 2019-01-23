@@ -5398,6 +5398,11 @@
             </summary>
             <param name="cursor">Mouse cursor to use for the cursor image.</param>
         </member>
+        <member name="T:Microsoft.Xna.Framework.Input.Mouse.MouseInputWnd">
+            <remarks>
+            Subclass WindowHandle to read WM_MOUSEWHEEL and WM_MOUSEHWHEEL messages
+            </remarks>
+        </member>
         <member name="T:Microsoft.Xna.Framework.Input.MouseCursor">
             <summary>
             Describes a mouse cursor.
@@ -11344,6 +11349,11 @@
         <member name="M:Microsoft.Xna.Framework.Graphics.SpriteEffect.#ctor(Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
             <summary>
             Creates a new SpriteEffect.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xna.Framework.Graphics.SpriteEffect.TransformMatrix">
+            <summary>
+            An optional matrix used to transform the sprite geometry. Uses <see cref="P:Microsoft.Xna.Framework.Matrix.Identity"/> if null.
             </summary>
         </member>
         <member name="M:Microsoft.Xna.Framework.Graphics.SpriteEffect.#ctor(Microsoft.Xna.Framework.Graphics.SpriteEffect)">
