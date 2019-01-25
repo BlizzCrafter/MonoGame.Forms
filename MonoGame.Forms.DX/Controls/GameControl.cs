@@ -29,6 +29,23 @@ namespace MonoGame.Forms.Controls
         /// This will run the game loop only once and immediately shows the result.
         /// </summary>
         public void RunOneFrame() => Invalidate();
+        /// <summary>
+        /// Run a specific amount of frames before the game loop falls to sleep again.
+        /// The bool <see cref="MouseHoverUpdatesOnly"/> must be set to 'true' before.
+        /// <remarks>
+        /// This could be helpful if some update mechanics are needing longer to update but doesn't need to run continuously afterwards.
+        /// </remarks>
+        /// </summary>
+        /// <param name="count">The amount of frames you want to render.</param>
+        public void RunFrames(int count)
+        {
+            if (MouseHoverUpdatesOnly)
+            {
+                if (count == 1) RunOneFrame();
+                else if (count > 1) _FrameCount = count;
+            }
+        }
+        private int _FrameCount = 0;
 
         /// <summary>
         /// Basic initializing of the game control.
@@ -61,7 +78,11 @@ namespace MonoGame.Forms.Controls
 
                 Update(_GameTime);
 #if DX
-                if (MouseHoverUpdatesOnly && IsMouseInsideControl) Invalidate();
+                if (_FrameCount > 0 || (MouseHoverUpdatesOnly && IsMouseInsideControl))
+                {
+                    Invalidate();
+                    if (_FrameCount > 0) _FrameCount--;
+                }
                 else if (!MouseHoverUpdatesOnly) Invalidate();
 #endif
             }
