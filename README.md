@@ -155,7 +155,7 @@ protected override void Update(GameTime gameTime)
 
 The update method makes realtime interactions with your game- / editor environment possible. Even complex mechanics are doable.
 
-I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests)-Project,
+I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests.DX/Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
 > Note: To raise the performance of an OpenGL MonoGameControl, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
