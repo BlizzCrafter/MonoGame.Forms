@@ -225,7 +225,10 @@ namespace MonoGame.Forms.Services
         /// The <see cref="ContentManager"/> is for loading custom content from the content root.
         /// </summary>
         public ContentManager Content { get; set; }
-        private ContentManager InternContent { get; set; }
+        /// <summary>
+        /// The <see cref="ResourceContentManager"/> is for loading custom content from a resource file.
+        /// </summary>
+        public ResourceContentManager InternContent { get; set; }
 
         /// <summary>
         /// The <see cref="GraphicsDevice"/>.
