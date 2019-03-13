@@ -228,7 +228,7 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// The <see cref="ResourceContentManager"/> is for loading custom content from a resource file.
         /// </summary>
-        public ResourceContentManager InternContent { get; set; }
+        public ResourceContentManager ResourceContent { get; set; }
 
         /// <summary>
         /// The <see cref="GraphicsDevice"/>.
@@ -382,7 +382,7 @@ namespace MonoGame.Forms.Services
             Cam.GetPosition = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 #if DX
-            InternContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
+            ResourceContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
 
             GetRenderTargetManager = new RenderTargetManager(this);
             AntialisingRenderTarget = GetRenderTargetManager.CreateNewRenderTarget2D("MSAA", true);
@@ -391,9 +391,9 @@ namespace MonoGame.Forms.Services
             RenderTargetTimer.Interval = 500;
             RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
 #elif GL
-            InternContent = new ResourceContentManager(services, GL.Properties.Resources.ResourceManager);
+            ResourceContent = new ResourceContentManager(services, GL.Properties.Resources.ResourceManager);
 #endif
-            Font = InternContent.Load<SpriteFont>("Font");
+            Font = ResourceContent.Load<SpriteFont>("Font");
             FontHeight = Font.MeasureString("A").Y;
 
             FrameworkDispatcher.Update();
@@ -699,7 +699,7 @@ namespace MonoGame.Forms.Services
         public void Dispose()
         {
             Content?.Dispose();
-            InternContent?.Dispose();
+            ResourceContent?.Dispose();
             Pixel.Dispose();
             Font = null;
 #if DX
