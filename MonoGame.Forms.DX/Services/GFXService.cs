@@ -228,7 +228,19 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// The <see cref="ResourceContentManager"/> is for loading custom content from a resource file.
         /// </summary>
-        public ResourceContentManager ResourceContent { get; set; }
+        public ResourceContentManager ResourceContent { get; private set; }
+        /// <summary>
+        /// Initializes a custom ResourceContentManager.
+        /// </summary>
+        /// <param name="resourceFile">Specify a resource file here (.resources). Usually: Properties.Resources.ResourceManager</param>
+        public void ResourceContentManagerInitialize(System.Resources.ResourceManager resourceFile)
+        {
+            ResourceContent = new ResourceContentManager(services, resourceFile);
+        }
+        /// <summary>
+        /// The <see cref="ResourceContentManager"/> is for loading internal content from a resource file.
+        /// </summary>
+        private ResourceContentManager InternContent { get; set; }
 
         /// <summary>
         /// The <see cref="GraphicsDevice"/>.
@@ -382,7 +394,7 @@ namespace MonoGame.Forms.Services
             Cam.GetPosition = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 #if DX
-            ResourceContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
+            InternContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
 
             GetRenderTargetManager = new RenderTargetManager(this);
             AntialisingRenderTarget = GetRenderTargetManager.CreateNewRenderTarget2D("MSAA", true);
@@ -391,9 +403,9 @@ namespace MonoGame.Forms.Services
             RenderTargetTimer.Interval = 500;
             RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
 #elif GL
-            ResourceContent = new ResourceContentManager(services, GL.Properties.Resources.ResourceManager);
+            InternContent = new ResourceContentManager(services, GL.Properties.Resources.ResourceManager);
 #endif
-            Font = ResourceContent.Load<SpriteFont>("Font");
+            Font = InternContent.Load<SpriteFont>("Font");
             FontHeight = Font.MeasureString("A").Y;
 
             FrameworkDispatcher.Update();
@@ -699,6 +711,7 @@ namespace MonoGame.Forms.Services
         public void Dispose()
         {
             Content?.Dispose();
+            InternContent?.Dispose();
             ResourceContent?.Dispose();
             Pixel.Dispose();
             Font = null;
