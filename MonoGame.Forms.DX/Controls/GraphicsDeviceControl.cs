@@ -455,6 +455,7 @@ namespace MonoGame.Forms.Controls
 
             if (!Focused) Focus();
 #if DX
+            Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
             SetKeyboardInput(true);
 #elif GL
             _LockKeyboardInput = false;
