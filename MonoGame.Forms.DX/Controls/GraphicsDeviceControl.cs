@@ -503,6 +503,17 @@ namespace MonoGame.Forms.Controls
             }
         }
 
+        /// <summary>
+        /// Returns true when the mouse cursor is inside the specific area.
+        /// </summary>
+        protected bool IsMouseInsideControlArea(int positionX, int positionY, int width, int height)
+        {
+            Rectangle areaRec = new Rectangle(positionX, positionY, width, height);
+
+            if (areaRec.Contains(PointToClient(Cursor.Position))) return true;
+            else return false;
+        }
+
         public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);
         [DisplayName("MouseWheelUp")]
         [Description("Scroll the mouse wheel upwards to trigger this event.")]
