@@ -63,7 +63,6 @@ namespace MonoGame.Forms.Controls
             {
                 UpdateMousePositions();
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
-                Editor.IsMouseInsideControl = IsMouseInsideControl;
 
                 _Editor.Draw();
             }

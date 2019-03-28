@@ -272,11 +272,6 @@ namespace MonoGame.Forms.Services
         }
 
         /// <summary>
-        /// Returns true when the mouse cursor is inside the control.
-        /// </summary>
-        public bool IsMouseInsideControl { get; internal set; }
-
-        /// <summary>
         /// The Camera2D component.
         /// </summary>
         public Camera2D Cam { get; set; }
