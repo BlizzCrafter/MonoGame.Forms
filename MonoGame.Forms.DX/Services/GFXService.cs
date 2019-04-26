@@ -386,7 +386,7 @@ namespace MonoGame.Forms.Services
             Format.CurrencyDecimalSeparator = ".";
 
             Cam = new Camera2D();
-            Cam.GetPosition = new Vector2(
+            Cam.Position = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 #if DX
             InternContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
@@ -463,10 +463,10 @@ namespace MonoGame.Forms.Services
 
                 if (ShowCamPosition)
                 {
-                    CamWidth = Font.MeasureString($"X:{Cam.GetAbsolutPosition.X} Y:{Cam.GetAbsolutPosition.Y}").X;
+                    CamWidth = Font.MeasureString($"X:{Cam.AbsolutPosition.X} Y:{Cam.AbsolutPosition.Y}").X;
                     MaxHeight += FontHeight;
 
-                    spriteBatch.DrawString(Font, $"X:{Cam.GetAbsolutPosition.X} Y:{Cam.GetAbsolutPosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
+                    spriteBatch.DrawString(Font, $"X:{Cam.AbsolutPosition.X} Y:{Cam.AbsolutPosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
                         new Vector2(graphics.Viewport.Width - CamWidth - 10, MaxHeight), DisplayForeColor,
                         0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
@@ -656,25 +656,28 @@ namespace MonoGame.Forms.Services
         }
 
         /// <summary>
-        /// Resets all the values from the camera component to their defaults.
+        /// Resets all or specific values from the camera component to their defaults.
         /// </summary>
-        public void ResetCam()
+        public void ResetCam(bool resetPosition = true, bool resetZoom = true, bool resetRotation = true)
         {
-            Cam.Move(new Vector2(-CurrentWorldShiftX, -CurrentWorldShiftY));
-            CurrentWorldShiftX = 0;
-            CurrentWorldShiftY = 0;
-            Cam.GetZoom = 1f;
-            Cam.GetRotation = 0f;
+            if (resetPosition)
+            {
+                Cam.Move(new Vector2(-CurrentWorldShiftX, -CurrentWorldShiftY));
+                CurrentWorldShiftX = 0;
+                CurrentWorldShiftY = 0;
+                Cam.Position = new Vector2(
+                    graphics.Viewport.Width / 2, graphics.Viewport.Height / 2);
+            }
 
-            Cam.GetPosition = new Vector2(
-                graphics.Viewport.Width / 2, graphics.Viewport.Height / 2);
+            if (resetZoom) Cam.Zoom = Cam.DefaultZoom;
+            if (resetRotation) Cam.Rotation = 0f;
         }
         
         internal void CamHoldPosition(System.Drawing.Size newClientSize)
         {
             if (Cam != null && graphics != null)
             {
-                Cam.GetPosition = new Vector2(newClientSize.Width / 2, newClientSize.Height / 2);
+                Cam.Position = new Vector2(newClientSize.Width / 2, newClientSize.Height / 2);
 
                 float oldCamPoxX = CurrentWorldShiftX;
                 float oldCamPoxY = CurrentWorldShiftY;
