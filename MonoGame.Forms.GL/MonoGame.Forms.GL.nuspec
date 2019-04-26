@@ -6,7 +6,6 @@
     <title>MonoGame.Forms.GL</title>
     <authors>Marcel 'sqrMin1' Härtel</authors>
     <owners>Marcel Härtel</owners>
-	<license type="expression">MIT</license>
     <projectUrl>https://github.com/sqrMin1/MonoGame.Forms</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/LogoSquare_256.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
