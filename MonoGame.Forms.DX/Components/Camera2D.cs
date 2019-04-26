@@ -54,6 +54,16 @@ namespace MonoGame.Forms.Components
         private float _Rotation { get; set; }
 
         /// <summary>
+        /// Gets or Sets the default Rotation value of the camera.
+        /// </summary>
+        public float DefaultRotation
+        {
+            get { return _DefaultRotation; }
+            set { _DefaultRotation = value; }
+        }
+        private float _DefaultRotation = 0f;
+
+        /// <summary>
         /// Auxiliary method to move the camera
         /// </summary>
         public void Move(Vector2 amount)
@@ -69,6 +79,17 @@ namespace MonoGame.Forms.Components
             set { _Position = value; }
         }
         private Vector2 _Position { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the default Position value of the camera.
+        /// </summary>
+        public Vector2 DefaultPosition
+        {
+            get { return _DefaultPosition; }
+            set { _DefaultPosition = value; }
+        }
+        private Vector2 _DefaultPosition = Vector2.Zero;
+
         /// <summary>
         /// Gets or Sets the absolute Position value of the camera.
         /// </summary>

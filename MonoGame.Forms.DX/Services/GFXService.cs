@@ -665,12 +665,12 @@ namespace MonoGame.Forms.Services
                 Cam.Move(new Vector2(-CurrentWorldShiftX, -CurrentWorldShiftY));
                 CurrentWorldShiftX = 0;
                 CurrentWorldShiftY = 0;
-                Cam.Position = new Vector2(
-                    graphics.Viewport.Width / 2, graphics.Viewport.Height / 2);
+                if (Cam.DefaultPosition == Vector2.Zero) Cam.Position = new Vector2(graphics.Viewport.Width / 2, graphics.Viewport.Height / 2);
+                else Cam.Position = Cam.DefaultPosition;
             }
 
             if (resetZoom) Cam.Zoom = Cam.DefaultZoom;
-            if (resetRotation) Cam.Rotation = 0f;
+            if (resetRotation) Cam.Rotation = Cam.DefaultRotation;
         }
         
         internal void CamHoldPosition(System.Drawing.Size newClientSize)
