@@ -52,7 +52,7 @@ namespace MonoGame.Forms.Tests
 
         private void monoGameTestControl_VisibleChanged(object sender, EventArgs e)
         {
-            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.GetZoom;
+            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.Zoom;
         }
 
         private void buttonMoveCam_MouseUp(object sender, MouseEventArgs e)
@@ -83,7 +83,7 @@ namespace MonoGame.Forms.Tests
         private void buttonResetCam_Click(object sender, System.EventArgs e)
         {
             monoGameTestControl.Editor.ResetCam();
-            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.GetZoom;
+            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.Zoom;
         }
         
         private void buttonHelp_Click(object sender, EventArgs e)
@@ -108,7 +108,7 @@ namespace MonoGame.Forms.Tests
 
         private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
         {
-            monoGameTestControl.Editor.Cam.GetZoom = 1 - ((float)trackBarCamZoom.Value / 10f);
+            monoGameTestControl.Editor.Cam.Zoom = 1 - ((float)trackBarCamZoom.Value / 10f);
         }
 
         #endregion

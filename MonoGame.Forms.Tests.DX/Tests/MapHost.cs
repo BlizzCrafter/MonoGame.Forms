@@ -18,12 +18,12 @@ namespace MonoGame.Forms.Tests.Tests
         
         private void MapHost_OnMouseWheelUpwards(MouseEventArgs e)
         {
-            Editor.Cam.GetZoom += 0.1f;
+            Editor.Cam.Zoom += 0.1f;
         }
 
         private void MapHost_OnMouseWheelDownwards(MouseEventArgs e)
         {
-            if (Editor.Cam.GetZoom > 0.7f) Editor.Cam.GetZoom -= 0.1f;
+            if (Editor.Cam.Zoom > 0.7f) Editor.Cam.Zoom -= 0.1f;
         }
 
         protected override void OnMouseClick(MouseEventArgs e)

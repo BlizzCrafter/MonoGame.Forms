@@ -8,67 +8,76 @@ namespace MonoGame.Forms.Components
     /// </summary>
     public class Camera2D
     {
-        private float Zoom { get; set; }
-
         /// <summary>
         /// The transformation matrix of the camera.
         /// </summary>
         public Matrix Transform { get; set; }
-        private Vector2 Position { get; set; }
-        private Vector2 AbsolutPosition { get; set; }
-        private float Rotation { get; set; }
 
         /// <summary>
         /// The basic constructor.
         /// </summary>
         public Camera2D()
         {
-            GetZoom = 1.0f;
-            GetRotation = 0f;
-            Position = Vector2.Zero;
+            Zoom = 1.0f;
+            Rotation = 0f;
+            _Position = Vector2.Zero;
         }
 
         /// <summary>
         /// Gets or Sets the Zoom value of the camera.
         /// </summary>
-        public float GetZoom
+        public float Zoom
         {
-            get { return Zoom; }
-            set { Zoom = value; if (Zoom < 0.1f) Zoom = 0.1f; } // Negative zoom will flip image
+            get { return _Zoom; }
+            set { _Zoom = value; if (_Zoom < 0.1f) _Zoom = 0.1f; } // Negative zoom will flip image
         }
+        private float _Zoom { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the default Zoom value of the camera.
+        /// </summary>
+        public float DefaultZoom
+        {
+            get { return _DefaultZoom; }
+            set { _DefaultZoom = value; if (_DefaultZoom < 0.1f) _DefaultZoom = 0.1f; } // Negative zoom will flip image
+        }
+        private float _DefaultZoom = 1f;
 
         /// <summary>
         /// Gets or Sets the Rotation value of the camera.
         /// </summary>
-        public float GetRotation
+        public float Rotation
         {
-            get { return Rotation; }
-            set { Rotation = value; }
+            get { return _Rotation; }
+            set { _Rotation = value; }
         }
-        
+        private float _Rotation { get; set; }
+
         /// <summary>
         /// Auxiliary method to move the camera
         /// </summary>
         public void Move(Vector2 amount)
         {
-            Position += amount;
+            _Position += amount;
         }
         /// <summary>
         /// Gets or Sets the Position value of the camera.
         /// </summary>
-        public Vector2 GetPosition
+        public Vector2 Position
         {
-            get { return Position; }
-            set { Position = value; }
+            get { return _Position; }
+            set { _Position = value; }
         }
+        private Vector2 _Position { get; set; }
         /// <summary>
         /// Gets or Sets the absolute Position value of the camera.
         /// </summary>
-        public Vector2 GetAbsolutPosition
+        public Vector2 AbsolutPosition
         {
-            get { return AbsolutPosition; }
-            set { AbsolutPosition = value; }
+            get { return _AbsolutPosition; }
+            set { _AbsolutPosition = value; }
         }
+        private Vector2 _AbsolutPosition { get; set; }
 
         /// <summary>
         /// Get the Transformation.
@@ -78,15 +87,15 @@ namespace MonoGame.Forms.Components
         public Matrix GetTransformation(GraphicsDevice graphicsDevice)
         {
             Transform =
-              Matrix.CreateTranslation(new Vector3(-GetPosition.X, -GetPosition.Y, 0)) *
-                                         Matrix.CreateRotationZ(Rotation) *
+              Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
+                                         Matrix.CreateRotationZ(_Rotation) *
                                          Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
                                          Matrix.CreateTranslation(new Vector3(
                                              graphicsDevice.Viewport.Width * 0.5f, graphicsDevice.Viewport.Height * 0.5f, 0));
 
-            GetAbsolutPosition = new Vector2(
-                GetPosition.X - graphicsDevice.Viewport.Width / 2,
-                GetPosition.Y - graphicsDevice.Viewport.Height / 2);
+            AbsolutPosition = new Vector2(
+                Position.X - graphicsDevice.Viewport.Width / 2,
+                Position.Y - graphicsDevice.Viewport.Height / 2);
 
                 return Transform;
         }
