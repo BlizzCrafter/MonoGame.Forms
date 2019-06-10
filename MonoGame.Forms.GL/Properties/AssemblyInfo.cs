@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MonoGame.Forms")]
 [assembly: AssemblyDescription("The easiest way to add a MonoGame render window to your windows forms project.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel 'sqrMin1' Härtel")]
+[assembly: AssemblyCompany("Sandbox Blizz")]
 [assembly: AssemblyProduct("MonoGame.Forms")]
-[assembly: AssemblyCopyright("Copyright © 2017-2018 Marcel 'sqrMin1' Härtel")]
+[assembly: AssemblyCopyright("Copyright © 2017-2019 Sandbox Blizz")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.3.6.0")]
-[assembly: AssemblyFileVersion("2.3.6.0")]
+[assembly: AssemblyVersion("2.3.7.0")]
+[assembly: AssemblyFileVersion("2.3.7.0")]
