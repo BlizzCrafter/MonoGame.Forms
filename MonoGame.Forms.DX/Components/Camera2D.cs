@@ -101,6 +101,16 @@ namespace MonoGame.Forms.Components
         private Vector2 _AbsolutPosition { get; set; }
 
         /// <summary>
+        /// Set the default values of the camera (Position, Zoom, Rotation) to the current ones.
+        /// </summary>
+        public void SetDefaultsFromCurrent()
+        {
+            DefaultPosition = AbsolutPosition;
+            DefaultZoom = Zoom;
+            DefaultRotation = Rotation;
+        }
+
+        /// <summary>
         /// Get the Transformation.
         /// </summary>
         /// <param name="graphicsDevice">The GraphicsDevice.</param>
