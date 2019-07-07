@@ -23,6 +23,7 @@
 	</references>
   </metadata>
   <files>
-    <file src="..\Libs\MonoGame\WindowsDX\**\*.*" target="lib\net451" />
+    <file src="..\Libs\MonoGame\WindowsDX\Lib\**\*.*" target="lib\net451" />
+	<file src="MonoGame.Forms.DX.targets" target="Build\" />
 </files>
 </package>
