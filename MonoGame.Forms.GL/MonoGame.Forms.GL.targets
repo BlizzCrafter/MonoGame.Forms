@@ -5,7 +5,7 @@
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
   </PropertyGroup>
   <ItemGroup>
-    <NativeLibs Include="$(MSBuildThisFileDirectory)\**\*.*"/>
+    <NativeLibs Include="$(MSBuildThisFileDirectory)\NativeLibs\**\*.*"/>
     <None Include="@(NativeLibs)">
       <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
