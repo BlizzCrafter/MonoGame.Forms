@@ -8,7 +8,10 @@
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-Click%20here%20to%20directly%20install%20the%20templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)
 
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder)
+
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
@@ -29,7 +32,7 @@ The OpenGL version of the library currently renders differently than the DirectX
 * Boost performance of a custom OpenGL control by raising its **DrawIntervall** with the property window during design time (try 50ms or 100ms. 1ms aims to 60 fps)
 * **Never** use **DoubleBuffering** on a custom control. This counts for the OpenGL library **as well as** for the DirectX library! It will cause flickering and slow downs.
 * If you need to have the **MonoGame-PipelineTool** integrated into your **MonoGame.Forms** project, you should check out the **[PipelineTool-Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/PipelineTool-Tutorial.md)!** 
-**NEW**: Now you can also directly [install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)!
+**NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)** or use the combined NuGet-Packages **[[DX](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder) | [GL](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)] !**
 
 # How-To
 #### Setup MonoGame.Forms
@@ -210,7 +213,10 @@ GitHub: [PenumbraPhysics.Editor](https://github.com/sqrMin1/PenumbraPhysics.Edit
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-Click%20here%20to%20directly%20install%20the%20templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)
 
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder)
+
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
 
 ![Logo](https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_Shadow_256.png)
 
