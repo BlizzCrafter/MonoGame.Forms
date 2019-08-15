@@ -31,6 +31,8 @@ The OpenGL version of the library currently renders differently than the DirectX
 
 * Boost performance of a custom OpenGL control by raising its **DrawIntervall** with the property window during design time (try 50ms or 100ms. 1ms aims to 60 fps)
 * **Never** use **DoubleBuffering** on a custom control. This counts for the OpenGL library **as well as** for the DirectX library! It will cause flickering and slow downs.
+* If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
+**`AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;`**. If you want to turn off scaling of your whole application, then you need to add a **[Manifest-File](https://github.com/sqrMin1/MonoGame.Forms/blob/master/DPI_Aware_Application.md)**.
 * If you need to have the **MonoGame-PipelineTool** integrated into your **MonoGame.Forms** project, you should check out the **[PipelineTool-Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/PipelineTool-Tutorial.md)!** 
 **NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)** or use the combined NuGet-Packages **[[DX](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder) | [GL](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)] !**
 
