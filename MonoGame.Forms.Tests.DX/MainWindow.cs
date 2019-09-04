@@ -165,7 +165,7 @@ namespace MonoGame.Forms.Tests
 
         private void toolStripDropDownButtonTwitter_Click(object sender, EventArgs e)
         {
-            Process.Start("https://twitter.com/sqrMin1");
+            Process.Start("https://twitter.com/SandboxBlizz");
         }
 
         private void toolStripDropDownButtonTwitterEngine_Click(object sender, EventArgs e)
