@@ -7,11 +7,11 @@
 
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-Click%20here%20to%20directly%20install%20the%20templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)
 
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX%20+%20Content.Builder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder)
 
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
@@ -209,16 +209,6 @@ GitHub: [PenumbraPhysics.Editor](https://github.com/sqrMin1/PenumbraPhysics.Edit
 
 ### Now Have Fun with MonoGame.Forms!
 [![Twitter Follow](https://img.shields.io/twitter/follow/SandboxBlizz.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/SandboxBlizz)
-[![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=f2709e&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
-[![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
-
-[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-Click%20here%20to%20directly%20install%20the%20templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)
-
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder)
-
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
 
 ![Logo](https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_Shadow_256.png)
 
