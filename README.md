@@ -13,6 +13,8 @@
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
 
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.RuntimeBuilder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.RuntimeBuilder)
+
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
 Do you like my tools?
