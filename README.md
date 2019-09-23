@@ -51,26 +51,24 @@ Another option is to install the library with the NuGet package manager:
 
 ↳ _This is the prefered and easiest route to be automatically up to date_.
 
-> Note: You need to set the .Net Framework version to 4.5.1 to install from NuGet!
-
 ***
 
 ### Tutorial
 
 The following tutorial is working exactly the same on both libraries (DX and GL).
 
-#### Creating a simple [InvalidationControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/1802024)
+#### Creating a simple [MonoGameControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/C5EB9086)
 
 Let's start using the MonoGame.Forms library by creating a simple control to render stuff! 
 
 _(it's assumed that you already have created a new **Windows Forms** project with the installed library)_
 
 1. Create a new class and name it **DrawTest**
-2. Inherit from **MonoGame.Forms.Controls.InvalidationControl**
-3. Override its **Initialize()** method
-4. Override its **Draw()** method
-5. **Save & Build** your solution
-6. **Double Click** on **Form1.cs** so that the Designer opens
+2. Inherit from **MonoGame.Forms.Controls.MonoGameControl**
+3. Override its **Initialize()**, **Update()** and **Draw()** method
+4. **Save** your solution
+5. **Build** your solution
+6. **Double Click** on **Form1.cs** so that the designer opens
 7. Open the **Toolbox**
 8. **Drag & Drop** the newly created control onto the Form1 control
 9. Open the **Properties** of the new control and set the **Dock** option to **Fill**
@@ -92,9 +90,9 @@ More than that it's basically the same like you are used to do in the **MonoGame
 Just with a small difference (no it's still not difficult!)
 
 In MonoGame you could draw someting to the screen with the [SpriteBatch](https://msdn.microsoft.com/de-de/library/microsoft.xna.framework.graphics.spritebatch(v=xnagamestudio.40).aspx).
-In **MonoGame.Forms** you will do the same but you need to use [GFXService](https://github.com/sqrMin1/MonoGame.Forms/wiki/3A4C800C) for this.
+In **MonoGame.Forms** you will do the same but you need to use the [GFXService](https://github.com/sqrMin1/MonoGame.Forms/wiki/3A4C800C) for this.
 
-In the **InvalidationControl** and **MonoGameControl** class this service is called **Editor**. To draw something to the **SpriteBatch** you need to do this:
+In the **MonoGameControl** class this service is called **Editor**. To draw something to the **SpriteBatch** you need to do this:
 
 ```c
 Editor.spriteBatch.DrawString();
@@ -113,13 +111,18 @@ using MonoGame.Forms.Controls;
 
 namespace nugetTest
 {
-    public class DrawTest : InvalidationControl
+    public class DrawTest : MonoGameControl
     {
         string WelcomeMessage = "Hello MonoGame.Forms!";
 
         protected override void Initialize()
         {
             base.Initialize();
+        }
+        
+        protected override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
         }
 
         protected override void Draw()
@@ -144,40 +147,28 @@ Result:
 
 It's pretty much like in the **MonoGame.Framework!**
 
-> Note: If you are changing the drawn contents of the SpriteBatch when your editor project is running (not during design time), then you simply need to call **Invalidate()** on a custom control for every change you want to see on your control. This command commits those changes and after that your control does not consume CPU power anymore. This process is great when creating preview controls for textures and similar things!
-
-For realtime interactions (game loop) please read the next topic about the **MonoGameControl**!
-
-***
-
-#### Creating a simple [MonoGameControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/C5EB9086)
-
-As you might though right: Yes, this is also very easy. It's the same like for the **InvalidationControl**. 
-I just want to show you the only difference:
-
-```c
-protected override void Update(GameTime gameTime)
-{
-    base.Update(gameTime);
-}
-```
-
-The update method makes realtime interactions with your game- / editor environment possible. Even complex mechanics are doable.
-
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests.DX/Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
-> Note: To raise the performance of an OpenGL MonoGameControl, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
+**Note:** to raise the performance of an OpenGL MonoGameControl, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
 
 ![DrawIntervall](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/intervall.PNG)
 
-Did you notice the **BackColor** and **ForeColor** property? 
+**BTW:** did you notice the **BackColor** and **ForeColor** property? 
 Changing these values makes it possible to style your controls to something like this:
 
 ![Style](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/style.PNG)
 
 Do it to keep the overview and feel of your custom editor project!
 > Note: The MonoGame logo is placed automatically inside a newly created control to make it clear, that it is a render control with MonoGame functionality!
+
+***
+
+#### Creating a simple [InvalidationControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/1802024)
+
+This specific control class doesn't need to override the **Update()** method, because it gets manually invalidated (by you!).
+
+If you are changing the drawn contents of the SpriteBatch when your editor project is running (not during design time), then you simply need to call **Invalidate()** on a custom control for every change you want to see on your control. This command commits those changes and after that your control does not consume CPU power anymore. This process is great when creating preview controls for textures and similar things!
 
 ### Sample Pics
 
