@@ -78,7 +78,3 @@ You can reach me on **Twitter**:
 
 or visit the official
 **[MonoGame.Forms_Thread](http://community.monogame.net/t/monogame-forms-create-your-editor-environment/9954)**
-
-Cheers,
-
-Marcel "sqrMin1" Härtel
