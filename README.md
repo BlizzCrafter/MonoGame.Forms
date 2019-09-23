@@ -160,7 +160,7 @@ Changing these values makes it possible to style your controls to something like
 ![Style](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/style.PNG)
 
 Do it to keep the overview and feel of your custom editor project!
-> Note: The MonoGame logo is placed automatically inside a newly created control to make it clear, that it is a render control with MonoGame functionality!
+> Note: The MonoGame logo is placed automatically inside a newly created control (during design-time) to make it clear, that it is a render control with MonoGame functionality!
 
 ***
 
