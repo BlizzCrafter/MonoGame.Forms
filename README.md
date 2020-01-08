@@ -17,11 +17,6 @@
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
-Do you like my tools?
-**Feel free to refresh me (🌞 Summer is hot 🌡️):**
-
-<a href="https://www.buymeacoffee.com/SandboxBlizz" target="_blank"><img src="https://drive.google.com/uc?export=view&id=1tV0kmhAW-YPp8HNHlAw3c-PlAZ5GzRmv" alt="Buy Me A Cola-Light" style="height: auto !important;width: auto !important;" ></a>
-
 ### Building
 
 * The **MonoGame.Forms.DX** project uses a modified version of the MonoGame.Framework 3.8.0.270, which is already precompiled and included in this repo.
