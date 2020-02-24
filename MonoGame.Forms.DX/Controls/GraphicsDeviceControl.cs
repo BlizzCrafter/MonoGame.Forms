@@ -446,7 +446,18 @@ namespace MonoGame.Forms.Controls
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
         /// </summary>
-        protected bool AlwaysEnableKeyboardInput { get; set; } = false;
+        protected bool AlwaysEnableKeyboardInput
+        {
+            get { return _AlwaysEnableKeyboardInput; }
+            set
+            {
+                _AlwaysEnableKeyboardInput = value;
+#if DX
+                if (value) SetKeyboardInput(value);
+#endif
+            }
+        }
+        private bool _AlwaysEnableKeyboardInput = false;
         private bool _LockKeyboardInput = false;
 
         protected override void OnMouseEnter(EventArgs e)
