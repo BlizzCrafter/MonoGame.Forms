@@ -453,7 +453,7 @@ namespace MonoGame.Forms.Controls
             {
                 _AlwaysEnableKeyboardInput = value;
 #if DX
-                if (value) SetKeyboardInput(value);
+                SetKeyboardInput(value);
 #endif
             }
         }
