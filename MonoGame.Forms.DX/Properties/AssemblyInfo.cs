@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sandbox Blizz")]
 [assembly: AssemblyProduct("MonoGame.Forms")]
-[assembly: AssemblyCopyright("Copyright © 2017-2019 Sandbox Blizz")]
+[assembly: AssemblyCopyright("Copyright © 2017-2020 Sandbox Blizz")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.3.8.0")]
-[assembly: AssemblyFileVersion("2.3.8.0")]
+[assembly: AssemblyVersion("2.3.9.0")]
+[assembly: AssemblyFileVersion("2.3.9.0")]
