@@ -41,12 +41,12 @@ namespace MonoGame.Forms.Controls
 #if DX
         private void UpdateWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
         {
-            _Editor.SwapChainRenderTarget = obj;
+            if (Editor != null) _Editor.SwapChainRenderTarget = obj;
         }
 
         private void UpdateWindow_UpdateMultiSampleCount(int obj)
         {
-            _Editor.GetCurrentMultiSampleCount = obj;
+            if (Editor != null) _Editor.GetCurrentMultiSampleCount = obj;
         }
 #endif
 
