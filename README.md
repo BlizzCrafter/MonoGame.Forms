@@ -1,4 +1,4 @@
-A mesage from the developer:
+A message from the developer:
 
 ![Banner](doc/GIF_Optimizedx3.gif)
 
