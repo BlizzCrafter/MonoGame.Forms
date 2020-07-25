@@ -509,14 +509,22 @@ namespace MonoGame.Forms.Services
         /// </example>
         /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
-        public void BeginAntialising(bool clearGraphics = true, Color? clearColor = null)
+        /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="stencil">The stencil</param>
+        public void BeginAntialising(
+            bool clearGraphics = true, 
+            Color? clearColor = null,
+            ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
+            float depth = 0f,
+            int stencil = 0)
         {
             if (AntialisingRenderTarget.GetRenderTarget2D == null ||
                 AntialisingRenderTarget.IsRefreshing || 
                 !AntialisingRenderTarget.Enabled) return;
 
             graphics.SetRenderTarget(AntialisingRenderTarget.GetRenderTarget2D);
-            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
+            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
         }
 
         /// <summary>
@@ -525,8 +533,17 @@ namespace MonoGame.Forms.Services
         /// <param name="drawToSpriteBatch"><c>true</c> to automatically draw the result to the <see cref="SpriteBatch"/>.</param>
         /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="stencil">The stencil</param>
         /// <returns>The Antialising <see cref="RenderTarget2D"/>.</returns>
-        public RenderTarget2D EndAntialising(bool drawToSpriteBatch = true, bool clearGraphics = true, Color? clearColor = null)
+        public RenderTarget2D EndAntialising(
+            bool drawToSpriteBatch = true, 
+            bool clearGraphics = true, 
+            Color? clearColor = null,
+            ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
+            float depth = 0f,
+            int stencil = 0)
         {
             if (AntialisingRenderTarget.GetRenderTarget2D == null ||
                 AntialisingRenderTarget.IsRefreshing ||
@@ -534,7 +551,7 @@ namespace MonoGame.Forms.Services
 
             graphics.SetRenderTarget(SwapChainRenderTarget);
 
-            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
+            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
 
             if (drawToSpriteBatch)
             {
@@ -570,14 +587,23 @@ namespace MonoGame.Forms.Services
         /// <param name="key">Please enter a previously set key of the <see cref="RenderTarget2D"/> you want to begin with.</param>
         /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
-        public void BeginRenderTarget(string key, bool clearGraphics = true, Color? clearColor = null)
+        /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="stencil">The stencil</param>
+        public void BeginRenderTarget(
+            string key, 
+            bool clearGraphics = true, 
+            Color? clearColor = null,
+            ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
+            float depth = 0f,
+            int stencil = 0)
         {
             if (GetRenderTargetManager.GetRenderTarget2D(key) == null ||
                 GetRenderTargetManager.RenderTargets[key].IsRefreshing ||
                 !GetRenderTargetManager.RenderTargets[key].Enabled) return;
 
             graphics.SetRenderTarget(GetRenderTargetManager.GetRenderTarget2D(key));
-            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
+            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
         }
 
         /// <summary>
@@ -587,8 +613,18 @@ namespace MonoGame.Forms.Services
         /// <param name="drawToSpriteBatch"><c>true</c> to automatically draw the result to the <see cref="SpriteBatch"/>.</param>
         /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="stencil">The stencil</param>
         /// <returns>The resulting <see cref="RenderTarget2D"/>.</returns>
-        public RenderTarget2D EndRenderTarget(string key, bool drawToSpriteBatch = true, bool clearGraphics = true, Color? clearColor = null)
+        public RenderTarget2D EndRenderTarget(
+            string key,
+            bool drawToSpriteBatch = true, 
+            bool clearGraphics = true, 
+            Color? clearColor = null,
+            ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
+            float depth = 0f,
+            int stencil = 0)
         {
             if (GetRenderTargetManager.GetRenderTarget2D(key) == null ||
                 GetRenderTargetManager.RenderTargets[key].IsRefreshing ||
@@ -596,7 +632,7 @@ namespace MonoGame.Forms.Services
 
             graphics.SetRenderTarget(SwapChainRenderTarget);
 
-            if (clearGraphics) graphics.Clear(clearColor ?? BackgroundColor);
+            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
 
             if (drawToSpriteBatch)
             {
