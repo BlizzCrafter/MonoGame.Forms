@@ -516,7 +516,7 @@ namespace MonoGame.Forms.Services
             bool clearGraphics = true, 
             Color? clearColor = null,
             ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
-            float depth = 0f,
+            float depth = 1f,
             int stencil = 0)
         {
             if (AntialisingRenderTarget.GetRenderTarget2D == null ||
@@ -542,7 +542,7 @@ namespace MonoGame.Forms.Services
             bool clearGraphics = true, 
             Color? clearColor = null,
             ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
-            float depth = 0f,
+            float depth = 1f,
             int stencil = 0)
         {
             if (AntialisingRenderTarget.GetRenderTarget2D == null ||
@@ -595,7 +595,7 @@ namespace MonoGame.Forms.Services
             bool clearGraphics = true, 
             Color? clearColor = null,
             ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
-            float depth = 0f,
+            float depth = 1f,
             int stencil = 0)
         {
             if (GetRenderTargetManager.GetRenderTarget2D(key) == null ||
@@ -623,7 +623,7 @@ namespace MonoGame.Forms.Services
             bool clearGraphics = true, 
             Color? clearColor = null,
             ClearOptions clearOptions = ClearOptions.DepthBuffer | ClearOptions.Stencil | ClearOptions.Target,
-            float depth = 0f,
+            float depth = 1f,
             int stencil = 0)
         {
             if (GetRenderTargetManager.GetRenderTarget2D(key) == null ||
