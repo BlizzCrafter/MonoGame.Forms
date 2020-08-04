@@ -110,11 +110,14 @@ namespace MonoGame.Forms.Controls
         {
             base.Dispose(disposing);
 
-            _Editor?.Dispose();
+            if (disposing)
+            {
+                _Editor?.Dispose();
 #if DX
-            SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
-            MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
+                SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
+                MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
 #endif
+            }
         }
     }
 }

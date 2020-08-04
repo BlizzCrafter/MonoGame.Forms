@@ -269,17 +269,19 @@ namespace MonoGame.Forms.Controls
 
         protected override void Dispose(bool disposing)
         {
-            if (!designMode)
+            if (disposing)
             {
-                if (_graphicsDeviceService != null)
+                if (!designMode)
                 {
+                    if (_graphicsDeviceService != null)
+                    {
 #if GL
                     _graphicsDeviceService.SDLPlatform.Exit();
                     _graphicsDeviceService.SDLPlatform.Dispose();
 #endif
-                    _graphicsDeviceService.Release(disposing);
-                    _graphicsDeviceService = null;
-                }
+                        _graphicsDeviceService.Release(disposing);
+                        _graphicsDeviceService = null;
+                    }
 #if GL
                 _Intervall.Stop();
                 _Intervall.Enabled = false;
@@ -287,6 +289,7 @@ namespace MonoGame.Forms.Controls
 
                 if (_chain != null) _chain.Dispose();
 #endif
+                }
             }
             base.Dispose(disposing);
         }
