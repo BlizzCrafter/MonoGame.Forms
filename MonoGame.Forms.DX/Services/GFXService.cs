@@ -385,7 +385,7 @@ namespace MonoGame.Forms.Services
             Format = new System.Globalization.NumberFormatInfo();
             Format.CurrencyDecimalSeparator = ".";
 
-            Cam = new Camera2D();
+            Cam = new Camera2D(graphics.GraphicsDevice);
             Cam.Position = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 #if DX
@@ -669,7 +669,7 @@ namespace MonoGame.Forms.Services
                         depthStencilState,
                         rasterizerState,
                         effect,
-                        Cam.GetTransformation(graphics));
+                        Cam.GetTransformation());
         }
 
         /// <summary>
