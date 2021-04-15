@@ -16,6 +16,21 @@ namespace MonoGame.Forms.Controls
         internal TimeSpan _Elapsed;
 
         /// <summary>
+        /// Set this to 'true' if you would like the game loop to run when the component is not visible.
+        /// <remarks>
+        /// By default the game loop will not run when <see cref="Control.Visible"/>' is set to false. 
+        /// This happens for example when the game window is part of a tab that is not currently open.
+        /// </remarks>
+        /// </summary>
+        public bool UpdateGameLoopWhenNotVisible { get; set; } = false;
+
+
+        /// <summary>
+        /// Setting this to 'false' will stop the game loop from running until it is set back to 'true'
+        /// </summary>
+        public bool ShouldUpdateGameLoop { get; set; } = true;
+
+        /// <summary>
         /// Set this to 'true' to only update this control when the mouse cursor is inside (OnMouseHover).
         /// <remarks>
         /// This technique is useful when you only need to update this control temporarily or always on demand.
@@ -69,7 +84,7 @@ namespace MonoGame.Forms.Controls
 
         private void GameLoop(object sender, EventArgs e)
         {
-            if (Visible)
+            if ((Visible || UpdateGameLoopWhenNotVisible) && ShouldUpdateGameLoop)
             {
                 _GameTime = new GameTime(_Timer.Elapsed, _Timer.Elapsed - _Elapsed);
                 _Elapsed = _Timer.Elapsed;

@@ -12,6 +12,8 @@ namespace MonoGame.Forms.Tests.Tests
         public bool EditMode = false;
         public int LastFrame = 0;
 
+        private Rectangle currentFrame;
+
         protected override void Initialize()
         {
             base.Initialize();
@@ -23,6 +25,10 @@ namespace MonoGame.Forms.Tests.Tests
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            if (!EditMode)
+            {
+                currentFrame = Logo.DoAnimation();
+            }
         }
 
         protected override void Draw()
@@ -36,7 +42,7 @@ namespace MonoGame.Forms.Tests.Tests
                        Editor.graphics.Viewport.Height / 2,
                        Logo.PartSizeX,
                        Logo.PartSizeY),
-                       (EditMode ? Logo.GetCurrentFrame() : Logo.DoAnimation()),
+                       (EditMode ? Logo.GetCurrentFrame() : currentFrame),
                        Logo.GetDrawingColor, 
                        0f, 
                        Logo.GetOrigin, 

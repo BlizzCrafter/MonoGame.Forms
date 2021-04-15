@@ -184,5 +184,15 @@ namespace MonoGame.Forms.Tests
             Text = "MonoGame.Forms.DX";
 #endif
         }
+
+        private void updateGameLoopCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            welcomeControl.ShouldUpdateGameLoop = updateGameLoopCheckBox.Checked;
+        }
+
+        private void updateGameLoopNotVisibleCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            welcomeControl.UpdateGameLoopWhenNotVisible = updateGameLoopNotVisibleCheckBox.Checked;
+        }
     }
 }
