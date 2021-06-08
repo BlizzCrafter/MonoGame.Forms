@@ -102,9 +102,9 @@
             this.tabPageWelcome.Controls.Add(this.trackBarLogoFrames);
             this.tabPageWelcome.Controls.Add(this.buttonEdit);
             this.tabPageWelcome.Controls.Add(this.welcomeControl);
-            this.tabPageWelcome.Location = new System.Drawing.Point(4, 25);
+            this.tabPageWelcome.Location = new System.Drawing.Point(4, 24);
             this.tabPageWelcome.Name = "tabPageWelcome";
-            this.tabPageWelcome.Size = new System.Drawing.Size(728, 399);
+            this.tabPageWelcome.Size = new System.Drawing.Size(728, 400);
             this.tabPageWelcome.TabIndex = 2;
             this.tabPageWelcome.Text = "Welcome";
             this.tabPageWelcome.UseVisualStyleBackColor = true;
@@ -113,10 +113,10 @@
             // 
             this.trackBarLogoFrames.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.trackBarLogoFrames.LargeChange = 1;
-            this.trackBarLogoFrames.Location = new System.Drawing.Point(0, 343);
+            this.trackBarLogoFrames.Location = new System.Drawing.Point(0, 354);
             this.trackBarLogoFrames.Maximum = 99;
             this.trackBarLogoFrames.Name = "trackBarLogoFrames";
-            this.trackBarLogoFrames.Size = new System.Drawing.Size(728, 56);
+            this.trackBarLogoFrames.Size = new System.Drawing.Size(728, 45);
             this.trackBarLogoFrames.TabIndex = 2;
             this.trackBarLogoFrames.Visible = false;
             this.trackBarLogoFrames.Scroll += new System.EventHandler(this.trackBarLogoFrames_Scroll);
@@ -135,7 +135,7 @@
             // welcomeControl
             // 
             this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.welcomeControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.welcomeControl.Location = new System.Drawing.Point(0, 0);
             this.welcomeControl.MouseHoverUpdatesOnly = false;
             this.welcomeControl.Name = "welcomeControl";
@@ -148,10 +148,10 @@
             this.tabPageDrawControl.Controls.Add(this.panelInvalidation);
             this.tabPageDrawControl.Controls.Add(this.textBoxTestText);
             this.tabPageDrawControl.Controls.Add(this.invalidationTestControl);
-            this.tabPageDrawControl.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDrawControl.Location = new System.Drawing.Point(4, 24);
             this.tabPageDrawControl.Name = "tabPageDrawControl";
             this.tabPageDrawControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDrawControl.Size = new System.Drawing.Size(728, 399);
+            this.tabPageDrawControl.Size = new System.Drawing.Size(728, 400);
             this.tabPageDrawControl.TabIndex = 0;
             this.tabPageDrawControl.Text = "Invalidation Control";
             this.tabPageDrawControl.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@
             // 
             this.textBoxTestText.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBoxTestText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxTestText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTestText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxTestText.ForeColor = System.Drawing.SystemColors.Control;
             this.textBoxTestText.Location = new System.Drawing.Point(3, 346);
             this.textBoxTestText.Multiline = true;
@@ -196,7 +196,7 @@
             // 
             this.invalidationTestControl.BackColor = System.Drawing.Color.CornflowerBlue;
             this.invalidationTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.invalidationTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidationTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.invalidationTestControl.ForeColor = System.Drawing.Color.Yellow;
             this.invalidationTestControl.Location = new System.Drawing.Point(3, 3);
             this.invalidationTestControl.Name = "invalidationTestControl";
@@ -215,10 +215,10 @@
             this.tabPageUpdateControl.Controls.Add(this.buttonResetCam);
             this.tabPageUpdateControl.Controls.Add(this.buttonMoveCam);
             this.tabPageUpdateControl.Controls.Add(this.monoGameTestControl);
-            this.tabPageUpdateControl.Location = new System.Drawing.Point(4, 25);
+            this.tabPageUpdateControl.Location = new System.Drawing.Point(4, 24);
             this.tabPageUpdateControl.Name = "tabPageUpdateControl";
             this.tabPageUpdateControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUpdateControl.Size = new System.Drawing.Size(728, 399);
+            this.tabPageUpdateControl.Size = new System.Drawing.Size(728, 400);
             this.tabPageUpdateControl.TabIndex = 1;
             this.tabPageUpdateControl.Text = "MonoGame Control";
             this.tabPageUpdateControl.UseVisualStyleBackColor = true;
@@ -226,8 +226,8 @@
             // buttonHelp
             // 
             this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHelp.Location = new System.Drawing.Point(9, 338);
+            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonHelp.Location = new System.Drawing.Point(9, 339);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(28, 25);
             this.buttonHelp.TabIndex = 7;
@@ -244,7 +244,7 @@
             this.trackBarCamZoom.Maximum = 8;
             this.trackBarCamZoom.Name = "trackBarCamZoom";
             this.trackBarCamZoom.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarCamZoom.Size = new System.Drawing.Size(56, 296);
+            this.trackBarCamZoom.Size = new System.Drawing.Size(45, 297);
             this.trackBarCamZoom.TabIndex = 6;
             this.trackBarCamZoom.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.trackBarCamZoom.Scroll += new System.EventHandler(this.trackBarCamZoom_Scroll);
@@ -253,9 +253,9 @@
             // 
             this.checkBoxCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxCam.AutoSize = true;
-            this.checkBoxCam.Location = new System.Drawing.Point(149, 369);
+            this.checkBoxCam.Location = new System.Drawing.Point(149, 372);
             this.checkBoxCam.Name = "checkBoxCam";
-            this.checkBoxCam.Size = new System.Drawing.Size(58, 21);
+            this.checkBoxCam.Size = new System.Drawing.Size(51, 19);
             this.checkBoxCam.TabIndex = 5;
             this.checkBoxCam.Text = "Cam";
             this.checkBoxCam.UseVisualStyleBackColor = true;
@@ -267,9 +267,9 @@
             this.checkBoxCursor.AutoSize = true;
             this.checkBoxCursor.Checked = true;
             this.checkBoxCursor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCursor.Location = new System.Drawing.Point(71, 369);
+            this.checkBoxCursor.Location = new System.Drawing.Point(71, 372);
             this.checkBoxCursor.Name = "checkBoxCursor";
-            this.checkBoxCursor.Size = new System.Drawing.Size(72, 21);
+            this.checkBoxCursor.Size = new System.Drawing.Size(61, 19);
             this.checkBoxCursor.TabIndex = 4;
             this.checkBoxCursor.Text = "Cursor";
             this.checkBoxCursor.UseVisualStyleBackColor = true;
@@ -281,9 +281,9 @@
             this.checkBoxFPS.AutoSize = true;
             this.checkBoxFPS.Checked = true;
             this.checkBoxFPS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFPS.Location = new System.Drawing.Point(9, 369);
+            this.checkBoxFPS.Location = new System.Drawing.Point(9, 372);
             this.checkBoxFPS.Name = "checkBoxFPS";
-            this.checkBoxFPS.Size = new System.Drawing.Size(56, 21);
+            this.checkBoxFPS.Size = new System.Drawing.Size(45, 19);
             this.checkBoxFPS.TabIndex = 3;
             this.checkBoxFPS.Text = "FPS";
             this.checkBoxFPS.UseVisualStyleBackColor = true;
@@ -292,7 +292,7 @@
             // buttonResetCam
             // 
             this.buttonResetCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetCam.Location = new System.Drawing.Point(611, 308);
+            this.buttonResetCam.Location = new System.Drawing.Point(611, 309);
             this.buttonResetCam.Name = "buttonResetCam";
             this.buttonResetCam.Size = new System.Drawing.Size(109, 30);
             this.buttonResetCam.TabIndex = 2;
@@ -304,7 +304,7 @@
             // 
             this.buttonMoveCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMoveCam.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.buttonMoveCam.Location = new System.Drawing.Point(611, 344);
+            this.buttonMoveCam.Location = new System.Drawing.Point(611, 345);
             this.buttonMoveCam.Name = "buttonMoveCam";
             this.buttonMoveCam.Size = new System.Drawing.Size(109, 49);
             this.buttonMoveCam.TabIndex = 1;
@@ -318,7 +318,7 @@
             // 
             this.monoGameTestControl.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.monoGameTestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.monoGameTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monoGameTestControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.monoGameTestControl.Location = new System.Drawing.Point(3, 3);
             this.monoGameTestControl.MouseHoverUpdatesOnly = false;
             this.monoGameTestControl.Name = "monoGameTestControl";
@@ -334,9 +334,9 @@
             this.tabPageAdvancedInput.Controls.Add(this.checkBoxShowStats);
             this.tabPageAdvancedInput.Controls.Add(this.buttonResetPlayer);
             this.tabPageAdvancedInput.Controls.Add(this.advancedControlsTest);
-            this.tabPageAdvancedInput.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAdvancedInput.Location = new System.Drawing.Point(4, 24);
             this.tabPageAdvancedInput.Name = "tabPageAdvancedInput";
-            this.tabPageAdvancedInput.Size = new System.Drawing.Size(728, 399);
+            this.tabPageAdvancedInput.Size = new System.Drawing.Size(728, 400);
             this.tabPageAdvancedInput.TabIndex = 4;
             this.tabPageAdvancedInput.Text = "Advanced Input";
             this.tabPageAdvancedInput.UseVisualStyleBackColor = true;
@@ -344,8 +344,8 @@
             // buttonHelpInput
             // 
             this.buttonHelpInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHelpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHelpInput.Location = new System.Drawing.Point(114, 360);
+            this.buttonHelpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonHelpInput.Location = new System.Drawing.Point(114, 361);
             this.buttonHelpInput.Name = "buttonHelpInput";
             this.buttonHelpInput.Size = new System.Drawing.Size(59, 31);
             this.buttonHelpInput.TabIndex = 4;
@@ -359,9 +359,9 @@
             this.checkBoxShowHelp.AutoSize = true;
             this.checkBoxShowHelp.Checked = true;
             this.checkBoxShowHelp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowHelp.Location = new System.Drawing.Point(8, 333);
+            this.checkBoxShowHelp.Location = new System.Drawing.Point(8, 336);
             this.checkBoxShowHelp.Name = "checkBoxShowHelp";
-            this.checkBoxShowHelp.Size = new System.Drawing.Size(97, 21);
+            this.checkBoxShowHelp.Size = new System.Drawing.Size(83, 19);
             this.checkBoxShowHelp.TabIndex = 3;
             this.checkBoxShowHelp.Text = "Show Help";
             this.checkBoxShowHelp.UseVisualStyleBackColor = true;
@@ -373,9 +373,9 @@
             this.checkBoxShowStats.AutoSize = true;
             this.checkBoxShowStats.Checked = true;
             this.checkBoxShowStats.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowStats.Location = new System.Drawing.Point(8, 306);
+            this.checkBoxShowStats.Location = new System.Drawing.Point(8, 309);
             this.checkBoxShowStats.Name = "checkBoxShowStats";
-            this.checkBoxShowStats.Size = new System.Drawing.Size(100, 21);
+            this.checkBoxShowStats.Size = new System.Drawing.Size(83, 19);
             this.checkBoxShowStats.TabIndex = 2;
             this.checkBoxShowStats.Text = "Show Stats";
             this.checkBoxShowStats.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@
             // buttonResetPlayer
             // 
             this.buttonResetPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonResetPlayer.Location = new System.Drawing.Point(8, 360);
+            this.buttonResetPlayer.Location = new System.Drawing.Point(8, 361);
             this.buttonResetPlayer.Name = "buttonResetPlayer";
             this.buttonResetPlayer.Size = new System.Drawing.Size(100, 31);
             this.buttonResetPlayer.TabIndex = 1;
@@ -396,7 +396,7 @@
             // 
             this.advancedControlsTest.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.advancedControlsTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.advancedControlsTest.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advancedControlsTest.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.advancedControlsTest.ForeColor = System.Drawing.Color.FloralWhite;
             this.advancedControlsTest.Location = new System.Drawing.Point(0, 0);
             this.advancedControlsTest.MouseHoverUpdatesOnly = false;
@@ -408,9 +408,9 @@
             // tabPageMultipleControls
             // 
             this.tabPageMultipleControls.Controls.Add(this.splitContainerMapHost);
-            this.tabPageMultipleControls.Location = new System.Drawing.Point(4, 25);
+            this.tabPageMultipleControls.Location = new System.Drawing.Point(4, 24);
             this.tabPageMultipleControls.Name = "tabPageMultipleControls";
-            this.tabPageMultipleControls.Size = new System.Drawing.Size(728, 399);
+            this.tabPageMultipleControls.Size = new System.Drawing.Size(728, 400);
             this.tabPageMultipleControls.TabIndex = 5;
             this.tabPageMultipleControls.Text = "Multiple Controls";
             this.tabPageMultipleControls.UseVisualStyleBackColor = true;
@@ -437,7 +437,7 @@
             // buttonHelpControls
             // 
             this.buttonHelpControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHelpControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHelpControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonHelpControls.Location = new System.Drawing.Point(3, 372);
             this.buttonHelpControls.Name = "buttonHelpControls";
             this.buttonHelpControls.Size = new System.Drawing.Size(75, 24);
@@ -450,7 +450,7 @@
             // 
             this.multipleControls_First_Test1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.multipleControls_First_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.multipleControls_First_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multipleControls_First_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.multipleControls_First_Test1.ForeColor = System.Drawing.Color.Lavender;
             this.multipleControls_First_Test1.Location = new System.Drawing.Point(0, 0);
             this.multipleControls_First_Test1.MouseHoverUpdatesOnly = false;
@@ -463,7 +463,7 @@
             // 
             this.multipleControls_Second_Test1.BackColor = System.Drawing.Color.RoyalBlue;
             this.multipleControls_Second_Test1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.multipleControls_Second_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multipleControls_Second_Test1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.multipleControls_Second_Test1.ForeColor = System.Drawing.Color.Lavender;
             this.multipleControls_Second_Test1.Location = new System.Drawing.Point(0, 0);
             this.multipleControls_Second_Test1.MouseHoverUpdatesOnly = false;
@@ -476,9 +476,9 @@
             // 
             this.tabPageInfo.Controls.Add(this.richTextBoxLicense);
             this.tabPageInfo.Controls.Add(this.statusStrip);
-            this.tabPageInfo.Location = new System.Drawing.Point(4, 25);
+            this.tabPageInfo.Location = new System.Drawing.Point(4, 24);
             this.tabPageInfo.Name = "tabPageInfo";
-            this.tabPageInfo.Size = new System.Drawing.Size(728, 399);
+            this.tabPageInfo.Size = new System.Drawing.Size(728, 400);
             this.tabPageInfo.TabIndex = 3;
             this.tabPageInfo.Text = "Info";
             this.tabPageInfo.UseVisualStyleBackColor = true;
@@ -489,7 +489,7 @@
             this.richTextBoxLicense.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxLicense.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxLicense.Name = "richTextBoxLicense";
-            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 361);
+            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 369);
             this.richTextBoxLicense.TabIndex = 1;
             this.richTextBoxLicense.Text = resources.GetString("richTextBoxLicense.Text");
             this.richTextBoxLicense.ZoomFactor = 1.5F;
@@ -501,39 +501,39 @@
             this.toolStripDropDownButtonGitHub,
             this.toolStripDropDownButtonWiki,
             this.toolStripDropDownButtonTwitter});
-            this.statusStrip.Location = new System.Drawing.Point(0, 361);
+            this.statusStrip.Location = new System.Drawing.Point(0, 369);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(728, 38);
+            this.statusStrip.Size = new System.Drawing.Size(728, 31);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 0;
             // 
             // toolStripDropDownButtonGitHub
             // 
-            this.toolStripDropDownButtonGitHub.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonGitHub.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripDropDownButtonGitHub.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonGitHub.Image")));
             this.toolStripDropDownButtonGitHub.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonGitHub.Name = "toolStripDropDownButtonGitHub";
-            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(259, 36);
+            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(210, 29);
             this.toolStripDropDownButtonGitHub.Text = "MonoGame.Forms";
             this.toolStripDropDownButtonGitHub.Click += new System.EventHandler(this.toolStripDropDownButtonGitHub_Click);
             // 
             // toolStripDropDownButtonWiki
             // 
-            this.toolStripDropDownButtonWiki.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonWiki.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripDropDownButtonWiki.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonWiki.Image")));
             this.toolStripDropDownButtonWiki.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonWiki.Name = "toolStripDropDownButtonWiki";
-            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(100, 36);
+            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(85, 29);
             this.toolStripDropDownButtonWiki.Text = "Wiki";
             this.toolStripDropDownButtonWiki.Click += new System.EventHandler(this.toolStripDropDownButtonWiki_Click);
             // 
             // toolStripDropDownButtonTwitter
             // 
-            this.toolStripDropDownButtonTwitter.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripDropDownButtonTwitter.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripDropDownButtonTwitter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitter.Image")));
             this.toolStripDropDownButtonTwitter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonTwitter.Name = "toolStripDropDownButtonTwitter";
-            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(224, 36);
+            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(183, 29);
             this.toolStripDropDownButtonTwitter.Text = "@SandboxBlizz";
             this.toolStripDropDownButtonTwitter.Click += new System.EventHandler(this.toolStripDropDownButtonTwitter_Click);
             // 

@@ -1,37 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F094D35F-8716-4D73-B30F-5C8BBE45AD94}</ProjectGuid>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MonoGame.Forms.Tests.GL</RootNamespace>
-    <AssemblyName>MonoGame.Forms.Tests.GL</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;GL</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE;GL</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>..\MonoGame.Forms.Tests.DX\Logo.ico</ApplicationIcon>
@@ -41,67 +20,31 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\MonoGame\DesktopGL\Lib\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MonoGame.Forms.Tests.DX\MainWindow.cs">
-      <Link>MainWindow.cs</Link>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="..\MonoGame.Forms.Tests.DX\MainWindow.Designer.cs">
-      <Link>MainWindow.Designer.cs</Link>
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\AdvancedInputTest.cs">
       <Link>Tests\AdvancedInputTest.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\InvalidationTest.cs">
       <Link>Tests\InvalidationTest.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MapHost.cs">
       <Link>Tests\MapHost.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MonoGameTest.cs">
       <Link>Tests\MonoGameTest.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MultipleControls_a_Test.cs">
       <Link>Tests\MultipleControls_a_Test.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\MultipleControls_b_Test.cs">
       <Link>Tests\MultipleControls_b_Test.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Tests\Welcome.cs">
       <Link>Tests\Welcome.cs</Link>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="..\MonoGame.Forms.Tests.DX\Utils\Animation.cs">
       <Link>Utils\Animation.cs</Link>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="..\MonoGame.Forms.Tests.DX\MainWindow.resx">
-      <Link>MainWindow.resx</Link>
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="..\MonoGame.Forms.Tests.DX\Content\DrawFont.xnb">
       <Link>Content\DrawFont.xnb</Link>
@@ -159,36 +102,16 @@
       <Link>Content\SmileyMap.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MonoGame.Forms.GL\MonoGame.Forms.GL.csproj">
-      <Project>{794eca96-6b4e-4445-928e-1a4fcab8b95b}</Project>
-      <Name>MonoGame.Forms.GL</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\MonoGame.Forms.GL\MonoGame.Forms.GL.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\MonoGame.Forms.Tests.DX\Logo.ico">
       <Link>Logo.ico</Link>
     </Content>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
 </Project>

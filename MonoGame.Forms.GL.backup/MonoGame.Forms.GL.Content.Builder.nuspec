@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MonoGame.Forms.GL.Content.Builder</id>
+    <version>$version$</version>
+    <title>MonoGame.Forms.GL.Content.Builder</title>
+    <authors>Marcel 'sqrMin1' Härtel</authors>
+    <owners>Marcel Härtel</owners>
+    <projectUrl>https://github.com/sqrMin1/MonoGame.Forms</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/LogoSquare_256.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. MIT LICENSE!</description>
+    <copyright>Copyright (c) 2019 Marcel 'sqrMin1' Härtel</copyright>
+    <tags>MonoGame WindowsForms</tags>
+	<references>
+		<group targetFramework="net451">
+		<reference file="MonoGame.Forms.GL.dll" />
+        <reference file="MonoGame.Framework.dll" />
+		</group>
+	</references>
+  </metadata>
+  <files>
+    <file src="..\Libs\MonoGame\DesktopGL\Lib\**\*.*" target="lib\net451" />
+	<file src="..\Libs\MonoGame\DesktopGL\Build\**\*.*" target="Build\" />
+	<file src="..\Libs\MonoGame\DesktopGL\Content\**\*.*" target="Content\" />
+	<file src="..\Libs\MonoGame\Builder\**\*.*" target="Build\" />
+	<file src="MonoGame.Forms.GL.Content.Builder.targets" target="Build\" />
+</files>
+</package>
