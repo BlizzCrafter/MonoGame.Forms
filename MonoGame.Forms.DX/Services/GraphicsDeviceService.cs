@@ -13,11 +13,6 @@ using System;
 using System.Threading;
 using Microsoft.Xna.Framework.Graphics;
 
-#if GL
-using MonoGame.Forms.GL;
-using Microsoft.Xna.Framework;
-#endif
-
 namespace MonoGame.Forms.Services
 {
 #pragma warning disable 1591
@@ -39,25 +34,14 @@ namespace MonoGame.Forms.Services
                 PresentationInterval = PresentInterval.Immediate,
                 IsFullScreen = false
             };
-#if GL
-            PreferredBackBufferFormat = SurfaceFormat.Color;
-            PreferredDepthStencilFormat = DepthFormat.Depth24;
-
-            SDLPlatform = new SdlGamePlatform();
-            PlatformInitialize(_parameters);
-            SDLPlatform.IsActive = true;
-#endif
 
             GraphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
                                                          graphicsProfile,
                                                          _parameters);
-#if DX
+
             MaxMultiSampleCount = GetMaxMultiSampleCount(GraphicsDevice);
-#elif GL
-            ((SdlGameWindow)SdlGameWindow.Instance).GetGraphicsDevice = GraphicsDevice;
-#endif
         }
-#if DX
+
         internal int MaxMultiSampleCount;
 
         private int GetMaxMultiSampleCount(GraphicsDevice device)
@@ -74,72 +58,7 @@ namespace MonoGame.Forms.Services
             }
             return maxLevel;
         }
-#elif GL
-        internal SdlGamePlatform SDLPlatform { get; set; }
 
-        public void PlatformInitialize(PresentationParameters presentationParameters)
-        {
-            var surfaceFormat = PreferredBackBufferFormat.GetColorFormat();
-            var depthStencilFormat = PreferredDepthStencilFormat;
-            
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.RedSize, surfaceFormat.R);
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.GreenSize, surfaceFormat.G);
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.BlueSize, surfaceFormat.B);
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.AlphaSize, surfaceFormat.A);
-
-            switch (depthStencilFormat)
-            {
-                case DepthFormat.None:
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.DepthSize, 0);
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.StencilSize, 0);
-                    break;
-                case DepthFormat.Depth16:
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.DepthSize, 16);
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.StencilSize, 0);
-                    break;
-                case DepthFormat.Depth24:
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.DepthSize, 24);
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.StencilSize, 0);
-                    break;
-                case DepthFormat.Depth24Stencil8:
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.DepthSize, 24);
-                    Sdl.GL.SetAttribute(Sdl.GL.Attribute.StencilSize, 8);
-                    break;
-            }
-
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.DoubleBuffer, 1);
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.ContextMajorVersion, 2);
-            Sdl.GL.SetAttribute(Sdl.GL.Attribute.ContextMinorVersion, 1);
-
-            ((SdlGameWindow)SdlGameWindow.Instance).CreateWindow();
-        }
-
-        public SurfaceFormat PreferredBackBufferFormat
-        {
-            get
-            {
-                return _preferredBackBufferFormat;
-            }
-            set
-            {
-                _preferredBackBufferFormat = value;
-            }
-        }
-        private SurfaceFormat _preferredBackBufferFormat;
-
-        public DepthFormat PreferredDepthStencilFormat
-        {
-            get
-            {
-                return _preferredDepthStencilFormat;
-            }
-            set
-            {
-                _preferredDepthStencilFormat = value;
-            }
-        }
-        private DepthFormat _preferredDepthStencilFormat;
-#endif
         public GraphicsDevice GraphicsDevice { get; private set; }
 
 #pragma warning disable 67

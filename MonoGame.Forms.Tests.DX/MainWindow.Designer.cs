@@ -136,6 +136,7 @@
             // 
             this.welcomeControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.welcomeControl.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeControl.GraphicsProfile = Microsoft.Xna.Framework.Graphics.GraphicsProfile.HiDef;
             this.welcomeControl.Location = new System.Drawing.Point(0, 0);
             this.welcomeControl.MouseHoverUpdatesOnly = false;
             this.welcomeControl.Name = "welcomeControl";
@@ -533,8 +534,8 @@
             this.toolStripDropDownButtonTwitter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitter.Image")));
             this.toolStripDropDownButtonTwitter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonTwitter.Name = "toolStripDropDownButtonTwitter";
-            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(224, 36);
-            this.toolStripDropDownButtonTwitter.Text = "@SandboxBlizz";
+            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(204, 36);
+            this.toolStripDropDownButtonTwitter.Text = "@BlizzCrafter";
             this.toolStripDropDownButtonTwitter.Click += new System.EventHandler(this.toolStripDropDownButtonTwitter_Click);
             // 
             // MainWindow

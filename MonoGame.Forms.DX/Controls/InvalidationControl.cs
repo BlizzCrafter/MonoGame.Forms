@@ -1,10 +1,7 @@
 ﻿using MonoGame.Forms.Services;
 using System;
 using System.ComponentModel;
-
-#if DX
 using Microsoft.Xna.Framework.Graphics;
-#endif
 
 namespace MonoGame.Forms.Controls
 {
@@ -28,20 +25,16 @@ namespace MonoGame.Forms.Controls
         /// </summary>
         protected override void Initialize()
         {
-#if DX
             _Editor = new InvalidationService(_graphicsDeviceService, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
-#elif GL
-            _Editor = new InvalidationService(_graphicsDeviceService, SwapChainRenderTarget);
-#endif
+
             _Editor.Initialize();
         }
 
-#if DX
         private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
         {
             if (_Editor != null) _Editor.SwapChainRenderTarget = obj;
@@ -51,7 +44,6 @@ namespace MonoGame.Forms.Controls
         {
             if (_Editor != null) _Editor.GetCurrentMultiSampleCount = obj;
         }
-#endif
 
         /// <summary>
         /// Basic drawing.
@@ -77,9 +69,7 @@ namespace MonoGame.Forms.Controls
 
             if (Editor != null)
             {
-#if DX
                 Editor.DisableRenderTargets();
-#endif
                 Editor.CamHoldPosition(ClientSize);
             }
         }
@@ -94,9 +84,6 @@ namespace MonoGame.Forms.Controls
             if (Editor != null)
             {
                 Editor.CamHoldPosition(ClientSize);
-#if GL
-                PresentDirty(true);
-#endif
             }
         }
 
@@ -110,10 +97,9 @@ namespace MonoGame.Forms.Controls
             if (disposing)
             {
                 _Editor?.Dispose();
-#if DX
+
                 SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
                 MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
-#endif
             }
         }
     }

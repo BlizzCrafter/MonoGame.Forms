@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-#if GL
-using MonoGame.Forms.GL;
-#endif
-
 namespace MonoGame.Forms.Services
 {
     /// <summary>
@@ -15,19 +11,11 @@ namespace MonoGame.Forms.Services
     /// </summary>
     public sealed class InvalidationService : GFXService
     {
-#if DX
         internal InvalidationService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize GFX-System
             InitializeGFX_DX(graphics, swapChainRenderTarget);
         }
-#elif GL
-        internal InvalidationService(IGraphicsDeviceService graphics, SwapChainRenderTarget_GL swapChainRenderTarget)
-        {
-            // Initialize GFX-System
-            InitializeGFX_GL(graphics, swapChainRenderTarget);
-        }
-#endif
 
         /// <summary>
         /// Override this basic intitializing method in your custom class to create your own initializing logic.

@@ -155,22 +155,17 @@ namespace MonoGame.Forms.Tests
 
         private void toolStripDropDownButtonGitHub_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/sqrMin1/MonoGame.Forms");
+            Process.Start("https://github.com/BlizzCrafter/MonoGame.Forms");
         }
 
         private void toolStripDropDownButtonWiki_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/sqrMin1/MonoGame.Forms/wiki");
+            Process.Start("https://github.com/BlizzCrafter/MonoGame.Forms/wiki");
         }
 
         private void toolStripDropDownButtonTwitter_Click(object sender, EventArgs e)
         {
-            Process.Start("https://twitter.com/SandboxBlizz");
-        }
-
-        private void toolStripDropDownButtonTwitterEngine_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://twitter.com/hashtag/RogueEngineEditor?src=hash");
+            Process.Start("https://twitter.com/blizz_crafter");
         }
 
         #endregion
@@ -178,11 +173,8 @@ namespace MonoGame.Forms.Tests
         public MainWindow()
         {
             InitializeComponent();
-#if GL
-            Text = "MonoGame.Forms.GL";
-#elif DX
+
             Text = "MonoGame.Forms.DX";
-#endif
         }
     }
 }

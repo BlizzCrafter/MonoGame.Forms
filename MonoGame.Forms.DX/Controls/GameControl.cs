@@ -77,14 +77,13 @@ namespace MonoGame.Forms.Controls
                 UpdateMousePositions();
 
                 Update(_GameTime);
-#if DX
+
                 if (_FrameCount > 0 || (MouseHoverUpdatesOnly && IsMouseInsideControl))
                 {
                     Invalidate();
                     if (_FrameCount > 0) _FrameCount--;
                 }
                 else if (!MouseHoverUpdatesOnly) Invalidate();
-#endif
             }
         }
 

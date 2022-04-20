@@ -5,13 +5,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Components;
 
-#if GL
-using MonoGame.Forms.GL;
-#elif DX
 using System.Linq;
 using System.Timers;
 using System.Collections.Generic;
-#endif
 
 namespace MonoGame.Forms.Services
 {
@@ -20,7 +16,6 @@ namespace MonoGame.Forms.Services
     /// </summary>
     public abstract class GFXService : IDisposable
     {
-#if DX
         /// <summary>
         /// This manager will manage all of your custom <see cref="RenderTarget2D"/>'s automatically - based on the current ClientSize and MultiSampleCount. 
         /// </summary>
@@ -191,16 +186,6 @@ namespace MonoGame.Forms.Services
         /// Otherwise you will see only a black control window.
         /// </summary>
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
-#elif GL
-        /// <summary>
-        /// A swap chain used for rendering to a secondary GameWindow.
-        /// Note: When working with different <see cref="RenderTarget2D"/>, 
-        /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
-        /// 'GraphicsDevice.SetRenderTarget(null)' will NOT work as you are doing usally in MonoGame. Instead use 'GraphicsDevice.SetRenderTarget(SwapChainRenderTarget)'.
-        /// Otherwise you will see only a black control window.
-        /// </summary>
-        public SwapChainRenderTarget_GL SwapChainRenderTarget { get; set; }
-#endif
 
         /// <summary>
         /// DisplayStyle enumerations for the integrated display.
@@ -340,7 +325,6 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public bool ShowCamPosition { get; set; } = false;
 
-#if DX
         /// <summary>
         /// Initializes the GFX system, which contains basic MonoGame functionality.
         /// </summary>
@@ -354,21 +338,6 @@ namespace MonoGame.Forms.Services
 
             SwapChainRenderTarget = swapChainRenderTarget;
         }
-#elif GL
-        /// <summary>
-        /// Initializes the GFX system, which contains basic MonoGame functionality.
-        /// </summary>
-        /// <param name="graphics">The graphics device service</param>
-        /// <param name="swapChainRenderTarget">The swap chain render target</param>
-        public void InitializeGFX_GL(
-            IGraphicsDeviceService graphics,
-            SwapChainRenderTarget_GL swapChainRenderTarget)
-        {
-            InitializeGFX(graphics);
-
-            SwapChainRenderTarget = swapChainRenderTarget;
-        }
-#endif
 
         private void InitializeGFX(IGraphicsDeviceService graphics)
         {
@@ -388,7 +357,7 @@ namespace MonoGame.Forms.Services
             Cam = new Camera2D(graphics.GraphicsDevice);
             Cam.Position = new Vector2(
                 graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
-#if DX
+
             InternContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
 
             GetRenderTargetManager = new RenderTargetManager(this);
@@ -397,9 +366,7 @@ namespace MonoGame.Forms.Services
             RenderTargetTimer = new Timer();
             RenderTargetTimer.Interval = 500;
             RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
-#elif GL
-            InternContent = new ResourceContentManager(services, GL.Properties.Resources.ResourceManager);
-#endif
+
             Font = InternContent.Load<SpriteFont>("Font");
             FontHeight = Font.MeasureString("A").Y;
 
@@ -485,7 +452,6 @@ namespace MonoGame.Forms.Services
             }
         }
 
-#if DX
         /// <summary>
         /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
         /// </summary>
@@ -643,7 +609,6 @@ namespace MonoGame.Forms.Services
 
             return GetRenderTargetManager.GetRenderTarget2D(key);
         }
-#endif
 
         /// <summary>
         /// Use 'BeginCamera2D' as a replacement of <see cref="SpriteBatch"/>.Begin(<see cref="SpriteSortMode"/>, <see cref="BlendState"/>, <see cref="SamplerState"/>, <see cref="DepthStencilState"/>, <see cref="RasterizerState"/>, <see cref="Effect"/>, <see cref="Matrix"/>?).
