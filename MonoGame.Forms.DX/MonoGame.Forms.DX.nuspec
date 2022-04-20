@@ -10,7 +10,7 @@
     <iconUrl>https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/Logos/LogoSquare_256.png</iconUrl>
 	<license type="expression">MS-PL</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. MIT LICENSE!</description>
+    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
     <copyright>Copyright (c) 2022 Marcel Härtel</copyright>
     <tags>MonoGame WindowsForms Editor</tags>
 	<references>
@@ -25,6 +25,7 @@
   </metadata>
   <files>
     <file src="..\Libs\MonoGame\WindowsDX\Lib\**\*.*" target="lib\net451" />
-	<file src="MonoGame.Forms.DX.targets" target="Build\" />
+	<file src="..\Libs\MonoGame\WindowsDX\Content\**\*.*" target="Content\" />
+	<file src="MonoGame.Forms.DX.targets" target="build\" />
 </files>
 </package>

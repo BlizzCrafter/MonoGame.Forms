@@ -33,45 +33,8 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\MonoGame.Forms.DX.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DX_Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\DX_Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;DX</DefineConstants>
-    <DocumentationFile>bin\Debug\MonoGame.Forms.DX.xml</DocumentationFile>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DX_Release|AnyCPU'">
-    <OutputPath>bin\DX_Release\</OutputPath>
-    <DefineConstants>TRACE;DX</DefineConstants>
-    <DocumentationFile>bin\Release\MonoGame.Forms.DX.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'GL_Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\GL_Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;DX</DefineConstants>
-    <DocumentationFile>bin\Debug\MonoGame.Forms.DX.xml</DocumentationFile>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'GL_Release|AnyCPU'">
-    <OutputPath>bin\GL_Release\</OutputPath>
-    <DefineConstants>TRACE;DX</DefineConstants>
-    <DocumentationFile>bin\Release\MonoGame.Forms.DX.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NuGetRelease|AnyCPU'">
+    <OutputPath>bin\NuGetRelease\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.8.9013.0, Culture=neutral, processorArchitecture=MSIL">
@@ -160,6 +123,14 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\build\MonoGame.Framework.WindowsDX.9000.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\build\MonoGame.Framework.WindowsDX.9000.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+	if $(ConfigurationName) == NuGetRelease (
+	nuget pack "$(ProjectPath)" -properties Configuration=NuGetRelease -OutputDirectory "$(SolutionDir)create"
+	nuget push -Source nuget.org -SkipDuplicate "$(SolutionDir)create\*.nupkg" )
+  if $(ConfigurationName) == Release nuget pack "$(ProjectPath)" -properties Configuration=Release -OutputDirectory "$(SolutionDir)create"
+  </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
