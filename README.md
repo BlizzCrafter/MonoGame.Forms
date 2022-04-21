@@ -8,10 +8,6 @@
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-Click%20here%20to%20directly%20install%20the%20templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)
 
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX%20+%20Content.Builder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder)
-
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL)
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.GL%20+%20Content.Builder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)
 
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.RuntimeBuilder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.RuntimeBuilder)
 
@@ -19,24 +15,21 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 
 ### Building
 
-* The **MonoGame.Forms.DX** project uses a modified version of the MonoGame.Framework 3.8.0.270, which is already precompiled and included in this repo.
-* The **MonoGame.Forms.GL** project uses a modified version of the MonoGame.Framework based on the development build from 16th of JULY 2018.
+* The **MonoGame.Forms.DX** project uses a modified version of the MonoGame.Framework. It's called [MonoGame.Framework.WindowsDX.9000](https://www.nuget.org/packages/MonoGame.Framework.WindowsDX.9000/) (created by [nkast](https://github.com/nkast)), which is faster, memory optimized, bugfixed and supports full mouse & keyboard input within WindowsForms. You can also update MonoGame.Forms to a new MonoGame version very easily - just by updating the MonoGame.Framework.WindowsDX.9000 nuget package!
+* **MonoGame.Forms.GL**  - DEPRECATED! - faster alternative: [MonoGame.Template.Gtk.CSharp](https://www.nuget.org/packages/MonoGame.Template.Gtk.CSharp/) (created by [harry-cpp](https://github.com/harry-cpp)).
 
 #### Tips & Tricks / Dos & Don'ts
 
-The OpenGL version of the library currently renders differently than the DirectX one, which makes it generally slower. If you need as much perormance as possible, you should definitley use the DirectX library.
-
 * Boost performance of a custom OpenGL control by raising its **DrawIntervall** with the property window during design time (try 50ms or 100ms. 1ms aims to 60 fps)
-* **Never** use **DoubleBuffering** on a custom control. This counts for the OpenGL library **as well as** for the DirectX library! It will cause flickering and slow downs.
+* **Never** use **DoubleBuffering** on a custom control. It will cause flickering and slow downs.
 * If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
 **`AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;`**. If you want to turn off scaling of your whole application, then you need to add a **[Manifest-File](https://github.com/sqrMin1/MonoGame.Forms/blob/master/DPI_Aware_Application.md)**.
-* If you need to have the **MonoGame-PipelineTool** integrated into your **MonoGame.Forms** project, you should check out the **[PipelineTool-Tutorial](https://github.com/sqrMin1/MonoGame.Forms/blob/master/PipelineTool-Tutorial.md)!** 
-**NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)** or use the combined NuGet-Packages **[[DX](https://www.nuget.org/packages/MonoGame.Forms.DX.Content.Builder) | [GL](https://www.nuget.org/packages/MonoGame.Forms.GL.Content.Builder)] !**
+**NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)**.
 
 # How-To
 #### Setup MonoGame.Forms
 
-First you need to make your MonoGame.Forms library ready to use. This step is very easy; you just need to compile either the MonoGame.Forms.DX or the MonoGame.Forms.GL PCL from source and then just add the compiled DLL's to your project.
+First you need to make your MonoGame.Forms library ready to use. This step is very easy; you just need to compile the MonoGame.Forms.DX library from source and then just add the compiled DLL's to your project.
 
 ↳ _This is the prefered route, when you want to make you own custom changes to the library or extend it_.
 
@@ -49,8 +42,6 @@ Another option is to install the library with the NuGet package manager:
 ***
 
 ### Tutorial
-
-The following tutorial is working exactly the same on both libraries (DX and GL).
 
 #### Creating a simple [MonoGameControl](https://github.com/sqrMin1/MonoGame.Forms/wiki/C5EB9086)
 
@@ -145,10 +136,6 @@ It's pretty much like in the **MonoGame.Framework!**
 I just want to refer to the nice [MonoGame.Forms.Test](https://github.com/sqrMin1/MonoGame.Forms/tree/master/MonoGame.Forms.Tests.DX/Tests)-Project,
 which is part of this repo. Take a look at it and learn from its samples.
 
-**Note:** to raise the performance of an OpenGL MonoGameControl, it's recommended to change the **DrawIntervall** from 1ms to 50ms or 100ms!
-
-![DrawIntervall](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/intervall.PNG)
-
 **BTW:** did you notice the **BackColor** and **ForeColor** property? 
 Changing these values makes it possible to style your controls to something like this:
 
@@ -171,9 +158,6 @@ Here are some pics of some samples included with the repo:
 
 ### DX (Windows 10 Pro 64 bit)
 ![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/UpdateSample.png)
-
-### GL (Ubuntu 18.04 LTS [Bionic Beaver] 64 bit)
-![Sample](https://github.com/sqrMin1/MonoGame.Forms/blob/master/doc/gl_Test.png)
 
 # Projects using MonoGame.Forms!
 
