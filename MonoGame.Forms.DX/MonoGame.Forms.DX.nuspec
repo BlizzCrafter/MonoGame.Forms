@@ -25,7 +25,7 @@
   </metadata>
   <files>
 	<file src="..\MonoGame.Forms.DX\bin\$configuration$\*.*" exclude="**\*.pdb;**\*.tmp" target="lib\net451" />
-	<file src="..\MonoGame.Forms.DX\Content\Content\Content.mgcb" target="Content\" />
+	<file src="..\MonoGame.Forms.DX\Content\**\*.*" target="Content\" />
 	<file src="MonoGame.Forms.DX.targets" target="build\" />
 </files>
 </package>
