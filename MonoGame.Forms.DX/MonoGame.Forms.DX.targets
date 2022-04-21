@@ -6,4 +6,7 @@
     <MonoGamePlatform>Windows</MonoGamePlatform>
   </PropertyGroup>
   </Target>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(ProjectDir)Content\Content.mgcb" />
+  </ItemGroup>
 </Project>
