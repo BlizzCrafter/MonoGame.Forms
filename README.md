@@ -3,7 +3,6 @@
 # Welcome to MonoGame.Forms!
 [![Twitter Follow](https://img.shields.io/twitter/follow/blizz_crafter.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/blizz_crafter)
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=f2709e&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
-[![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
 
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2017,%202019,%202022%20Templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337)
 
