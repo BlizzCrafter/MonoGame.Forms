@@ -5,7 +5,7 @@
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=f2709e&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/wiki)
 [![License](https://img.shields.io/badge/License-MIT!-blue.svg?style=flat-square&colorA=bc9621&colorB=77c433)](https://github.com/sqrMin1/MonoGame.Forms/blob/master/LICENSE)
 
-[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-Click%20here%20to%20directly%20install%20the%20templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)
+[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2017,%202019,%202022%20Templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337)
 
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.DX-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX)
 
