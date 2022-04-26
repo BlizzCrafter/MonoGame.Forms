@@ -23,7 +23,7 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 * **Never** use **DoubleBuffering** on a custom control. It will cause flickering and slow downs.
 * If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
 **`AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;`**. If you want to turn off scaling of your whole application, then you need to add a **[Manifest-File](https://github.com/sqrMin1/MonoGame.Forms/blob/master/DPI_Aware_Application.md)**.
-**NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=SandboxBlizz.MonoGameForms42)**.
+**NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337)**.
 
 # How-To
 #### Setup MonoGame.Forms
