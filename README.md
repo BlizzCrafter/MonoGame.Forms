@@ -19,7 +19,6 @@ MonoGame.Forms is the easiest way of integrating a MonoGame render window into y
 
 #### Tips & Tricks / Dos & Don'ts
 
-* Boost performance of a custom OpenGL control by raising its **DrawIntervall** with the property window during design time (try 50ms or 100ms. 1ms aims to 60 fps)
 * **Never** use **DoubleBuffering** on a custom control. It will cause flickering and slow downs.
 * If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
 **`AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;`**. If you want to turn off scaling of your whole application, then you need to add a **[Manifest-File](https://github.com/sqrMin1/MonoGame.Forms/blob/master/DPI_Aware_Application.md)**.
