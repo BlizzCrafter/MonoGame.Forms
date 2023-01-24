@@ -177,7 +177,6 @@ GitHub: [PenumbraPhysics.Editor](https://github.com/sqrMin1/PenumbraPhysics.Edit
 ***
 
 ### Now Have Fun with MonoGame.Forms!
-[![Twitter Follow](https://img.shields.io/twitter/follow/blizz_crafter.svg?style=flat-square&label=Follow&logo=twitter)](https://twitter.com/blizz_crafter)
 
 ![Logo](https://raw.githubusercontent.com/sqrMin1/MonoGame.Forms/master/Logos/Logo_Shadow_256.png)
 
