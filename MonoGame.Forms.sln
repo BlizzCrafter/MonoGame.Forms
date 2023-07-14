@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Samples", "MonoGame.Forms.Samples\MonoGame.Forms.Samples.csproj", "{85BCE0EE-860C-44E0-8BE2-42092AC472EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoGame.Forms.Samples", "MonoGame.Forms.Samples\MonoGame.Forms.Samples.csproj", "{85BCE0EE-860C-44E0-8BE2-42092AC472EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

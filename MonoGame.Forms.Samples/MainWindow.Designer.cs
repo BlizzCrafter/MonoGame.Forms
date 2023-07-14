@@ -528,6 +528,7 @@ namespace MonoGame.Forms.Samples
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(736, 428);
             Controls.Add(tabControlEditorSwitch);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MonoGame.Forms";

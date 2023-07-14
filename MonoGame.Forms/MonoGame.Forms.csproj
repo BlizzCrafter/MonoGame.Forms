@@ -6,6 +6,23 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <Title>MonoGame.Forms</Title>
+    <Authors>Marcel Härtel</Authors>
+    <Description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</Description>
+    <Copyright>Copyright (c) 2023 BlizzCrafter</Copyright>
+    <PackageProjectUrl>https://github.com/BlizzCrafter/MonoGame.Forms</PackageProjectUrl>
+    <PackageIcon>LogoSquare_256.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/BlizzCrafter/MonoGame.Forms</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>MonoGame;WindowsForms;Editor</PackageTags>
+	<Version>6.0.0</Version>
+    <AssemblyVersion>6.0.0</AssemblyVersion>
+    <FileVersion>6.0.0</FileVersion>
+    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageId>MonoGame.Forms.DX</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,7 +34,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\Logos\LogoSquare_256.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

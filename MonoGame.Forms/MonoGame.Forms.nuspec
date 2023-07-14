@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MonoGame.Forms.DX</id>
+    <version>6.0.0</version>
+    <title>MonoGame.Forms</title>
+    <authors>Marcel Härtel</authors>
+    <owners>Marcel Härtel</owners>
+    <projectUrl>https://github.com/BlizzCrafter/MonoGame.Forms</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/Logos/LogoSquare_256.png</iconUrl>
+	<license type="expression">MS-PL</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
+    <copyright>Copyright (c) 2023 BlizzCrafter</copyright>
+    <tags>MonoGame WindowsForms Editor</tags>
+	<references>
+		<group targetFramework="net6.0">
+		<reference file="MonoGame.Forms.dll" />
+        <reference file="MonoGame.Framework.dll" />
+		<reference file="SharpDX.dll" />
+		<reference file="SharpDX.DXGI.dll" />
+		<reference file="SharpDX.Direct3D11.dll" />
+		</group>
+	</references>
+  </metadata>
+  <files>
+	<file src="..\MonoGame.Forms\bin\$configuration$\*.*" exclude="**\*.pdb;**\*.tmp" target="lib\net6.0" />
+	<file src="..\MonoGame.Forms\Content\**\*.*" target="Content\" />
+	<file src="MonoGame.Forms.targets" target="build\" />
+</files>
+</package>

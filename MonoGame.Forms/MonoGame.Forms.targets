@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets')" /> 
+  <Target Name="MGCBSetup" BeforeTargets="Prepare">
+  <PropertyGroup>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+  </PropertyGroup>
+  </Target>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(ProjectDir)Content\Content.mgcb" />
+  </ItemGroup>
+</Project>
