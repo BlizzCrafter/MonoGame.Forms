@@ -1,36 +1,36 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.DX", "MonoGame.Forms.DX\MonoGame.Forms.DX.csproj", "{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoGame.Forms", "MonoGame.Forms\MonoGame.Forms.csproj", "{0B1F6236-7AD4-4EA8-B4EC-B0164104FFDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Tests.DX", "MonoGame.Forms.Tests.DX\MonoGame.Forms.Tests.DX.csproj", "{9C7B2133-768B-4B3B-883B-9601B02100D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F130BB85-8C62-4E74-B594-5FFBD4E08F66}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Samples", "MonoGame.Forms.Samples\MonoGame.Forms.Samples.csproj", "{85BCE0EE-860C-44E0-8BE2-42092AC472EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		NuGetRelease|Any CPU = NuGetRelease|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}.NuGetRelease|Any CPU.ActiveCfg = NuGetRelease|Any CPU
-		{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}.NuGetRelease|Any CPU.Build.0 = NuGetRelease|Any CPU
-		{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C7B2133-768B-4B3B-883B-9601B02100D6}.NuGetRelease|Any CPU.ActiveCfg = NuGetRelease|Any CPU
-		{9C7B2133-768B-4B3B-883B-9601B02100D6}.NuGetRelease|Any CPU.Build.0 = NuGetRelease|Any CPU
-		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C7B2133-768B-4B3B-883B-9601B02100D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1F6236-7AD4-4EA8-B4EC-B0164104FFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1F6236-7AD4-4EA8-B4EC-B0164104FFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1F6236-7AD4-4EA8-B4EC-B0164104FFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1F6236-7AD4-4EA8-B4EC-B0164104FFDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85BCE0EE-860C-44E0-8BE2-42092AC472EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85BCE0EE-860C-44E0-8BE2-42092AC472EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85BCE0EE-860C-44E0-8BE2-42092AC472EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85BCE0EE-860C-44E0-8BE2-42092AC472EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0FF4FE94-A34C-4EAF-B1B7-21DC195B7200}
+		SolutionGuid = {03C18039-086F-43FB-BF5D-67AFDDF63C19}
 	EndGlobalSection
 EndGlobal
