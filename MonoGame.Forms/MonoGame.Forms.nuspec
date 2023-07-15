@@ -28,7 +28,7 @@
 </dependencies>
   </metadata>
   <files>
-	<file src="..\MonoGame.Forms\bin\$configuration$\net6.0-windows7.0\MonoGame.Forms.dll" target="lib\net6.0-windows7.0" />
+	<file src="..\MonoGame.Forms\bin\Release\net6.0-windows7.0\MonoGame.Forms.dll" target="lib\net6.0-windows7.0" />
 	<file src="..\MonoGame.Forms\Content\**\*.*" target="Content\" />
 	<file src="..\Logos\LogoSquare_256.png" target="images\" />
 	<file src="..\README.md" target="docs\" />
