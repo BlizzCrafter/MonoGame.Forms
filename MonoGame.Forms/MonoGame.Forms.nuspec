@@ -7,25 +7,31 @@
     <authors>Marcel Härtel</authors>
     <owners>Marcel Härtel</owners>
     <projectUrl>https://github.com/BlizzCrafter/MonoGame.Forms</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/Logos/LogoSquare_256.png</iconUrl>
-	<license type="expression">MS-PL</license>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<icon>images\LogoSquare_256.png</icon>
+	<readme>docs\README.md</readme>
     <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
     <copyright>Copyright (c) 2023 BlizzCrafter</copyright>
-    <tags>MonoGame WindowsForms Editor</tags>
-	<references>
-		<group targetFramework="net6.0">
-		<reference file="MonoGame.Forms.dll" />
-        <reference file="MonoGame.Framework.dll" />
-		<reference file="SharpDX.dll" />
-		<reference file="SharpDX.DXGI.dll" />
-		<reference file="SharpDX.Direct3D11.dll" />
-		</group>
-	</references>
+    <tags>MonoGame WindowsForms Editor</tags>	
+	<license type="expression">MS-PL</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+<dependencies>
+   <group targetFramework="net6.0-windows7.0">
+        <dependency id="MonoGame.Framework.WindowsDX.9000" version="3.8.9102" />
+		<dependency id="SharpDX" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="SharpDX.DXGI" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="SharpDX.Direct2D1" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="SharpDX.Direct3D11" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="SharpDX.MediaFoundation" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="SharpDX.XAudio2" version="4.0.1" exclude="Build,Analyzers" />
+        <dependency id="SharpDX.XInput" version="4.0.1" exclude="Build,Analyzers" />
+   </group>
+</dependencies>
   </metadata>
   <files>
-	<file src="..\MonoGame.Forms\bin\$configuration$\*.*" exclude="**\*.pdb;**\*.tmp" target="lib\net6.0" />
+	<file src="..\MonoGame.Forms\bin\$configuration$\net6.0-windows7.0\MonoGame.Forms.dll" target="lib\net6.0-windows7.0" />
 	<file src="..\MonoGame.Forms\Content\**\*.*" target="Content\" />
-	<file src="MonoGame.Forms.targets" target="build\" />
+	<file src="..\Logos\LogoSquare_256.png" target="images\" />
+	<file src="..\README.md" target="docs\" />
+	<file src="MonoGame.Forms.targets" target="Build\" />
 </files>
 </package>
