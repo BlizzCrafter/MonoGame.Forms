@@ -167,7 +167,7 @@ namespace MonoGame.Forms.NET.Samples
         {
             InitializeComponent();
 
-            Text = "MonoGame.Forms.DX";
+            Text = "MonoGame.Forms.NET";
         }
     }
 }
