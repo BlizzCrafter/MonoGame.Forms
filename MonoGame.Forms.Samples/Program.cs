@@ -1,4 +1,4 @@
-namespace MonoGame.Forms.Samples
+namespace MonoGame.Forms.NET.Samples
 {
     internal static class Program
     {

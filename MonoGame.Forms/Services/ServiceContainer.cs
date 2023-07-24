@@ -12,7 +12,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MonoGame.Forms.Services
+namespace MonoGame.Forms.NET.Services
 {
     #pragma warning disable 1591
 

@@ -3,7 +3,7 @@ using System.Globalization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Forms.Components;
+using MonoGame.Forms.NET.Components;
 
 using System.Linq;
 using System.Timers;
@@ -12,7 +12,7 @@ using Color = Microsoft.Xna.Framework.Color;
 using Timer = System.Timers.Timer;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MonoGame.Forms.Services
+namespace MonoGame.Forms.NET.Services
 {
     /// <summary>
     /// The <see cref="GFXService"/> class provides basic functionality of MonoGame

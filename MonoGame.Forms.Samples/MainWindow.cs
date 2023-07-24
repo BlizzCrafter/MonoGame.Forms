@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 
-namespace MonoGame.Forms.Samples
+namespace MonoGame.Forms.NET.Samples
 {
     public partial class MainWindow : Form
     {

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MonoGame.Forms.Samples.Utils
+namespace MonoGame.Forms.NET.Samples.Utils
 {
     public class Animation
     {

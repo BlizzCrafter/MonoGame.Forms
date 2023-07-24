@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Forms.Services
+namespace MonoGame.Forms.NET.Services
 {
     /// <summary>
     /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of the MonoGame.Framework.

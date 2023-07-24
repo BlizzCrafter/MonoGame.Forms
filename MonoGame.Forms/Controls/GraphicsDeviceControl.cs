@@ -46,11 +46,12 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Forms.Services;
 using System.ComponentModel;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.NET.Services;
+using MonoGame.Forms.NET;
 
-namespace MonoGame.Forms.Controls
+namespace MonoGame.Forms.NET.Controls
 {
     /// <summary>
     /// This class mainly creates the <see cref="GraphicsDevice"/> and the <see cref="SwapChainRenderTarget"/>.

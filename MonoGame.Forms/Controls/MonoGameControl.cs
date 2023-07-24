@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using MonoGame.Forms.Services;
-using System;
+﻿using System;
 using System.ComponentModel;
+using Microsoft.Xna.Framework;
+using MonoGame.Forms.NET.Services;
 
-namespace MonoGame.Forms.Controls
+namespace MonoGame.Forms.NET.Controls
 {
     /// <summary>
     /// Inherit from this class in your custom class to create a draw control with a game loop, which is selectable from the ToolBox during design time.

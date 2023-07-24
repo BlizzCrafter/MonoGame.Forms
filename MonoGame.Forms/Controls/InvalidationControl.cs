@@ -1,9 +1,9 @@
-﻿using MonoGame.Forms.Services;
-using System;
+﻿using System;
 using System.ComponentModel;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.NET.Services;
 
-namespace MonoGame.Forms.Controls
+namespace MonoGame.Forms.NET.Controls
 {
     /// <summary>
     /// Inherit from this class in your custom class to create an invalidation control, which is selectable from the ToolBox during design time.

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MonoGame.Forms\MonoGame.Forms.csproj" />
+    <ProjectReference Include="..\MonoGame.Forms\MonoGame.Forms.NET.csproj" />
   </ItemGroup>
 
   <ItemGroup>

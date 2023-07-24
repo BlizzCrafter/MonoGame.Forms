@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Forms.Controls;
-using MonoGame.Forms.Samples.Utils;
+using MonoGame.Forms.NET.Controls;
+using MonoGame.Forms.NET.Samples.Utils;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MonoGame.Forms.Samples.Tests
+namespace MonoGame.Forms.NET.Samples.Tests
 {
     public class Welcome : MonoGameControl
     {

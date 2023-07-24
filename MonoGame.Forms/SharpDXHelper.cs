@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Forms
+namespace MonoGame.Forms.NET
 {
     static internal class SharpDXHelper
     {

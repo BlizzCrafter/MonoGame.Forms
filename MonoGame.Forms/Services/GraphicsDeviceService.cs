@@ -13,7 +13,7 @@ using System;
 using System.Threading;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Forms.Services
+namespace MonoGame.Forms.NET.Services
 {
 #pragma warning disable 1591
     internal class GraphicsDeviceService : IGraphicsDeviceService

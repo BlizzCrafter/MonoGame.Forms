@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Forms.Controls;
-using MonoGame.Forms.Samples.Utils;
+using MonoGame.Forms.NET.Controls;
+using MonoGame.Forms.NET.Samples.Utils;
 using System;
 using Color = Microsoft.Xna.Framework.Color;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 
-namespace MonoGame.Forms.Samples.Tests
+namespace MonoGame.Forms.NET.Samples.Tests
 {
     public class AdvancedInputTest : MonoGameControl
     {

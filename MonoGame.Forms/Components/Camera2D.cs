@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Forms.Components
+namespace MonoGame.Forms.NET.Components
 {
     /// <summary>
     /// A basic Camera2D component to move the view of an editor.

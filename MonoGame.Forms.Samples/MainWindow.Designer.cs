@@ -1,6 +1,6 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 
-namespace MonoGame.Forms.Samples
+namespace MonoGame.Forms.NET.Samples
 {
     partial class MainWindow
     {
