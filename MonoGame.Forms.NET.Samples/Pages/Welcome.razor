@@ -1,0 +1,25 @@
+﻿@page "/"
+@inject MonoGame.Forms.NET.Samples.Tests.Welcome control
+
+<style>
+    body {
+        background-color: @BackgroundColor;
+    }
+</style>
+
+@code {
+    public string BackgroundColor = Color.CornflowerBlue.Name;
+
+    protected override void OnInitialized()
+    {
+        Color color = Color.FromArgb(
+            control.Editor.BackgroundColor.A,
+            control.Editor.BackgroundColor.R,
+            control.Editor.BackgroundColor.G,
+            control.Editor.BackgroundColor.B);
+
+        BackgroundColor = ColorTranslator.ToHtml(color);
+
+        base.OnInitialized();
+    }
+}

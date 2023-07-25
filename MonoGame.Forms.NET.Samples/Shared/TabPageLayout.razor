@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+
+<div class="content px-8">
+    @Body
+</div>
+<div class="container-fluid">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item pr-1">
+            <a class="nav-link btn-outline-warning bi bi-box-fill active" href="/"> Welcome</a>
+        </li>
+        <li class="nav-item pr-1">
+            <a class="nav-link btn-outline-warning bi bi-hourglass" href="/option"> Invalidation Control</a>
+        </li>
+        <li class="nav-item pr-1">
+            <a class="nav-link btn-outline-warning bi bi-recycle" href="#"> MonoGame Control</a>
+        </li>
+        <li class="nav-item pr-1">
+            <a class="nav-link btn-outline-warning bi bi-controller" href="#"> Advanced Input</a>
+        </li>
+        <li class="nav-item pr-1">
+            <a class="nav-link btn-outline-warning bi bi-layers" href="#"> Multiple Controls</a>
+        </li>
+        <li class="nav-item pr-1">
+            <a class="nav-link btn-outline-warning bi bi-info-circle" href="#"> Info</a>
+        </li>
+    </ul>
+</div>
+
+@code {
+}

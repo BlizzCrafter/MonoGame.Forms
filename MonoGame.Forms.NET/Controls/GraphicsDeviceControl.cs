@@ -59,17 +59,6 @@ namespace MonoGame.Forms.NET.Controls
     /// </summary>
     public abstract class GraphicsDeviceControl : System.Windows.Forms.Control
     {
-        private bool designMode
-        {
-            get
-            {
-                System.Diagnostics.Process process = System.Diagnostics.Process.GetCurrentProcess();
-                bool res = process.ProcessName == "devenv";
-                process.Dispose();
-                return res;
-            }
-        }
-
         /// <summary>
         /// Set the <see cref="Microsoft.Xna.Framework.Graphics.GraphicsProfile"/> in the property grid during Design-Time (HiDef or Reach).
         /// You shouldn't change this during runtime!
@@ -90,7 +79,7 @@ namespace MonoGame.Forms.NET.Controls
             set
             {
                 _BackColor = value;
-                if (designMode) Invalidate();
+                if (DesignMode) Invalidate();
             }
         }
         private Color _BackColor = Color.DimGray;
@@ -106,7 +95,7 @@ namespace MonoGame.Forms.NET.Controls
             set
             {
                 _ForeColor = value;
-                if (designMode) Invalidate();
+                if (DesignMode) Invalidate();
             }
         }
         private Color _ForeColor = Color.CornflowerBlue;
@@ -202,7 +191,7 @@ namespace MonoGame.Forms.NET.Controls
 #pragma warning disable 1591
         protected override void OnCreateControl()
         {
-            if (!designMode && ClientSize.Width > 0 && ClientSize.Height > 0)
+            if (!DesignMode && ClientSize.Width > 0 && ClientSize.Height > 0)
             {
                 _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
                 Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
@@ -220,7 +209,7 @@ namespace MonoGame.Forms.NET.Controls
         {
             if (disposing)
             {
-                if (!designMode)
+                if (!DesignMode)
                 {
                     if (_graphicsDeviceService != null)
                     {
@@ -252,6 +241,9 @@ namespace MonoGame.Forms.NET.Controls
             {
                 return Text + "\n\n" + GetType();
             }
+
+            if (DesignMode) return Text + "\n\n" + GetType();
+
             var deviceResetError = HandleDeviceReset();
             if (!string.IsNullOrEmpty(deviceResetError))
             {
