@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>MonoGame.Forms.DX</id>
-    <version>6.0.0</version>
+    <id>MonoGame.Forms.NET</id>
+    <version>3.0.0</version>
     <title>MonoGame.Forms</title>
     <authors>Marcel Härtel</authors>
     <owners>Marcel Härtel</owners>
     <projectUrl>https://github.com/BlizzCrafter/MonoGame.Forms</projectUrl>
+	<repository type="git" url="https://github.com/BlizzCrafter/MonoGame.Forms.git" branch="Net6.0" />
 	<icon>images\LogoSquare_256.png</icon>
 	<readme>docs\README.md</readme>
     <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
@@ -20,11 +21,9 @@
    </group>
 </dependencies>
   </metadata>
-  <files>
-	<file src="..\MonoGame.Forms\bin\Release\net6.0-windows7.0\MonoGame.Forms.dll" target="lib\net6.0-windows7.0" />
-	<file src="..\MonoGame.Forms\Content\**\*.*" target="Content\" />
-	<file src="..\Logos\LogoSquare_256.png" target="images\" />
-	<file src="..\README.md" target="docs\" />
-	<file src="MonoGame.Forms.targets" target="Build\" />
+<files>
+  <file src="..\MonoGame.Forms.NET\bin\Release\net6.0-windows7.0\MonoGame.Forms.NET.dll" target="lib\net6.0-windows7.0" />
+  <file src="..\Logos\LogoSquare_256.png" target="images\" />
+  <file src="..\README.md" target="docs\" />
 </files>
 </package>
