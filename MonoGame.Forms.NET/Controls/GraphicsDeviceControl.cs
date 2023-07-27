@@ -191,8 +191,10 @@ namespace MonoGame.Forms.NET.Controls
 #pragma warning disable 1591
         protected override void OnCreateControl()
         {
-            if (!DesignMode && ClientSize.Width > 0 && ClientSize.Height > 0)
+            if (!DesignMode)
             {
+                if (ClientSize.Width == 0 || ClientSize.Height == 0) ClientSize = new Size(1, 1);
+
                 _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
                 Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
 

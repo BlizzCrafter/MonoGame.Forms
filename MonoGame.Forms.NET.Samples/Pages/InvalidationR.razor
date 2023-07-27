@@ -1,0 +1,34 @@
+﻿@using MonoGame.Forms.NET.Controls;
+@using MonoGame.Forms.NET.Samples.Tests.Container;
+
+@page "/invalidation"
+
+@inject MonoGameControlPanel ControlPanel
+@inherits TabPageLayout
+
+<style>
+    body {
+        background-color: @BackgroundColor;
+    }
+</style>
+
+@code {
+    public InvalidationControl Control { get; set; }
+    public string BackgroundColor = Color.CornflowerBlue.Name;
+
+    protected override void OnInitialized()
+    {
+        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Invalidation) as InvalidationControl;
+        if (Control != null && Control.Editor != null)
+        {
+            Color color = Color.FromArgb(
+                Control.Editor.BackgroundColor.A,
+                Control.Editor.BackgroundColor.R,
+                Control.Editor.BackgroundColor.G,
+                Control.Editor.BackgroundColor.B);
+
+            BackgroundColor = ColorTranslator.ToHtml(color);
+        }
+        base.OnInitialized();
+    }
+}

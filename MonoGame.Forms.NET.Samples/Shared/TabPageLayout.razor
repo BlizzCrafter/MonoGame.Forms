@@ -1,31 +1,78 @@
-﻿@inherits LayoutComponentBase
-@inject NavigationManager Navigation
+﻿@using MonoGame.Forms.NET.Samples.Pages;
+@using MonoGame.Forms.NET.Samples.Tests.Container;
+@using static MonoGame.Forms.NET.Samples.Tests.Container.MonoGameControlPanel;
 
-<div class="content px-8">
-    @Body
-</div>
+@inherits LayoutComponentBase
+@inject MonoGameControlPanel ControlPanel
+@inject NavigationManager Navigate
+
 <div class="container-fluid">
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item pr-1">
-            <a class="nav-link btn-outline-warning bi bi-box-fill active" href="/"> Welcome</a>
+            <a @onclick="@(() => SetActive(ControlKeys.Welcome))" class="nav-link text-warning bi bi-box-fill @ControlPanel.WelcomeActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> Welcome</a>
         </li>
         <li class="nav-item pr-1">
-            <a class="nav-link btn-outline-warning bi bi-hourglass" href="/option"> Invalidation Control</a>
+            <a @onclick="@(() => SetActive(ControlKeys.Invalidation))" class="nav-link text-warning bi bi-hourglass @ControlPanel.InvalidationActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> Invalidation Control</a>
         </li>
         <li class="nav-item pr-1">
-            <a class="nav-link btn-outline-warning bi bi-recycle" href="#"> MonoGame Control</a>
+            <a @onclick="@(() => SetActive(ControlKeys.MonoGame))" class="nav-link text-warning bi bi-recycle @ControlPanel.MonoGameActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> MonoGame Control</a>
         </li>
         <li class="nav-item pr-1">
-            <a class="nav-link btn-outline-warning bi bi-controller" href="#"> Advanced Input</a>
+            <a @onclick="@(() => SetActive(ControlKeys.AdvancedInput))" class="nav-link text-warning bi bi-controller @ControlPanel.AdvancedInputActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> Advanced Input</a>
         </li>
         <li class="nav-item pr-1">
-            <a class="nav-link btn-outline-warning bi bi-layers" href="#"> Multiple Controls</a>
+            <a @onclick="@(() => SetActive(ControlKeys.Multiple))" class="nav-link text-warning bi bi-layers @ControlPanel.MultipleActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> Multiple Controls</a>
         </li>
         <li class="nav-item pr-1">
-            <a class="nav-link btn-outline-warning bi bi-info-circle" href="#"> Info</a>
+            <a @onclick="@(() => SetActive(ControlKeys.Info))" class="nav-link text-warning bi bi-info-circle @ControlPanel.InfoActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> Info</a>
         </li>
     </ul>
+    <div class="content px-sm-5 justify-content-center text-center">
+        @Body
+    </div>
 </div>
 
+
 @code {
+    public void SetActive(ControlKeys key)
+    {
+        DeactivateAll();
+
+        if (key == ControlKeys.Welcome)
+        {
+            ControlPanel.WelcomeActive = "active";
+            Navigate.NavigateTo("/");
+        }
+        else if (key == ControlKeys.Invalidation)
+        {
+            ControlPanel.InvalidationActive = "active";
+            Navigate.NavigateTo("/invalidation");
+        }
+        else if (key == ControlKeys.MonoGame) 
+        {
+            ControlPanel.MonoGameActive = "active";
+        }
+        else if (key == ControlKeys.AdvancedInput) 
+        {
+            ControlPanel.AdvancedInputActive = "active";
+        }
+        else if (key == ControlKeys.Multiple) 
+        {
+            ControlPanel.MultipleActive = "active";
+        }
+        else if (key == ControlKeys.Info) 
+        {
+            ControlPanel.InfoActive = "active";
+        }
+    }    
+
+    public void DeactivateAll()
+    {
+        ControlPanel.WelcomeActive = "";
+        ControlPanel.InvalidationActive = "";
+        ControlPanel.MonoGameActive = "";
+        ControlPanel.AdvancedInputActive = "";
+        ControlPanel.MultipleActive = "";
+        ControlPanel.InfoActive = "";
+    }
 }

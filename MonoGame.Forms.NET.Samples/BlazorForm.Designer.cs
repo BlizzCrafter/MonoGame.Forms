@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlazorForm));
             blazorWebView = new Microsoft.AspNetCore.Components.WebView.WindowsForms.BlazorWebView();
-            welcome1 = new Tests.Welcome();
+            monoGameControlPanel = new Tests.Container.MonoGameControlPanel();
             SuspendLayout();
             // 
             // blazorWebView
@@ -38,27 +38,24 @@
             blazorWebView.Dock = DockStyle.Top;
             blazorWebView.Location = new Point(0, 0);
             blazorWebView.Name = "blazorWebView";
-            blazorWebView.Size = new Size(1262, 58);
+            blazorWebView.Size = new Size(1262, 137);
             blazorWebView.TabIndex = 0;
             blazorWebView.Text = "blazorWebView1";
             // 
-            // welcome1
+            // monoGameControlPanel
             // 
-            welcome1.Dock = DockStyle.Fill;
-            welcome1.GraphicsProfile = Microsoft.Xna.Framework.Graphics.GraphicsProfile.HiDef;
-            welcome1.Location = new Point(0, 58);
-            welcome1.MouseHoverUpdatesOnly = false;
-            welcome1.Name = "welcome1";
-            welcome1.Size = new Size(1262, 615);
-            welcome1.TabIndex = 1;
-            welcome1.Text = "welcome1";
+            monoGameControlPanel.Dock = DockStyle.Fill;
+            monoGameControlPanel.Location = new Point(0, 137);
+            monoGameControlPanel.Name = "monoGameControlPanel";
+            monoGameControlPanel.Size = new Size(1262, 536);
+            monoGameControlPanel.TabIndex = 2;
             // 
             // BlazorForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 673);
-            Controls.Add(welcome1);
+            Controls.Add(monoGameControlPanel);
             Controls.Add(blazorWebView);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BlazorForm";
@@ -69,6 +66,6 @@
         #endregion
 
         private Microsoft.AspNetCore.Components.WebView.WindowsForms.BlazorWebView blazorWebView;
-        private Tests.Welcome welcome1;
+        private Tests.Container.MonoGameControlPanel monoGameControlPanel;
     }
 }

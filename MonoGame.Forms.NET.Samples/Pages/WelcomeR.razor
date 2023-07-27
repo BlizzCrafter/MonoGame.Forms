@@ -1,0 +1,38 @@
+﻿@using MonoGame.Forms.NET.Controls;
+@using MonoGame.Forms.NET.Samples.Tests.Container;
+
+@page "/"
+
+@inject MonoGameControlPanel ControlPanel
+@inherits TabPageLayout
+
+<div class="alert alert-info" role="alert">
+    Select one of the sample projects above!
+</div>
+
+<style>
+    body {
+        background-color: @BackgroundColor;
+    }
+</style>
+
+@code {
+    public MonoGameControl Control { get; set; }
+    public string BackgroundColor = Color.CornflowerBlue.Name;
+
+    protected override void OnInitialized()
+    {
+        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Welcome) as MonoGameControl;
+        if (Control != null && Control.Editor != null)
+        {
+            Color color = Color.FromArgb(
+                Control.Editor.BackgroundColor.A,
+                Control.Editor.BackgroundColor.R,
+                Control.Editor.BackgroundColor.G,
+                Control.Editor.BackgroundColor.B);
+
+            BackgroundColor = ColorTranslator.ToHtml(color);
+        }
+        base.OnInitialized();
+    }
+}
