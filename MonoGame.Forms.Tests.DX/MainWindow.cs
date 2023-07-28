@@ -163,18 +163,13 @@ namespace MonoGame.Forms.Tests
             Process.Start("https://github.com/BlizzCrafter/MonoGame.Forms/wiki");
         }
 
-        private void toolStripDropDownButtonTwitter_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://twitter.com/blizz_crafter");
-        }
-
         #endregion
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Text = "MonoGame.Forms.DX";
+            Text = "MonoGame.Forms .NetFramework";
         }
     }
 }

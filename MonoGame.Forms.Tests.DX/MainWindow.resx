@@ -120,7 +120,7 @@
   <data name="richTextBoxLicense.Text" xml:space="preserve">
     <value>MS-PL
 
-Copyright (c) 2017-2022 Blizz Crafter
+Copyright (c) 2017-2023 Blizz Crafter
 
 This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
 
@@ -224,54 +224,6 @@ A "contributor" is any person that distributes its contribution under this licen
         1rLbHRBrsPfAvBdb8Xpg3J8sm5ZjSWFV4sqEYp4Z0aZLiSk8htzPUoOY5wfuD7jjg6iGk1rt/MuzUqmY
         ZDxwiblq9ySFAa8Gbkcel/88Fmv3S1PLYAzGimPaHYW44v/jP4NS6V/p8MEETIALMwAAAABJRU5ErkJg
         gg==
-</value>
-  </data>
-  <data name="toolStripDropDownButtonTwitter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGoAAABqCAYAAABUIcSXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAm2SURBVHhe7ZwLcFTVGcejU2y1OtRqX9NOO22d2tppq9OH
-        rXag+EClIgKmgDZDLdQOU2irVsSBGmtTHy0DiArjoA2vRDSBZPOQhEBeJjGQkJAQkiaEkIQkZJPde+/e
-        e/fu3l17b88/c9bZZm4igX3dzfeb+QZY7uN85zvnO9/5zjk3hSAIgiAIgiAIgiAIgiAIgiAIgiAIgiAI
-        giAIgiCSHI/HuK6hV1+xrVYp+K3D7Zyd69QfOSAqGWVy/aF2Lf28on+XX0rEgxFRv6WgRdu67j1314ID
-        oi81Pd1IzRXMkDzEZGnm2eCqImE4s07Jbx/0LzRN8xP89guCXT/TKRk38H8SU0HQzK++3eDdc1Nu24dz
-        9gnmA+8K5uIwA4031oM5gjmXXXcXkxfL5cbTzuA9/FETYhjGlS0D+vINpeKp7tHgnfznxIW1qCvKO7T1
-        rOCf5j/FlY4h/+Lf57tGYKCJjDOZ3PeOYP6SGbawVdtk1btGPcaNFZ3ahvUlQufNWW5zY6VYw/8rsWGt
-        795bWIH3Hfdm8p/ixgfd/j+iktGDrIxwoQIDz3pbMHfUKg70zkF34PbKTm39lgqpCi4UjWDsPawn9o8E
-        ZvHXJza7jqo5cBkofEGrtpn/HHNYsLDyHtYbFrLKs6r8i5H7mTGW54sKDAL90NtCvRSGLDrp3chfn9jI
-        hvE5uBn4ePj6O5kyxW2xN9Y5V+CnS/Y7dZRjfGVfqiziuoX/9gtmpG018sGpBh5x4+xocM481upCiuBP
-        tLyc494dTInL+WVRBWMkAoB7WWsPr8xoCPSDkV6rlg8hmOBFSJEM47Mt/frDzf3+hfynxKLhrG8VDDNe
-        Gfz2Rp1cDAX4pVHjeF/gsfFliIbA5d2/fzCQ36JuZUa6BmNX26C+LLvRuystX5T2Nqh7WKO5jBcrsTjS
-        4fvbRJUEN/jXg2L7kBT4Ib884rCKmfF8qacFA7tVGSIpGPueKhY7dter+/DOtDxRw9j8/b1u8+Vy+Rgr
-        y1W8WInHoQ7fC5O15nnMHS3LEr31Z3yr+S0RpU8I/BwD/vgxJFoCY8HF4p3oYQheMJn2eo0v8yIlJphP
-        zGE+20qpkEA59K7tdUrRiMf4Fr81IrAe/dzHvT9aMpcZaW2xpyfSOkWF5j79N3dM0qPC5W523dJsUcZ8
-        hLmJq/kjLok3P1AK0aqt3hdNgc7ph6Q2STK+yYuS2LDx58foMRfqenAtegDcRVOvvoIZ7FP8UVOG3Xv5
-        C4c9zbEYn8IF3uH19+USWTav50VJfJA2epp1/6lmAuaz66FwOgs2MH7J5tSVRni8rsTTfalZiKkIxty8
-        E+qrrJEkZnQ3GXkntFcvNjyGwXDvqkJhOK9F3YbggFXCFfzRk4LeiJ4ZK0PBa8DN9tohAWuFU9B/kJp5
-        NngxCdCQIKOAHgbDPVcqnipq1TYjh6goxhf4ayxBWBwr1wdDIeLrGg3O56+3HzmN3jcxY7dScCqCyoCx
-        MFijUlYWjLi2VCvVhSe1V5r69RX9QmCW5DNuwEQaY9TuY+q7iL6snhVpCRmqeyQ4j6ttP1TV/OLjDukc
-        5hdWSl6MoGIQfCARCsNB8PxfHxA1LPRtKBE6VxeNjiIXZ3V/pAXlQbqMub47uNr25Mxw8K6HmAtcEMWK
-        Q2UtYgJXiZ4HQ1pdFw0JNRwW6f6Iq2wfUGjRND/D/5nSOqCnLmbGQiVaKWtnQc9FlkXymd/g6tqHrGNq
-        1upiaeBwh+/5finwEzZuzEAQsKZI6o9la4+FoBf/oUAckkzzWq6+fShp8/7z1mz32PgBRTBOba/xlP39
-        sKcpVmNHrATR5Yvl8nEEMVx9+9Dcrz8KI0ER+HCMTxj8ozlOxUuQAtvdoO7jqtuLYUX/3qXOoewiSH1V
-        dWnruOr2Am4Aq6uxzrfFWuAt4ClssS1sIup6fGsiMdlNZEFgtCp3dFRRjM9zte0H61Uz1xZLPckYkocE
-        GYnttXIpV9m+tAzqy7AsDRdhpajdBeNTXbf/z1xde4OdR9jrZqWonQWZkIf3uPyjsvltrqq9MQzjk9jr
-        NjvJjAW3t7XaU87VTA7YeHVV5lE1B8ZKlswE5olYjeYqJhfVXdrTyHJDSTtnKDBxH0sbxWB/YtxwycZ3
-        cPQFiUwEGnbMVmDacfCU9yWuUnLB3N//LaULmvG1qk7tqWdLpFY7uUOUFbumRJ/xda5KctE+5F+EJfKd
-        R5W8vQ1qLrZ0bayU6zFhtFOqCb0pHgceYgZWe1fknxcRUOAUH6ImrMwizLWqkEQUrARgG4DLa3yFq5Wc
-        lP9He9bOYTp6EwuI1nJ1khc2Tl2Ns61IZFpVRCILypxxxNOEeSFXJ7npdQduW8pm9HaK9uCeZ+dU/LfH
-        Lsc9I8XJAX3JA+nphl2MBZdX0u79By/+9OLkkH/x8jxRicdm/qkIVnA3V0qVzG3b47hnNMBu2n+Vy3Vo
-        sYgAEy3LjoXPPxVJg5jz8SJPX9BSG3t9v8NxFYTsSC9hQyPcYjzTTHg/Pkkw7caljwOZix5ncG5hi/YK
-        JsJ/KZL6VxaOuKwqMdqC7AM+TdA6oP+KF4+YCJwzymqUd8by+AwEk1r0Juxp50UhJgI7bTdVSe+HfwIh
-        FgIDPciiUWx340UhrEBqBueq8DkAjFdWlRktQaNI2y+qyEny4hDjwcFkfJbm0dxhYWytyqIioyk4g4WN
-        OOdcgVt5kYgQqmp8CR/OeKtWcTzCFxNjvdyB9+Fk4446pRBJY1605EYwzZkscoN8tAeb/f0y5MY8hnGd
-        SzZu6jrvn4+PhbxW4ylD70FLxoQ31j0I4x4msnB1NV3+x3lxpwcYX460a89klMmNL1fIjZsq5Fr8iYNl
-        awrdTow7OAWIFozxJ16LhZjEohz41A8aDy/+9OOMK3g3Pip4e7Zg3pbtHss4IOSN5+IgehCCBbjXjDLP
-        CQoYwsBnPbGLdBELd1FB8UjAotfCxWGJ4qVyufHEOT2NueMZvIhEOPg4SH6Lug05M1RaaENLNOZHeCZ6
-        L1wbGkeaQ5R2HVPf6WGNJnzsJCYBJ/LwXVfsQHriPakPGQdsCYbx4B7R+uEeL8SAuAbX4h7cOzb2sWfB
-        veHA9b/rFQcyC95kXzKPNiwSvGbAHfhZzWn/EzgEhnFjNQs4FuSJviX72z5MzRUtDTQmzJXiGlyLr2xm
-        HJZadx5Vc6s6tWfwQUdEmPw1RKRBCI8lj6Y+fbmjWduytVoufbLIfRofJpybK2ipWYL3MYfT/eRBsf31
-        WrnY0aptwrUDon4zu/ejL04SBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBCcl5X+RD/7YYv0g
-        KAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

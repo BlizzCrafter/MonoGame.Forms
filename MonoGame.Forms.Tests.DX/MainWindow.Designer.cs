@@ -64,7 +64,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButtonGitHub = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButtonWiki = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripDropDownButtonTwitter = new System.Windows.Forms.ToolStripDropDownButton();
             this.tabControlEditorSwitch.SuspendLayout();
             this.tabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLogoFrames)).BeginInit();
@@ -254,9 +253,9 @@
             // 
             this.checkBoxCam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxCam.AutoSize = true;
-            this.checkBoxCam.Location = new System.Drawing.Point(149, 369);
+            this.checkBoxCam.Location = new System.Drawing.Point(149, 370);
             this.checkBoxCam.Name = "checkBoxCam";
-            this.checkBoxCam.Size = new System.Drawing.Size(58, 21);
+            this.checkBoxCam.Size = new System.Drawing.Size(57, 20);
             this.checkBoxCam.TabIndex = 5;
             this.checkBoxCam.Text = "Cam";
             this.checkBoxCam.UseVisualStyleBackColor = true;
@@ -268,9 +267,9 @@
             this.checkBoxCursor.AutoSize = true;
             this.checkBoxCursor.Checked = true;
             this.checkBoxCursor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCursor.Location = new System.Drawing.Point(71, 369);
+            this.checkBoxCursor.Location = new System.Drawing.Point(71, 370);
             this.checkBoxCursor.Name = "checkBoxCursor";
-            this.checkBoxCursor.Size = new System.Drawing.Size(72, 21);
+            this.checkBoxCursor.Size = new System.Drawing.Size(68, 20);
             this.checkBoxCursor.TabIndex = 4;
             this.checkBoxCursor.Text = "Cursor";
             this.checkBoxCursor.UseVisualStyleBackColor = true;
@@ -282,9 +281,9 @@
             this.checkBoxFPS.AutoSize = true;
             this.checkBoxFPS.Checked = true;
             this.checkBoxFPS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxFPS.Location = new System.Drawing.Point(9, 369);
+            this.checkBoxFPS.Location = new System.Drawing.Point(9, 370);
             this.checkBoxFPS.Name = "checkBoxFPS";
-            this.checkBoxFPS.Size = new System.Drawing.Size(56, 21);
+            this.checkBoxFPS.Size = new System.Drawing.Size(55, 20);
             this.checkBoxFPS.TabIndex = 3;
             this.checkBoxFPS.Text = "FPS";
             this.checkBoxFPS.UseVisualStyleBackColor = true;
@@ -360,9 +359,9 @@
             this.checkBoxShowHelp.AutoSize = true;
             this.checkBoxShowHelp.Checked = true;
             this.checkBoxShowHelp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowHelp.Location = new System.Drawing.Point(8, 333);
+            this.checkBoxShowHelp.Location = new System.Drawing.Point(8, 334);
             this.checkBoxShowHelp.Name = "checkBoxShowHelp";
-            this.checkBoxShowHelp.Size = new System.Drawing.Size(97, 21);
+            this.checkBoxShowHelp.Size = new System.Drawing.Size(94, 20);
             this.checkBoxShowHelp.TabIndex = 3;
             this.checkBoxShowHelp.Text = "Show Help";
             this.checkBoxShowHelp.UseVisualStyleBackColor = true;
@@ -374,9 +373,9 @@
             this.checkBoxShowStats.AutoSize = true;
             this.checkBoxShowStats.Checked = true;
             this.checkBoxShowStats.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowStats.Location = new System.Drawing.Point(8, 306);
+            this.checkBoxShowStats.Location = new System.Drawing.Point(8, 307);
             this.checkBoxShowStats.Name = "checkBoxShowStats";
-            this.checkBoxShowStats.Size = new System.Drawing.Size(100, 21);
+            this.checkBoxShowStats.Size = new System.Drawing.Size(95, 20);
             this.checkBoxShowStats.TabIndex = 2;
             this.checkBoxShowStats.Text = "Show Stats";
             this.checkBoxShowStats.UseVisualStyleBackColor = true;
@@ -490,7 +489,7 @@
             this.richTextBoxLicense.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxLicense.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxLicense.Name = "richTextBoxLicense";
-            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 361);
+            this.richTextBoxLicense.Size = new System.Drawing.Size(728, 362);
             this.richTextBoxLicense.TabIndex = 1;
             this.richTextBoxLicense.Text = resources.GetString("richTextBoxLicense.Text");
             this.richTextBoxLicense.ZoomFactor = 1.5F;
@@ -500,11 +499,10 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButtonGitHub,
-            this.toolStripDropDownButtonWiki,
-            this.toolStripDropDownButtonTwitter});
-            this.statusStrip.Location = new System.Drawing.Point(0, 361);
+            this.toolStripDropDownButtonWiki});
+            this.statusStrip.Location = new System.Drawing.Point(0, 362);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(728, 38);
+            this.statusStrip.Size = new System.Drawing.Size(728, 37);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 0;
             // 
@@ -514,7 +512,7 @@
             this.toolStripDropDownButtonGitHub.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonGitHub.Image")));
             this.toolStripDropDownButtonGitHub.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonGitHub.Name = "toolStripDropDownButtonGitHub";
-            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(259, 36);
+            this.toolStripDropDownButtonGitHub.Size = new System.Drawing.Size(245, 35);
             this.toolStripDropDownButtonGitHub.Text = "MonoGame.Forms";
             this.toolStripDropDownButtonGitHub.Click += new System.EventHandler(this.toolStripDropDownButtonGitHub_Click);
             // 
@@ -524,19 +522,9 @@
             this.toolStripDropDownButtonWiki.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonWiki.Image")));
             this.toolStripDropDownButtonWiki.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonWiki.Name = "toolStripDropDownButtonWiki";
-            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(100, 36);
+            this.toolStripDropDownButtonWiki.Size = new System.Drawing.Size(98, 35);
             this.toolStripDropDownButtonWiki.Text = "Wiki";
             this.toolStripDropDownButtonWiki.Click += new System.EventHandler(this.toolStripDropDownButtonWiki_Click);
-            // 
-            // toolStripDropDownButtonTwitter
-            // 
-            this.toolStripDropDownButtonTwitter.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripDropDownButtonTwitter.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonTwitter.Image")));
-            this.toolStripDropDownButtonTwitter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonTwitter.Name = "toolStripDropDownButtonTwitter";
-            this.toolStripDropDownButtonTwitter.Size = new System.Drawing.Size(204, 36);
-            this.toolStripDropDownButtonTwitter.Text = "@BlizzCrafter";
-            this.toolStripDropDownButtonTwitter.Click += new System.EventHandler(this.toolStripDropDownButtonTwitter_Click);
             // 
             // MainWindow
             // 
@@ -592,7 +580,6 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonGitHub;
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
         private System.Windows.Forms.Button buttonHelp;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonTwitter;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonWiki;
         private Tests.Welcome welcomeControl;
         private System.Windows.Forms.TabPage tabPageAdvancedInput;
