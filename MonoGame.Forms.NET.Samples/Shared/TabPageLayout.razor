@@ -51,18 +51,22 @@
         else if (key == ControlKeys.MonoGame) 
         {
             ControlPanel.MonoGameActive = "active";
+            Navigate.NavigateTo("/monogame");
         }
         else if (key == ControlKeys.AdvancedInput) 
         {
             ControlPanel.AdvancedInputActive = "active";
+            Navigate.NavigateTo("/advanced");
         }
         else if (key == ControlKeys.Multiple) 
         {
             ControlPanel.MultipleActive = "active";
+            Navigate.NavigateTo("/multiple");
         }
         else if (key == ControlKeys.Info) 
         {
             ControlPanel.InfoActive = "active";
+            Navigate.NavigateTo("/info");
         }
     }    
 

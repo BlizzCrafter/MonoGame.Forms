@@ -1,9 +1,13 @@
 ﻿@using MonoGame.Forms.NET.Controls;
 @using MonoGame.Forms.NET.Samples.Tests.Container;
 
-@page "/invalidation"
+@page "/multiple"
 
 @inject MonoGameControlPanel ControlPanel
+
+<div class="alert alert-info" role="alert">
+    Select one of the sample projects above!
+</div>
 
 <style>
     body {
@@ -12,12 +16,13 @@
 </style>
 
 @code {
-    public InvalidationControl Control { get; set; }
+    public MonoGameControl Control { get; set; }
     public string BackgroundColor = Color.CornflowerBlue.Name;
 
     protected override void OnInitialized()
     {
-        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Invalidation) as InvalidationControl;
+        var container = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Multiple) as SplitContainer;
+        Control = container.Panel1.Controls[0] as MonoGameControl;
         if (Control != null && Control.Editor != null)
         {
             Color color = Color.FromArgb(

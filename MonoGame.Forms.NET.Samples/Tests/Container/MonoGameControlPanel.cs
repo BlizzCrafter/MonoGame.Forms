@@ -14,7 +14,7 @@ namespace MonoGame.Forms.NET.Samples.Tests.Container
             Info
         }
 
-        public string WelcomeActive { get; set; } = "";
+        public string WelcomeActive { get; set; } = "active";
         public string InvalidationActive { get; set; } = "";
         public string MonoGameActive { get; set; } = "";
         public string AdvancedInputActive { get; set; } = "";
@@ -23,7 +23,7 @@ namespace MonoGame.Forms.NET.Samples.Tests.Container
 
         public Control InitializeMonoGameControl(ControlKeys key)
         {
-            HideMonoGameControls();
+            ResetControls();
 
             var control = Controls[key.ToString()];
             if (control == null)
@@ -36,13 +36,36 @@ namespace MonoGame.Forms.NET.Samples.Tests.Container
                 {
                     Controls.Add(control = new InvalidationTest() { Name = key.ToString(), Dock = DockStyle.Fill, GraphicsProfile = GraphicsProfile.Reach, Width = Width, Height = Height });
                 }
+                else if (key == ControlKeys.MonoGame)
+                {
+                    Controls.Add(control = new MonoGameTest() { Name = key.ToString(), Dock = DockStyle.Fill, GraphicsProfile = GraphicsProfile.Reach, Width = Width, Height = Height });
+                }
+                else if (key == ControlKeys.AdvancedInput)
+                {
+                    Controls.Add(control = new AdvancedInputTest() { Name = key.ToString(), Dock = DockStyle.Fill, GraphicsProfile = GraphicsProfile.Reach, Width = Width, Height = Height });
+                }
+                else if (key == ControlKeys.Multiple)
+                {
+                    Controls.Add(control = new SplitContainer() { Name = key.ToString(), Dock = DockStyle.Fill });
+                    ((SplitContainer)control).Panel1.Controls.Add(new MultipleControls_a_Test() { Name = $"{key}_a", Dock = DockStyle.Fill, GraphicsProfile = GraphicsProfile.Reach, Width = Width, Height = Height });
+                    ((SplitContainer)control).Panel2.Controls.Add(new MultipleControls_b_Test() { Name = $"{key}_b", Dock = DockStyle.Fill, GraphicsProfile = GraphicsProfile.Reach, Width = Width, Height = Height });
+                }
+                else if (key == ControlKeys.Info)
+                {
+                    var root = Parent.Parent as SplitContainer;
+                    root.Panel2Collapsed = true;
+                }
             }
             else control.Visible = true;
+
             return control;
         }
 
-        private void HideMonoGameControls()
+        private void ResetControls()
         {
+            var root = Parent.Parent as SplitContainer;
+            root.Panel2Collapsed = false;
+
             foreach (Control control in Controls)
             {
                 control.Visible = false;

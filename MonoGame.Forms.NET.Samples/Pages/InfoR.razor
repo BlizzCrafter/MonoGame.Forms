@@ -1,0 +1,27 @@
+﻿@using MonoGame.Forms.NET.Controls;
+@using MonoGame.Forms.NET.Samples.Tests.Container;
+
+@page "/info"
+
+@inject MonoGameControlPanel ControlPanel
+
+<div class="alert alert-info" role="alert">
+    Select one of the sample projects above!
+</div>
+
+<style>
+    body {
+        background-color: @BackgroundColor;
+    }
+</style>
+
+@code {
+    public string BackgroundColor = Color.CornflowerBlue.Name;
+
+    protected override void OnInitialized()
+    {
+        ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Info);
+
+        base.OnInitialized();
+    }
+}
