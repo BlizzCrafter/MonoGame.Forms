@@ -4,6 +4,7 @@
 @page "/info"
 
 @inject MonoGameControlPanel ControlPanel
+@inject NavigationManager Navigate
 
 <div class="container p-4">
     <div class="card mb-3" style="background-color: #ba51ff; box-shadow: 1px 1px 2px #342300, 0 0 25px #ffc851, 0 0 1px #a97301">
@@ -51,11 +52,12 @@
 
 <div class="container-fluid">
     <nav class="nav nav-pills nav-fill fixed-bottom bg-dark rounded-5 shadow-sm">
-        <button @onclick="@(() => Navigate(NavigateKey.NetFramework))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Net Framework</button>
-        <button @onclick="@(() => Navigate(NavigateKey.NET))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Net 6.0</button>
-        <button @onclick="@(() => Navigate(NavigateKey.Blazor))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Blazor</button>
-        <button @onclick="@(() => Navigate(NavigateKey.Wiki))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Wiki</button>
-        <button @onclick="@(() => Navigate(NavigateKey.Nuget))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-box2-heart-fill" type="button"> Nuget</button>
+        <button @onclick="@(() => OpenURL(NavigateKey.NetFramework))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Net Framework</button>
+        <button @onclick="@(() => OpenURL(NavigateKey.NET))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Net 6.0</button>
+        <button @onclick="@(() => OpenURL(NavigateKey.Blazor))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Blazor</button>
+        <button @onclick="@(() => OpenURL(NavigateKey.Wiki))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Wiki</button>
+        <button @onclick="@(() => OpenURL(NavigateKey.Nuget))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-box2-heart-fill" type="button"> Nuget</button>
+        <button @onclick="@(() => OpenURL(NavigateKey.Templates))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-rocket" type="button"> Templates</button>
     </nav>
 </div>
 
@@ -76,7 +78,8 @@
         NET,
         Blazor,
         Wiki,
-        Nuget
+        Nuget,
+        Templates
     }
 
     protected override void OnInitialized()
@@ -86,8 +89,13 @@
         base.OnInitialized();
     }
 
-    public void Navigate(NavigateKey key)
+    public void OpenURL(NavigateKey key)
     {
-
+        if (key == NavigateKey.NetFramework) Navigate.NavigateTo("https://github.com/BlizzCrafter/MonoGame.Forms");
+        else if (key == NavigateKey.NET) Navigate.NavigateTo("https://github.com/BlizzCrafter/MonoGame.Forms/tree/Net6.0");
+        else if (key == NavigateKey.Blazor) Navigate.NavigateTo("https://github.com/BlizzCrafter/MonoGame.Forms");
+        else if (key == NavigateKey.Wiki) Navigate.NavigateTo("https://github.com/BlizzCrafter/MonoGame.Forms/wiki");
+        else if (key == NavigateKey.Nuget) Navigate.NavigateTo("https://www.nuget.org/packages/MonoGame.Forms.DX");
+        else if (key == NavigateKey.Templates) Navigate.NavigateTo("https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337");
     }        
 }
