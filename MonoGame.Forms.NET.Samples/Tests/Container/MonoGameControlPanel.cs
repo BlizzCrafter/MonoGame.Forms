@@ -20,6 +20,7 @@ namespace MonoGame.Forms.NET.Samples.Tests.Container
         public string AdvancedInputActive { get; set; } = "";
         public string MultipleActive { get; set; } = "";
         public string InfoActive { get; set; } = "";
+        public string DarkNavbarActive { get; set; } = "";
 
         public Control InitializeMonoGameControl(ControlKeys key)
         {

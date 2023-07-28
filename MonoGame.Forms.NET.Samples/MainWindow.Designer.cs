@@ -103,9 +103,9 @@ namespace MonoGame.Forms.NET.Samples
             tabPageWelcome.Controls.Add(trackBarLogoFrames);
             tabPageWelcome.Controls.Add(buttonEdit);
             tabPageWelcome.Controls.Add(welcomeControl);
-            tabPageWelcome.Location = new Point(4, 24);
+            tabPageWelcome.Location = new Point(4, 29);
             tabPageWelcome.Name = "tabPageWelcome";
-            tabPageWelcome.Size = new Size(728, 400);
+            tabPageWelcome.Size = new Size(728, 395);
             tabPageWelcome.TabIndex = 2;
             tabPageWelcome.Text = "Welcome";
             tabPageWelcome.UseVisualStyleBackColor = true;
@@ -114,10 +114,10 @@ namespace MonoGame.Forms.NET.Samples
             // 
             trackBarLogoFrames.Dock = DockStyle.Bottom;
             trackBarLogoFrames.LargeChange = 1;
-            trackBarLogoFrames.Location = new Point(0, 355);
+            trackBarLogoFrames.Location = new Point(0, 339);
             trackBarLogoFrames.Maximum = 99;
             trackBarLogoFrames.Name = "trackBarLogoFrames";
-            trackBarLogoFrames.Size = new Size(728, 45);
+            trackBarLogoFrames.Size = new Size(728, 56);
             trackBarLogoFrames.TabIndex = 2;
             trackBarLogoFrames.Visible = false;
             trackBarLogoFrames.Scroll += trackBarLogoFrames_Scroll;
@@ -141,7 +141,7 @@ namespace MonoGame.Forms.NET.Samples
             welcomeControl.Location = new Point(0, 0);
             welcomeControl.MouseHoverUpdatesOnly = false;
             welcomeControl.Name = "welcomeControl";
-            welcomeControl.Size = new Size(728, 400);
+            welcomeControl.Size = new Size(728, 395);
             welcomeControl.TabIndex = 3;
             welcomeControl.Text = "Welcome to MonoGame.Forms!";
             // 
@@ -150,10 +150,10 @@ namespace MonoGame.Forms.NET.Samples
             tabPageDrawControl.Controls.Add(panelInvalidation);
             tabPageDrawControl.Controls.Add(textBoxTestText);
             tabPageDrawControl.Controls.Add(invalidationTestControl);
-            tabPageDrawControl.Location = new Point(4, 24);
+            tabPageDrawControl.Location = new Point(4, 29);
             tabPageDrawControl.Name = "tabPageDrawControl";
             tabPageDrawControl.Padding = new Padding(3);
-            tabPageDrawControl.Size = new Size(728, 400);
+            tabPageDrawControl.Size = new Size(728, 395);
             tabPageDrawControl.TabIndex = 0;
             tabPageDrawControl.Text = "Invalidation Control";
             tabPageDrawControl.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@ namespace MonoGame.Forms.NET.Samples
             panelInvalidation.BackColor = Color.CornflowerBlue;
             panelInvalidation.Controls.Add(buttonInvalidate);
             panelInvalidation.Dock = DockStyle.Bottom;
-            panelInvalidation.Location = new Point(3, 313);
+            panelInvalidation.Location = new Point(3, 308);
             panelInvalidation.Name = "panelInvalidation";
             panelInvalidation.Size = new Size(722, 34);
             panelInvalidation.TabIndex = 4;
@@ -185,7 +185,7 @@ namespace MonoGame.Forms.NET.Samples
             textBoxTestText.Dock = DockStyle.Bottom;
             textBoxTestText.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxTestText.ForeColor = SystemColors.Control;
-            textBoxTestText.Location = new Point(3, 347);
+            textBoxTestText.Location = new Point(3, 342);
             textBoxTestText.Multiline = true;
             textBoxTestText.Name = "textBoxTestText";
             textBoxTestText.Size = new Size(722, 50);
@@ -202,7 +202,7 @@ namespace MonoGame.Forms.NET.Samples
             invalidationTestControl.ForeColor = Color.Yellow;
             invalidationTestControl.Location = new Point(3, 3);
             invalidationTestControl.Name = "invalidationTestControl";
-            invalidationTestControl.Size = new Size(722, 394);
+            invalidationTestControl.Size = new Size(722, 389);
             invalidationTestControl.TabIndex = 5;
             invalidationTestControl.Text = "This 'InvalidationControl' has no game loop, but it's updated through invalidation!";
             // 
@@ -216,10 +216,10 @@ namespace MonoGame.Forms.NET.Samples
             tabPageUpdateControl.Controls.Add(buttonResetCam);
             tabPageUpdateControl.Controls.Add(buttonMoveCam);
             tabPageUpdateControl.Controls.Add(monoGameTestControl);
-            tabPageUpdateControl.Location = new Point(4, 24);
+            tabPageUpdateControl.Location = new Point(4, 29);
             tabPageUpdateControl.Name = "tabPageUpdateControl";
             tabPageUpdateControl.Padding = new Padding(3);
-            tabPageUpdateControl.Size = new Size(728, 400);
+            tabPageUpdateControl.Size = new Size(728, 395);
             tabPageUpdateControl.TabIndex = 1;
             tabPageUpdateControl.Text = "MonoGame Control";
             tabPageUpdateControl.UseVisualStyleBackColor = true;
@@ -228,7 +228,7 @@ namespace MonoGame.Forms.NET.Samples
             // 
             buttonHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonHelp.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonHelp.Location = new Point(9, 339);
+            buttonHelp.Location = new Point(9, 334);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Size = new Size(28, 25);
             buttonHelp.TabIndex = 7;
@@ -244,7 +244,7 @@ namespace MonoGame.Forms.NET.Samples
             trackBarCamZoom.Maximum = 8;
             trackBarCamZoom.Name = "trackBarCamZoom";
             trackBarCamZoom.Orientation = Orientation.Vertical;
-            trackBarCamZoom.Size = new Size(45, 297);
+            trackBarCamZoom.Size = new Size(56, 292);
             trackBarCamZoom.TabIndex = 6;
             trackBarCamZoom.TickStyle = TickStyle.TopLeft;
             trackBarCamZoom.Scroll += trackBarCamZoom_Scroll;
@@ -253,9 +253,9 @@ namespace MonoGame.Forms.NET.Samples
             // 
             checkBoxCam.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             checkBoxCam.AutoSize = true;
-            checkBoxCam.Location = new Point(149, 372);
+            checkBoxCam.Location = new Point(149, 362);
             checkBoxCam.Name = "checkBoxCam";
-            checkBoxCam.Size = new Size(51, 19);
+            checkBoxCam.Size = new Size(61, 24);
             checkBoxCam.TabIndex = 5;
             checkBoxCam.Text = "Cam";
             checkBoxCam.UseVisualStyleBackColor = true;
@@ -267,9 +267,9 @@ namespace MonoGame.Forms.NET.Samples
             checkBoxCursor.AutoSize = true;
             checkBoxCursor.Checked = true;
             checkBoxCursor.CheckState = CheckState.Checked;
-            checkBoxCursor.Location = new Point(71, 372);
+            checkBoxCursor.Location = new Point(71, 362);
             checkBoxCursor.Name = "checkBoxCursor";
-            checkBoxCursor.Size = new Size(61, 19);
+            checkBoxCursor.Size = new Size(73, 24);
             checkBoxCursor.TabIndex = 4;
             checkBoxCursor.Text = "Cursor";
             checkBoxCursor.UseVisualStyleBackColor = true;
@@ -281,9 +281,9 @@ namespace MonoGame.Forms.NET.Samples
             checkBoxFPS.AutoSize = true;
             checkBoxFPS.Checked = true;
             checkBoxFPS.CheckState = CheckState.Checked;
-            checkBoxFPS.Location = new Point(9, 372);
+            checkBoxFPS.Location = new Point(9, 362);
             checkBoxFPS.Name = "checkBoxFPS";
-            checkBoxFPS.Size = new Size(45, 19);
+            checkBoxFPS.Size = new Size(54, 24);
             checkBoxFPS.TabIndex = 3;
             checkBoxFPS.Text = "FPS";
             checkBoxFPS.UseVisualStyleBackColor = true;
@@ -292,7 +292,7 @@ namespace MonoGame.Forms.NET.Samples
             // buttonResetCam
             // 
             buttonResetCam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonResetCam.Location = new Point(611, 309);
+            buttonResetCam.Location = new Point(611, 304);
             buttonResetCam.Name = "buttonResetCam";
             buttonResetCam.Size = new Size(109, 30);
             buttonResetCam.TabIndex = 2;
@@ -304,7 +304,7 @@ namespace MonoGame.Forms.NET.Samples
             // 
             buttonMoveCam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonMoveCam.Cursor = Cursors.SizeAll;
-            buttonMoveCam.Location = new Point(611, 345);
+            buttonMoveCam.Location = new Point(611, 340);
             buttonMoveCam.Name = "buttonMoveCam";
             buttonMoveCam.Size = new Size(109, 49);
             buttonMoveCam.TabIndex = 1;
@@ -322,7 +322,7 @@ namespace MonoGame.Forms.NET.Samples
             monoGameTestControl.Location = new Point(3, 3);
             monoGameTestControl.MouseHoverUpdatesOnly = false;
             monoGameTestControl.Name = "monoGameTestControl";
-            monoGameTestControl.Size = new Size(722, 394);
+            monoGameTestControl.Size = new Size(722, 389);
             monoGameTestControl.TabIndex = 8;
             monoGameTestControl.Text = "The 'MonoGameControl' has a game loop!";
             monoGameTestControl.VisibleChanged += monoGameTestControl_VisibleChanged;
@@ -334,9 +334,9 @@ namespace MonoGame.Forms.NET.Samples
             tabPageAdvancedInput.Controls.Add(checkBoxShowStats);
             tabPageAdvancedInput.Controls.Add(buttonResetPlayer);
             tabPageAdvancedInput.Controls.Add(advancedControlsTest);
-            tabPageAdvancedInput.Location = new Point(4, 24);
+            tabPageAdvancedInput.Location = new Point(4, 29);
             tabPageAdvancedInput.Name = "tabPageAdvancedInput";
-            tabPageAdvancedInput.Size = new Size(728, 400);
+            tabPageAdvancedInput.Size = new Size(728, 395);
             tabPageAdvancedInput.TabIndex = 4;
             tabPageAdvancedInput.Text = "Advanced Input";
             tabPageAdvancedInput.UseVisualStyleBackColor = true;
@@ -345,7 +345,7 @@ namespace MonoGame.Forms.NET.Samples
             // 
             buttonHelpInput.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonHelpInput.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonHelpInput.Location = new Point(114, 361);
+            buttonHelpInput.Location = new Point(114, 356);
             buttonHelpInput.Name = "buttonHelpInput";
             buttonHelpInput.Size = new Size(59, 31);
             buttonHelpInput.TabIndex = 4;
@@ -359,9 +359,9 @@ namespace MonoGame.Forms.NET.Samples
             checkBoxShowHelp.AutoSize = true;
             checkBoxShowHelp.Checked = true;
             checkBoxShowHelp.CheckState = CheckState.Checked;
-            checkBoxShowHelp.Location = new Point(8, 336);
+            checkBoxShowHelp.Location = new Point(8, 326);
             checkBoxShowHelp.Name = "checkBoxShowHelp";
-            checkBoxShowHelp.Size = new Size(83, 19);
+            checkBoxShowHelp.Size = new Size(103, 24);
             checkBoxShowHelp.TabIndex = 3;
             checkBoxShowHelp.Text = "Show Help";
             checkBoxShowHelp.UseVisualStyleBackColor = true;
@@ -373,9 +373,9 @@ namespace MonoGame.Forms.NET.Samples
             checkBoxShowStats.AutoSize = true;
             checkBoxShowStats.Checked = true;
             checkBoxShowStats.CheckState = CheckState.Checked;
-            checkBoxShowStats.Location = new Point(8, 309);
+            checkBoxShowStats.Location = new Point(8, 299);
             checkBoxShowStats.Name = "checkBoxShowStats";
-            checkBoxShowStats.Size = new Size(83, 19);
+            checkBoxShowStats.Size = new Size(103, 24);
             checkBoxShowStats.TabIndex = 2;
             checkBoxShowStats.Text = "Show Stats";
             checkBoxShowStats.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@ namespace MonoGame.Forms.NET.Samples
             // buttonResetPlayer
             // 
             buttonResetPlayer.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buttonResetPlayer.Location = new Point(8, 361);
+            buttonResetPlayer.Location = new Point(8, 356);
             buttonResetPlayer.Name = "buttonResetPlayer";
             buttonResetPlayer.Size = new Size(100, 31);
             buttonResetPlayer.TabIndex = 1;
@@ -401,16 +401,16 @@ namespace MonoGame.Forms.NET.Samples
             advancedControlsTest.Location = new Point(0, 0);
             advancedControlsTest.MouseHoverUpdatesOnly = false;
             advancedControlsTest.Name = "advancedControlsTest";
-            advancedControlsTest.Size = new Size(728, 400);
+            advancedControlsTest.Size = new Size(728, 395);
             advancedControlsTest.TabIndex = 0;
             advancedControlsTest.Text = "Test Keyboard, Mouse and GamePad input here!";
             // 
             // tabPageMultipleControls
             // 
             tabPageMultipleControls.Controls.Add(splitContainerMapHost);
-            tabPageMultipleControls.Location = new Point(4, 24);
+            tabPageMultipleControls.Location = new Point(4, 29);
             tabPageMultipleControls.Name = "tabPageMultipleControls";
-            tabPageMultipleControls.Size = new Size(728, 400);
+            tabPageMultipleControls.Size = new Size(728, 395);
             tabPageMultipleControls.TabIndex = 5;
             tabPageMultipleControls.Text = "Multiple Controls";
             tabPageMultipleControls.UseVisualStyleBackColor = true;
@@ -429,7 +429,7 @@ namespace MonoGame.Forms.NET.Samples
             // splitContainerMapHost.Panel2
             // 
             splitContainerMapHost.Panel2.Controls.Add(multipleControls_Second_Test1);
-            splitContainerMapHost.Size = new Size(728, 399);
+            splitContainerMapHost.Size = new Size(728, 395);
             splitContainerMapHost.SplitterDistance = 350;
             splitContainerMapHost.TabIndex = 3;
             splitContainerMapHost.VisibleChanged += splitContainerMapHost_VisibleChanged;
@@ -438,7 +438,7 @@ namespace MonoGame.Forms.NET.Samples
             // 
             buttonHelpControls.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonHelpControls.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonHelpControls.Location = new Point(3, 372);
+            buttonHelpControls.Location = new Point(3, 368);
             buttonHelpControls.Name = "buttonHelpControls";
             buttonHelpControls.Size = new Size(75, 24);
             buttonHelpControls.TabIndex = 2;
@@ -455,7 +455,7 @@ namespace MonoGame.Forms.NET.Samples
             multipleControls_First_Test1.Location = new Point(0, 0);
             multipleControls_First_Test1.MouseHoverUpdatesOnly = false;
             multipleControls_First_Test1.Name = "multipleControls_First_Test1";
-            multipleControls_First_Test1.Size = new Size(350, 399);
+            multipleControls_First_Test1.Size = new Size(350, 395);
             multipleControls_First_Test1.TabIndex = 0;
             multipleControls_First_Test1.Text = "Left Map";
             // 
@@ -468,7 +468,7 @@ namespace MonoGame.Forms.NET.Samples
             multipleControls_Second_Test1.Location = new Point(0, 0);
             multipleControls_Second_Test1.MouseHoverUpdatesOnly = false;
             multipleControls_Second_Test1.Name = "multipleControls_Second_Test1";
-            multipleControls_Second_Test1.Size = new Size(374, 399);
+            multipleControls_Second_Test1.Size = new Size(374, 395);
             multipleControls_Second_Test1.TabIndex = 1;
             multipleControls_Second_Test1.Text = "Right Map";
             // 
@@ -476,9 +476,9 @@ namespace MonoGame.Forms.NET.Samples
             // 
             tabPageInfo.Controls.Add(richTextBoxLicense);
             tabPageInfo.Controls.Add(statusStrip);
-            tabPageInfo.Location = new Point(4, 24);
+            tabPageInfo.Location = new Point(4, 29);
             tabPageInfo.Name = "tabPageInfo";
-            tabPageInfo.Size = new Size(728, 400);
+            tabPageInfo.Size = new Size(728, 395);
             tabPageInfo.TabIndex = 3;
             tabPageInfo.Text = "Info";
             tabPageInfo.UseVisualStyleBackColor = true;
@@ -490,7 +490,7 @@ namespace MonoGame.Forms.NET.Samples
             richTextBoxLicense.Location = new Point(0, 0);
             richTextBoxLicense.Name = "richTextBoxLicense";
             richTextBoxLicense.ReadOnly = true;
-            richTextBoxLicense.Size = new Size(728, 369);
+            richTextBoxLicense.Size = new Size(728, 358);
             richTextBoxLicense.TabIndex = 1;
             richTextBoxLicense.Text = resources.GetString("richTextBoxLicense.Text");
             richTextBoxLicense.ZoomFactor = 1.5F;
@@ -499,9 +499,9 @@ namespace MonoGame.Forms.NET.Samples
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonGitHub, toolStripDropDownButtonWiki });
-            statusStrip.Location = new Point(0, 369);
+            statusStrip.Location = new Point(0, 358);
             statusStrip.Name = "statusStrip";
-            statusStrip.Size = new Size(728, 31);
+            statusStrip.Size = new Size(728, 37);
             statusStrip.SizingGrip = false;
             statusStrip.TabIndex = 0;
             // 
@@ -510,7 +510,7 @@ namespace MonoGame.Forms.NET.Samples
             toolStripDropDownButtonGitHub.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             toolStripDropDownButtonGitHub.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButtonGitHub.Name = "toolStripDropDownButtonGitHub";
-            toolStripDropDownButtonGitHub.Size = new Size(190, 29);
+            toolStripDropDownButtonGitHub.Size = new Size(225, 35);
             toolStripDropDownButtonGitHub.Text = "MonoGame.Forms";
             toolStripDropDownButtonGitHub.Click += toolStripDropDownButtonGitHub_Click;
             // 
@@ -519,7 +519,7 @@ namespace MonoGame.Forms.NET.Samples
             toolStripDropDownButtonWiki.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             toolStripDropDownButtonWiki.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButtonWiki.Name = "toolStripDropDownButtonWiki";
-            toolStripDropDownButtonWiki.Size = new Size(65, 29);
+            toolStripDropDownButtonWiki.Size = new Size(78, 35);
             toolStripDropDownButtonWiki.Text = "Wiki";
             toolStripDropDownButtonWiki.Click += toolStripDropDownButtonWiki_Click;
             // 

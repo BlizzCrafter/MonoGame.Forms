@@ -7,7 +7,7 @@
 @inject NavigationManager Navigate
 
 <div class="container-fluid">
-    <ul class="nav nav-pills nav-fill">
+    <ul class="nav nav-pills nav-fill @ControlPanel.DarkNavbarActive">
         <li class="nav-item pr-1">
             <a @onclick="@(() => SetActive(ControlKeys.Welcome))" class="nav-link text-warning bi bi-box-fill @ControlPanel.WelcomeActive" href="#" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"> Welcome</a>
         </li>
@@ -66,6 +66,7 @@
         else if (key == ControlKeys.Info) 
         {
             ControlPanel.InfoActive = "active";
+            ControlPanel.DarkNavbarActive = "bg-dark rounded";
             Navigate.NavigateTo("/info");
         }
     }    
@@ -78,5 +79,6 @@
         ControlPanel.AdvancedInputActive = "";
         ControlPanel.MultipleActive = "";
         ControlPanel.InfoActive = "";
+        ControlPanel.DarkNavbarActive = "";
     }
 }

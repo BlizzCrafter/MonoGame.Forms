@@ -5,18 +5,79 @@
 
 @inject MonoGameControlPanel ControlPanel
 
-<div class="alert alert-info" role="alert">
-    Select one of the sample projects above!
+<div class="container p-4">
+    <div class="card mb-3" style="background-color: #ba51ff; box-shadow: 1px 1px 2px #342300, 0 0 25px #ffc851, 0 0 1px #a97301">
+        <img src="images/LogoSquare_Icon_512.png" class="card-img-top rounded mx-auto d-block" style="max-height: 192px; max-width: 192px;" alt="social preview image">
+        <div class="card-header">
+            <span class="font-weight-bold">MonoGame.Forms</span> <p />
+            <span class="font-italic">Copyright <i class="pull-right bi bi-c-circle"></i> 2017-2023 BlizzCrafter</span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Microsoft Public License (MS-PL)</h5>
+            <p class="card-text text-break font-monospace text-justify">
+                This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
+            <p />
+                1. Definitions
+                The terms "reproduce," "reproduction," "derivative works," and "distribution" have the
+                same meaning here as under U.S. copyright law.
+            <p />
+                A "contribution" is the original software, or any additions or changes to the software.
+            <p />
+                A "contributor" is any person that distributes its contribution under this license.
+            <p />
+                "Licensed patents" are a contributor's patent claims that read directly on its contribution.
+            <p />
+                2. Grant of Rights
+            <p />
+                (A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
+            <p />
+                (B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
+            <p />
+                3. Conditions and Limitations
+            <p />
+                (A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
+            <p />
+                (B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
+            <p />
+                (C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
+            <p />
+                (D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
+            <p />
+                (E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <nav class="nav nav-pills nav-fill fixed-bottom bg-dark rounded-5 shadow-sm">
+        <button @onclick="@(() => Navigate(NavigateKey.NetFramework))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Net Framework</button>
+        <button @onclick="@(() => Navigate(NavigateKey.NET))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Net 6.0</button>
+        <button @onclick="@(() => Navigate(NavigateKey.Blazor))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Blazor</button>
+        <button @onclick="@(() => Navigate(NavigateKey.Wiki))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-github" type="button"> Wiki</button>
+        <button @onclick="@(() => Navigate(NavigateKey.Nuget))" class="nav-item pr-1 btn btn-outline-info me-2 pr-3 bi bi-box2-heart-fill" type="button"> Nuget</button>
+    </nav>
 </div>
 
 <style>
     body {
-        background-color: @BackgroundColor;
+        background-color: #17a2b8;
+        opacity: 0.98;
+        background-image: linear-gradient(30deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), linear-gradient(150deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), linear-gradient(30deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), linear-gradient(150deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), linear-gradient(60deg, #343a40 25%, transparent 25.5%, transparent 75%, #343a40 75%, #343a40), linear-gradient(60deg, #343a40 25%, transparent 25.5%, transparent 75%, #343a40 75%, #343a40);
+        background-size: 20px 35px;
+        background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
     }
 </style>
 
 @code {
-    public string BackgroundColor = Color.CornflowerBlue.Name;
+    public enum NavigateKey
+    {
+        NetFramework,
+        NET,
+        Blazor,
+        Wiki,
+        Nuget
+    }
 
     protected override void OnInitialized()
     {
@@ -24,4 +85,9 @@
 
         base.OnInitialized();
     }
-}
+
+    public void Navigate(NavigateKey key)
+    {
+
+    }        
+    }

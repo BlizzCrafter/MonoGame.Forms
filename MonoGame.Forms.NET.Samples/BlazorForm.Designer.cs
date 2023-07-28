@@ -43,7 +43,7 @@
             blazorWebView.Dock = DockStyle.Fill;
             blazorWebView.Location = new Point(0, 0);
             blazorWebView.Name = "blazorWebView";
-            blazorWebView.Size = new Size(1262, 124);
+            blazorWebView.Size = new Size(1262, 133);
             blazorWebView.TabIndex = 0;
             blazorWebView.Text = "blazorWebView1";
             // 
@@ -57,7 +57,7 @@
             monoGameControlPanel.MonoGameActive = "";
             monoGameControlPanel.MultipleActive = "";
             monoGameControlPanel.Name = "monoGameControlPanel";
-            monoGameControlPanel.Size = new Size(1262, 548);
+            monoGameControlPanel.Size = new Size(1262, 539);
             monoGameControlPanel.TabIndex = 2;
             monoGameControlPanel.WelcomeActive = "active";
             // 
@@ -78,7 +78,7 @@
             // 
             splitContainer.Panel2.Controls.Add(monoGameControlPanel);
             splitContainer.Size = new Size(1262, 673);
-            splitContainer.SplitterDistance = 124;
+            splitContainer.SplitterDistance = 133;
             splitContainer.SplitterWidth = 1;
             splitContainer.TabIndex = 3;
             // 
