@@ -1,12 +1,54 @@
 ﻿@using MonoGame.Forms.NET.Controls;
 @using MonoGame.Forms.NET.Samples.Tests.Container;
+@using MonoGame.Forms.NET.Samples.Tests;
 
 @page "/monogame"
 
 @inject MonoGameControlPanel ControlPanel
 
-<div class="alert alert-info" role="alert">
-    Select one of the sample projects above!
+<div class="container-fluid pt-2">
+    <div class="row align-items-center">
+        <div class="col-3">
+            <div class="form-check form-check-inline">
+                <input @oninput="@((e) => { Control.Editor.ShowFPS = (bool)e.Value; })" class="form-check-input" type="checkbox" id="fpsCheck" value="true" checked>
+                <label class="form-check-label" for="inlineCheckbox1">FPS</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input @oninput="@((e) => { Control.Editor.ShowCursorPosition = (bool)e.Value; })" class="form-check-input" type="checkbox" id="cursorCheck" value="true" checked>
+                <label class="form-check-label" for="inlineCheckbox2">CURSOR</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input @oninput="@((e) => { Control.Editor.ShowCamPosition = (bool)e.Value; })" class="form-check-input" type="checkbox" id="camCheck" value="false">
+                <label class="form-check-label" for="inlineCheckbox3">CAM</label>
+            </div>
+        </div>
+        <div class="col-5 form-inline">
+            <button @onmousedown="MoveCamClick" @onmouseup="MoveCamClick" @onmousemove="MoveCam" @onmouseout="MoveCamOut" @onmouseover="MoveCamOut" @onclick:preventDefault="true" @onclick:stopPropagation="true" type="submit" class="form-control btn btn-primary w-50">Move Cam</button>
+            <button @onclick="@ResetCam" @onclick:preventDefault="true" @onclick:stopPropagation="true" type="submit" class="form-control btn btn-primary w-50">Reset Cam</button>
+        </div>
+        <div class="col-4">
+            <div class="form-check form-check-inline">
+                <input @oninput="@CamZoom" class="form-check-input" type="radio" name="exampleRadios" id="zoom1" value="25">
+                <label class="form-check-label" for="zoom1">25</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input @oninput="@CamZoom" class="form-check-input" type="radio" name="exampleRadios" id="zoom2" value="50">
+                <label class="form-check-label" for="zoom2">50</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input @oninput="@CamZoom" class="form-check-input" type="radio" name="exampleRadios" id="zoom3" value="75">
+                <label class="form-check-label" for="zoom3">75</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input @oninput="@CamZoom" class="form-check-input" type="radio" name="exampleRadios" id="zoom4" value="100" checked>
+                <label class="form-check-label" for="zoom4">100</label>
+            </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col pt-2">
+            <textarea class="form-control" id="helpTextArea" rows="3" readonly>Please press a mouse button directly on the control below to test if the different mouse events are working correctly. The mouse events are directly delivered to the corresponding classes, so it becomes very easy to work with them in your custom editor!</textarea>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -16,12 +58,17 @@
 </style>
 
 @code {
-    public MonoGameControl Control { get; set; }
+    public MonoGameTest Control { get; set; }
     public string BackgroundColor = Color.CornflowerBlue.Name;
+
+    private bool _MoveCamClick = false;
+    private Point _CamButtonFirstMouseDownPosition;
+
+    private string _HelpText = "Please press a mouse button directly on the control to test if the different mouse events are working correctly." + Environment.NewLine + Environment.NewLine + "The mouse events are directly delivered to the corresponding classes, so it becomes very easy to work with them in your custom editor!";
 
     protected override void OnInitialized()
     {
-        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.MonoGame) as MonoGameControl;
+        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.MonoGame) as MonoGameTest;
         if (Control != null && Control.Editor != null)
         {
             Color color = Color.FromArgb(
@@ -33,5 +80,40 @@
             BackgroundColor = ColorTranslator.ToHtml(color);
         }
         base.OnInitialized();
+    }
+
+    public void MoveCam(MouseEventArgs e)
+    {
+        if (_MoveCamClick)
+        {
+            int xDiff = (_CamButtonFirstMouseDownPosition.X - (int)e.ClientX) * 10;
+            int yDiff = (_CamButtonFirstMouseDownPosition.Y - (int)e.ClientY) * 20;
+
+            Control.Editor.MoveCam(new Microsoft.Xna.Framework.Vector2(xDiff, yDiff));
+
+            _CamButtonFirstMouseDownPosition.X = (int)e.ClientX;
+            _CamButtonFirstMouseDownPosition.Y = (int)e.ClientY;
+        }
+    }
+
+    public void MoveCamClick(MouseEventArgs e)
+    {
+        _MoveCamClick = !_MoveCamClick;
+        _CamButtonFirstMouseDownPosition = new Point((int)e.ClientX, (int)e.ClientY);
+    }
+
+    public void MoveCamOut(MouseEventArgs e)
+    {
+        _MoveCamClick = false;
+    }
+
+    public void CamZoom(ChangeEventArgs e)
+    {
+        Control.Editor.Cam.Zoom = float.Parse(e.Value.ToString()) / 100f;
+    }
+
+    public void ResetCam()
+    {
+        Control.Editor.ResetCam();
     }
 }
