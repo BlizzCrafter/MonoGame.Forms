@@ -1,9 +1,21 @@
 ﻿@using MonoGame.Forms.NET.Controls;
 @using MonoGame.Forms.NET.Samples.Tests.Container;
+@using MonoGame.Forms.NET.Samples.Tests;
 
 @page "/invalidation"
 
 @inject MonoGameControlPanel ControlPanel
+
+<form>
+    <div class="form-row">
+        <div class="col-7">
+            <textarea @oninput="@((e) => { InvalidateText=(string)e.Value;})" class="form-control" id="invalidationTextArea" rows="2" placeholder="Please input text!"></textarea>
+        </div>
+        <div class="col">
+            <button @onclick="@InvalidateClick" @onclick:preventDefault="true" @onclick:stopPropagation="true" type="submit" class="form-control btn btn-primary mb-2">Invalidate!</button>
+        </div>
+    </div>
+</form>
 
 <style>
     body {
@@ -12,12 +24,13 @@
 </style>
 
 @code {
-    public InvalidationControl Control { get; set; }
+    public InvalidationTest Control { get; set; }
     public string BackgroundColor = Color.CornflowerBlue.Name;
+    public string InvalidateText { get; set; }
 
     protected override void OnInitialized()
     {
-        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Invalidation) as InvalidationControl;
+        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.Invalidation) as InvalidationTest;
         if (Control != null && Control.Editor != null)
         {
             Color color = Color.FromArgb(
@@ -29,5 +42,14 @@
             BackgroundColor = ColorTranslator.ToHtml(color);
         }
         base.OnInitialized();
+    }
+
+    public void InvalidateClick()
+    {
+        if (!string.IsNullOrEmpty(InvalidateText))
+        {
+            Control.WelcomeMessage = InvalidateText;
+            Control.Invalidate();
+        }
     }
 }
