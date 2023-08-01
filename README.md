@@ -5,7 +5,7 @@
 
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2017,%202019,%202022%20Templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337)
 
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms)
+[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX/)
 
 [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.RuntimeBuilder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.RuntimeBuilder)
 
