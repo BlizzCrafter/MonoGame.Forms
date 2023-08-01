@@ -11,7 +11,7 @@
         <div class="col-7">
             <textarea @oninput="@((e) => { InvalidateText=(string)e.Value;})" class="form-control" id="invalidationTextArea" rows="2" placeholder="Please input text!"></textarea>
         </div>
-        <div class="col">
+        <div class="col custom-control-inline pt-1">
             <button @onclick="@InvalidateClick" @onclick:preventDefault="true" @onclick:stopPropagation="true" type="submit" class="form-control btn btn-primary mb-2">Invalidate!</button>
         </div>
     </div>

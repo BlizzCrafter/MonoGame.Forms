@@ -1,12 +1,33 @@
 ﻿@using MonoGame.Forms.NET.Controls;
 @using MonoGame.Forms.NET.Samples.Tests.Container;
+@using MonoGame.Forms.NET.Samples.Tests;
 
 @page "/advanced"
 
 @inject MonoGameControlPanel ControlPanel
 
-<div class="alert alert-info" role="alert">
-    Select one of the sample projects above!
+<div class="container-fluid pt-2">
+    <div class="row align-items-center">
+        <div class="col-3">
+            <div class="form-check form-check-inline">
+                <input @oninput="@((e) => { Control.ShowStats = (bool)e.Value; })" class="form-check-input" type="checkbox" id="fpsCheck" value="true" checked>
+                <label class="form-check-label" for="fpsCheck">STATS</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input @oninput="@((e) => { Control.ShowControls = (bool)e.Value; })" class="form-check-input" type="checkbox" id="cursorCheck" value="true" checked>
+                <label class="form-check-label" for="cursorCheck">CONTROLS</label>
+            </div>
+        </div>
+        <div class="col-9 form-inline">
+            <button @onclick="@ResetPlayer" @onclick:preventDefault="true" @onclick:stopPropagation="true" type="submit" class="form-control btn btn-primary w-50">Reset Player</button>
+        </div>
+        <div class="w-100"></div>
+        <div class="col pt-2">
+            <div class="alert alert-info" role="alert">
+                Please plug in your GamePad if you want to switch from Keyboard to GamePad input.
+            </div>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -16,12 +37,12 @@
 </style>
 
 @code {
-    public MonoGameControl Control { get; set; }
+    public AdvancedInputTest Control { get; set; }
     public string BackgroundColor = Color.CornflowerBlue.Name;
 
     protected override void OnInitialized()
     {
-        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.AdvancedInput) as MonoGameControl;
+        Control = ControlPanel.InitializeMonoGameControl(MonoGameControlPanel.ControlKeys.AdvancedInput) as AdvancedInputTest;
         if (Control != null && Control.Editor != null)
         {
             Color color = Color.FromArgb(
@@ -33,5 +54,10 @@
             BackgroundColor = ColorTranslator.ToHtml(color);
         }
         base.OnInitialized();
+    }
+
+    public void ResetPlayer()
+    {
+        Control.ResetPlayer();
     }
 }

@@ -11,15 +11,15 @@
         <div class="col-3">
             <div class="form-check form-check-inline">
                 <input @oninput="@((e) => { Control.Editor.ShowFPS = (bool)e.Value; })" class="form-check-input" type="checkbox" id="fpsCheck" value="true" checked>
-                <label class="form-check-label" for="inlineCheckbox1">FPS</label>
+                <label class="form-check-label" for="fpsCheck">FPS</label>
             </div>
             <div class="form-check form-check-inline">
                 <input @oninput="@((e) => { Control.Editor.ShowCursorPosition = (bool)e.Value; })" class="form-check-input" type="checkbox" id="cursorCheck" value="true" checked>
-                <label class="form-check-label" for="inlineCheckbox2">CURSOR</label>
+                <label class="form-check-label" for="cursorCheck">CURSOR</label>
             </div>
             <div class="form-check form-check-inline">
                 <input @oninput="@((e) => { Control.Editor.ShowCamPosition = (bool)e.Value; })" class="form-check-input" type="checkbox" id="camCheck" value="false">
-                <label class="form-check-label" for="inlineCheckbox3">CAM</label>
+                <label class="form-check-label" for="camCheck">CAM</label>
             </div>
         </div>
         <div class="col-5 form-inline">
@@ -46,7 +46,9 @@
         </div>
         <div class="w-100"></div>
         <div class="col pt-2">
-            <textarea class="form-control" id="helpTextArea" rows="3" readonly>Please press a mouse button directly on the control below to test if the different mouse events are working correctly. The mouse events are directly delivered to the corresponding classes, so it becomes very easy to work with them in your custom editor!</textarea>
+            <div class="alert alert-info" role="alert">
+                Please press a mouse button directly on the control below to test if the different mouse events are working correctly. The mouse events are directly delivered to the corresponding classes, so it becomes very easy to work with them in your custom editor!
+            </div>
         </div>
     </div>
 </div>
@@ -63,8 +65,6 @@
 
     private bool _MoveCamClick = false;
     private Point _CamButtonFirstMouseDownPosition;
-
-    private string _HelpText = "Please press a mouse button directly on the control to test if the different mouse events are working correctly." + Environment.NewLine + Environment.NewLine + "The mouse events are directly delivered to the corresponding classes, so it becomes very easy to work with them in your custom editor!";
 
     protected override void OnInitialized()
     {
