@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>MonoGame.Forms.NET</id>
+    <id>MonoGame.Forms.DX</id>
     <version>3.1.0</version>
     <title>MonoGame.Forms</title>
     <authors>Marcel Härtel</authors>
