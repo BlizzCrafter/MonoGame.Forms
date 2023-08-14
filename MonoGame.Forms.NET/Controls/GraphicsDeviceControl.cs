@@ -102,6 +102,18 @@ namespace MonoGame.Forms.NET.Controls
         private Color _ForeColor = Color.CornflowerBlue;
 
         /// <summary>
+        /// Get the <see cref="GameServiceContainer"/>.
+        /// </summary>
+        [Browsable(false)]
+        public GameServiceContainer Services { get; } = new GameServiceContainer();
+
+        /// <summary>
+        /// Get the <see cref="GameComponentCollection"/>.
+        /// </summary>
+        [Browsable(false)]
+        public GameComponentCollection Components { get; private set; } = new GameComponentCollection();
+
+        /// <summary>
         /// A swap chain used for rendering to a secondary GameWindow.
         /// Note: When working with different <see cref="RenderTarget2D"/>, 
         /// you need to set the current render target back to the <see cref="SwapChainRenderTarget"/> as this is the real 'Back Buffer'. 
@@ -172,11 +184,6 @@ namespace MonoGame.Forms.NET.Controls
             }
         }
 
-        /// <summary>
-        /// Get the <see cref="GameServiceContainer"/>.
-        /// </summary>
-        protected GameServiceContainer Services { get; } = new GameServiceContainer();
-
         private GraphicsDeviceService _GraphicsDeviceService { get; set; }
 
 #pragma warning disable 1591
@@ -193,6 +200,9 @@ namespace MonoGame.Forms.NET.Controls
 
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
 
+                Components.ComponentAdded += Components_ComponentAdded;
+                Components.ComponentRemoved += Components_ComponentRemoved;
+
                 Initialize();
             }
             base.OnCreateControl();
@@ -204,6 +214,14 @@ namespace MonoGame.Forms.NET.Controls
             {
                 if (!DesignMode)
                 {
+                    for (int i = 0; i < Components.Count; i++)
+                    {
+                        var disposable = Components[i] as IDisposable;
+                        if (disposable != null)
+                            disposable.Dispose();
+                    }
+                    Components = null;
+
                     if (_GraphicsDeviceService != null)
                     {
                         _GraphicsDeviceService.Release(disposing);
@@ -340,15 +358,92 @@ namespace MonoGame.Forms.NET.Controls
                 }
             }
         }
-        
-        protected override void OnPaintBackground(PaintEventArgs pevent)
-        {
-        }
 
         protected abstract void Initialize();
         protected abstract void Draw();
 
-#region Input
+        protected override void OnPaintBackground(PaintEventArgs pevent)
+        {
+        }
+
+        #region Components
+
+        private static readonly Action<IUpdateable, GameTime> _UpdateAction =
+            (updateable, gameTime) => updateable.Update(gameTime);
+
+        private static readonly Action<IDrawable, GameTime> _DrawAction =
+            (drawable, gameTime) => drawable.Draw(gameTime);
+
+        private SortingFilteringCollection<IDrawable> _Drawables =
+            new SortingFilteringCollection<IDrawable>(
+                d => d.Visible,
+                (d, handler) => d.VisibleChanged += handler,
+                (d, handler) => d.VisibleChanged -= handler,
+                (d1, d2) => Comparer<int>.Default.Compare(d1.DrawOrder, d2.DrawOrder),
+                (d, handler) => d.DrawOrderChanged += handler,
+                (d, handler) => d.DrawOrderChanged -= handler);
+
+        private SortingFilteringCollection<IUpdateable> _Updateables =
+            new SortingFilteringCollection<IUpdateable>(
+                u => u.Enabled,
+                (u, handler) => u.EnabledChanged += handler,
+                (u, handler) => u.EnabledChanged -= handler,
+                (u1, u2) => Comparer<int>.Default.Compare(u1.UpdateOrder, u2.UpdateOrder),
+                (u, handler) => u.UpdateOrderChanged += handler,
+                (u, handler) => u.UpdateOrderChanged -= handler);
+
+        private void Components_ComponentAdded(object? sender, GameComponentCollectionEventArgs e)
+        {
+            e.GameComponent.Initialize();
+            CategorizeComponent(e.GameComponent);
+        }
+
+        private void Components_ComponentRemoved(object? sender, GameComponentCollectionEventArgs e)
+        {
+            DecategorizeComponent(e.GameComponent);
+        }
+
+        private void CategorizeComponents()
+        {
+            DecategorizeComponents();
+            for (int i = 0; i < Components.Count; ++i)
+                CategorizeComponent(Components[i]);
+        }
+
+        private void DecategorizeComponents()
+        {
+            _Updateables.Clear();
+            _Drawables.Clear();
+        }
+
+        private void CategorizeComponent(IGameComponent component)
+        {
+            if (component is IUpdateable)
+                _Updateables.Add((IUpdateable)component);
+            if (component is IDrawable)
+                _Drawables.Add((IDrawable)component);
+        }
+
+        private void DecategorizeComponent(IGameComponent component)
+        {
+            if (component is IUpdateable)
+                _Updateables.Remove((IUpdateable)component);
+            if (component is IDrawable)
+                _Drawables.Remove((IDrawable)component);
+        }
+
+        internal void UpdateComponents(GameTime gameTime)
+        {
+            _Updateables.ForEachFilteredItem(_UpdateAction, gameTime);
+        }
+
+        internal void DrawComponents(GameTime gametime)
+        {
+            _Drawables.ForEachFilteredItem(_DrawAction, gametime);
+        }
+
+        #endregion Components
+        #region Input
 
         /// <summary>
         /// If enabled the Keyboard input will work even if the current control has no focus (mouse cursor is outside of the control).
@@ -449,6 +544,6 @@ namespace MonoGame.Forms.NET.Controls
             else if (e.Delta < 0) OnMouseWheelDownwards?.Invoke(e);
         }
 
-#endregion
+        #endregion Input
     }
 }

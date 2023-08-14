@@ -50,7 +50,7 @@ namespace MonoGame.Forms.NET.Samples
 
         private void monoGameTestControl_VisibleChanged(object sender, EventArgs e)
         {
-            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.Zoom;
+            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.GetCamZoom()!.Value;
         }
 
         private void buttonMoveCam_MouseUp(object sender, MouseEventArgs e)
@@ -65,13 +65,13 @@ namespace MonoGame.Forms.NET.Samples
         }
 
         private void buttonMoveCam_MouseMove(object sender, MouseEventArgs e)
-        {
+        {            
             if (CamButtonMouseDown)
             {
                 int xDiff = CamButtonFirstMouseDownPosition.X - e.Location.X;
                 int yDiff = CamButtonFirstMouseDownPosition.Y - e.Location.Y;
 
-                monoGameTestControl.Editor.MoveCam(new Vector2(xDiff, yDiff));
+                monoGameTestControl.Editor.CamMove(new Vector2(xDiff, yDiff));
 
                 CamButtonFirstMouseDownPosition.X = e.Location.X;
                 CamButtonFirstMouseDownPosition.Y = e.Location.Y;
@@ -81,7 +81,7 @@ namespace MonoGame.Forms.NET.Samples
         private void buttonResetCam_Click(object sender, System.EventArgs e)
         {
             monoGameTestControl.Editor.ResetCam();
-            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.Cam.Zoom;
+            trackBarCamZoom.Value = (int)monoGameTestControl.Editor.GetCamZoom()!.Value;
         }
 
         private void buttonHelp_Click(object sender, EventArgs e)
@@ -91,22 +91,31 @@ namespace MonoGame.Forms.NET.Samples
 
         private void checkBoxFPS_CheckedChanged(object sender, System.EventArgs e)
         {
-            monoGameTestControl.Editor.ShowFPS = checkBoxFPS.Checked;
+            if (monoGameTestControl.Editor.FPSCounter != null)
+            {
+                monoGameTestControl.Editor.FPSCounter.ShowFPS = checkBoxFPS.Checked;
+            }
         }
 
         private void checkBoxCursor_CheckedChanged(object sender, System.EventArgs e)
         {
-            monoGameTestControl.Editor.ShowCursorPosition = checkBoxCursor.Checked;
+            if (monoGameTestControl.Editor.FPSCounter != null)
+            {
+                monoGameTestControl.Editor.FPSCounter.ShowCursorPosition = checkBoxCursor.Checked;
+            }
         }
 
         private void checkBoxCam_CheckedChanged(object sender, System.EventArgs e)
         {
-            monoGameTestControl.Editor.ShowCamPosition = checkBoxCam.Checked;
+            if (monoGameTestControl.Editor.FPSCounter != null)
+            {
+                monoGameTestControl.Editor.FPSCounter.ShowCamPosition = checkBoxCam.Checked;
+            }
         }
 
         private void trackBarCamZoom_Scroll(object sender, System.EventArgs e)
         {
-            monoGameTestControl.Editor.Cam.Zoom = 1 - ((float)trackBarCamZoom.Value / 10f);
+            monoGameTestControl.Editor.CamZoom(1 - ((float)trackBarCamZoom.Value / 10f));
         }
 
         #endregion

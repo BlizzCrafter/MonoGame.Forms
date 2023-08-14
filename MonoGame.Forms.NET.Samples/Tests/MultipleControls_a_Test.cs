@@ -21,6 +21,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
             base.Draw();
 
             DrawMap();
+            DrawComponents();
         }
     }
 }

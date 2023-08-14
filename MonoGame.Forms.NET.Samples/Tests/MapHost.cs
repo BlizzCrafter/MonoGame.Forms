@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Windows.Forms;
 using MonoGame.Forms.NET.Controls;
 using Color = Microsoft.Xna.Framework.Color;
 
@@ -10,7 +9,17 @@ namespace MonoGame.Forms.NET.Samples.Tests
     {
         private Texture2D[] HexMaps;
         private int CurrentMap { get; set; } = 0;
-        private bool ShowDebugDisplay { get; set; } = false;
+        private bool ShowDebugDisplay 
+        {
+            get { return _ShowDebugDisplay; }
+            set
+            {
+                _ShowDebugDisplay = value;
+                Editor.FPSCounter.Enabled = value;
+                Editor.FPSCounter.Visible = value;
+            }
+        }
+        private bool _ShowDebugDisplay = true;
 
         private bool CamMouseDown = false;
         private System.Drawing.Point CamFirstMouseDownPosition;
@@ -19,12 +28,14 @@ namespace MonoGame.Forms.NET.Samples.Tests
         
         private void MapHost_OnMouseWheelUpwards(MouseEventArgs e)
         {
-            Editor.Cam.Zoom += 0.1f;
+            var currentCamZoom = Editor.GetCamZoom()!.Value;
+            Editor.CamZoom(currentCamZoom += 0.1f);
         }
 
         private void MapHost_OnMouseWheelDownwards(MouseEventArgs e)
         {
-            if (Editor.Cam.Zoom > 0.7f) Editor.Cam.Zoom -= 0.1f;
+            var currentCamZoom = Editor.GetCamZoom()!.Value;
+            if (currentCamZoom > 0.7f) Editor.CamZoom(currentCamZoom -= 0.1f);
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
@@ -67,7 +78,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
                 int xDiff = CamFirstMouseDownPosition.X - e.Location.X;
                 int yDiff = CamFirstMouseDownPosition.Y - e.Location.Y;
 
-                Editor.MoveCam(new Vector2(xDiff, yDiff));
+                Editor.CamMove(new Vector2(xDiff, yDiff));
 
                 CamFirstMouseDownPosition.X = e.Location.X;
                 CamFirstMouseDownPosition.Y = e.Location.Y;
@@ -89,7 +100,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
             OnMouseWheelDownwards += MapHost_OnMouseWheelDownwards;
 
             Editor.BackgroundColor = new Color(20, 19, 40);
-            Editor.ShowCamPosition = true;
+            Editor.FPSCounter.ShowCamPosition = true;
         }
 
         protected void DrawMap()
@@ -102,8 +113,6 @@ namespace MonoGame.Forms.NET.Samples.Tests
                 Color.White);
 
             Editor.EndCamera2D();
-
-            if (ShowDebugDisplay) Editor.DrawDisplay();
         }
 
         protected override void Dispose(bool disposing)

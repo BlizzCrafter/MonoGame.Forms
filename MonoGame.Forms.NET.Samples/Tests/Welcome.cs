@@ -51,7 +51,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
 
             Editor.spriteBatch.End();
 
-            Editor.DrawDisplay();
+            DrawComponents();
         }
     }
 }

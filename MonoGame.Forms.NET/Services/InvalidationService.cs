@@ -11,10 +11,13 @@ namespace MonoGame.Forms.NET.Services
     /// </summary>
     public sealed class InvalidationService : GFXService
     {
-        internal InvalidationService(GameServiceContainer services, SwapChainRenderTarget swapChainRenderTarget)
+        internal InvalidationService(
+            GameServiceContainer services, 
+            GameComponentCollection components, 
+            SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize Service-System
-            InitializeService(services, swapChainRenderTarget);
+            InitializeService(services, components, swapChainRenderTarget);
         }
 
         /// <summary>

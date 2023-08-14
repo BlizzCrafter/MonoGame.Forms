@@ -1,12 +1,11 @@
-﻿using System.Globalization;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.NET.Components;
 
 using Color = Microsoft.Xna.Framework.Color;
 using Timer = System.Timers.Timer;
-using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using MonoGame.Forms.NET.Components.Interfaces;
 
 namespace MonoGame.Forms.NET.Services
 {
@@ -187,25 +186,6 @@ namespace MonoGame.Forms.NET.Services
         public SwapChainRenderTarget SwapChainRenderTarget { get; set; }
 
         /// <summary>
-        /// DisplayStyle enumerations for the integrated display.
-        /// </summary>
-        public enum DisplayStyle
-        {
-            /// <summary>
-            /// Draws the integrated display in the top left corner of the custom control.
-            /// </summary>
-            TopLeft,
-            /// <summary>
-            /// Draws the integrated display in the top right corner of the custom control.
-            /// </summary>
-            TopRight
-        }
-        /// <summary>
-        /// Directly sets the <see cref="DisplayStyle"/> of the integrated display.
-        /// </summary>
-        public DisplayStyle SetDisplayStyle { get; set; } = DisplayStyle.TopLeft;
-
-        /// <summary>
         /// The <see cref="ContentManager"/> is for loading custom content from the content root.
         /// </summary>
         public ContentManager Content { get; set; }
@@ -254,9 +234,11 @@ namespace MonoGame.Forms.NET.Services
         /// <summary>
         /// The Camera2D component.
         /// </summary>
-        public Camera2D Cam { get; set; }
-        private float CurrentWorldShiftX { get; set; }
-        private float CurrentWorldShiftY { get; set; }
+        public ICamera2D? Camera => _Components.OfType<ICamera2D>().FirstOrDefault();
+        /// <summary>
+        /// The FPSCounter component.
+        /// </summary>
+        public FPSCounter? FPSCounter => _Components.OfType<FPSCounter>().FirstOrDefault();
 
         /// <summary>
         /// The color used to clear the screen / control with <see cref="GraphicsDevice.Clear(Color)"/>
@@ -268,22 +250,6 @@ namespace MonoGame.Forms.NET.Services
         /// A built-in font, which is used by the integrated display. You can also use it as debugging font for example.
         /// </summary>
         public SpriteFont Font { get; set; }
-        /// <summary>
-        /// This formats the fps style.
-        /// </summary>
-        private NumberFormatInfo Format { get; set; }
-        /// <summary>
-        /// The elapsed <see cref="GameTime"/>.
-        /// </summary>
-        private TimeSpan ElapsedTime { get; set; } = TimeSpan.Zero;
-        /// <summary>
-        /// The frame counter used by the fps display.
-        /// </summary>
-        private int FrameCounter { get; set; }
-        /// <summary>
-        /// Get the current frames per second (FPS).
-        /// </summary>
-        public int GetFrameRate { get; private set; }
 
         /// <summary>
         /// A plain white pixel mainly to draw the background of the integrated display, but you can also use it in your custom control.
@@ -291,39 +257,18 @@ namespace MonoGame.Forms.NET.Services
         public Texture2D Pixel { get; set; }
 
         /// <summary>
-        /// Set the back color of the integrated display.
-        /// </summary>
-        public Color DisplayBackColor { get; set; } = new Color(0, 0, 0, 100);
-
-        /// <summary>
-        /// Set the font color of the integrated display.
-        /// </summary>
-        public Color DisplayForeColor { get; set; } = Color.White;
-
-        /// <summary>
         /// Height of the display Font - Cached in InitializeGFX().
         /// </summary>
         public float FontHeight { get; private set; }
 
         /// <summary>
-        /// Show or hide the 'FPS' (frames per second) of the corresponding control / window.
-        /// </summary>
-        public bool ShowFPS { get; set; } = true;
-
-        /// <summary>
-        /// Show or hide the 'cursor position' of the corresponding control / window.
-        /// </summary>
-        public bool ShowCursorPosition { get; set; } = true;
-
-        /// <summary>
-        /// Show or hide the 'cam position' of the corresponding control / window.
-        /// </summary>
-        public bool ShowCamPosition { get; set; } = false;
-
-        /// <summary>
         /// Get the connected service container.
         /// </summary>
         private GameServiceContainer _Services { get; set; }
+        /// <summary>
+        /// Get the connected game component container.
+        /// </summary>
+        private GameComponentCollection _Components { get; set; }
 
         /// <summary>
         /// Initializes the GFX system, which contains basic MonoGame functionality.
@@ -332,9 +277,12 @@ namespace MonoGame.Forms.NET.Services
         /// <param name="swapChainRenderTarget">The swap chain render target</param>
         public void InitializeService(
             GameServiceContainer services,
+            GameComponentCollection components,
             SwapChainRenderTarget swapChainRenderTarget)
         {
             _Services = services;
+            _Components = components;
+
             var graphicsService = services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceService;
             
             GraphicsDevice = graphicsService.GraphicsDevice;
@@ -345,14 +293,9 @@ namespace MonoGame.Forms.NET.Services
             Pixel = new Texture2D(GraphicsDevice, 1, 1);
             Pixel.SetData(new[] { Color.White });
 
-            Format = new System.Globalization.NumberFormatInfo();
-            Format.CurrencyDecimalSeparator = ".";
-
-            Cam = new Camera2D(GraphicsDevice);
-            Cam.Position = new Vector2(
-                GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
             InternContent = new ResourceContentManager(services, Resources.ResourceManager);
+            Font = InternContent.Load<SpriteFont>("Font");
+            FontHeight = Font.MeasureString("A").Y;
 
             GetRenderTargetManager = new RenderTargetManager(this);
             AntialisingRenderTarget = GetRenderTargetManager.CreateNewRenderTarget2D("MSAA", true);
@@ -361,91 +304,12 @@ namespace MonoGame.Forms.NET.Services
             RenderTargetTimer.Interval = 500;
             RenderTargetTimer.Elapsed += (sender, e) => OnRenderTargetTimeOutEnd();
 
-            Font = InternContent.Load<SpriteFont>("Font");
-            FontHeight = Font.MeasureString("A").Y;
+            SwapChainRenderTarget = swapChainRenderTarget;
 
             FrameworkDispatcher.Update();
 
-            SwapChainRenderTarget = swapChainRenderTarget;
-        }
-
-        /// <summary>
-        /// Updates the frame counter (FPS).
-        /// </summary>
-        internal void UpdateFrameCounter() => FrameCounter++;
-
-        /// <summary>
-        /// Updates the integrated display.
-        /// </summary>
-        /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
-        internal void UpdateDisplay(GameTime gameTime)
-        {
-            ElapsedTime += gameTime.ElapsedGameTime;
-            if (ElapsedTime <= TimeSpan.FromSeconds(1)) return;
-            ElapsedTime -= TimeSpan.FromSeconds(1);
-            GetFrameRate = FrameCounter;
-            FrameCounter = 0;
-        }
-
-        /// <summary>
-        /// Draws the integrated display.
-        /// </summary>
-        public void DrawDisplay()
-        {
-            if (ShowFPS || ShowCursorPosition || ShowCamPosition)
-            {
-                spriteBatch.Begin(SpriteSortMode.BackToFront);
-
-                float MaxHeight = -FontHeight;
-
-                float FPSWidth = 0;
-                float MouseWidth = 0;
-                float CamWidth = 0;
-
-                if (ShowFPS)
-                {
-                    FPSWidth = Font.MeasureString(string.Format(Format, "{0} fps", GetFrameRate)).X;
-                    MaxHeight += FontHeight;
-
-                    spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", GetFrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, 0) :
-                        new Vector2(GraphicsDevice.Viewport.Width - FPSWidth - 10, 0), DisplayForeColor,
-                        0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                }
-                else FPSWidth = 0;
-
-                if (ShowCursorPosition)
-                {
-                    MouseWidth = Font.MeasureString($"X:{GetRelativeMousePosition.X} Y:{GetRelativeMousePosition.Y}").X;
-                    MaxHeight += FontHeight;
-
-                    spriteBatch.DrawString(Font, $"X:{GetRelativeMousePosition.X} Y:{GetRelativeMousePosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
-                        new Vector2(GraphicsDevice.Viewport.Width - MouseWidth - 10, MaxHeight), DisplayForeColor,
-                        0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                }
-                else MouseWidth = 0;
-
-                if (ShowCamPosition)
-                {
-                    CamWidth = Font.MeasureString($"X:{Cam.AbsolutPosition.X} Y:{Cam.AbsolutPosition.Y}").X;
-                    MaxHeight += FontHeight;
-
-                    spriteBatch.DrawString(Font, $"X:{Cam.AbsolutPosition.X} Y:{Cam.AbsolutPosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
-                        new Vector2(GraphicsDevice.Viewport.Width - CamWidth - 10, MaxHeight), DisplayForeColor,
-                        0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                }
-                else CamWidth = 0;
-
-                MaxHeight += FontHeight;
-                
-                float MaxWidth = Math.Max(FPSWidth, Math.Max(MouseWidth, CamWidth));
-
-                spriteBatch.Draw(Pixel, SetDisplayStyle == DisplayStyle.TopLeft ?
-                    new Rectangle(0, 0, (int)MaxWidth + 20, (int)MaxHeight + 5) :
-                    new Rectangle(GraphicsDevice.Viewport.Width - (int)MaxWidth - 20, 0, (int)MaxWidth + 20, (int)MaxHeight + 5), 
-                    null, DisplayBackColor, 0f, Vector2.Zero, SpriteEffects.None, 0.1f);
-
-                spriteBatch.End();
-            }
+            components.Add(new Camera2D(GraphicsDevice));
+            components.Add(new FPSCounter(this, Camera));
         }
 
         /// <summary>
@@ -630,7 +494,7 @@ namespace MonoGame.Forms.NET.Services
                         depthStencilState,
                         rasterizerState,
                         effect,
-                        Cam.GetTransformation());
+                        Camera?.GetTransform());
         }
 
         /// <summary>
@@ -645,45 +509,41 @@ namespace MonoGame.Forms.NET.Services
         /// Move the camera by the value defined in the parameter amount.
         /// </summary>
         /// <param name="amount">How much should the camera move?</param>
-        public void MoveCam(Vector2 amount)
-        {
-            Cam.Move(new Vector2(amount.X, amount.Y));
-            CurrentWorldShiftX += amount.X;
-            CurrentWorldShiftY += amount.Y;
-        }
+        public void CamMove(Vector2 amount) => Camera?.Move(new Vector2(amount.X, amount.Y));
+        /// <summary>
+        /// Zoom the camera component.
+        /// </summary>
+        /// <param name="amount">Usual values: 0.1f - 1f</param>
+        public void CamZoom(float amount) => Camera?.Zoom(amount);
+        /// <summary>
+        /// Rotate the camera component.
+        /// </summary>
+        /// <param name="amount"></param>
+        public void CamRotate(float amount) => Camera?.Rotate(amount);
+        /// <summary>
+        /// Get the current camera zoom.
+        /// </summary>
+        /// <returns>Current Zoom or 1f (never null).</returns>
+        public float? GetCamZoom() { return Camera?.GetZoom() ?? 1f; }
+        /// <summary>
+        /// Get the current camera rotation.
+        /// </summary>
+        /// <returns>Current Rotation or 0f (never null)</returns>
+        public float? GetCamRotation() { return Camera?.GetRotation() ?? 0f; }
 
         /// <summary>
         /// Resets all or specific values from the camera component to their defaults.
         /// </summary>
         public void ResetCam(bool resetPosition = true, bool resetZoom = true, bool resetRotation = true)
         {
-            if (resetPosition)
-            {
-                Cam.Move(new Vector2(-CurrentWorldShiftX, -CurrentWorldShiftY));
-                CurrentWorldShiftX = 0;
-                CurrentWorldShiftY = 0;
-                if (Cam.DefaultPosition == Vector2.Zero) Cam.Position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-                else Cam.Position = Cam.DefaultPosition;
-            }
-
-            if (resetZoom) Cam.Zoom = Cam.DefaultZoom;
-            if (resetRotation) Cam.Rotation = Cam.DefaultRotation;
+            if (resetPosition) Camera?.ResetPosition();
+            if (resetZoom) Camera?.ResetZoom();
+            if (resetRotation) Camera?.ResetRotation();
         }
         
-        internal void CamHoldPosition(System.Drawing.Size newClientSize)
+        internal void CamLockPosition(Size newClientSize)
         {
-            if (Cam != null && GraphicsDevice != null)
-            {
-                Cam.Position = new Vector2(newClientSize.Width / 2, newClientSize.Height / 2);
-
-                float oldCamPoxX = CurrentWorldShiftX;
-                float oldCamPoxY = CurrentWorldShiftY;
-
-                CurrentWorldShiftX = 0;
-                CurrentWorldShiftY = 0;
-
-                MoveCam(new Vector2(oldCamPoxX, oldCamPoxY));
-            }
+            Camera?.LockPosition(newClientSize);
         }
 
         /// <summary>

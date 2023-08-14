@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using static MonoGame.Forms.NET.Components.FPSCounter;
 
 namespace MonoGame.Forms.NET.Samples.Tests
 {
@@ -10,7 +11,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
 
             InitializeMap("b");
 
-            Editor.SetDisplayStyle = NET.Services.GFXService.DisplayStyle.TopRight;
+            Editor.FPSCounter.SetDisplayStyle = DisplayStyle.TopRight;
         }
 
         protected override void Update(GameTime gameTime)
@@ -23,6 +24,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
             base.Draw();
 
             DrawMap();
+            DrawComponents();
         }
     }
 }

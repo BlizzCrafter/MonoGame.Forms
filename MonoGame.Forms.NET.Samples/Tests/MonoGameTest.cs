@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.NET.Controls;
-using System.Windows.Forms;
 using Color = Microsoft.Xna.Framework.Color;
 
 namespace MonoGame.Forms.NET.Samples.Tests
@@ -58,7 +57,7 @@ namespace MonoGame.Forms.NET.Samples.Tests
 
             Editor.EndCamera2D();
 
-            Editor.DrawDisplay();
+            DrawComponents();
         }
     }
 }

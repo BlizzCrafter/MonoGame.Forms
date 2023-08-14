@@ -1,19 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.NET.Components.Interfaces;
 
 namespace MonoGame.Forms.NET.Components
 {
     /// <summary>
     /// A basic Camera2D component to move the view of an editor.
     /// </summary>
-    public class Camera2D
+    public class Camera2D : ICamera2D
     {
         private GraphicsDevice _graphics;
 
         /// <summary>
         /// The transformation matrix of the camera.
         /// </summary>
-        public Matrix Transform { get; set; }
+        private Matrix Transform { get; set; }
 
         /// <summary>
         /// The basic constructor.
@@ -22,20 +23,28 @@ namespace MonoGame.Forms.NET.Components
         {
             _graphics = graphics;
 
-            Zoom = 1.0f;
-            Rotation = 0f;
+            CurrentZoom = 1.0f;
+            CurrentRotation = 0f;
             Position = Vector2.Zero;
+        }
+
+        /// <summary>
+        /// Initilizes the camera component.
+        /// </summary>
+        public void Initialize()
+        {
+            Position = new Vector2(_graphics.Viewport.Width / 2, _graphics.Viewport.Height / 2);
         }
 
         /// <summary>
         /// Gets or Sets the Zoom value of the camera.
         /// </summary>
-        public float Zoom
+        public float CurrentZoom
         {
-            get { return _Zoom; }
-            set { _Zoom = value; if (_Zoom < 0.1f) _Zoom = 0.1f; } // Negative zoom will flip image
+            get { return _CurrentZoom; }
+            internal set { _CurrentZoom = value; if (_CurrentZoom < 0.1f) _CurrentZoom = 0.1f; } // Negative zoom will flip image
         }
-        private float _Zoom { get; set; }
+        private float _CurrentZoom { get; set; }
 
         /// <summary>
         /// Gets or Sets the default Zoom value of the camera.
@@ -50,7 +59,7 @@ namespace MonoGame.Forms.NET.Components
         /// <summary>
         /// Gets or Sets the Rotation value of the camera.
         /// </summary>
-        public float Rotation { get; set; } = 0f;
+        public float CurrentRotation { get; internal set; } = 0f;
 
         /// <summary>
         /// Gets or Sets the default Rotation value of the camera.
@@ -65,6 +74,7 @@ namespace MonoGame.Forms.NET.Components
             _Position += amount;
             UpdateAbsolutePosition();
         }
+
         /// <summary>
         /// Gets or Sets the Position value of the camera.
         /// </summary>
@@ -93,11 +103,16 @@ namespace MonoGame.Forms.NET.Components
             private set { _AbsolutPosition = value; }
         }
         private Vector2 _AbsolutPosition { get; set; }
+        /// <summary>
+        /// Gets the absolute position of the camera.
+        /// </summary>
+        /// <returns>Absolute camera position.</returns>
+        public Vector2 GetAbsolutePosition() => AbsolutPosition;
 
         /// <summary>
         /// Updates the absolute position of the camera based on the viewport
         /// </summary>
-        public void UpdateAbsolutePosition()
+        private void UpdateAbsolutePosition()
         {
             AbsolutPosition = new Vector2(
                 Position.X - _graphics.Viewport.Width / 2,
@@ -110,23 +125,61 @@ namespace MonoGame.Forms.NET.Components
         public void SetDefaultsFromCurrent()
         {
             DefaultPosition = AbsolutPosition;
-            DefaultZoom = Zoom;
-            DefaultRotation = Rotation;
+            DefaultZoom = CurrentZoom;
+            DefaultRotation = CurrentRotation;
         }
 
         /// <summary>
         /// Get the Transformation.
         /// </summary>
         /// <returns></returns>
-        public Matrix GetTransformation()
+        public Matrix GetTransform()
         {
             Transform = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
-                                         Matrix.CreateRotationZ(Rotation) *
-                                         Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
+                                         Matrix.CreateRotationZ(CurrentRotation) *
+                                         Matrix.CreateScale(new Vector3(CurrentZoom, CurrentZoom, 1)) *
                                          Matrix.CreateTranslation(new Vector3(
                                              _graphics.Viewport.Width * 0.5f, _graphics.Viewport.Height * 0.5f, 0));
 
             return Transform;
+        }
+
+        public void ResetPosition()
+        {
+            Move(-Position);
+
+            if (DefaultPosition == Vector2.Zero) Position = new Vector2(_graphics.Viewport.Width / 2, _graphics.Viewport.Height / 2);
+            else Position = DefaultPosition;
+        }
+
+        public void ResetZoom()
+        {
+            CurrentZoom = DefaultZoom;
+        }
+
+        public void ResetRotation()
+        {
+            CurrentRotation = DefaultRotation;
+        }
+
+        public float GetZoom()
+        {
+            return CurrentZoom;
+        }
+
+        public float GetRotation()
+        {
+            return CurrentRotation;
+        }
+
+        public void Zoom(float amount)
+        {
+            CurrentZoom = amount;
+        }
+
+        public void Rotate(float amount)
+        {
+            CurrentRotation = amount;
         }
     }
 }

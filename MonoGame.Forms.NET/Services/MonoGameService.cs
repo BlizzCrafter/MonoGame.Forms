@@ -15,10 +15,13 @@ namespace MonoGame.Forms.NET.Services
         /// </summary>
         public GameTime GameTime { get; private set; }
 
-        internal MonoGameService(GameServiceContainer services, SwapChainRenderTarget swapChainRenderTarget)
+        internal MonoGameService(
+            GameServiceContainer services, 
+            GameComponentCollection components, 
+            SwapChainRenderTarget swapChainRenderTarget)
         {
             // Initialize Service-System
-            InitializeService(services, swapChainRenderTarget);
+            InitializeService(services, components, swapChainRenderTarget);
         }
 
         /// <summary>
@@ -32,7 +35,6 @@ namespace MonoGame.Forms.NET.Services
         /// <param name="gameTime">The <see cref="GameTime"/> of the game loop.</param>
         public override void Update(GameTime gameTime)
         {
-            UpdateDisplay(gameTime);
             FrameworkDispatcher.Update();
             GameTime = gameTime;
         }
@@ -44,7 +46,7 @@ namespace MonoGame.Forms.NET.Services
         /// </summary>
         public override void Draw()
         {
-            UpdateFrameCounter();
+            FPSCounter?.UpdateFrameCounter();
 
             GraphicsDevice.Clear(BackgroundColor);
         }

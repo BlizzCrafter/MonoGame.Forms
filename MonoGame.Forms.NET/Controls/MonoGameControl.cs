@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Microsoft.Xna.Framework;
 using MonoGame.Forms.NET.Services;
 
@@ -26,7 +25,7 @@ namespace MonoGame.Forms.NET.Controls
         {
             base.Initialize();
 
-            _Editor = new MonoGameService(Services, SwapChainRenderTarget);
+            _Editor = new MonoGameService(Services, Components, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += UpdateWindow_UpdateSwapChainRenderTarget;
@@ -56,6 +55,7 @@ namespace MonoGame.Forms.NET.Controls
             {
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
                 _Editor.Update(gameTime);
+                UpdateComponents(gameTime);
             }
         }
 
@@ -68,6 +68,11 @@ namespace MonoGame.Forms.NET.Controls
         }
 
         /// <summary>
+        /// Draw <see cref="GameComponent"/>'s from the underlying <see cref="GameComponentCollection"/>.
+        /// </summary>
+        public void DrawComponents() => DrawComponents(_GameTime);
+
+        /// <summary>
         /// Updates related Editor services when the <see cref="System.Windows.Forms.Control.ClientSize"/> changes.
         /// </summary>
         protected override void OnClientSizeChanged(EventArgs e)
@@ -77,7 +82,7 @@ namespace MonoGame.Forms.NET.Controls
             if (Editor != null)
             {
                 Editor.DisableRenderTargets();
-                Editor.CamHoldPosition(ClientSize);
+                Editor.CamLockPosition(ClientSize);
             }
         }
 
@@ -90,7 +95,7 @@ namespace MonoGame.Forms.NET.Controls
 
             if (Editor != null)
             {
-                Editor.CamHoldPosition(ClientSize);
+                Editor.CamLockPosition(ClientSize);
             }
         }
 
