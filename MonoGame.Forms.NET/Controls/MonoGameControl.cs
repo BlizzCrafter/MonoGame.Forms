@@ -26,7 +26,7 @@ namespace MonoGame.Forms.NET.Controls
         {
             base.Initialize();
 
-            _Editor = new MonoGameService(_graphicsDeviceService, SwapChainRenderTarget);
+            _Editor = new MonoGameService(Services, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += UpdateWindow_UpdateSwapChainRenderTarget;

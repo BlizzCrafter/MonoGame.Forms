@@ -15,10 +15,10 @@ namespace MonoGame.Forms.NET.Services
         /// </summary>
         public GameTime GameTime { get; private set; }
 
-        internal MonoGameService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
+        internal MonoGameService(GameServiceContainer services, SwapChainRenderTarget swapChainRenderTarget)
         {
-            // Initialize GFX-System
-            InitializeGFX_DX(graphics, swapChainRenderTarget);
+            // Initialize Service-System
+            InitializeService(services, swapChainRenderTarget);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace MonoGame.Forms.NET.Services
         {
             UpdateFrameCounter();
 
-            graphics.Clear(BackgroundColor);
+            GraphicsDevice.Clear(BackgroundColor);
         }
     }
 }
