@@ -96,8 +96,8 @@ namespace MonoGame.Forms.Tests.Tests
             Editor.BeginCamera2D();
 
             Editor.spriteBatch.Draw(HexMaps[CurrentMap], new Vector2(
-                (Editor.graphics.Viewport.Width / 2) - (HexMaps[CurrentMap].Width / 2),
-                (Editor.graphics.Viewport.Height / 2) - (HexMaps[CurrentMap].Height / 2)),
+                (Editor.GraphicsDevice.Viewport.Width / 2) - (HexMaps[CurrentMap].Width / 2),
+                (Editor.GraphicsDevice.Viewport.Height / 2) - (HexMaps[CurrentMap].Height / 2)),
                 Color.White);
 
             Editor.EndCamera2D();

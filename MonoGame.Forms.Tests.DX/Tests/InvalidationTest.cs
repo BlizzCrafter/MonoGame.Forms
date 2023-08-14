@@ -25,14 +25,14 @@ namespace MonoGame.Forms.Tests.Tests
 
             //Shadow
             Editor.spriteBatch.DrawString(DrawFont, WelcomeMessage, new Vector2(
-                (Editor.graphics.Viewport.Width / 2) - (DrawFont.MeasureString(WelcomeMessage).X / 2) + 1,
-                (Editor.graphics.Viewport.Height / 2) - (DrawFont.MeasureString(WelcomeMessage).Y / 2) + 1),
+                (Editor.GraphicsDevice.Viewport.Width / 2) - (DrawFont.MeasureString(WelcomeMessage).X / 2) + 1,
+                (Editor.GraphicsDevice.Viewport.Height / 2) - (DrawFont.MeasureString(WelcomeMessage).Y / 2) + 1),
                 Color.Black);
 
             //Text
             Editor.spriteBatch.DrawString(DrawFont, WelcomeMessage, new Vector2(
-                (Editor.graphics.Viewport.Width / 2) - (DrawFont.MeasureString(WelcomeMessage).X / 2),
-                (Editor.graphics.Viewport.Height / 2) - (DrawFont.MeasureString(WelcomeMessage).Y / 2)),
+                (Editor.GraphicsDevice.Viewport.Width / 2) - (DrawFont.MeasureString(WelcomeMessage).X / 2),
+                (Editor.GraphicsDevice.Viewport.Height / 2) - (DrawFont.MeasureString(WelcomeMessage).Y / 2)),
                 Color.Yellow);
 
             Editor.spriteBatch.End();

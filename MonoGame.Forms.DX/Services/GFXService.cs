@@ -1,13 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Components;
 
-using System.Linq;
-using System.Timers;
-using System.Collections.Generic;
+using Color = Microsoft.Xna.Framework.Color;
+using Timer = System.Timers.Timer;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace MonoGame.Forms.Services
 {
@@ -39,13 +38,13 @@ namespace MonoGame.Forms.Services
 
                 private void CreateNewRenderTarget2D(bool useMultiSampling)
                 {
-                    if (GetGFXService.graphics.PresentationParameters.BackBufferWidth > 0 &&
-                        GetGFXService.graphics.PresentationParameters.BackBufferHeight > 0)
+                    if (GetGFXService.GraphicsDevice.PresentationParameters.BackBufferWidth > 0 &&
+                        GetGFXService.GraphicsDevice.PresentationParameters.BackBufferHeight > 0)
                     {
                         GetRenderTarget2D = new RenderTarget2D(
-                            GetGFXService.graphics,
-                            GetGFXService.graphics.PresentationParameters.BackBufferWidth,
-                            GetGFXService.graphics.PresentationParameters.BackBufferHeight,
+                            GetGFXService.GraphicsDevice,
+                            GetGFXService.GraphicsDevice.PresentationParameters.BackBufferWidth,
+                            GetGFXService.GraphicsDevice.PresentationParameters.BackBufferHeight,
                             false,
                             SurfaceFormat.Color,
                             DepthFormat.Depth24,
@@ -220,7 +219,7 @@ namespace MonoGame.Forms.Services
         /// <param name="resourceFile">Specify a resource file here (.resources). Usually: Properties.Resources.ResourceManager</param>
         public void ResourceContentManagerInitialize(System.Resources.ResourceManager resourceFile)
         {
-            ResourceContent = new ResourceContentManager(services, resourceFile);
+            ResourceContent = new ResourceContentManager(_Services, resourceFile);
         }
         /// <summary>
         /// The <see cref="ResourceContentManager"/> is for loading internal content from a resource file.
@@ -228,13 +227,9 @@ namespace MonoGame.Forms.Services
         private ResourceContentManager InternContent { get; set; }
 
         /// <summary>
-        /// The <see cref="GraphicsDevice"/>.
+        /// The <see cref="Microsoft.Xna.Framework.Graphics.GraphicsDevice"/>.
         /// </summary>
-        public GraphicsDevice graphics { get; set; }
-        /// <summary>
-        /// The <see cref="GameServiceContainer"/>.
-        /// </summary>
-        public GameServiceContainer services { get; private set; }
+        public GraphicsDevice GraphicsDevice { get; set; }
         /// <summary>
         /// The <see cref="SpriteBatch"/>.
         /// </summary>
@@ -326,37 +321,36 @@ namespace MonoGame.Forms.Services
         public bool ShowCamPosition { get; set; } = false;
 
         /// <summary>
+        /// Get the connected service container.
+        /// </summary>
+        private GameServiceContainer _Services { get; set; }
+
+        /// <summary>
         /// Initializes the GFX system, which contains basic MonoGame functionality.
         /// </summary>
         /// <param name="graphics">The graphics device service</param>
         /// <param name="swapChainRenderTarget">The swap chain render target</param>
-        public void InitializeGFX_DX(
-            IGraphicsDeviceService graphics,
+        public void InitializeService(
+            GameServiceContainer services,
             SwapChainRenderTarget swapChainRenderTarget)
         {
-            InitializeGFX(graphics);
-
-            SwapChainRenderTarget = swapChainRenderTarget;
-        }
-
-        private void InitializeGFX(IGraphicsDeviceService graphics)
-        {
-            services = new GameServiceContainer();
-            services.AddService<IGraphicsDeviceService>(graphics);
-            this.graphics = graphics.GraphicsDevice;
+            _Services = services;
+            var graphicsService = services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceService;
+            
+            GraphicsDevice = graphicsService.GraphicsDevice;
 
             Content = new ContentManager(services, "Content");
-            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Pixel = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            Pixel = new Texture2D(GraphicsDevice, 1, 1);
             Pixel.SetData(new[] { Color.White });
 
             Format = new System.Globalization.NumberFormatInfo();
             Format.CurrencyDecimalSeparator = ".";
 
-            Cam = new Camera2D(graphics.GraphicsDevice);
+            Cam = new Camera2D(GraphicsDevice);
             Cam.Position = new Vector2(
-                graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+                GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
             InternContent = new ResourceContentManager(services, DX.Properties.Resources.ResourceManager);
 
@@ -371,6 +365,8 @@ namespace MonoGame.Forms.Services
             FontHeight = Font.MeasureString("A").Y;
 
             FrameworkDispatcher.Update();
+
+            SwapChainRenderTarget = swapChainRenderTarget;
         }
 
         /// <summary>
@@ -412,7 +408,7 @@ namespace MonoGame.Forms.Services
                     MaxHeight += FontHeight;
 
                     spriteBatch.DrawString(Font, string.Format(Format, "{0} fps", GetFrameRate), SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, 0) :
-                        new Vector2(graphics.Viewport.Width - FPSWidth - 10, 0), DisplayForeColor,
+                        new Vector2(GraphicsDevice.Viewport.Width - FPSWidth - 10, 0), DisplayForeColor,
                         0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
                 else FPSWidth = 0;
@@ -423,7 +419,7 @@ namespace MonoGame.Forms.Services
                     MaxHeight += FontHeight;
 
                     spriteBatch.DrawString(Font, $"X:{GetRelativeMousePosition.X} Y:{GetRelativeMousePosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
-                        new Vector2(graphics.Viewport.Width - MouseWidth - 10, MaxHeight), DisplayForeColor,
+                        new Vector2(GraphicsDevice.Viewport.Width - MouseWidth - 10, MaxHeight), DisplayForeColor,
                         0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
                 else MouseWidth = 0;
@@ -434,7 +430,7 @@ namespace MonoGame.Forms.Services
                     MaxHeight += FontHeight;
 
                     spriteBatch.DrawString(Font, $"X:{Cam.AbsolutPosition.X} Y:{Cam.AbsolutPosition.Y}", SetDisplayStyle == DisplayStyle.TopLeft ? new Vector2(10, MaxHeight) :
-                        new Vector2(graphics.Viewport.Width - CamWidth - 10, MaxHeight), DisplayForeColor,
+                        new Vector2(GraphicsDevice.Viewport.Width - CamWidth - 10, MaxHeight), DisplayForeColor,
                         0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 }
                 else CamWidth = 0;
@@ -445,7 +441,7 @@ namespace MonoGame.Forms.Services
 
                 spriteBatch.Draw(Pixel, SetDisplayStyle == DisplayStyle.TopLeft ?
                     new Rectangle(0, 0, (int)MaxWidth + 20, (int)MaxHeight + 5) :
-                    new Rectangle(graphics.Viewport.Width - (int)MaxWidth - 20, 0, (int)MaxWidth + 20, (int)MaxHeight + 5), 
+                    new Rectangle(GraphicsDevice.Viewport.Width - (int)MaxWidth - 20, 0, (int)MaxWidth + 20, (int)MaxHeight + 5), 
                     null, DisplayBackColor, 0f, Vector2.Zero, SpriteEffects.None, 0.1f);
 
                 spriteBatch.End();
@@ -473,8 +469,8 @@ namespace MonoGame.Forms.Services
         /// }
         /// </code>
         /// </example>
-        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
-        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="GraphicsDevice"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="GraphicsDevice"/> after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="stencil">The stencil</param>
@@ -489,16 +485,16 @@ namespace MonoGame.Forms.Services
                 AntialisingRenderTarget.IsRefreshing || 
                 !AntialisingRenderTarget.Enabled) return;
 
-            graphics.SetRenderTarget(AntialisingRenderTarget.GetRenderTarget2D);
-            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
+            GraphicsDevice.SetRenderTarget(AntialisingRenderTarget.GetRenderTarget2D);
+            if (clearGraphics) GraphicsDevice.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
         }
 
         /// <summary>
         /// Everything between <c>BeginAntialising()</c> and <c>EndAntialising()</c> will be affected by MSAA.
         /// </summary>
         /// <param name="drawToSpriteBatch"><c>true</c> to automatically draw the result to the <see cref="SpriteBatch"/>.</param>
-        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
-        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="GraphicsDevice"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="GraphicsDevice"/> after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="stencil">The stencil</param>
@@ -515,9 +511,9 @@ namespace MonoGame.Forms.Services
                 AntialisingRenderTarget.IsRefreshing ||
                 !AntialisingRenderTarget.Enabled) return null;
 
-            graphics.SetRenderTarget(SwapChainRenderTarget);
+            GraphicsDevice.SetRenderTarget(SwapChainRenderTarget);
 
-            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
+            if (clearGraphics) GraphicsDevice.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
 
             if (drawToSpriteBatch)
             {
@@ -551,8 +547,8 @@ namespace MonoGame.Forms.Services
         /// </code>
         /// </example>
         /// <param name="key">Please enter a previously set key of the <see cref="RenderTarget2D"/> you want to begin with.</param>
-        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
-        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="GraphicsDevice"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="GraphicsDevice"/> after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="stencil">The stencil</param>
@@ -568,8 +564,8 @@ namespace MonoGame.Forms.Services
                 GetRenderTargetManager.RenderTargets[key].IsRefreshing ||
                 !GetRenderTargetManager.RenderTargets[key].Enabled) return;
 
-            graphics.SetRenderTarget(GetRenderTargetManager.GetRenderTarget2D(key));
-            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
+            GraphicsDevice.SetRenderTarget(GetRenderTargetManager.GetRenderTarget2D(key));
+            if (clearGraphics) GraphicsDevice.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
         }
 
         /// <summary>
@@ -577,8 +573,8 @@ namespace MonoGame.Forms.Services
         /// </summary>
         /// <param name="key">Please enter a previously set key of the <see cref="RenderTarget2D"/> you want to end.</param>
         /// <param name="drawToSpriteBatch"><c>true</c> to automatically draw the result to the <see cref="SpriteBatch"/>.</param>
-        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="graphics"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
-        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="graphics"/> after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearGraphics"><c>false</c> if you don't want to to call <see cref="GraphicsDevice"/>.Clear() after setting the <see cref="RenderTarget2D"/>.</param>
+        /// <param name="clearColor">The <see cref="Color"/> to be used to clear the <see cref="GraphicsDevice"/> after setting the <see cref="RenderTarget2D"/>.</param>
         /// <param name="clearOptions">Define your custom <see cref="ClearOptions"/>.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="stencil">The stencil</param>
@@ -596,9 +592,9 @@ namespace MonoGame.Forms.Services
                 GetRenderTargetManager.RenderTargets[key].IsRefreshing ||
                 !GetRenderTargetManager.RenderTargets[key].Enabled) return null;
 
-            graphics.SetRenderTarget(SwapChainRenderTarget);
+            GraphicsDevice.SetRenderTarget(SwapChainRenderTarget);
 
-            if (clearGraphics) graphics.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
+            if (clearGraphics) GraphicsDevice.Clear(clearOptions, clearColor ?? BackgroundColor, depth, stencil);
 
             if (drawToSpriteBatch)
             {
@@ -666,7 +662,7 @@ namespace MonoGame.Forms.Services
                 Cam.Move(new Vector2(-CurrentWorldShiftX, -CurrentWorldShiftY));
                 CurrentWorldShiftX = 0;
                 CurrentWorldShiftY = 0;
-                if (Cam.DefaultPosition == Vector2.Zero) Cam.Position = new Vector2(graphics.Viewport.Width / 2, graphics.Viewport.Height / 2);
+                if (Cam.DefaultPosition == Vector2.Zero) Cam.Position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
                 else Cam.Position = Cam.DefaultPosition;
             }
 
@@ -676,7 +672,7 @@ namespace MonoGame.Forms.Services
         
         internal void CamHoldPosition(System.Drawing.Size newClientSize)
         {
-            if (Cam != null && graphics != null)
+            if (Cam != null && GraphicsDevice != null)
             {
                 Cam.Position = new Vector2(newClientSize.Width / 2, newClientSize.Height / 2);
 

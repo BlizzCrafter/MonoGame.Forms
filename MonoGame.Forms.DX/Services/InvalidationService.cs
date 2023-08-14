@@ -11,10 +11,10 @@ namespace MonoGame.Forms.Services
     /// </summary>
     public sealed class InvalidationService : GFXService
     {
-        internal InvalidationService(IGraphicsDeviceService graphics, SwapChainRenderTarget swapChainRenderTarget)
+        internal InvalidationService(GameServiceContainer services, SwapChainRenderTarget swapChainRenderTarget)
         {
-            // Initialize GFX-System
-            InitializeGFX_DX(graphics, swapChainRenderTarget);
+            // Initialize Service-System
+            InitializeService(services, swapChainRenderTarget);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         public override void Draw()
         {
-            graphics.Clear(BackgroundColor);
+            GraphicsDevice.Clear(BackgroundColor);
         }
     }
 }
