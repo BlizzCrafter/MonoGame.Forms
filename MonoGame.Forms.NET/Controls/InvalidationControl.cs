@@ -25,7 +25,7 @@ namespace MonoGame.Forms.NET.Controls
         /// </summary>
         protected override void Initialize()
         {
-            _Editor = new InvalidationService(_graphicsDeviceService, SwapChainRenderTarget);
+            _Editor = new InvalidationService(Services, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;

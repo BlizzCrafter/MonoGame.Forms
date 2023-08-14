@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Forms.NET.Controls;
 using MonoGame.Forms.NET.Samples.Utils;
-using System;
 using Color = Microsoft.Xna.Framework.Color;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 
@@ -26,8 +25,8 @@ namespace MonoGame.Forms.NET.Samples.Tests
         public void ResetPlayer()
         {
             PlayerPosition = new Vector2(
-                  Editor.graphics.Viewport.Width / 2,
-                  Editor.graphics.Viewport.Height / 2);
+                  Editor.GraphicsDevice.Viewport.Width / 2,
+                  Editor.GraphicsDevice.Viewport.Height / 2);
             PlayerRotation = 0f;
             PlayerSpeed = 100f;
             PlayerScale = 1f;
@@ -296,8 +295,8 @@ Color R:{PlayerColorR}, G:{PlayerColorG}, B:{PlayerColorB}";
                 string controlsToDraw = (NewGamePadState.IsConnected ? ControlsHelpGamePad : ControlsHelpKeyboard);
 
                 Vector2 controlsHelpPosition = new Vector2(
-                    Editor.graphics.Viewport.Width - DrawFont.MeasureString(controlsToDraw).X,
-                    Editor.graphics.Viewport.Height - DrawFont.MeasureString(controlsToDraw).Y);
+                    Editor.GraphicsDevice.Viewport.Width - DrawFont.MeasureString(controlsToDraw).X,
+                    Editor.GraphicsDevice.Viewport.Height - DrawFont.MeasureString(controlsToDraw).Y);
 
                 Editor.spriteBatch.DrawString(DrawFont, controlsToDraw, new Vector2(controlsHelpPosition.X - 1, controlsHelpPosition.Y - 1), Color.Black);
                 Editor.spriteBatch.DrawString(DrawFont, controlsToDraw, controlsHelpPosition, Color.Lime);

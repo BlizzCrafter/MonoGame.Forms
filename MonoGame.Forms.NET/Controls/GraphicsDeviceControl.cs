@@ -43,21 +43,22 @@
 
 #endregion
 
-using System;
-using System.Drawing;
-using System.Windows.Forms;
 using System.ComponentModel;
-using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.NET.Services;
-using MonoGame.Forms.NET;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+using Color = System.Drawing.Color;
+using Point = System.Drawing.Point;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace MonoGame.Forms.NET.Controls
 {
     /// <summary>
     /// This class mainly creates the <see cref="GraphicsDevice"/> and the <see cref="SwapChainRenderTarget"/>.
-    /// It inherits from <see cref="System.Windows.Forms.Control"/>, which makes its childs available as a tool box control.
+    /// It inherits from <see cref="Control"/>, which makes its childs available as a tool box control.
     /// </summary>
-    public abstract class GraphicsDeviceControl : System.Windows.Forms.Control
+    public abstract class GraphicsDeviceControl : Control
     {
         /// <summary>
         /// Set the <see cref="Microsoft.Xna.Framework.Graphics.GraphicsProfile"/> in the property grid during Design-Time (HiDef or Reach).
@@ -108,8 +109,7 @@ namespace MonoGame.Forms.NET.Controls
         /// Otherwise you will see only a black control window.
         /// </summary>
         [Browsable(false)]
-        public SwapChainRenderTarget SwapChainRenderTarget { get { return _chain; } }
-        private SwapChainRenderTarget _chain;
+        public SwapChainRenderTarget SwapChainRenderTarget { get; private set; }
 
         /// <summary>
         /// Mainly transfers the new <see cref="SwapChainRenderTarget"/> to the editor service objects after resizing a custom control.
@@ -136,8 +136,8 @@ namespace MonoGame.Forms.NET.Controls
                 msc = msc | (msc >> 4);
                 msc -= (msc >> 1);
                 // and clamp it to what the device can handle
-                if (msc > _graphicsDeviceService.MaxMultiSampleCount)
-                    msc = _graphicsDeviceService.MaxMultiSampleCount;
+                if (msc > _GraphicsDeviceService.MaxMultiSampleCount)
+                    msc = _GraphicsDeviceService.MaxMultiSampleCount;
 
                 return msc;
             }
@@ -157,36 +157,27 @@ namespace MonoGame.Forms.NET.Controls
         /// </summary>
         public event Action<int> MultiSampleCountRefreshed = delegate { };
 
-        private void RefreshDXWindow()
+        private void RefreshWindow()
         {
-            if (_chain != null)
+            if (SwapChainRenderTarget != null)
             {
-                _chain.Dispose();
-                _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
+                SwapChainRenderTarget.Dispose();
+                SwapChainRenderTarget = new SwapChainRenderTarget(_GraphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width,
                         ClientSize.Height);
 
-                GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
-                GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+                _GraphicsDeviceService.GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+                _GraphicsDeviceService.GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
 
-                SwapChainRenderTargetRefreshed?.Invoke(_chain);
+                SwapChainRenderTargetRefreshed?.Invoke(SwapChainRenderTarget);
             }
         }
 
         /// <summary>
-        /// Get the GraphicsDevice.
+        /// Get the <see cref="GameServiceContainer"/>.
         /// </summary>
-        [Browsable(false)]
-        public GraphicsDevice GraphicsDevice => _graphicsDeviceService.GraphicsDevice;
+        protected GameServiceContainer Services { get; } = new GameServiceContainer();
 
-        /// <summary>
-        /// Get the GraphicsDeviceService.
-        /// </summary>
-        internal GraphicsDeviceService _graphicsDeviceService;
-
-        /// <summary>
-        /// Get the ServiceContainer.
-        /// </summary>
-        protected ServiceContainer Services { get; } = new ServiceContainer();
+        private GraphicsDeviceService _GraphicsDeviceService { get; set; }
 
 #pragma warning disable 1591
         protected override void OnCreateControl()
@@ -195,10 +186,10 @@ namespace MonoGame.Forms.NET.Controls
             {
                 if (ClientSize.Width == 0 || ClientSize.Height == 0) ClientSize = new Size(1, 1);
 
-                _graphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
-                Services.AddService<IGraphicsDeviceService>(_graphicsDeviceService);
-
-                _chain = new SwapChainRenderTarget(_graphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width, ClientSize.Height);
+                _GraphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);                
+                Services.AddService<IGraphicsDeviceService>(_GraphicsDeviceService);
+                
+                SwapChainRenderTarget = new SwapChainRenderTarget(_GraphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width, ClientSize.Height);
 
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
 
@@ -213,10 +204,10 @@ namespace MonoGame.Forms.NET.Controls
             {
                 if (!DesignMode)
                 {
-                    if (_graphicsDeviceService != null)
+                    if (_GraphicsDeviceService != null)
                     {
-                        _graphicsDeviceService.Release(disposing);
-                        _graphicsDeviceService = null;
+                        _GraphicsDeviceService.Release(disposing);
+                        _GraphicsDeviceService = null;
                     }
                 }
             }
@@ -239,7 +230,7 @@ namespace MonoGame.Forms.NET.Controls
 
         private string BeginDraw()
         {
-            if (_graphicsDeviceService == null)
+            if (_GraphicsDeviceService == null)
             {
                 return Text + "\n\n" + GetType();
             }
@@ -261,11 +252,10 @@ namespace MonoGame.Forms.NET.Controls
                 MinDepth = 0,
                 MaxDepth = 1
             };
-            GraphicsDevice.Viewport = viewport;
-            GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
-            GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
-
-            _graphicsDeviceService.GraphicsDevice.SetRenderTarget(_chain);
+            _GraphicsDeviceService.GraphicsDevice.Viewport = viewport;
+            _GraphicsDeviceService.GraphicsDevice.PresentationParameters.BackBufferWidth = ClientSize.Width;
+            _GraphicsDeviceService.GraphicsDevice.PresentationParameters.BackBufferHeight = ClientSize.Height;
+            _GraphicsDeviceService.GraphicsDevice.SetRenderTarget(SwapChainRenderTarget);
 
             return null;
         }
@@ -274,7 +264,7 @@ namespace MonoGame.Forms.NET.Controls
         {
             try
             {
-                _chain.Present();
+                SwapChainRenderTarget.Present();
             }
             catch
             {
@@ -289,14 +279,14 @@ namespace MonoGame.Forms.NET.Controls
             if (ClientSize.Width > 0 && 
                 ClientSize.Height > 0)
             {
-                RefreshDXWindow();
+                RefreshWindow();
             }
         }
 
         private string HandleDeviceReset()
         {
             var deviceNeedsReset = false;
-            switch (GraphicsDevice.GraphicsDeviceStatus)
+            switch (_GraphicsDeviceService.GraphicsDevice.GraphicsDeviceStatus)
             {
                 case GraphicsDeviceStatus.Lost:
                     return "Graphics device lost";
@@ -306,7 +296,7 @@ namespace MonoGame.Forms.NET.Controls
                 case GraphicsDeviceStatus.Normal:
                     break;
                 default:
-                    var pp = GraphicsDevice.PresentationParameters;
+                    var pp = _GraphicsDeviceService.GraphicsDevice.PresentationParameters;
                     deviceNeedsReset = (ClientSize.Width > pp.BackBufferWidth) ||
                                        (ClientSize.Height > pp.BackBufferHeight);
                     break;
@@ -314,7 +304,7 @@ namespace MonoGame.Forms.NET.Controls
             if (!deviceNeedsReset) return null;
             try
             {
-                _graphicsDeviceService.ResetDevice(ClientSize.Width,
+                _GraphicsDeviceService.ResetDevice(ClientSize.Width,
                     ClientSize.Height);
             }
             catch (Exception e)
@@ -409,8 +399,8 @@ namespace MonoGame.Forms.NET.Controls
             if (IsMouseInsideControl)
             {
                 GetRelativeMousePosition = new Point(
-                    Microsoft.Xna.Framework.MathHelper.Clamp(PointToClient(Cursor.Position).X, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Width),
-                    Microsoft.Xna.Framework.MathHelper.Clamp(PointToClient(Cursor.Position).Y, 0, _graphicsDeviceService.GraphicsDevice.Viewport.Height));
+                    MathHelper.Clamp(PointToClient(Cursor.Position).X, 0, _GraphicsDeviceService.GraphicsDevice.Viewport.Width),
+                    MathHelper.Clamp(PointToClient(Cursor.Position).Y, 0, _GraphicsDeviceService.GraphicsDevice.Viewport.Height));
             }
         }
 

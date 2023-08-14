@@ -34,8 +34,8 @@ namespace MonoGame.Forms.NET.Samples.Tests
             Editor.spriteBatch.Begin();
 
             Editor.spriteBatch.Draw(Logo.Texture, new Rectangle(
-                       Editor.graphics.Viewport.Width / 2,
-                       Editor.graphics.Viewport.Height / 2,
+                       Editor.GraphicsDevice.Viewport.Width / 2,
+                       Editor.GraphicsDevice.Viewport.Height / 2,
                        Logo.PartSizeX,
                        Logo.PartSizeY),
                        (EditMode ? Logo.GetCurrentFrame() : Logo.DoAnimation()),
@@ -45,8 +45,8 @@ namespace MonoGame.Forms.NET.Samples.Tests
                        SpriteEffects.None, 0f);
 
             Editor.spriteBatch.DrawString(Editor.Font, WelcomeMessage, new Vector2(
-                (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(WelcomeMessage).X / 2),
-                (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2) + Logo.GetOrigin.Y + 10),
+                (Editor.GraphicsDevice.Viewport.Width / 2) - (Editor.Font.MeasureString(WelcomeMessage).X / 2),
+                (Editor.GraphicsDevice.Viewport.Height / 2) - (Editor.FontHeight / 2) + Logo.GetOrigin.Y + 10),
                 Color.White);
 
             Editor.spriteBatch.End();
