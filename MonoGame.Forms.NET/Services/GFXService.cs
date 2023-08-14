@@ -569,11 +569,9 @@ namespace MonoGame.Forms.NET.Services
             InternContent?.Dispose();
             ResourceContent?.Dispose();
             Pixel.Dispose();
-            Font = null;
-#if DX
             GetRenderTargetManager?.Dispose();
             RenderTargetTimer?.Dispose();
-#endif
+            Font = null;
         }
     }
 }
