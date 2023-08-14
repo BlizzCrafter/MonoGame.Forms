@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.DX", "MonoGame.Forms.DX\MonoGame.Forms.DX.csproj", "{C1FE2C42-5590-4202-ADC7-ECFF8FF404D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Tests.DX", "MonoGame.Forms.Tests.DX\MonoGame.Forms.Tests.DX.csproj", "{9C7B2133-768B-4B3B-883B-9601B02100D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Forms.Samples.DX", "MonoGame.Forms.Tests.DX\MonoGame.Forms.Samples.DX.csproj", "{9C7B2133-768B-4B3B-883B-9601B02100D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

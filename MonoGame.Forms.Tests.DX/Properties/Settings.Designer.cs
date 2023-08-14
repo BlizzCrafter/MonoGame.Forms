@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MonoGame.Forms.Tests.DX.Properties {
+namespace MonoGame.Forms.Samples.DX.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

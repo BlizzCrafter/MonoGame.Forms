@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Windows.Forms;
 using MonoGame.Forms.Controls;
 
-namespace MonoGame.Forms.Tests.Tests
+namespace MonoGame.Forms.Samples.Tests
 {
     public abstract class MapHost : MonoGameControl
     {

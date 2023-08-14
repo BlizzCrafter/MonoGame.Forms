@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace MonoGame.Forms.Tests
+namespace MonoGame.Forms.Samples
 {
     public partial class MainWindow : Form
     {

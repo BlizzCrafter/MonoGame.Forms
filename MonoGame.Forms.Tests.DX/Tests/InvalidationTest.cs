@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
 
-namespace MonoGame.Forms.Tests.Tests
+namespace MonoGame.Forms.Samples.Tests
 {
     public class InvalidationTest : InvalidationControl
     {

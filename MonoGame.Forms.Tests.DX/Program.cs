@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MonoGame.Forms.Tests
+namespace MonoGame.Forms.Samples
 {
     static class Program
     {

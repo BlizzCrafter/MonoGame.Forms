@@ -96,7 +96,6 @@
     <Compile Include="Services\InvalidationService.cs" />
     <Compile Include="Services\GFXService.cs" />
     <Compile Include="Services\GraphicsDeviceService.cs" />
-    <Compile Include="Services\ServiceContainer.cs" />
     <Compile Include="Services\MonoGameService.cs" />
     <Compile Include="SharpDXHelper.cs" />
   </ItemGroup>

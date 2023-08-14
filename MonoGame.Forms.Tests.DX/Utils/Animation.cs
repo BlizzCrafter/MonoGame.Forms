@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Forms.Tests.Utils
+namespace MonoGame.Forms.Samples.Utils
 {
     public class Animation
     {

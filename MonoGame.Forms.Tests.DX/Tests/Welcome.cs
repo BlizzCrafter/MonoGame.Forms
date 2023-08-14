@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
-using MonoGame.Forms.Tests.Utils;
+using MonoGame.Forms.Samples.Utils;
 
-namespace MonoGame.Forms.Tests.Tests
+namespace MonoGame.Forms.Samples.Tests
 {
     public class Welcome : MonoGameControl
     {

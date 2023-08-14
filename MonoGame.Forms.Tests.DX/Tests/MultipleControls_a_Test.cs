@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace MonoGame.Forms.Tests.Tests
+namespace MonoGame.Forms.Samples.Tests
 {
     public class MultipleControls_a_Test : MapHost
     {

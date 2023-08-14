@@ -1,4 +1,4 @@
-﻿namespace MonoGame.Forms.Tests
+﻿namespace MonoGame.Forms.Samples
 {
     partial class MainWindow
     {
@@ -33,12 +33,12 @@
             this.tabPageWelcome = new System.Windows.Forms.TabPage();
             this.trackBarLogoFrames = new System.Windows.Forms.TrackBar();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.welcomeControl = new MonoGame.Forms.Tests.Tests.Welcome();
+            this.welcomeControl = new MonoGame.Forms.Samples.Tests.Welcome();
             this.tabPageDrawControl = new System.Windows.Forms.TabPage();
             this.panelInvalidation = new System.Windows.Forms.Panel();
             this.buttonInvalidate = new System.Windows.Forms.Button();
             this.textBoxTestText = new System.Windows.Forms.TextBox();
-            this.invalidationTestControl = new MonoGame.Forms.Tests.Tests.InvalidationTest();
+            this.invalidationTestControl = new MonoGame.Forms.Samples.Tests.InvalidationTest();
             this.tabPageUpdateControl = new System.Windows.Forms.TabPage();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.trackBarCamZoom = new System.Windows.Forms.TrackBar();
@@ -47,18 +47,18 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.buttonResetCam = new System.Windows.Forms.Button();
             this.buttonMoveCam = new System.Windows.Forms.Button();
-            this.monoGameTestControl = new MonoGame.Forms.Tests.Tests.MonoGameTest();
+            this.monoGameTestControl = new MonoGame.Forms.Samples.Tests.MonoGameTest();
             this.tabPageAdvancedInput = new System.Windows.Forms.TabPage();
             this.buttonHelpInput = new System.Windows.Forms.Button();
             this.checkBoxShowHelp = new System.Windows.Forms.CheckBox();
             this.checkBoxShowStats = new System.Windows.Forms.CheckBox();
             this.buttonResetPlayer = new System.Windows.Forms.Button();
-            this.advancedControlsTest = new MonoGame.Forms.Tests.Tests.AdvancedInputTest();
+            this.advancedControlsTest = new MonoGame.Forms.Samples.Tests.AdvancedInputTest();
             this.tabPageMultipleControls = new System.Windows.Forms.TabPage();
             this.splitContainerMapHost = new System.Windows.Forms.SplitContainer();
             this.buttonHelpControls = new System.Windows.Forms.Button();
-            this.multipleControls_First_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_a_Test();
-            this.multipleControls_Second_Test1 = new MonoGame.Forms.Tests.Tests.MultipleControls_b_Test();
+            this.multipleControls_First_Test1 = new MonoGame.Forms.Samples.Tests.MultipleControls_a_Test();
+            this.multipleControls_Second_Test1 = new MonoGame.Forms.Samples.Tests.MultipleControls_b_Test();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();

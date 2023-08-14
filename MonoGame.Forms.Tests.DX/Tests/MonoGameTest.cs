@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
 using System.Windows.Forms;
 
-namespace MonoGame.Forms.Tests.Tests
+namespace MonoGame.Forms.Samples.Tests
 {
     public class MonoGameTest : MonoGameControl
     {

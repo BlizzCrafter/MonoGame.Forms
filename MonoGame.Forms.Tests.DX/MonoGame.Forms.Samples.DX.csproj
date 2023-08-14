@@ -7,8 +7,8 @@
     <ProjectGuid>{9C7B2133-768B-4B3B-883B-9601B02100D6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MonoGame.Forms.Tests.DX</RootNamespace>
-    <AssemblyName>MonoGame.Forms.Tests.DX</AssemblyName>
+    <RootNamespace>MonoGame.Forms.Samples.DX</RootNamespace>
+    <AssemblyName>MonoGame.Forms.Samples.DX</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
