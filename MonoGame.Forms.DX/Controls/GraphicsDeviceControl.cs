@@ -351,9 +351,6 @@ namespace MonoGame.Forms.Controls
         {
         }
 
-        protected abstract void Initialize();
-        protected abstract void Draw();
-
 #region Input
 
         /// <summary>

@@ -60,8 +60,6 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
             Player = new Animation(Editor.Content.Load<Texture2D>("Player_Sheet"), 8, 1, 0.5f, true, true);
             ResetPlayer();
-
-            Editor.RemoveDefaultComponents();
         }
 
         protected override void Update(GameTime gameTime)

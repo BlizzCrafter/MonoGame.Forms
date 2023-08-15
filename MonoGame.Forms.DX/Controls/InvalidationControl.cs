@@ -47,7 +47,6 @@ namespace MonoGame.Forms.Controls
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
                 Editor.InternalDraw();
                 Draw();
-                DrawComponents(new GameTime());
             }
         }
 

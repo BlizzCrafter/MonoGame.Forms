@@ -14,7 +14,7 @@ namespace MonoGame.Forms.Samples.Tests
         {
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
 
-            Editor.FPSCounter.ShowCursorPosition = false;
+            Editor.ShowCursorPosition = false;
         }
 
         protected override void Draw()
