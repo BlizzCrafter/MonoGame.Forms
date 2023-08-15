@@ -9,8 +9,6 @@
 
 #endregion
 
-using System;
-using System.Threading;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame.Forms.NET.Services
