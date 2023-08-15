@@ -294,7 +294,6 @@ namespace MonoGame.Forms.Services
         public Texture2D Pixel { get; set; }
 
         /// <summary>
-<<<<<<<< HEAD:MonoGame.Forms.DX/Services/GFXService.cs
         /// Set the back color of the integrated display.
         /// </summary>
         public Color DisplayBackColor { get; set; } = new Color(0, 0, 0, 100);
@@ -306,9 +305,6 @@ namespace MonoGame.Forms.Services
 
         /// <summary>
         /// Height of the display Font - Cached in InitializeGFX().
-========
-        /// Height of the display Font - Cached in InitializeService().
->>>>>>>> ead14ea (Renamed GFXService to EditorService.):MonoGame.Forms.DX/Services/EditorService.cs
         /// </summary>
         public float FontHeight { get; private set; }
 

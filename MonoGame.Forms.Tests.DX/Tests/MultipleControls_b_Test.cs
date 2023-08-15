@@ -10,7 +10,7 @@ namespace MonoGame.Forms.Samples.Tests
 
             InitializeMap("b");
 
-            Editor.SetDisplayStyle = Forms.Services.GFXService.DisplayStyle.TopRight;
+            Editor.SetDisplayStyle = Forms.Services.EditorService.DisplayStyle.TopRight;
         }
 
         protected override void Update(GameTime gameTime)

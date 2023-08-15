@@ -93,8 +93,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\EditorService.cs" />
     <Compile Include="Services\InvalidationService.cs" />
-    <Compile Include="Services\GFXService.cs" />
     <Compile Include="Services\GraphicsDeviceService.cs" />
     <Compile Include="Services\MonoGameService.cs" />
     <Compile Include="SharpDXHelper.cs" />
