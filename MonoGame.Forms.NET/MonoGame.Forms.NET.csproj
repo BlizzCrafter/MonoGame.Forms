@@ -23,6 +23,7 @@
     <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageId>MonoGame.Forms.NET</PackageId>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
