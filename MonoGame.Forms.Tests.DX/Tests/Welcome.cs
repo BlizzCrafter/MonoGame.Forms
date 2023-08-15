@@ -14,21 +14,14 @@ namespace MonoGame.Forms.Samples.Tests
 
         protected override void Initialize()
         {
-            base.Initialize();
-
             Logo = new Animation(Editor.Content.Load<Texture2D>("Logo_Sheet"), 10, 10, 0.5f, true, true);
             Editor.BackgroundColor = new Color(20, 19, 40);
         }
 
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
+        protected override void Update(GameTime gameTime) { }
 
         protected override void Draw()
         {
-            base.Draw();
-
             Editor.spriteBatch.Begin();
 
             Editor.spriteBatch.Draw(Logo.Texture, new Rectangle(

@@ -17,47 +17,48 @@ namespace MonoGame.Forms.Controls
         /// The <see cref="InvalidationService"/> of the <see cref="InvalidationControl"/> draws the actual content of the draw control.
         /// </summary>
         [Browsable(false)]
-        public InvalidationService Editor { get { return _Editor; } }
-        private InvalidationService _Editor;
+        public InvalidationService Editor { get; private set; }
 
         /// <summary>
         /// Basic initializing.
         /// </summary>
-        protected override void Initialize()
+        internal override void InternalInitialize()
         {
-            _Editor = new InvalidationService(Services, SwapChainRenderTarget);
+            Editor = new InvalidationService(Services, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
 
-            _Editor.Initialize();
-        }
-
-        private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
-        {
-            if (_Editor != null) _Editor.SwapChainRenderTarget = obj;
-        }
-
-        private void DrawWindow_UpdateMultiSampleCount(int obj)
-        {
-            if (_Editor != null) _Editor.GetCurrentMultiSampleCount = obj;
+            Editor.InternalInitialize();
+            Initialize();
         }
 
         /// <summary>
         /// Basic drawing.
         /// This control becomes updated though invalidation: <see cref="System.Windows.Forms.Control.Invalidate()"/>
         /// </summary>
-        protected override void Draw()
+        internal override void InternalDraw()
         {
-            if (_Editor != null)
+            if (Editor != null)
             {
                 UpdateMousePositions();
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
-
-                _Editor.Draw();
+                Editor.InternalDraw();
+                Draw();
+                DrawComponents(new GameTime());
             }
+        }
+
+        private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
+        {
+            if (Editor != null) Editor.SwapChainRenderTarget = obj;
+        }
+
+        private void DrawWindow_UpdateMultiSampleCount(int obj)
+        {
+            if (Editor != null) Editor.GetCurrentMultiSampleCount = obj;
         }
 
         /// <summary>
@@ -96,11 +97,14 @@ namespace MonoGame.Forms.Controls
 
             if (disposing)
             {
-                _Editor?.Dispose();
+                Editor?.Dispose();
 
                 SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
                 MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             }
         }
+
+        protected abstract void Initialize();
+        protected abstract void Draw();
     }
 }

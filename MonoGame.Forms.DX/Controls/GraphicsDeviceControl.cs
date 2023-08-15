@@ -196,7 +196,7 @@ namespace MonoGame.Forms.Controls
 
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
 
-                Initialize();
+                InternalInitialize();
             }
             base.OnCreateControl();
         }
@@ -222,7 +222,7 @@ namespace MonoGame.Forms.Controls
             var beginDrawError = BeginDraw();
             if (string.IsNullOrEmpty(beginDrawError))
             {
-                Draw();
+                InternalDraw();
                 EndDraw(e);
             }
             else
@@ -343,7 +343,10 @@ namespace MonoGame.Forms.Controls
                 }
             }
         }
-        
+
+        internal abstract void InternalInitialize();
+        internal abstract void InternalDraw();
+
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
         }

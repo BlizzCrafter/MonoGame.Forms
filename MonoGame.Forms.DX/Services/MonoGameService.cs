@@ -24,13 +24,13 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Override this basic intitializing method in your custom class to create your own initializing logic.
         /// </summary>
-        public override void Initialize() { }
+        internal override void InternalInitialize() { }
 
         /// <summary>
         /// Override this basic updating method in your custom class to create your own initializing logic.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> of the game loop.</param>
-        public override void Update(GameTime gameTime)
+        internal override void InternalUpdate(GameTime gameTime)
         {
             UpdateDisplay(gameTime);
             FrameworkDispatcher.Update();
@@ -42,7 +42,7 @@ namespace MonoGame.Forms.Services
         /// This basic implementation just clears the background color of the draw control in the predefined color: <see cref="EditorService.BackgroundColor"/>
         /// and updates the FrameCounter, which shows the current FPS of the window / control.
         /// </summary>
-        public override void Draw()
+        internal override void InternalDraw()
         {
             UpdateFrameCounter();
 

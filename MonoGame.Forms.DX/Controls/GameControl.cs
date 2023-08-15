@@ -51,7 +51,7 @@ namespace MonoGame.Forms.Controls
         /// Basic initializing of the game control.
         /// It starts a <see cref="Stopwatch"/> and creates the mouse events.
         /// </summary>
-        protected override void Initialize()
+        internal override void InternalInitialize()
         {
             if (_Timer == null) _Timer = Stopwatch.StartNew();
 
@@ -62,9 +62,9 @@ namespace MonoGame.Forms.Controls
         /// <summary>
         /// Basic drawing logic.
         /// </summary>
-        protected override void Draw()
+        internal override void InternalDraw()
         {
-            Draw();
+            InternalDraw();
         }
 
         private void GameLoop(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace MonoGame.Forms.Controls
 
                 UpdateMousePositions();
 
-                Update(_GameTime);
+                InternalUpdate(_GameTime);
 
                 if (_FrameCount > 0 || (MouseHoverUpdatesOnly && IsMouseInsideControl))
                 {
@@ -92,6 +92,6 @@ namespace MonoGame.Forms.Controls
         /// You must implement this to your custom class, so you can write your own update logic for the game loop.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> reflects the current time of the game loop</param>
-        protected abstract void Update(GameTime gameTime);
+        internal abstract void InternalUpdate(GameTime gameTime);
     }
 }

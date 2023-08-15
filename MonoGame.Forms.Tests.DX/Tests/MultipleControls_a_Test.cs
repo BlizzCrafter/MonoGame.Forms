@@ -6,20 +6,13 @@ namespace MonoGame.Forms.Samples.Tests
     {
         protected override void Initialize()
         {
-            base.Initialize();
-
             InitializeMap("a");
         }
 
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
+        protected override void Update(GameTime gameTime) { }
 
         protected override void Draw()
         {
-            base.Draw();
-
             DrawMap();
         }
     }

@@ -57,17 +57,15 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
 
         protected override void Initialize()
         {
-            base.Initialize();
-
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
             Player = new Animation(Editor.Content.Load<Texture2D>("Player_Sheet"), 8, 1, 0.5f, true, true);
             ResetPlayer();
+
+            Editor.RemoveDefaultComponents();
         }
 
         protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            
+        {            
             NewGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
 
             if (NewGamePadState.IsConnected)
@@ -262,8 +260,6 @@ Color (Increase): Hold [R-Shoulder] and press [B, A, X]";
 
         protected override void Draw()
         {
-            base.Draw();
-
             Editor.spriteBatch.Begin();
 
             Editor.spriteBatch.Draw(Player.Texture, PlayerPosition,

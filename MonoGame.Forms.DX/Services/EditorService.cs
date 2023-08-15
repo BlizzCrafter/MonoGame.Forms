@@ -333,7 +333,7 @@ namespace MonoGame.Forms.Services
         /// </summary>
         /// <param name="graphics">The graphics device service</param>
         /// <param name="swapChainRenderTarget">The swap chain render target</param>
-        public void InitializeService(
+        internal void InitializeService(
             GameServiceContainer services,
             SwapChainRenderTarget swapChainRenderTarget)
         {
@@ -692,16 +692,16 @@ namespace MonoGame.Forms.Services
         /// <summary>
         /// Basic initializing service.
         /// </summary>
-        public abstract void Initialize();
+        internal abstract void InternalInitialize();
         /// <summary>
         /// Basic updating service.
         /// </summary>
         /// <param name="gameTime">The <see cref="GameTime"/> from the game loop.</param>
-        public abstract void Update(GameTime gameTime);
+        internal abstract void InternalUpdate(GameTime gameTime);
         /// <summary>
         /// Basic drawing service.
         /// </summary>
-        public abstract void Draw();
+        internal abstract void InternalDraw();
 
         /// <summary>
         /// Disposes the contents of this service.
