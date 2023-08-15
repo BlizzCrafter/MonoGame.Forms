@@ -23,6 +23,8 @@
   </metadata>
 <files>
   <file src="..\MonoGame.Forms.NET\bin\Release\net6.0-windows7.0\MonoGame.Forms.NET.dll" target="lib\net6.0-windows7.0" />
+  <file src="..\MonoGame.Forms.NET\bin\Release\net6.0-windows7.0\MonoGame.Forms.NET.pdb" target="lib\net6.0-windows7.0" />
+  <file src="..\MonoGame.Forms.NET\bin\Release\net6.0-windows7.0\MonoGame.Forms.NET.xml" target="lib\net6.0-windows7.0" />
   <file src="..\Logos\LogoSquare_256.png" target="images\" />
   <file src="..\README.md" target="docs\" />
 </files>
