@@ -7,21 +7,19 @@ namespace MonoGame.Forms.NET.Samples.Tests
 {
     public class InvalidationTest : InvalidationControl
     {
-        public string WelcomeMessage = "This is an InvalidationControl without a real game loop,\nbut it's updated through invalidation.\n\nTry it with the text box below and press the button to invalidate the rendering!";
+        public string WelcomeMessage = "This is an InvalidationControl without a real game loop (0 fps),\nbut it's updated through invalidation (i.e. Invalidate();).\n\nTry it with the text box below and press the button to invalidate the rendering!";
         
         SpriteFont DrawFont;
 
         protected override void Initialize()
         {
-            base.Initialize();
-
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
+
+            Editor.FPSCounter.ShowCursorPosition = false;
         }
 
         protected override void Draw()
         {
-            base.Draw();
-
             Editor.spriteBatch.Begin();
 
             //Shadow

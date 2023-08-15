@@ -15,62 +15,63 @@ namespace MonoGame.Forms.NET.Controls
         /// The <see cref="MonoGameService"/> of the <see cref="MonoGameControl"/> draws and updates the actual content of the update control.
         /// </summary>
         [Browsable(false)]
-        public MonoGameService Editor { get { return _Editor; } }
-        private MonoGameService _Editor;
+        public MonoGameService Editor { get; private set; }
 
         /// <summary>
         /// Basic initializing.
         /// </summary>
-        protected override void Initialize()
+        internal override void InternalInitialize()
         {
-            base.Initialize();
+            base.InternalInitialize();
 
-            _Editor = new MonoGameService(Services, Components, SwapChainRenderTarget);
+            Editor = new MonoGameService(Services, Components, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += UpdateWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += UpdateWindow_UpdateMultiSampleCount;
 
-            _Editor.Initialize();
-        }
-
-        private void UpdateWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
-        {
-            if (Editor != null) _Editor.SwapChainRenderTarget = obj;
-        }
-
-        private void UpdateWindow_UpdateMultiSampleCount(int obj)
-        {
-            if (Editor != null) _Editor.GetCurrentMultiSampleCount = obj;
+            Editor.InternalInitialize();
+            Initialize();
         }
 
         /// <summary>
         /// Basic updating.
         /// It uses a real game loop, represented by <see cref="GameTime"/>.
         /// </summary>
-        protected override void Update(GameTime gameTime)
+        internal override void InternalUpdate(GameTime gameTime)
         {
-            if (_Editor != null)
+            if (Editor != null)
             {
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
-                _Editor.Update(gameTime);
+                Editor.InternalUpdate(gameTime);
                 UpdateComponents(gameTime);
+                Update(gameTime);
             }
         }
 
         /// <summary>
         /// Basic drawing.
         /// </summary>
-        protected override void Draw()
+        internal override void InternalDraw()
         {
-            if (_Editor != null) _Editor.Draw();
+            if (Editor != null)
+            {
+                Editor.InternalDraw();
+                Draw();
+                DrawComponents(_GameTime);
+            }
         }
 
-        /// <summary>
-        /// Draw <see cref="GameComponent"/>'s from the underlying <see cref="GameComponentCollection"/>.
-        /// </summary>
-        public void DrawComponents() => DrawComponents(_GameTime);
+        private void UpdateWindow_UpdateSwapChainRenderTarget(Microsoft.Xna.Framework.Graphics.SwapChainRenderTarget obj)
+        {
+            if (Editor != null) Editor.SwapChainRenderTarget = obj;
+        }
+
+        private void UpdateWindow_UpdateMultiSampleCount(int obj)
+        {
+            if (Editor != null) Editor.GetCurrentMultiSampleCount = obj;
+        }
 
         /// <summary>
         /// Updates related Editor services when the <see cref="System.Windows.Forms.Control.ClientSize"/> changes.
@@ -108,11 +109,15 @@ namespace MonoGame.Forms.NET.Controls
 
             if (disposing)
             {
-                _Editor?.Dispose();
+                Editor?.Dispose();
 
                 SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
                 MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
             }
         }
+
+        protected abstract void Initialize();
+        protected abstract void Update(GameTime gameTime);
+        protected abstract void Draw();
     }
 }

@@ -14,8 +14,6 @@ namespace MonoGame.Forms.NET.Samples.Tests
         
         protected override void Initialize()
         {
-            base.Initialize();
-
             SmileyMap = Editor.Content.Load<Texture2D>("SmileyMap");
             DrawFont = Editor.Content.Load<SpriteFont>("DrawFont");
         }
@@ -27,15 +25,10 @@ namespace MonoGame.Forms.NET.Samples.Tests
             MessageBox.Show($"[{e.Button.ToString()}] mouse button pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
+        protected override void Update(GameTime gameTime) { }
 
         protected override void Draw()
         {
-            base.Draw();
-
             Editor.BeginCamera2D();
 
             Editor.spriteBatch.Draw(SmileyMap, new Vector2(
@@ -56,8 +49,6 @@ namespace MonoGame.Forms.NET.Samples.Tests
                 Color.Yellow);
 
             Editor.EndCamera2D();
-
-            DrawComponents();
         }
     }
 }

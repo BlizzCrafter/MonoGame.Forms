@@ -17,54 +17,49 @@ namespace MonoGame.Forms.NET.Controls
         /// The <see cref="InvalidationService"/> of the <see cref="InvalidationControl"/> draws the actual content of the draw control.
         /// </summary>
         [Browsable(false)]
-        public InvalidationService Editor { get { return _Editor; } }
-        private InvalidationService _Editor;
+        public InvalidationService Editor { get; private set; }
 
         /// <summary>
         /// Basic initializing.
         /// </summary>
-        protected override void Initialize()
+        internal override void InternalInitialize()
         {
-            _Editor = new InvalidationService(Services, Components, SwapChainRenderTarget);
+            Editor = new InvalidationService(Services, Components, SwapChainRenderTarget);
 
             SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
             SwapChainRenderTargetRefreshed += DrawWindow_UpdateSwapChainRenderTarget;
             MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             MultiSampleCountRefreshed += DrawWindow_UpdateMultiSampleCount;
 
-            _Editor.Initialize();
-        }
-
-        private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
-        {
-            if (_Editor != null) _Editor.SwapChainRenderTarget = obj;
-        }
-
-        private void DrawWindow_UpdateMultiSampleCount(int obj)
-        {
-            if (_Editor != null) _Editor.GetCurrentMultiSampleCount = obj;
+            Editor.InternalInitialize();
+            Initialize();
         }
 
         /// <summary>
         /// Basic drawing.
         /// This control becomes updated though invalidation: <see cref="System.Windows.Forms.Control.Invalidate()"/>
         /// </summary>
-        protected override void Draw()
+        internal override void InternalDraw()
         {
-            if (_Editor != null)
+            if (Editor != null)
             {
                 UpdateMousePositions();
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
-
-                _Editor.Draw();
+                Editor.InternalDraw();
+                Draw();
+                DrawComponents(new GameTime());
             }
         }
 
-        /// <summary>
-        /// Draw <see cref="GameComponent"/>'s from the underlying <see cref="GameComponentCollection"/>.
-        /// <remarks>This uses a new <see cref="GameTime"/> instance, because an "InvalidationControl" doesn't contain game loop logic!</remarks>
-        /// </summary>
-        public void DrawComponents() => DrawComponents(new GameTime());
+        private void DrawWindow_UpdateSwapChainRenderTarget(SwapChainRenderTarget obj)
+        {
+            if (Editor != null) Editor.SwapChainRenderTarget = obj;
+        }
+
+        private void DrawWindow_UpdateMultiSampleCount(int obj)
+        {
+            if (Editor != null) Editor.GetCurrentMultiSampleCount = obj;
+        }
 
         /// <summary>
         /// Updates related Editor services when the <see cref="System.Windows.Forms.Control.ClientSize"/> changes.
@@ -102,11 +97,14 @@ namespace MonoGame.Forms.NET.Controls
 
             if (disposing)
             {
-                _Editor?.Dispose();
+                Editor?.Dispose();
 
                 SwapChainRenderTargetRefreshed -= DrawWindow_UpdateSwapChainRenderTarget;
                 MultiSampleCountRefreshed -= DrawWindow_UpdateMultiSampleCount;
             }
         }
+
+        protected abstract void Initialize();
+        protected abstract void Draw();
     }
 }

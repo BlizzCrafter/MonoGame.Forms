@@ -7,24 +7,16 @@ namespace MonoGame.Forms.NET.Samples.Tests
     {
         protected override void Initialize()
         {
-            base.Initialize();
-
             InitializeMap("b");
 
             Editor.FPSCounter.SetDisplayStyle = DisplayStyle.TopRight;
         }
 
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
+        protected override void Update(GameTime gameTime) { }
 
         protected override void Draw()
         {
-            base.Draw();
-
             DrawMap();
-            DrawComponents();
         }
     }
 }

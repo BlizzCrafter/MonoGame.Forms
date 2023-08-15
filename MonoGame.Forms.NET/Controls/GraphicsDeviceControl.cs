@@ -203,7 +203,7 @@ namespace MonoGame.Forms.NET.Controls
                 Components.ComponentAdded += Components_ComponentAdded;
                 Components.ComponentRemoved += Components_ComponentRemoved;
 
-                Initialize();
+                InternalInitialize();
             }
             base.OnCreateControl();
         }
@@ -237,7 +237,7 @@ namespace MonoGame.Forms.NET.Controls
             var beginDrawError = BeginDraw();
             if (string.IsNullOrEmpty(beginDrawError))
             {
-                Draw();
+                InternalDraw();
                 EndDraw(e);
             }
             else
@@ -359,8 +359,8 @@ namespace MonoGame.Forms.NET.Controls
             }
         }
 
-        protected abstract void Initialize();
-        protected abstract void Draw();
+        internal abstract void InternalInitialize();
+        internal abstract void InternalDraw();
 
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
