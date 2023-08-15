@@ -103,7 +103,13 @@ namespace MonoGame.Forms.Controls
             }
         }
 
+        /// <summary>
+        /// Override to implement Initialization logic in your custom MonoGame.Forms.Control.
+        /// </summary>
         protected abstract void Initialize();
+        /// <summary>
+        /// Override to implement Drawing logic in your custom MonoGame.Forms.Control.
+        /// </summary>
         protected abstract void Draw();
     }
 }
