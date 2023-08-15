@@ -10,9 +10,9 @@ using MonoGame.Forms.NET.Components.Interfaces;
 namespace MonoGame.Forms.NET.Services
 {
     /// <summary>
-    /// The <see cref="GFXService"/> class provides basic functionality of MonoGame
+    /// The <see cref="EditorService"/> class provides basic functionality of MonoGame.
     /// </summary>
-    public abstract class GFXService : IDisposable
+    public abstract class EditorService : IDisposable
     {
         /// <summary>
         /// This manager will manage all of your custom <see cref="RenderTarget2D"/>'s automatically - based on the current ClientSize and MultiSampleCount. 
@@ -24,7 +24,7 @@ namespace MonoGame.Forms.NET.Services
             /// </summary>
             public class RenderTarget2DHelper
             {
-                private GFXService GetGFXService;
+                private EditorService _Editor;
 
                 /// <summary>
                 /// Get the actual <see cref="RenderTarget2D"/>.
@@ -37,24 +37,24 @@ namespace MonoGame.Forms.NET.Services
 
                 private void CreateNewRenderTarget2D(bool useMultiSampling)
                 {
-                    if (GetGFXService.GraphicsDevice.PresentationParameters.BackBufferWidth > 0 &&
-                        GetGFXService.GraphicsDevice.PresentationParameters.BackBufferHeight > 0)
+                    if (_Editor.GraphicsDevice.PresentationParameters.BackBufferWidth > 0 &&
+                        _Editor.GraphicsDevice.PresentationParameters.BackBufferHeight > 0)
                     {
                         GetRenderTarget2D = new RenderTarget2D(
-                            GetGFXService.GraphicsDevice,
-                            GetGFXService.GraphicsDevice.PresentationParameters.BackBufferWidth,
-                            GetGFXService.GraphicsDevice.PresentationParameters.BackBufferHeight,
+                            _Editor.GraphicsDevice,
+                            _Editor.GraphicsDevice.PresentationParameters.BackBufferWidth,
+                            _Editor.GraphicsDevice.PresentationParameters.BackBufferHeight,
                             false,
                             SurfaceFormat.Color,
                             DepthFormat.Depth24,
-                            useMultiSampling ? GetGFXService.GetCurrentMultiSampleCount : 0,
+                            useMultiSampling ? _Editor.GetCurrentMultiSampleCount : 0,
                             RenderTargetUsage.DiscardContents);
                     }
                 }
                 
-                internal RenderTarget2DHelper(GFXService _GFXService, bool useMultiSampling)
+                internal RenderTarget2DHelper(EditorService editor, bool useMultiSampling)
                 {
-                    GetGFXService = _GFXService;
+                    _Editor = editor;
                     UseMultiSampling = useMultiSampling;
 
                     CreateNewRenderTarget2D(useMultiSampling);
@@ -76,16 +76,16 @@ namespace MonoGame.Forms.NET.Services
 
             internal Dictionary<string, RenderTarget2DHelper> RenderTargets { get; set; }
 
-            private GFXService GetGFXService;
+            private EditorService _Editor;
 
             internal void RefreshRenderTargets()
             {
                 RenderTargets.ToList().ForEach(x => x.Value.RefreshRenderTarget2D());
             }
 
-            internal RenderTargetManager(GFXService _GFXService)
+            internal RenderTargetManager(EditorService editor)
             {
-                GetGFXService = _GFXService;
+                _Editor = editor;
                 RenderTargets = new Dictionary<string, RenderTarget2DHelper>();
             }
 
@@ -99,7 +99,7 @@ namespace MonoGame.Forms.NET.Services
             {
                 if (RenderTargets.ContainsKey(key)) return RenderTargets[key];
 
-                RenderTargets.Add(key, new RenderTarget2DHelper(GetGFXService, useMultiSampling));
+                RenderTargets.Add(key, new RenderTarget2DHelper(_Editor, useMultiSampling));
 
                 return RenderTargets[key];
             }
@@ -257,7 +257,7 @@ namespace MonoGame.Forms.NET.Services
         public Texture2D Pixel { get; set; }
 
         /// <summary>
-        /// Height of the display Font - Cached in InitializeGFX().
+        /// Height of the display Font - Cached in InitializeService().
         /// </summary>
         public float FontHeight { get; private set; }
 
@@ -271,7 +271,7 @@ namespace MonoGame.Forms.NET.Services
         private GameComponentCollection _Components { get; set; }
 
         /// <summary>
-        /// Initializes the GFX system, which contains basic MonoGame functionality.
+        /// Initializes the service system, which contains basic MonoGame functionality.
         /// </summary>
         /// <param name="graphics">The graphics device service</param>
         /// <param name="swapChainRenderTarget">The swap chain render target</param>

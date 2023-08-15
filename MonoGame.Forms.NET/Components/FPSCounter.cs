@@ -87,10 +87,10 @@ namespace MonoGame.Forms.NET.Components
         /// </summary>
         internal void UpdateFrameCounter() => FrameCounter++;
 
-        private GFXService _Editor;
+        private EditorService _Editor;
         private ICamera2D _Camera;
 
-        public FPSCounter(GFXService editor, ICamera2D camera) 
+        public FPSCounter(EditorService editor, ICamera2D camera) 
         {
             _Editor = editor;
             _Camera = camera;
