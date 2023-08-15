@@ -307,9 +307,7 @@ namespace MonoGame.Forms.NET.Services
             SwapChainRenderTarget = swapChainRenderTarget;
 
             FrameworkDispatcher.Update();
-
-            components.Add(new Camera2D(GraphicsDevice));
-            components.Add(new FPSCounter(this, Camera));
+            AddDefaultComponents();
         }
 
         /// <summary>
@@ -503,6 +501,38 @@ namespace MonoGame.Forms.NET.Services
         public void EndCamera2D()
         {
             spriteBatch.End();
+        }
+
+        /// <summary>
+        /// Add all default (integrated) <see cref="GameComponent"/>'s to the <see cref="GameComponentCollection"/>.
+        /// These are basically a <see cref="ICamera2D"/> and a <see cref="FPSCounter"/> components.
+        /// <remarks>If you want to add your own ones, call <c>Components.Add();</c> from your custom MonoGame.Forms.Control.</remarks>
+        /// </summary>
+        public void AddDefaultComponents()
+        {
+            _Components.Add(new Camera2D(GraphicsDevice));
+            _Components.Add(new FPSCounter(this, Camera));
+        }
+
+        /// <summary>
+        /// Remove all default (integrated) <see cref="GameComponent"/>'s from the <see cref="GameComponentCollection"/>.
+        /// These are basically a <see cref="ICamera2D"/> and a <see cref="FPSCounter"/> components.
+        /// <remarks>If you want to add your own ones, call <c>Components.Add();</c> from your custom MonoGame.Forms.Control.</remarks>
+        /// </summary>
+        public void RemoveDefaultComponents()
+        {
+            _Components.Remove(Camera);
+            _Components.Remove(FPSCounter);
+        }
+
+        /// <summary>
+        /// Remove all <see cref="GameComponent"/> from the <see cref="GameComponentCollection"/>.
+        /// This also counts for your own ones!
+        /// <remarks>If you only want to remove your own ones, call <c>Components.Remove();</c> from your custom MonoGame.Forms.Control.</remarks>
+        /// </summary>
+        public void RemoveAllComponents()
+        {
+            _Components.Clear();
         }
 
         /// <summary>
