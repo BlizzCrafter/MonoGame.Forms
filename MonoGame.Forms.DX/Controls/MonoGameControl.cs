@@ -115,8 +115,20 @@ namespace MonoGame.Forms.Controls
             }
         }
 
-        protected abstract void Initialize();
-        protected abstract void Update(GameTime gameTime);
-        protected abstract void Draw();
+        // Below methods are not abtract in the NetFramework version of MonoGame.Forms.
+        // This is to avoid WindowsForms.Designer problems, when trying to add a MonoGame.Forms.Control.
+        /// <summary>
+        /// Override to implement Initialization logic in your custom MonoGame.Forms.Control.
+        /// </summary>
+        protected virtual void Initialize() { }
+        /// <summary>
+        /// Override to implement Update (Game Loop) logic in your custom MonoGame.Forms.Control.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        protected virtual void Update(GameTime gameTime) { }
+        /// <summary>
+        /// Override to implement Drawing logic in your custom MonoGame.Forms.Control.
+        /// </summary>
+        protected virtual void Draw() { }
     }
 }
