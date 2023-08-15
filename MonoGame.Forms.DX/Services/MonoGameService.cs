@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MonoGame.Forms.Services
 {
     /// <summary>
-    /// This class inherits from <see cref="GFXService"/>, which provides basic functionality of the MonoGame.Framework.
+    /// This class inherits from <see cref="EditorService"/>, which provides basic functionality of the MonoGame.Framework.
     /// The <see cref="MonoGame.Forms.Controls.MonoGameControl"/> inherits from this class.
     /// <remarks>Note: this class provides a game loop. The <see cref="InvalidationService"/> is not using a game loop.</remarks>
     /// </summary>
-    public sealed class MonoGameService : GFXService
+    public sealed class MonoGameService : EditorService
     {
         /// <summary>
         /// Get the current <see cref="GameTime"/> of the game loop.
@@ -39,7 +39,7 @@ namespace MonoGame.Forms.Services
 
         /// <summary>
         /// Override this basic drawing method in your custom class to create your own drawing logic.
-        /// This basic implementation just clears the background color of the draw control in the predefined color: <see cref="GFXService.BackgroundColor"/>
+        /// This basic implementation just clears the background color of the draw control in the predefined color: <see cref="EditorService.BackgroundColor"/>
         /// and updates the FrameCounter, which shows the current FPS of the window / control.
         /// </summary>
         public override void Draw()
