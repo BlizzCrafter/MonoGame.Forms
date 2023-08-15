@@ -59,14 +59,6 @@ namespace MonoGame.Forms.Controls
             Application.Idle += GameLoop;
         }
 
-        /// <summary>
-        /// Basic drawing logic.
-        /// </summary>
-        internal override void InternalDraw()
-        {
-            InternalDraw();
-        }
-
         private void GameLoop(object sender, EventArgs e)
         {
             if (Visible)
