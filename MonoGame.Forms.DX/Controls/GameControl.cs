@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace MonoGame.Forms.Controls
 {
