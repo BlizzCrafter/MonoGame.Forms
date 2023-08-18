@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>MonoGame.Forms.Templates</id>
+    <version>3.1.0</version>
+    <title>MonoGame.Forms.Templates</title>
+    <authors>Marcel Härtel</authors>
+    <owners>Marcel Härtel</owners>
+    <projectUrl>https://github.com/BlizzCrafter/MonoGame.Forms</projectUrl>
+	<repository type="git" url="https://github.com/BlizzCrafter/MonoGame.Forms.git" />
+    <description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</description>
+    <copyright>Copyright (c) 2023 BlizzCrafter</copyright>
+    <tags>MonoGame WindowsForms Editor</tags>	
+	<license type="expression">MS-PL</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="**" exclude="**\bin\**\*;**\obj\**\*;**\*.user;" />
+  </files>
+</package>
