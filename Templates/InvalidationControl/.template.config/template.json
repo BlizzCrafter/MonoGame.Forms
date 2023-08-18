@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+    "author": "BlizzCrafter",
+    "classifications": [
+        "MonoGame", "Games", "Editor", "Desktop", "Windows"
+    ],
+    "name": "MonoGame.Forms.InvalidationControl",
+    "identity": "MonoGame.Forms.InvalidationControl",
+	"precedence": 899,
+    "shortName": "mgic",
+	"description": "Adds an InvalidationControl without GameLoop-Support to your MonoGame.Forms project.",
+    "tags": {
+        "language": "C#",
+        "type": "item"
+    },
+	"sourceName": "InvalidationControlTemplate",
+	"symbols":{
+    "name": {
+        "type": "parameter",
+        "description": "The name of the InvalidationControl.",
+        "defaultValue": "InvalidationControlTemplate",
+        "replaces":"InvalidationControlTemplate"
+    },
+	"DefaultNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace",
+      "replaces": "MonoGameNamespace"
+    }
+  },
+  "constraints": {
+    "csharp-only": {
+      "type": "project-capability",
+      "args": "CSharp"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+    "author": "BlizzCrafter",
+    "classifications": [
+        "MonoGame", "Games", "Editor", "Desktop", "Windows"
+    ],
+    "name": "MonoGame.Forms",
+    "identity": "MonoGame.Forms.NET",
+	"precedence": 999,
+    "shortName": "mgf",
+	"description": "MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.",
+    "tags": {
+        "language": "C#",
+        "type": "solution"
+    },
+    "primaryOutputs": [
+        {
+            "path": "Editor.csproj"
+        }
+    ],
+	"postActions": [{
+    "description": "Restore NuGet packages required by this project.",
+    "manualInstructions": [{
+      "text": "Run 'dotnet restore'"
+    }],
+    "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+    "continueOnError": true
+  }],
+    "preferNameDirectory": "true"
+}
