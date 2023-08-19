@@ -1,92 +1,65 @@
 ![Banner](Logos/Logo_Banner_800.png)
 
 # Welcome to MonoGame.Forms!
-[![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=f2709e&colorB=77c433)](https://github.com/BlizzCrafter/MonoGame.Forms/wiki)
-
-[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2017,%202019,%202022%20Templates!-lightgrey.svg?style=flat-square&logo=visual-studio-code&colorB=af70f2)](https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337)
-
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX/)
-
-[![NuGet](https://img.shields.io/badge/NuGet-MonoGame.RuntimeBuilder-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.RuntimeBuilder)
+[![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=f2709e&colorB=77c433)](https://github.com/BlizzCrafter/MonoGame.Forms/wiki) [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.DX/) [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.Templates-blue.svg?style=flat-square&logo=NuGet&colorA=3260c4&colorB=77c433)](https://www.nuget.org/packages/MonoGame.Forms.Templates)
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
-### Building
+# Building
 
 * The **MonoGame.Forms** project uses a modified version of the MonoGame.Framework. It's called [MonoGame.Framework.WindowsDX.9000](https://www.nuget.org/packages/MonoGame.Framework.WindowsDX.9000/) (created by [nkast](https://github.com/nkast)), which is faster, memory optimized, bugfixed and supports full mouse & keyboard input within WindowsForms. You can also update MonoGame.Forms to a new MonoGame version very easily - just by updating the MonoGame.Framework.WindowsDX.9000 nuget package!
 * **MonoGame.Forms.GL**  - DEPRECATED! - faster alternative: [MonoGame.Template.Gtk.CSharp](https://www.nuget.org/packages/MonoGame.Template.Gtk.CSharp/) (created by [harry-cpp](https://github.com/harry-cpp)).
 
-#### Tips & Tricks / Dos & Don'ts
+### Tips & Tricks / Dos & Don'ts
 
 * **Never** use **DoubleBuffering** on a custom control. It will cause flickering and slow downs.
 * If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
 **`AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;`**. If you want to turn off scaling of your whole application, then you need to add a **[Manifest-File](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/DPI_Aware_Application.md)**.
 **NEW**: Now you can also directly **[install the Visual Studio templates](https://marketplace.visualstudio.com/items?itemName=BlizzCrafter.MonoGameForms1337)**.
 
-# How-To
-#### Setup MonoGame.Forms
-
-First you need to make your MonoGame.Forms library ready to use. This step is very easy; you just need to compile the MonoGame.Forms library from source and then just add the compiled DLL's to your project.
-
-↳ _This is the prefered route, when you want to make you own custom changes to the library or extend it_.
-
-Another option is to install the library with the NuGet package manager:
-
-![NuGet](doc/NuGet_Manager.PNG)
-
-↳ _This is the prefered and easiest route to be automatically up to date_.
+# Setup MonoGame.Forms
+### Options:
+- Build from source (this repo)
+- Install Package:
+  - ```dotnet add package MonoGame.Forms.DX``` or use the *Package Manager*
+- Install Templates:
+  - ```dotnet new install MonoGame.Forms.Templates```
 
 ***
 
-### Tutorial
-
-#### Creating a simple [MonoGameControl](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/C5EB9086)
-
-Let's start using the MonoGame.Forms library by creating a simple control to render stuff! 
-
-_(it's assumed that you already have created a new **Windows Forms** project with the installed library)_
-
-1. Create a new class and name it **DrawTest**
-2. Inherit from **MonoGame.Forms.Controls.MonoGameControl**
-3. Override its **Initialize()**, **Update()** and **Draw()** method
-4. **Save** your solution
-5. **Build** your solution
-6. **Double Click** on **Form1.cs** so that the designer opens
-7. Open the **Toolbox**
-8. **Drag & Drop** the newly created control onto the Form1 control
-9. Open the **Properties** of the new control and set the **Dock** option to **Fill**
-
-This is how it should look now:
+# Tutorials
+### Using or Creating MonoGame.Forms.Controls:
+- Automagical via Terminal (if templates installed):
+  - [MonoGameControl](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/FDEF831D): ```dotnet new mgc -na MyMonoGameControl```
+  - [InvalidationControl](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/62B63ABB): ```dotnet new mgic -na MyInvalidationControl```
+- Manual:
+ 1. Create a new class and name it **DrawTest**
+ 2. Inherit from **MonoGame.Forms.Controls.MonoGameControl**
+ 3. Override its **Initialize()**, **Update()** and **Draw()** method
+ 4. **Save** your solution
+ 5. **Build** your solution
+ 6. **Double Click** on **Form1.cs** so that the designer opens
+ 7. Open the **Toolbox**
+ 8. **Drag & Drop** the newly created control onto the Form1 control
+ 9. Open the **Properties** of the new control and set the **Dock** option to **Fill**
 
 ![Tutorial](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/doc/tut_00.PNG)
 
-10. Now run the solution and see the classical **CornflowerBlue-Screen** you are (surly) familiar with! ;-)
+ 10. Profit ???
 
 ![Tutorial](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/doc/tut_00a.PNG)
 
-And yes, as you can see: it is realy **THAT EASY**!
+### Drawing
+In MonoGame you could draw someting to the screen with the **spriteBatch**.
+In **MonoGame.Forms** you will do the same but you need to use the [EditorService](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/29FDD2C0) for this.
 
-Now I bet you wonder how to draw something to this control, right? I bet you think that this is now the difficult part, right?
-Well... it's not!
-
-More than that it's basically the same like you are used to do in the **MonoGame.Framework**. 
-Just with a small difference (no it's still not difficult!)
-
-In MonoGame you could draw someting to the screen with the [SpriteBatch](https://msdn.microsoft.com/de-de/library/microsoft.xna.framework.graphics.spritebatch(v=xnagamestudio.40).aspx).
-In **MonoGame.Forms** you will do the same but you need to use the [GFXService](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/3A4C800C) for this.
-
-In the **MonoGameControl** class this service is called **Editor**. To draw something to the **SpriteBatch** you need to do this:
+In the MonoGame.Forms.Control classes this service is called **Editor**. So, in order to draw something to the **spriteBatch** you need to do this:
 
 ```c
 Editor.spriteBatch.DrawString();
 ```
 
-Do you see? Easy! :)
-
-The **GFXService** class contains some MonoGame specific stuff like a [ContentManager](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/A72EF9E7).
-Examine everything calmly. I just want to explain a little how **MonoGame.Forms** works under the hood!
-
-To sum things up, let's take a look at the final **DrawTest** class:
+Let's take a look at the final **DrawTest** class:
 
 ```c
 using Microsoft.Xna.Framework;
@@ -100,18 +73,14 @@ namespace nugetTest
 
         protected override void Initialize()
         {
-            base.Initialize();
         }
         
         protected override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
         }
 
         protected override void Draw()
         {
-            base.Draw();
-
             Editor.spriteBatch.Begin();
 
             Editor.spriteBatch.DrawString(Editor.Font, WelcomeMessage, new Vector2(
@@ -130,51 +99,38 @@ Result:
 
 It's pretty much like in the **MonoGame.Framework!**
 
-I just want to refer to the nice [MonoGame.Forms.Samples](https://github.com/BlizzCrafter/MonoGame.Forms/tree/master/MonoGame.Forms.Samples/Tests)-Project,
-which is part of this repo. Take a look at it and learn from its samples.
+# Samples
 
-**BTW:** did you notice the **BackColor** and **ForeColor** property? 
-Changing these values makes it possible to style your controls to something like this:
-
-![Style](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/doc/style.PNG)
-
-Do it to keep the overview and feel of your custom editor project!
-> Note: The MonoGame logo is placed automatically inside a newly created control (during design-time) to make it clear, that it is a render control with MonoGame functionality!
+Take a look at the [MonoGame.Forms.Samples](https://github.com/BlizzCrafter/MonoGame.Forms/tree/master/MonoGame.Forms.NET.Samples/Tests)-Project,
+which is part of this repo, to learn more about how MonoGame.Forms works.
 
 ***
 
-#### Creating a simple [InvalidationControl](https://github.com/BlizzCrafter/MonoGame.Forms/wiki/1802024)
+# WTF is this **InvalidationControl**?
 
-This specific control class doesn't need to override the **Update()** method, because it gets manually invalidated (by you!).
+This specific control class doesn't need to override the **Update()** method, because it gets manually updated (by you!).
 
-If you are changing the drawn contents of the SpriteBatch when your editor project is running (not during design time), then you simply need to call **Invalidate()** on a custom control for every change you want to see on your control. This command commits those changes and after that your control does not consume CPU power anymore. This process is great when creating preview controls for textures and similar things!
+You simply need to call **Invalidate()** on a custom InvalidationControl for every change you want to see on it. After calling this, your control does not consume CPU power anymore. This is great when creating preview controls for textures and similar things!
 
-### Sample Pics
+# Pictures
 
 Here are some pics of some samples included with the repo:
 
-### Windows
 ![Sample](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/doc/UpdateSample.png)
 
-# Projects using MonoGame.Forms!
+# Projects using MonoGame.Forms
 
-Please watch the following YouTube videos in *1080p @ 60fps* to see what is possible with MonoGame.Forms!
-
-###### This project is called: "**Rogue Engine Editor**" and it's possible to create Rogue Adventures with it:
+### **Rogue Engine Editor**:
 
 [![Rogue Engine Editor](https://img.youtube.com/vi/6fyQ64O9HME/0.jpg)](https://youtu.be/6fyQ64O9HME)
 
-***
-
-###### This project is called: "**PenumbraPhysics.Editor**" and it was the prototype for the Rogue Engine Editor and MonoGame.Forms:
+### **PenumbraPhysics.Editor**:
 
 [![YouTube Video](https://github.com/BlizzCrafter/PenumbraPhysics.Editor/blob/master/Documentation/Thumbnail.png)](https://youtu.be/vQAxXN_V3X4)
 
-GitHub: [PenumbraPhysics.Editor](https://github.com/BlizzCrafter/PenumbraPhysics.Editor)
-
 ***
 
-### Now Have Fun with MonoGame.Forms!
+# Now Have Fun with MonoGame.Forms!
 
 ![Logo](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/Logos/Logo_Shadow_256.png)
 
