@@ -1,4 +1,4 @@
-![Banner](Logos/Logo_Banner_800.png)
+![Banner](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/Logos/Logo_Banner_Social_800.png)
 
 # Welcome to MonoGame.Forms!
 [![Wiki](https://img.shields.io/badge/Wiki-Online!-orange.svg?style=flat-square&logo=github&colorA=ba51ff&colorB=51ff63)](https://github.com/BlizzCrafter/MonoGame.Forms/wiki) [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms-blue.svg?style=flat-square&logo=NuGet&colorA=5196ff&colorB=51edff)](https://www.nuget.org/packages/MonoGame.Forms.DX/) [![NuGet](https://img.shields.io/badge/NuGet-MonoGame.Forms.Templates-blue.svg?style=flat-square&logo=NuGet&colorA=5196ff&colorB=51edff)](https://www.nuget.org/packages/MonoGame.Forms.Templates)
