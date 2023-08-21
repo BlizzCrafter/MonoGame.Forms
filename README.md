@@ -120,9 +120,9 @@ This specific control class doesn't need to override the **Update()** method, be
 
 You simply need to call **Invalidate()** on a custom InvalidationControl for every change you want to see on it. After calling this, your control does not consume CPU power anymore. This is great when creating preview controls for textures and similar things!
 
-# Pictures
+# Pics or It Didn't Happen
 
-Here are some pics of some samples included with the repo:
+Here are some sample pics from the [Blazor](https://github.com/BlizzCrafter/MonoGame.Forms/tree/Blazor) branch:
 
 ![MonoGameControl](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/sample_00.png)
 ![InvalidationControl](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/sample_01.png)
@@ -133,11 +133,15 @@ Here are some pics of some samples included with the repo:
 
 ### **Rogue Engine Editor**:
 
-[![Rogue Engine Editor](https://img.youtube.com/vi/6fyQ64O9HME/0.jpg)](https://youtu.be/6fyQ64O9HME)
+[![Rogue Engine Editor](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/ree.png)](https://youtu.be/6fyQ64O9HME)
+
+### **Mercury Particle Sandbox**:
+
+[![Rogue Engine Editor](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/mps.png)](https://youtu.be/7Xds-q5tm8E)
 
 ### **PenumbraPhysics.Editor**:
 
-[![YouTube Video](https://github.com/BlizzCrafter/PenumbraPhysics.Editor/blob/master/Documentation/Thumbnail.png)](https://youtu.be/vQAxXN_V3X4)
+[![YouTube Video](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/ppe.png)](https://youtu.be/vQAxXN_V3X4)
 
 ***
 
