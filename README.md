@@ -124,7 +124,10 @@ You simply need to call **Invalidate()** on a custom InvalidationControl for eve
 
 Here are some pics of some samples included with the repo:
 
-![Sample](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/doc/UpdateSample.png)
+![MonoGameControl](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/sample_00.png)
+![InvalidationControl](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/sample_01.png)
+![MultipleControls](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/sample_02.png)
+![AdvancedInput](https://raw.githubusercontent.com/BlizzCrafter/MonoGame.Forms/master/doc/sample_03.png)
 
 # Projects using MonoGame.Forms
 
