@@ -53,7 +53,7 @@
             return x.Order - y.Order;
         }
 
-        public void ForEachFilteredItem<TUserData>(Action<T, TUserData> action, TUserData userData)
+        public void ForEachFilteredItem<TUserData>(Action<T, TUserData, EventHandler<ComponentStateEventArgs>> action, TUserData userData, EventHandler<ComponentStateEventArgs> eventData)
         {
             if (_shouldRebuildCache)
             {
@@ -70,7 +70,7 @@
             }
 
             for (int i = 0; i < _cachedFilteredItems.Count; ++i)
-                action(_cachedFilteredItems[i], userData);
+                action(_cachedFilteredItems[i], userData, eventData);
 
             // If the cache was invalidated as a result of processing items,
             // now is a good time to clear it and give the GC (more of) a
