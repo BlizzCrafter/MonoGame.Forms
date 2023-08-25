@@ -17,9 +17,9 @@
     <RepositoryUrl>https://github.com/BlizzCrafter/MonoGame.Forms</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>MonoGame;WindowsForms;Editor</PackageTags>
-	<Version>3.1.0</Version>
-    <AssemblyVersion>3.1.0</AssemblyVersion>
-    <FileVersion>3.1.0</FileVersion>
+	<Version>3.2.0</Version>
+    <AssemblyVersion>3.2.0</AssemblyVersion>
+    <FileVersion>3.2.0</FileVersion>
     <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageId>MonoGame.Forms.NET</PackageId>

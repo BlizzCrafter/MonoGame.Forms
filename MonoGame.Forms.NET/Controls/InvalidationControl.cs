@@ -20,6 +20,11 @@ namespace MonoGame.Forms.NET.Controls
         public InvalidationService Editor { get; private set; }
 
         /// <summary>
+        /// Subscribe to get Update and Draw event info for this MonoGameControl.
+        /// </summary>
+        public event EventHandler<ControlStateEventArgs> ControlState;
+
+        /// <summary>
         /// Basic initializing.
         /// </summary>
         internal override void InternalInitialize()
@@ -45,9 +50,16 @@ namespace MonoGame.Forms.NET.Controls
             {
                 UpdateMousePositions();
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
+
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.StartDraw));
                 Editor.InternalDraw();
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.BeforeDraw));
                 Draw();
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.AfterDraw));
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.BeforeComponentDraw));
                 DrawComponents(new GameTime());
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.AfterComponentDraw));
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.EndDraw));
             }
         }
 

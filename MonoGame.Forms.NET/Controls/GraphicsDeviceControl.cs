@@ -193,9 +193,9 @@ namespace MonoGame.Forms.NET.Controls
             {
                 if (ClientSize.Width == 0 || ClientSize.Height == 0) ClientSize = new Size(1, 1);
 
-                _GraphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);                
+                _GraphicsDeviceService = GraphicsDeviceService.AddRef(Handle, ClientSize.Width, ClientSize.Height, GraphicsProfile);
                 Services.AddService<IGraphicsDeviceService>(_GraphicsDeviceService);
-                
+
                 SwapChainRenderTarget = new SwapChainRenderTarget(_GraphicsDeviceService.GraphicsDevice, Handle, ClientSize.Width, ClientSize.Height);
 
                 Microsoft.Xna.Framework.Input.Mouse.WindowHandle = Handle;
@@ -291,7 +291,7 @@ namespace MonoGame.Forms.NET.Controls
         {
             base.OnClientSizeChanged(e);
 
-            if (ClientSize.Width > 0 && 
+            if (ClientSize.Width > 0 &&
                 ClientSize.Height > 0)
             {
                 RefreshWindow();
@@ -368,11 +368,28 @@ namespace MonoGame.Forms.NET.Controls
 
         #region Components
 
-        private static readonly Action<IUpdateable, GameTime> _UpdateAction =
-            (updateable, gameTime) => updateable.Update(gameTime);
+        /// <summary>
+        /// Subscribe to get Update and Draw event info for all GameComponents (IUpdatable, IDrawable).
+        /// </summary>
+        [DisplayName("ComponentState")]
+        [Description("Subscribe to get Update and Draw event info for all GameComponents (IUpdatable, IDrawable).")]
+        public event EventHandler<ComponentStateEventArgs> ComponentState;
 
-        private static readonly Action<IDrawable, GameTime> _DrawAction =
-            (drawable, gameTime) => drawable.Draw(gameTime);
+        private readonly Action<IUpdateable, GameTime, EventHandler<ComponentStateEventArgs>> _UpdateAction =
+            (updateable, gameTime, componentEvent) =>
+            {
+                componentEvent?.Invoke(updateable, new ComponentStateEventArgs(NET.ComponentState.BeforeUpdate));
+                updateable.Update(gameTime);
+                componentEvent?.Invoke(updateable, new ComponentStateEventArgs(NET.ComponentState.AfterUpdate));
+            };
+
+        private readonly Action<IDrawable, GameTime, EventHandler<ComponentStateEventArgs>> _DrawAction =
+            (drawable, gameTime, componentEvent) =>
+            {
+                componentEvent?.Invoke(drawable, new ComponentStateEventArgs(NET.ComponentState.BeforeDraw));
+                drawable.Draw(gameTime);
+                componentEvent?.Invoke(drawable, new ComponentStateEventArgs(NET.ComponentState.AfterDraw));
+            };
 
         private SortingFilteringCollection<IDrawable> _Drawables =
             new SortingFilteringCollection<IDrawable>(
@@ -434,12 +451,12 @@ namespace MonoGame.Forms.NET.Controls
 
         internal void UpdateComponents(GameTime gameTime)
         {
-            _Updateables.ForEachFilteredItem(_UpdateAction, gameTime);
+            _Updateables.ForEachFilteredItem(_UpdateAction, gameTime, ComponentState);
         }
 
         internal void DrawComponents(GameTime gametime)
         {
-            _Drawables.ForEachFilteredItem(_DrawAction, gametime);
+            _Drawables.ForEachFilteredItem(_DrawAction, gametime, ComponentState);
         }
 
         #endregion Components
@@ -520,11 +537,17 @@ namespace MonoGame.Forms.NET.Controls
         }
 
         public delegate void MouseWheelUpwardsEvent(MouseEventArgs e);
+        /// <summary>
+        /// Scroll the mouse wheel upwards to trigger this event.
+        /// </summary>
         [DisplayName("MouseWheelUp")]
         [Description("Scroll the mouse wheel upwards to trigger this event.")]
         public event MouseWheelUpwardsEvent OnMouseWheelUpwards;
 
         public delegate void MouseWheelDownwardsEvent(MouseEventArgs e);
+        /// <summary>
+        /// Scroll the mouse wheel downwards to trigger this event.
+        /// </summary>
         [DisplayName("MouseWheelDown")]
         [Description("Scroll the mouse wheel downwards to trigger this event.")]
         public event MouseWheelDownwardsEvent OnMouseWheelDownwards;

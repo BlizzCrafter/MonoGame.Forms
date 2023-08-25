@@ -18,6 +18,11 @@ namespace MonoGame.Forms.NET.Controls
         public MonoGameService Editor { get; private set; }
 
         /// <summary>
+        /// Subscribe to get Update and Draw event info for this MonoGameControl.
+        /// </summary>
+        public event EventHandler<ControlStateEventArgs> ControlState;
+
+        /// <summary>
         /// Basic initializing.
         /// </summary>
         internal override void InternalInitialize()
@@ -44,9 +49,16 @@ namespace MonoGame.Forms.NET.Controls
             if (Editor != null)
             {
                 Editor.UpdateMousePositions(GetRelativeMousePosition, GetAbsoluteMousePosition);
+
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.StartUpdate));
                 Editor.InternalUpdate(gameTime);
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.BeforeComponentUpdate));
                 UpdateComponents(gameTime);
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.AfterComponentUpdate));
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.BeforeUpdate));
                 Update(gameTime);
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.AfterUpdate));
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.EndUpdate));
             }
         }
 
@@ -57,9 +69,15 @@ namespace MonoGame.Forms.NET.Controls
         {
             if (Editor != null)
             {
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.StartDraw));
                 Editor.InternalDraw();
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.BeforeDraw));
                 Draw();
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.AfterDraw));
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.BeforeComponentDraw));
                 DrawComponents(_GameTime);
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.AfterComponentDraw));
+                ControlState?.Invoke(this, new ControlStateEventArgs(NET.ControlState.EndDraw));
             }
         }
 
@@ -113,6 +131,7 @@ namespace MonoGame.Forms.NET.Controls
 
                 SwapChainRenderTargetRefreshed -= UpdateWindow_UpdateSwapChainRenderTarget;
                 MultiSampleCountRefreshed -= UpdateWindow_UpdateMultiSampleCount;
+                ControlState = null;
             }
         }
 
