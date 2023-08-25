@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\MonoGame.Forms.DX.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NuGetRelease|AnyCPU'">
-    <OutputPath>bin\NuGetRelease\</OutputPath>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.8.9013.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\lib\net40\MonoGame.Framework.dll</HintPath>
@@ -114,7 +111,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release nuget pack "$(ProjectPath)" -properties Configuration=Release -OutputDirectory "$(SolutionDir)\Packages"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\build\MonoGame.Framework.WindowsDX.9000.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\build\MonoGame.Framework.WindowsDX.9000.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -123,14 +121,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\build\MonoGame.Framework.WindowsDX.9000.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.9000.3.8.9013\build\MonoGame.Framework.WindowsDX.9000.targets'))" />
   </Target>
-  <PropertyGroup>
-    <PostBuildEvent>
-	if $(ConfigurationName) == NuGetRelease (
-	nuget pack "$(ProjectPath)" -properties Configuration=NuGetRelease -OutputDirectory "$(SolutionDir)create"
-	nuget push -Source nuget.org -SkipDuplicate "$(SolutionDir)create\*.nupkg" )
-  if $(ConfigurationName) == Release nuget pack "$(ProjectPath)" -properties Configuration=Release -OutputDirectory "$(SolutionDir)create"
-  </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
