@@ -18,7 +18,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>wiki\</OutputPath>
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -34,7 +34,7 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>MonoGame.Forms.ClassLibrary</HelpTitle>
-    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <HelpFileVersion>1.1.0.0</HelpFileVersion>
     <NamingMethod>HashedMemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
@@ -46,7 +46,10 @@
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <VisibleItems>ExplicitInterfaceImplementations, InheritedMembers, Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="MonoGame.Forms.NET" isExposed="False" xmlns="" />
+      <Filter entryType="Namespace" fullName="MonoGame.Forms.NET" isExposed="True">
+        <Filter entryType="Structure" fullName="MonoGame.Forms.NET.AddJournalEntry`1" filterName="AddJournalEntry`1" isExposed="False" />
+        <Filter entryType="Class" fullName="MonoGame.Forms.NET.SortingFilteringCollection`1" filterName="SortingFilteringCollection`1" isExposed="False" />
+      </Filter>
     </ApiFilter>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
     <TransformComponentArguments>
@@ -62,6 +65,7 @@
       <NamespaceSummaryItem name="MonoGame.Forms.NET.Components.Interfaces" isDocumented="True" xmlns="" />
     </NamespaceSummaries>
     <RootNamespaceTitle>Welcome to MonoGame.Forms!</RootNamespaceTitle>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
