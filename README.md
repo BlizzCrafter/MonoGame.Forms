@@ -5,16 +5,17 @@
 
 MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment. 
 
-# Info
+> [!NOTE]
+> * The **MonoGame.Forms** project uses a modified version of the MonoGame.Framework. It's called [MonoGame.Framework.WindowsDX.9000](https://www.nuget.org/packages/MonoGame.Framework.WindowsDX.9000/) (created by [nkast](https://github.com/nkast)), which is faster, memory optimized, bugfixed and supports full mouse & keyboard input within WindowsForms. You can also update MonoGame.Forms to a new MonoGame version very
+easily - just by updating the MonoGame.Framework.WindowsDX.9000 nuget package!
+> * **MonoGame.Forms.GL**  - DEPRECATED! - faster alternative: [MonoGame.Template.Gtk.CSharp](https://www.nuget.org/packages/MonoGame.Template.Gtk.CSharp/) (created by [harry-cpp](https://github.com/harry-cpp)).
 
-* The **MonoGame.Forms** project uses a modified version of the MonoGame.Framework. It's called [MonoGame.Framework.WindowsDX.9000](https://www.nuget.org/packages/MonoGame.Framework.WindowsDX.9000/) (created by [nkast](https://github.com/nkast)), which is faster, memory optimized, bugfixed and supports full mouse & keyboard input within WindowsForms. You can also update MonoGame.Forms to a new MonoGame version very easily - just by updating the MonoGame.Framework.WindowsDX.9000 nuget package!
-* **MonoGame.Forms.GL**  - DEPRECATED! - faster alternative: [MonoGame.Template.Gtk.CSharp](https://www.nuget.org/packages/MonoGame.Template.Gtk.CSharp/) (created by [harry-cpp](https://github.com/harry-cpp)).
-
-# Tips & Tricks / Dos & Don'ts
-
-* **Never** use **DoubleBuffering** on a custom control. It will cause flickering and slow downs.
-* If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
+> [!TIP]
+> * If you experience scaling issues with your drawn content, then you might want to set the right **AutoScaleMode** of a Form containing a MonoGameControl:
 **`AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;`**. If you want to turn off scaling of your whole application, then you need to add a **[Manifest-File](https://github.com/BlizzCrafter/MonoGame.Forms/blob/master/DPI_Aware_Application.md)**.
+
+> [!IMPORTANT] 
+> * **Never** use **DoubleBuffering** on a custom control. It will cause flickering and slow downs.
 
 # Setup MonoGame.Forms
 ### Options:
