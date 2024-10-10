@@ -10,7 +10,7 @@
     <Title>MonoGame.Forms</Title>
     <Authors>Marcel Härtel</Authors>
     <Description>MonoGame.Forms is the easiest way of integrating a MonoGame render window into your Windows Forms project. It should make your life much easier, when you want to create your own editor environment.</Description>
-    <Copyright>Copyright (c) 2023 BlizzCrafter</Copyright>
+    <Copyright>Copyright (c) 2024 BlizzCrafter</Copyright>
     <PackageProjectUrl>https://github.com/BlizzCrafter/MonoGame.Forms</PackageProjectUrl>
     <PackageIcon>LogoSquare_256.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
