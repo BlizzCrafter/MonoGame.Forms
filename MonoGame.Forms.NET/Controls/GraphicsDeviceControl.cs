@@ -129,6 +129,11 @@ namespace MonoGame.Forms.NET.Controls
         internal event Action<SwapChainRenderTarget> SwapChainRenderTargetRefreshed = delegate { };
 
         /// <summary>
+        /// The <see cref="SwapChainRenderTarget"/> will only update itself after this <see cref="System.Windows.Forms.Timer"/> ticks.
+        /// </summary>
+        private System.Windows.Forms.Timer _resizeTimer;
+
+        /// <summary>
         /// Get the MultiSampleCount (MSAA Antialising) to the nearest power of two in relation of what the users <see cref="GraphicsDevice"/> can handle.
         /// </summary>
         /// <param name="multiSampleCount">The desired multisample count (MSAA)</param>
@@ -202,6 +207,10 @@ namespace MonoGame.Forms.NET.Controls
 
                 Components.ComponentAdded += Components_ComponentAdded;
                 Components.ComponentRemoved += Components_ComponentRemoved;
+
+                _resizeTimer = new();
+                _resizeTimer.Interval = 1000;
+                _resizeTimer.Tick += new EventHandler(ResizeTimerTick);
 
                 InternalInitialize();
             }
@@ -291,11 +300,21 @@ namespace MonoGame.Forms.NET.Controls
         {
             base.OnClientSizeChanged(e);
 
-            if (ClientSize.Width > 0 &&
-                ClientSize.Height > 0)
+            if (_resizeTimer != null)
             {
-                RefreshWindow();
+                if (ClientSize.Width > 0 &&
+                    ClientSize.Height > 0)
+                {
+                    _resizeTimer.Start();
+                }
             }
+        }
+
+        private void ResizeTimerTick(object? sender, EventArgs e)
+        {
+            _resizeTimer.Stop();
+            RefreshWindow();
+            Invalidate();
         }
 
         private string HandleDeviceReset()
