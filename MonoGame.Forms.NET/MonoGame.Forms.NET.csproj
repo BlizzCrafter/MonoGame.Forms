@@ -22,7 +22,7 @@
     <FileVersion>3.2.1</FileVersion>
     <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>MonoGame.Forms.NET</PackageId>
+    <PackageId>MonoGame.Forms.DX</PackageId>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
