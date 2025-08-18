@@ -14,7 +14,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="MonoGame.Forms.DX" Version="3.2.0" />
+    <PackageReference Include="MonoGame.Forms.DX" Version="*" />
   </ItemGroup>
 
 </Project>
